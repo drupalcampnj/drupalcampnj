@@ -1,0 +1,12 @@
+.geinspiraregular{
+  font-family: "GEInspiraRegular",sans-serif;
+}
+@font-face {
+    font-family: 'GEInspiraRegular';
+    src: url('ge_inspira-webfont.eot?') format('eot'),
+         url('ge_inspira-webfont.woff') format('woff'),
+         url('ge_inspira-webfont.ttf') format('truetype'),
+         url('ge_inspira-webfont.svg#webfontkGgbkDbi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
