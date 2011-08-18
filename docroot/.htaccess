@@ -135,3 +135,10 @@ DirectoryIndex index.php index.html index.htm
     </FilesMatch>
   </IfModule>
 </IfModule>
+
+
+# Password protection
+AuthName "Restricted Zone"
+AuthType Basic
+AuthUserFile /mnt/files/blinkdev5/htpasswd/dev
+require valid-user
