@@ -24,6 +24,15 @@ table{
 #page {
   margin-top: 40px;
 }
+P{
+  margin: 0.5em 0 0.5em 0;
+}
+#content h1{
+  color: #333333;
+  font-family: "GEInspiraRegular",sans-serif;
+  font-size: 50px;
+  margin: 0.2em 0 0.2em;
+}
 /* --------------------------- BOF: HEADER --------------------------- */
 #top-header-line{
   border-bottom: 1px solid #e9e9e9;
@@ -283,6 +292,36 @@ table{
   padding: 0px 10px 0px 10px;
 }
 
+.front #content #home-page .region-left H2.pane-title{
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 15px 0;
+}
+#home-page .view-home-page-featured-event{
+  
+}
+#home-page .view-home-page-featured-event .image{
+  float: left;
+  margin-right: 10px;
+}
+#home-page .view-home-page-featured-event .content-image{
+  float: left;
+  width: 190px;
+}
+#home-page .view-home-page-featured-event .title .field-content a{
+  font-size: 14px;
+}
+#home-page .view-home-page-featured-event .date-location div{
+  display: inline;
+  color: #333333;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#home-page .view-home-page-featured-event .hp-teaser p{
+  margin: 3px 0;
+}
 /* ------------------ eof: front page ------------------ */
 
 /* ------------------ bof: front page block ------------------ */
@@ -309,6 +348,61 @@ table{
   margin: 3px 0px 3px 0px;
 }
 /* ------------------ eof: front page block ------------------ */
+
+
+/* ------------------ bof: events listing page ------------------ */
+.view-events-listing .views-row{
+  border-bottom: 1px solid #DEDEDE;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.view-events-listing .views-row .category{
+  font-size: 11px;
+  color: #666666;
+  text-transform: uppercase;
+  font-weight: bold;
+} 
+.view-events-listing .views-row .date-location{
+  color: #333333;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.view-events-listing .views-row .date-location div{
+  display: inline;
+}
+.view-events-listing .views-row .title{
+  color: #3B73B9;
+  display: block;
+  font-size: 20px;
+  padding: 4px 0 8px;
+}
+.view-events-listing .views-row .see-more a{
+  color: #2CAFE1;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.view-events-listing .views-row .see-more a.close{
+  display: none;
+}
+.view-events-listing .views-row .teaser .field-content{
+  color: #666666;
+  font-size: 14px;
+  padding: 0 0 3px;
+}
+.view-events-listing .views-row .details{
+  display: none;
+}
+.view-events-listing .views-row .details-title{
+  color: #333333;
+  font-family: "GEInspiraRegular",sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  padding: 12px 0 8px;
+}
+/* ------------------ eof: events listing page ------------------ */
+
 
 /* --------------------------- EOF: CONTENT --------------------------- */
 
