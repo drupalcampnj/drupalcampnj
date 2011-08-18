@@ -467,3 +467,7 @@ $databases['default']['default'] = array(
 */
 
 require('/var/www/site-php/blinkdev5/blinkdev5-settings.inc');
+
+$conf['error_level'] = 0;  //force error to be shown on the screen [12:57 PM 7/30/2009 by Leon]
+error_reporting(E_ALL ^ E_NOTICE);
+ini_set("display_errors", "0");
