@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file
+ * @file book-node-export-html.tpl.php
  * Default theme implementation for rendering a single node in a printer
  * friendly outline.
  *

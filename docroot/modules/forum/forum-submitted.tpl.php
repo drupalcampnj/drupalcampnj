@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file
+ * @file forum-submitted.tpl.php
  * Default theme implementation to format a simple string indicated when and
  * by whom a topic was submitted.
  *
@@ -17,12 +17,11 @@
  */
 ?>
 <?php if ($time): ?>
-  <span class="submitted">
-  <?php print t('By !author @time ago', array(
+  <?php print t(
+  '@time ago<br />by !author', array(
     '@time' => $time,
     '!author' => $author,
     )); ?>
-  </span>
 <?php else: ?>
   <?php print t('n/a'); ?>
 <?php endif; ?>

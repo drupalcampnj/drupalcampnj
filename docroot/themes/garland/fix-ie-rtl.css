@@ -2,6 +2,8 @@
 body {
   /* Center layout */
   text-align: center;
+  /* Allow text resizing */
+  font-size: 80%;
 }
 
 #squeeze {
@@ -9,12 +11,11 @@ body {
   direction: ltr;
 }
 
-#squeeze .left-corner {
+#squeeze .left-corner{
   direction: rtl
 }
 
-#header-region,
-#wrapper #container {
+#header-region, #wrapper #container {
   /* Reset text alignment */
   text-align: right;
 }
@@ -36,6 +37,7 @@ fieldset {
 
 /* Prevent fieldsets from shifting when changing collapsed state. */
 html.js fieldset.collapsible {
+  position: relative;
   top: -1em;
 }
 
@@ -54,8 +56,7 @@ tr.menu-disabled {
   height: 1em;
 }
 
-#attach-hide label,
-#uploadprogress div.message {
+#attach-hide label, #uploadprogress div.message {
   /* Fading elements in IE causes the text to bleed unless they have a background. */
   background-color: #ffffff;
 }
