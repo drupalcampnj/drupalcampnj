@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file
+ * @file aggregator-item.tpl.php
  * Default theme implementation to format an individual feed item for display
  * on the aggregator page.
  *

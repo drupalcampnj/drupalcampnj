@@ -1,13 +1,11 @@
 name = Contact
 description = Enables the use of both personal and site-wide contact forms.
-package = Core
+package = Core - optional
 version = VERSION
-core = 7.x
-files[] = contact.test
-configure = admin/structure/contact
+core = 6.x
 
-; Information added by drupal.org packaging script on 2011-07-28
-version = "7.7"
+; Information added by drupal.org packaging script on 2011-05-25
+version = "6.22"
 project = "drupal"
-datestamp = "1311813879"
+datestamp = "1306357015"
 
