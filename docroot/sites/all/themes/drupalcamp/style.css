@@ -1,0 +1,550 @@
+
+/* Margin, Padding, Border Resets
+-------------------------------------------------------------- */
+html, body, div, span, p,
+dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+form, fieldset, input, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+img, abbr, acronym {
+  border: 0;
+}
+
+
+/* HTML Elements
+-------------------------------------------------------------- */
+p {
+  margin: 1em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em 0;
+}
+
+ul, ol, dd {
+  margin-bottom: 1.5em;
+  margin-left: 2em; /* LTR */
+}
+
+li ul, li ol {
+  margin-bottom: 0;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+}
+
+blockquote {
+}
+
+hr {
+  height: 1px;
+  border: 1px solid gray;
+}
+
+/* tables */
+table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+caption {
+  text-align: left;
+}
+
+th {
+  margin: 0;
+  padding: 0 10px 0 0;
+}
+
+th.active img {
+  display: inline;
+}
+
+thead th {
+  padding-right: 10px;
+}
+
+td {
+  margin: 0;
+  padding: 3px;
+}
+
+/* Remove grid block styles from Drupal's table ".block" class */
+td.block {
+  border: none;
+  float: none;
+  margin: 0;
+}
+
+/* Maintain light background/dark text on dragged table rows */
+tr.drag td,
+tr.drag-previous td {
+  background: #FFFFDD;
+  color: #000;
+}
+
+
+/* Accessibility
+/-------------------------------------------------------------- */
+/* skip-link to main content, hide offscreen */
+#skip a,
+#skip a:hover,
+#skip a:visited {
+  height: 1px;
+  left: 0px;
+  overflow: hidden;
+  position: absolute;
+  top: -500px;
+  width: 1px;
+}
+
+/* make skip link visible when selected */
+#skip a:active,
+#skip a:focus {
+  background-color: #fff;
+  color: #000;
+  height: auto;
+  padding: 5px 10px;
+  position: absolute;
+  top: 0;
+  width: auto;
+  z-index: 99;
+}
+
+#skip a:hover {
+  text-decoration: none;
+}
+
+
+/* Helper Classes
+/-------------------------------------------------------------- */
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+/* clear floats after an element */
+/* (also in ie6-fixes.css, ie7-fixes.css) */
+.clearfix:after,
+.clearfix .inner:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  overflow: auto;
+  visibility: hidden;
+}
+
+
+/* Grid Layout Basics (specifics in 'gridnn_x.css')
+-------------------------------------------------------------- */
+/* center page and full rows: override this for left-aligned page */
+.page,
+.row {
+  margin: 0 auto;
+}
+
+/* fix layout/background display on floated elements */
+.row,
+.nested,
+.block {
+  overflow: hidden;
+}
+
+/* full-width row wrapper */
+div.full-width {
+  width: 100%;
+}
+
+/* float, un-center & expand nested rows */
+.nested {
+  float: left; /* LTR */
+  margin: 0;
+  width: 100%;
+}
+
+/* allow Superfish menus to overflow */
+#sidebar-first.nested,
+#sidebar-last.nested,
+div.superfish {
+  overflow: visible;
+}
+
+/* sidebar layouts */
+.sidebars-both-first .content-group {
+  float: right; /* LTR */
+}
+
+.sidebars-both-last .sidebar-first {
+  float: right; /* LTR */
+}
+
+/* Grid Mask Overlay
+-------------------------------------------------------------- */
+#grid-mask-overlay {
+  display: none;
+  left: 0;
+  opacity: 0.75;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 997;
+}
+
+#grid-mask-overlay .row {
+  margin: 0 auto;
+}
+
+#grid-mask-overlay .block .inner {
+  background-color: #e3fffc;
+  outline: none;
+}
+
+.grid-mask #grid-mask-overlay {
+  display: block;
+}
+
+.grid-mask .block {
+  overflow: visible;
+}
+
+.grid-mask .block .inner {
+  outline: #f00 dashed 1px;
+}
+
+#grid-mask-toggle {
+  background-color: #777;
+  border: 2px outset #fff;
+  color: #fff;
+  cursor: pointer;
+  font-variant: small-caps;
+  font-weight: normal;
+  left: 0;
+  -moz-border-radius: 5px;
+  padding: 0 5px 2px 5px;
+  position: absolute;
+  text-align: center;
+  top: 22px;
+  -webkit-border-radius: 5px;
+  z-index: 998;
+}
+
+#grid-mask-toggle.grid-on {
+  border-style: inset;
+  font-weight: bold;
+}
+
+
+/* Site Info
+-------------------------------------------------------------- */
+#header-site-info {
+  width: auto;
+}
+
+#site-name-wrapper {
+  float: left;   /* LTR */
+}
+
+#site-name,
+#slogan {
+  display: block;
+}
+
+#site-name a:link,
+#site-name a:visited,
+#site-name a:hover,
+#site-name a:active {
+  text-decoration: none;
+}
+
+#site-name a {
+  outline: 0;
+}
+
+
+/* Regions
+-------------------------------------------------------------- */
+
+/* Header Regions
+-------------------------------------------------------------- */
+#header-group {
+  overflow: visible;
+}
+
+/* Content Regions (Main)
+-------------------------------------------------------------- */
+.node-bottom {
+  margin: 1.5em 0 0 0;
+}
+
+/*  Clear floats on regions
+-------------------------------------------------------------- */
+#header-top-wrapper,
+#header-group-wrapper,
+#preface-top-wrapper,
+#main-wrapper,
+#preface-bottom,
+#content-top,
+#content-region,
+#content-bottom,
+#postscript-top,
+#postscript-bottom-wrapper,
+#footer-wrapper,
+#footer-message-wrapper {
+  clear: both;
+}
+
+
+/* Drupal Core
+/-------------------------------------------------------------- */
+
+/* Lists
+/-------------------------------------------------------------- */
+.item-list ul li {
+  margin: 0;
+}
+
+.block ul,
+.block ol {
+  margin-left: 2em; /* LTR */
+  padding: 0;
+}
+
+.content-inner ul,
+.content-inner ol {
+  margin-bottom: 1.5em;
+}
+
+.content-inner li ul,
+.content-inner li ol {
+  margin-bottom: 0;
+}
+
+.block ul.links {
+  margin-left: 0; /* LTR */
+}
+
+/* Menus
+/-------------------------------------------------------------- */
+ul.menu li,
+ul.links li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Primary Menu
+/-------------------------------------------------------------- */
+/* use ID to override overflow: hidden for .block, dropdowns should always be visible */
+#primary-menu {
+  overflow: visible;
+}
+
+/* remove left margin from primary menu list */
+#primary-menu.block ul {
+  margin-left: 0; /* LTR */
+}
+
+/* remove bullets, float left */
+.primary-menu ul li {
+  float: left; /* LTR */
+  list-style: none;
+  position: relative;
+}
+
+/* style links, and unlinked parent items (via Special Menu Items module) */
+.primary-menu ul li a,
+.primary-menu ul li .nolink {
+  display: block;
+  padding: 0.75em 1em;
+  text-decoration: none;
+}
+
+/* Add cursor style for unlinked parent menu items */
+.primary-menu ul li .nolink {
+  cursor: default;
+}
+
+/* remove outline */
+.primary-menu ul li:hover,
+.primary-menu ul li.sfHover,
+.primary-menu ul a:focus,
+.primary-menu ul a:hover,
+.primary-menu ul a:active {
+  outline: 0;
+}
+
+/* Secondary Menu
+/-------------------------------------------------------------- */
+.secondary-menu-inner ul.links {
+  margin-left: 0; /* LTR */
+}
+
+/*Sergii's styles*/
+
+body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
+#page { width: 975px; margin: 0 auto; font: 12px Arial !important; color: #ffffff; }
+#page a { color: #ffca58; text-decoration: underline; }
+#page a:hover { text-decoration: none; }
+
+/*wrappers*/
+.front #main-wrapper { min-height: 890px; }
+#main #content {
+  width: 702px;
+  float: left;
+}
+.region-sidebar-second {
+  float: right;
+  width: 286px;
+  margin-right: -13px;
+  padding-top: 20px;
+}
+
+#logo {
+  width: 274px;
+  height: 72px;
+  float: right;
+  margin-top: 330px;
+  background: url('images/logo.png') no-repeat 0 0;
+}
+
+#main-menu li {
+  float: left;
+  padding-top: 17px;
+  margin-left: 6px;
+  background: url('images/primary-links-bg.png') no-repeat top center;
+}
+
+#main-menu li.last {
+  margin-left: 27px;
+  background-position: 30% top;
+}
+
+#main-menu li a {
+  display: block;
+  font: small-caps bold 14px Arial;
+  color: #ffffff;  
+  background-color: #00674c;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+  padding: 5px 10px;  
+  text-decoration: none;
+}
+
+#main-menu li.last a {
+  color: #010101;
+  background: #ffba00 url('images/primary-links-sign-up-bg.png') no-repeat 97% center;  
+  border: 2px solid #000000;
+  padding-right: 31px;
+  text-transform: uppercase;
+}
+
+/* Front Content
+/-------------------------------------------------------------- */
+.front #content .content {
+  float: right;
+  text-align: right;
+  width: 520px;
+}
+
+.front .content p {
+  margin-bottom: 25px;
+  line-height: 17px;
+}
+
+.front .content #p1 { padding-left: 182px; }
+.front .content #p2 { padding-left: 100px; }
+.front .content #p3 { padding-left: 37px; }
+
+.front .content strong {
+  color: #ffca58;
+}
+
+a.submit-session {
+  font-size: 24px;
+}
+
+/* Right Sidebar
+/-------------------------------------------------------------- */
+#page .region-sidebar-second a.sign-up {
+  font-weight: bold;
+  font-size: 35px;
+  color: #212121;
+  background-color: #ffba00;
+  border: 2px solid #000000;
+  border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;  
+  text-transform: uppercase;
+  width: 245px;
+  margin: 0 auto;
+  padding: 7px 0;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Footer
+/-------------------------------------------------------------- */
+#block-views-Sponsors-block_8 h2 {
+  text-transform: uppercase;
+  color: #7d7d7d;
+  font-size: 28px;
+}
+
+#block-views-Sponsors-block_8 ul {
+  padding: 0;
+  overflow: hidden;
+}
+
+#block-views-Sponsors-block_8 li {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 12px;
+  list-style: none
+}
+
+#block-views-Sponsors-block_8 li span {
+  display: block;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
