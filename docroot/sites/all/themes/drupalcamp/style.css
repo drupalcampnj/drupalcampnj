@@ -508,11 +508,16 @@ a.submit-session {
 
 /* Right Sidebar
 /-------------------------------------------------------------- */
+#block-block-1 img {
+  display: block;
+}
+
 #page .region-sidebar-second a.sign-up {
   font-weight: bold;
   font-size: 35px;
   color: #212121;
   background-color: #ffba00;
+  display: block;
   border: 2px solid #000000;
   border-radius: 6px;
     -webkit-border-radius: 6px;
@@ -520,7 +525,7 @@ a.submit-session {
   text-transform: uppercase;
   width: 245px;
   margin: 0 auto;
-  padding: 7px 0;
+  padding: 18px 0;
   text-align: center;
   text-decoration: none;
 }
