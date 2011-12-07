@@ -186,12 +186,11 @@
           </div></div><!-- /.section, /#navigation -->
         <?php endif; ?>
 
-        <?php print $content_top; ?>        
+        <?php print $content_top; ?>
+
+        <div id="logo" class="clearfix"></div>
 
         <div id="content-area">
-          <?php if ($title): ?>
-            <h1 class="title"><?php print $title; ?></h1>
-          <?php endif; ?>
           <?php print $content; ?>
         </div>
 

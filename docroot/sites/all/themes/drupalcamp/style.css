@@ -421,8 +421,14 @@ ul.links li {
 
 body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 #page { width: 975px; margin: 0 auto; font: 12px Arial !important; color: #ffffff; }
-#page a { color: #ffca58; text-decoration: underline; }
-#page a:hover { text-decoration: none; }
+a { color: #ffca58; text-decoration: underline; }
+a:hover { text-decoration: none; }
+h1 { font-size: 37px !important; text-transform: uppercase; }
+#content-area .content p {
+  margin-top: 0;
+  margin-bottom: 18px;
+  line-height: 18px;
+}
 
 /*wrappers*/
 .front #main-wrapper { min-height: 895px; }
@@ -437,15 +443,8 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
   padding-top: 20px;
 }
 
-#logo {
-  width: 274px;
-  height: 72px;
-  float: right;
-  margin-top: 312px;
-  margin-bottom: 14px;
-  background: url('images/logo.png') no-repeat 0 0;
-}
-
+/* Main menu
+/-------------------------------------------------------------- */
 #main-menu li {
   float: left;
   padding-top: 17px;
@@ -481,15 +480,19 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 
 /* Front Content
 /-------------------------------------------------------------- */
+#logo {
+  width: 274px;
+  height: 72px;
+  float: right;
+  margin-top: 312px;
+  margin-bottom: 26px;
+  background: url('images/logo.png') no-repeat 0 0;
+}
+
 .front #content .content {
   float: right;
   text-align: right;
   width: 520px;
-}
-
-.front .content p {
-  margin-bottom: 18px;
-  line-height: 18px;
 }
 
 .front .content #p1 { padding-left: 182px; }
@@ -555,4 +558,43 @@ a.submit-session {
   border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+}
+
+/* Sub pages
+/-------------------------------------------------------------- */
+.not-front #content #content-area {
+  float: right;
+  width: 485px;
+  padding: 29px 40px 0px 45px;
+  margin-top: 300px;
+  margin-right: -60px;
+  position: relative;
+  z-index: -1;
+  background-color: #0b0b0b;
+  opacity: 0.9;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+/* News view
+/-------------------------------------------------------------- */
+.view-news .views-row {
+  padding-bottom: 46px;
+  border-bottom: 3px solid #ffca58;
+  margin-bottom: 37px;
+}
+
+.view-news .views-row-last {
+  border: none;
+}
+
+.view-news h2 {
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.view-news h2 a {
+  text-decoration: none;
 }
