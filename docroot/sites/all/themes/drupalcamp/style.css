@@ -425,7 +425,7 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 #page a:hover { text-decoration: none; }
 
 /*wrappers*/
-.front #main-wrapper { min-height: 890px; }
+.front #main-wrapper { min-height: 895px; }
 #main #content {
   width: 702px;
   float: left;
@@ -441,7 +441,8 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
   width: 274px;
   height: 72px;
   float: right;
-  margin-top: 330px;
+  margin-top: 312px;
+  margin-bottom: 14px;
   background: url('images/logo.png') no-repeat 0 0;
 }
 
@@ -459,7 +460,7 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 
 #main-menu li a {
   display: block;
-  font: small-caps bold 14px Arial;
+  font: small-caps bold 15px Arial;
   color: #ffffff;  
   background-color: #00674c;
   border: 2px solid #ffffff;
@@ -487,8 +488,8 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 }
 
 .front .content p {
-  margin-bottom: 25px;
-  line-height: 17px;
+  margin-bottom: 18px;
+  line-height: 18px;
 }
 
 .front .content #p1 { padding-left: 182px; }
@@ -501,6 +502,8 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 
 a.submit-session {
   font-size: 24px;
+  display: block;
+  margin-top: 60px;
 }
 
 /* Right Sidebar
@@ -527,7 +530,7 @@ a.submit-session {
 #block-views-Sponsors-block_8 h2 {
   text-transform: uppercase;
   color: #7d7d7d;
-  font-size: 28px;
+  font-size: 36px;
 }
 
 #block-views-Sponsors-block_8 ul {
