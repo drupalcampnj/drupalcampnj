@@ -448,19 +448,32 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
 
 /* Main menu
 /-------------------------------------------------------------- */
-#main-menu li {
+.region-navigation {position: relative;}
+
+#block-nice_menus-1 {
+  overflow: visible;
+  position: absolute;
+}
+  
+#nice-menu-1 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+#nice-menu-1 li {
   float: left;
   padding-top: 17px;
   margin-left: 6px;
+  border: none;
   background: url('images/primary-links-bg.png') no-repeat top center;
 }
 
-#main-menu li.last {
+#nice-menu-1 li.last {
   margin-left: 27px;
   background-position: 30% top;
 }
 
-#main-menu li a {
+#nice-menu-1 li a {
   display: block;
   font: small-caps bold 15px Arial;
   color: #ffffff;  
@@ -472,13 +485,48 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
   padding: 5px 10px;  
   text-decoration: none;
 }
+#nice-menu-1 li a:hover {
+  background-color: #00936c;
+}
 
-#main-menu li.last a {
+#nice-menu-1 li.last a {
   color: #010101;
   background: #ffba00 url('images/primary-links-sign-up-bg.png') no-repeat 97% center;  
   border: 2px solid #000000;
   padding-right: 31px;
   text-transform: uppercase;
+}
+
+/* 2nd level */
+#nice-menu-1 li ul {
+  position: absolute;
+  border: none; 
+  top: 50px;
+  width: 100%;
+}
+#nice-menu-1 li ul li {
+  margin: 0;
+  width: 100%;
+  background: url('images/primary-links-lvl2.png') no-repeat top center;
+  padding-top: 6px;
+}
+
+#nice-menu-1 li ul li.last {
+  margin: 0;
+  background-position: top center;
+}
+
+#nice-menu-1 li ul li.last a {  
+  color: #ffffff;  
+  background: none;
+  background-color: #00674c;
+  border: 2px solid #ffffff;  
+  padding: 5px 10px;    
+  text-transform: none;
+}
+
+#nice-menu-1 li ul li a:hover, #nice-menu-1 li ul li.last a:hover {
+  background-color: #00936c;
 }
 
 /* Front Content
@@ -487,7 +535,7 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
   width: 274px;
   height: 72px;
   float: right;
-  margin-top: 312px;
+  margin-top: 362px;
   margin-bottom: 26px;
   background: url('images/logo.png') no-repeat 0 0;
 }
