@@ -164,9 +164,7 @@
 
         <?php print $highlight; ?>
 
-        <?php print $breadcrumb; ?>
-        
-        <?php print $messages; ?>
+        <?php print $breadcrumb; ?>              
       
         <?php print $help; ?>
 
@@ -181,6 +179,7 @@
         <?php print $content_top; ?>        
 
         <div id="content-area">
+          <?php print $messages; ?>
           <?php if ($title): ?>
             <h1 class="title"><?php print $title; ?></h1>
           <?php endif; ?>
