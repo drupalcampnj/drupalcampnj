@@ -101,8 +101,8 @@ print '</pre>';*/
 
   <div class="content">
     <?php 
-      print $content; 
-      print ($node->teaser ? l('Read more', $node_url, array('attributes' => array('class' => 'readmore'))) : '');
+      print $content;       
+      print ($node->teaser ? l('Read more', 'node/' . $nid) : '');
     ?>
   </div>
 

@@ -601,6 +601,34 @@ a.submit-session {
   text-decoration: none;
 }
 
+/* Speakers view
+/-------------------------------------------------------------- */
+.view-speakers .views-row {
+  float: left;
+  margin-right: 45px;
+  margin-bottom: 65px;
+}
+
+.view-speakers .lastinrow {
+  margin-right: 0;
+}
+
+.view-speakers .views-row a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.views-field-field-speaker-photo-fid {
+  margin-bottom: 14px;
+}
+
+.views-field-field-speaker-company-value {
+  font-size: 10px;
+  color: #969696;
+  text-transform: uppercase;
+  margin: 7px 0 1px;
+}
+
 /* Contact webform
 /-------------------------------------------------------------- */
 #content-area .node-type-webform .content p {
@@ -631,6 +659,7 @@ a.submit-session {
 
 .node-type-webform  textarea {
   margin-top: 5px;
+  padding: 5px;
 }
 
 .node-type-webform .form-actions {
