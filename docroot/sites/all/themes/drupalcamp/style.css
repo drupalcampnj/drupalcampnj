@@ -418,7 +418,6 @@ ul.links li {
 }
 
 /*Sergii's styles*/
-
 body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 #page { width: 975px; margin: 0 auto; font: 12px Arial !important; color: #ffffff; }
 a { color: #ffca58; text-decoration: underline; }
@@ -431,7 +430,10 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
 }
 
 /*wrappers*/
-.front #main-wrapper { min-height: 895px; }
+#main-wrapper {zoom:1;}
+.front #main-wrapper { 
+  min-height: 895px;
+}
 #main #content {
   width: 702px;
   float: left;
@@ -441,6 +443,7 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
   width: 286px;
   margin-right: -13px;
   padding-top: 20px;
+  position: relative;
 }
 
 /* Main menu
@@ -565,11 +568,9 @@ a.submit-session {
 .not-front #content #content-area {
   float: right;
   width: 485px;
-  padding: 29px 40px 0px 45px;
+  padding: 29px 40px 40px 45px;
   margin-top: 300px;
-  margin-right: -60px;
-  position: relative;
-  z-index: -1;
+  margin-right: -60px;  
   background-color: #0b0b0b;
   opacity: 0.9;
   border-radius: 5px;
@@ -587,6 +588,7 @@ a.submit-session {
 
 .view-news .views-row-last {
   border: none;
+  margin: 0;
 }
 
 .view-news h2 {
@@ -597,4 +599,59 @@ a.submit-session {
 
 .view-news h2 a {
   text-decoration: none;
+}
+
+/* Contact webform
+/-------------------------------------------------------------- */
+#content-area .node-type-webform .content p {
+  font-size: 21px;   
+  color: #FFCA58;
+  /*margin-bottom: 22px;*/
+}
+
+.node-type-webform .form-item {
+  margin-top: 22px;
+}
+
+.node-type-webform .form-required {
+  color: #FFCA58;
+}
+
+.node-type-webform  input {
+  font-size: 14px;
+  border-width: 1px 0 0;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.node-type-webform .form-checkboxes input {
+  margin-top: 1px;
+  margin-right: 5px;
+}
+
+.node-type-webform  textarea {
+  margin-top: 5px;
+}
+
+.node-type-webform .form-actions {
+  float: left;
+  margin-top: 13px;
+  padding: 2px;
+  border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+  background-color: #FBB000;
+}
+
+.node-type-webform .form-actions input {
+  border: 2px solid #000000;
+  border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;  
+  background-color: #FBB000;
+  margin: 0;
+  padding: 5px 12px;
+  font: bold 20px Arial;
+  text-transform: uppercase;
+  cursor: pointer;
 }

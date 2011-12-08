@@ -154,7 +154,7 @@
 
     </div></div><!-- /.section, /#header -->
 
-    <div id="main-wrapper"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
+    <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
 
       <div id="content" class="column"><div class="section">
 
