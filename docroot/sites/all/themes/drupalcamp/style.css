@@ -536,6 +536,12 @@ a.submit-session {
   text-decoration: none;
 }
 
+.region-sidebar-second a.twitter-icon img {
+  margin-bottom: -10px;
+  margin-left: 160px;
+  position: relative;  
+}
+
 /* Footer
 /-------------------------------------------------------------- */
 #block-views-Sponsors-block_8 h2 {
