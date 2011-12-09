@@ -470,6 +470,10 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
   padding: 5px 12px;    
 }
 
+.filefield-element {
+  color: #000000;
+}
+
 /* Main menu
 /-------------------------------------------------------------- */
 .region-navigation {position: relative;}
