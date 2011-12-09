@@ -88,8 +88,11 @@
  *   $db_url = 'mysqli://username:password@localhost/databasename';
  *   $db_url = 'pgsql://username:password@localhost/databasename';
  */
-$db_url = 'mysql://username:password@localhost/databasename';
-$db_prefix = '';
+require('/var/www/site-php/blinkdev5/blinkdev5-settings.inc');
+
+$conf['error_level'] = 0;  //force error to be shown on the screen [12:57 PM 7/30/2009 by Leon]
+error_reporting(E_ALL ^ E_NOTICE);
+ini_set("display_errors", "0");
 
 /**
  * Database default collation.
