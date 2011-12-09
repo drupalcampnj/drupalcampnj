@@ -470,6 +470,10 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
   padding: 5px 12px;    
 }
 
+.form-autocomplete {
+  padding: 0 5px;
+}
+
 .filefield-element {
   color: #000000;
 }
