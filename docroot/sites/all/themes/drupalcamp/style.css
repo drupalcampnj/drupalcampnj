@@ -632,7 +632,28 @@ a.submit-session {
     -moz-border-radius: 5px;
 }
 
-/* News view
+/* Sponsors view page
+/-------------------------------------------------------------- */
+.view-Sponsors .item-list ul {
+  padding: 0;
+  overflow: hidden;
+}
+
+.view-Sponsors .item-list li {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 12px;
+  list-style: none
+}
+
+.view-Sponsors .item-list li span {
+  display: block;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+/* News view page
 /-------------------------------------------------------------- */
 .view-news .views-row {
   padding-bottom: 46px;
@@ -655,7 +676,7 @@ a.submit-session {
   text-decoration: none;
 }
 
-/* Speakers view
+/* Speakers view page
 /-------------------------------------------------------------- */
 .view-speakers .views-row {
   float: left;
