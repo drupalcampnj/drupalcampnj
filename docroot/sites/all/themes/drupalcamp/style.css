@@ -420,6 +420,9 @@ ul.links li {
 /*Sergii's styles*/
 body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 #page { width: 975px; margin: 0 auto; font: 12px Arial !important; color: #ffffff; }
+#page .form-required {
+  color: #FFCA58;
+}
 a { color: #ffca58; text-decoration: underline; }
 a:hover { text-decoration: none; }
 .pager a.active { color: #ffca58; text-decoration: none; }
@@ -446,6 +449,25 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
   margin-right: -13px;
   padding-top: 20px;
   position: relative;
+}
+
+/* forms */
+.form-text {
+  border-width: 1px 0 0;
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 5px;
+  width: 440px;
+}
+
+#edit-submit, #edit-preview {
+  background-color: #FBB000;
+  font: bold 20px Arial;
+  text-transform: uppercase;
+  border: 2px solid #000000;
+  border-radius: 8px 8px 8px 8px;
+  cursor: pointer;
+  padding: 5px 12px;    
 }
 
 /* Main menu
@@ -722,10 +744,6 @@ a.submit-session {
 
 .node-type-webform .form-item {
   margin-top: 22px;
-}
-
-.node-type-webform .form-required {
-  color: #FFCA58;
 }
 
 .node-type-webform  input {
