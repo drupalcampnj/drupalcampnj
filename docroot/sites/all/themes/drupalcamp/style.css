@@ -422,6 +422,8 @@ body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 #page { width: 975px; margin: 0 auto; font: 12px Arial !important; color: #ffffff; }
 a { color: #ffca58; text-decoration: underline; }
 a:hover { text-decoration: none; }
+.pager a.active { color: #ffca58; text-decoration: none; }
+.pager a.active:hover { text-decoration: underline; }
 h1 { font-size: 37px !important; text-transform: uppercase; }
 #content-area .content p {
   margin-top: 0;
