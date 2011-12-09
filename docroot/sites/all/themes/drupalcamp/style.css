@@ -610,15 +610,14 @@ a.submit-session {
   list-style: none
 }
 
-#block-views-Sponsors-block_8 li span {
-  display: block;
+#block-views-Sponsors-block_8 li span a {
+  outline: none;
+}
+
+#block-views-Sponsors-block_8 li span img {
   border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-}
-
-#block-views-Sponsors-block_8 li span a {
-  outline: none;
 }
 
 /* Sub pages
@@ -650,15 +649,14 @@ a.submit-session {
   list-style: none
 }
 
-.view-Sponsors .item-list li span {
-  display: block;
+.view-Sponsors .item-list li span a {
+  outline: none;
+}
+
+.view-Sponsors .item-list li span img {
   border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-}
-
-.view-Sponsors .item-list li span a {
-  outline: none;
 }
 
 /* News view page
