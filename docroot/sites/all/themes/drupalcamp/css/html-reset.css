@@ -239,7 +239,7 @@ th,
 thead th,
 tbody th {
   text-align: left; /* LTR */
-  padding: 0;
+  padding: 0.25em;
   border-bottom: none;
 }
 
@@ -288,4 +288,23 @@ form {
 fieldset {
   margin: 1em 0;
   padding: 0.5em;
+}
+
+
+thead {
+  background-color: #444;
+  border-top: 1px solid #CCCCCC;
+  border-bottom: 3px double #CCCCCC;
+}
+
+tr.even {
+  background-color: #222;
+}
+
+tr.odd {
+  background-color: inherit;
+}
+
+td.active {
+  background-color: inherit;
 }
