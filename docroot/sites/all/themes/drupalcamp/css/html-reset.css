@@ -239,7 +239,7 @@ th,
 thead th,
 tbody th {
   text-align: left; /* LTR */
-  padding: 0.25em;
+  padding: 2px;
   border-bottom: none;
 }
 
