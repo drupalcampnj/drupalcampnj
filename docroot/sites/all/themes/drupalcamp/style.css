@@ -475,7 +475,7 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
 }
 
 .filefield-element {
-  color: #000000;
+  color: #AAA;
 }
 
 /* Main menu
@@ -792,4 +792,21 @@ a.submit-session {
   font: bold 20px Arial;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+td.revision-current {
+  background-color: #442;
+  color: #FFF;
+}
+
+.node-unpublished {
+    background-color: #322;
+}
+
+tr.selected td {
+    background: none repeat scroll 0 0 #442;
+}
+
+.view-sessions-admin-contact  #views-bulk-operations-form--1 fieldset .form-select {
+  width: 450px;
 }
