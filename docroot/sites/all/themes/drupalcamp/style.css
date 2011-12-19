@@ -420,6 +420,7 @@ ul.links li {
 /*Sergii's styles*/
 body { background: #1a1a1a url('images/body-bg.jpg') no-repeat top center; }
 #page { width: 975px; margin: 0 auto; font: 12px Arial !important; color: #ffffff; }
+.not-front #page { font: 14px Arial !important; }
 #page .form-required {
   color: #FFCA58;
 }
@@ -656,7 +657,7 @@ a.submit-session {
 /-------------------------------------------------------------- */
 .not-front #content #content-area {
   float: right;
-  width: 485px;
+  width: 720px;
   padding: 29px 40px 40px 45px;
   margin-top: 350px;
   margin-right: -60px;  
