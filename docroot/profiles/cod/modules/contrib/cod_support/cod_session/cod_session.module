@@ -675,6 +675,7 @@ function template_preprocess_cod_session_schedule(&$vars) {
   // Arrange slots by days.
   // @todo Give plugin options for date formats and text?
   $arranged_slots = array();
+  $days = $days_slots = array();
   foreach ($slots as $slot) {
     // Do not fill slots on non-interactive schedules that are not in use.
     if (!$view->cod_schedule_interactive && !in_array($slot->nid, $used_slots)) {
