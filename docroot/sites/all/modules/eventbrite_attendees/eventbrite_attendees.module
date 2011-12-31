@@ -133,6 +133,8 @@ function eventbrite_attendees_listing() {
     $header[] = t('Drupal.org username');
   }
   $sponsor_ticket_id = variable_get('eventbrite_attendees_sponsor_ticket_id', '');
+  $total_attendees = 0;
+  $listed_attendees = 0;
   if (isset($data->attendees) && is_array($data->attendees)) {
     foreach($data->attendees as $a) {
       $opt_out = FALSE;
@@ -147,9 +149,11 @@ function eventbrite_attendees_listing() {
           }
         }
       }
+      $total_attendees++;
       if ($opt_out) {
         continue;
       }
+      $listed_attendees++;
       $row = array();
       $row[] = check_plain($a->attendee->first_name) . ' ' . check_plain($a->attendee->last_name);
       $row[] = !empty($a->attendee->company) ? check_plain($a->attendee->company) : '';
@@ -168,5 +172,7 @@ function eventbrite_attendees_listing() {
   if ($sponsor_rows) {
     $output .= theme('table', $header, $sponsor_rows, array(), t('Individual Sponsor attendees'));
   }
-  return $output . theme('table', $header, $rows, array(), t('Regular Attendees'));
+  $output .= theme('table', $header, $rows, array(), t('Regular Attendees'));
+  $output .= '<p>' . t('@total registered attendees (@listed listed)', array('@total' => $total_attendees, '@listed' => $listed_attendees)) . '</p>';
+  return $output;
 }
