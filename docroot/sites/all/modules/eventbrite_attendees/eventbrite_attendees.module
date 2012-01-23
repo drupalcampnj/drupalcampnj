@@ -12,6 +12,12 @@ function eventbrite_attendees_menu() {
     'page arguments' => array('eventbrite_attendees_configure_form'),
     'access arguments' => array('administer site configuration'),
   );
+  $items['admin/reports/eventbrite-attendees'] = array(
+    'title' => 'Eventbrite Full Data',
+    'description' => 'See Full Attendee data',
+    'page callback' => 'eventbrite_attendees_report',
+    'access arguments' => array('access site reports'),
+  );
   $items['eventbrite/attendees'] = array(
     'title' => 'Event attendees',
     'page callback' => 'eventbrite_attendees_listing',
@@ -19,6 +25,86 @@ function eventbrite_attendees_menu() {
   );
   return $items;
 }
+
+function eventbrite_attendees_report() {
+  $json = eventbrite_attendees_fetch();
+  $data = json_decode($json);
+
+  $question_choices = array();
+  $questions = array();
+  $opt_out_id = variable_get('eventbrite_attendees_opt_out_id', '');
+  // pre-analyze questions
+  if (isset($data->attendees) && is_array($data->attendees)) {
+    foreach($data->attendees as $a) {
+      if (is_array($a->attendee->answers)) {
+        foreach ($a->attendee->answers as $ans) {
+          // We don't need to see opt-out here.
+          if ($ans->answer->question_id == $opt_out_id && !empty($ans->answer->answer_text)) {
+            continue;
+          }
+          $questions[$ans->answer->question_id] = $ans->answer->question;
+          if ($ans->answer->question_type == "multiple choice") {
+            if (!isset($question_choices[$ans->answer->question_id])) {
+              $question_choices[$ans->answer->question_id] = array();
+            }
+            $choices = explode(' | ', $ans->answer->answer_text);
+            foreach ($choices as $c) {
+              if (!isset($question_choices[$ans->answer->question_id][$c])) {
+                $question_choices[$ans->answer->question_id][$c] = 0;
+              }
+              $question_choices[$ans->answer->question_id][$c]++;
+            }
+          }
+        }
+      }
+    }
+  }
+  $output = '';
+
+  $header = array(t('Name'), t('Company'), t('Website'), t('Email'), t('Amount paid'));
+  foreach ($questions as $id => $q) {
+    $header[] = truncate_utf8(check_plain($q), 30, TRUE, TRUE);
+  }
+
+  $rows = array();
+
+  if (isset($data->attendees) && is_array($data->attendees)) {
+    foreach($data->attendees as $a) {
+
+      if (!is_array($a->attendee->answers)) {
+        $a->attendee->answers = array();
+      }
+      $attendee_answers = array();
+      foreach ($a->attendee->answers as $ans) {
+        $attendee_answers[$ans->answer->question_id] = $ans->answer;
+      }
+
+      $row = array();
+      $row[] = check_plain($a->attendee->first_name) . ' ' . check_plain($a->attendee->last_name);
+      $row[] = !empty($a->attendee->company) ? check_plain($a->attendee->company) : '';
+      $row[] = !empty($a->attendee->website) ? l($a->attendee->website, $a->attendee->website) : '';
+      $row[] = !empty($a->attendee->email) ? check_plain($a->attendee->email) : '';
+      $row[] = isset($a->attendee->amount_paid) ? check_plain($a->attendee->amount_paid) : '';
+      foreach ($questions as $id => $q) {
+        $row[] = isset($attendee_answers[$id]) ? check_plain($attendee_answers[$id]->answer_text) : '';
+      }
+      $rows[] = $row;
+    }
+  }
+  $output .= "<h3>" .  t('Answer summary') . "</h3>\n";
+  $output .= "<dl>\n";
+  foreach ($question_choices as $id => $choices) {
+    $output .= "<dt>" . check_plain($questions[$id]) . "</dt>\n";
+    foreach ($choices as $choice => $count) {
+      $output .= "<dd>" . check_plain($choice) . " : $count </dd>\n";
+    }
+  }
+  $output .= "</dl>\n";
+  $output .= theme('table', $header, $rows, array(), t('All Attendees'));
+
+  return $output;
+}
+
 
 /**
  * Form builder for configuration form.
