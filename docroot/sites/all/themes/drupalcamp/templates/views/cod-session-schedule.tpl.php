@@ -1,3 +1,4 @@
+<?php krsort($rooms); rsort($room_nids); ?>
 <?php if(!empty($days) && !empty($rooms) && !empty($arranged_slots)): ?>
 <?php if (!empty($day_links)): ?>
 <ul>
