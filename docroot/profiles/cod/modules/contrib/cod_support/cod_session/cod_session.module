@@ -569,6 +569,7 @@ function template_preprocess_cod_session_schedule(&$vars) {
             'name' => $field['field_name'],
             'values' => array_values($allowed_values),
             'keys' => array_keys($allowed_values),
+            'allowed_values' => $allowed_values,
             'machine_keys' => _cod_session_machine_keys($field['field_name'], array_keys($allowed_values)),
           );
         }
@@ -843,6 +844,7 @@ function template_preprocess_cod_session_schedule(&$vars) {
     }
   }
 
+  $vars['session_attrs'] = $session_attrs;
   $vars['view_results'] = $view_results;
   $vars['session_grid'] = $item_grid;
   $vars['arranged_slots'] = $arranged_slots;

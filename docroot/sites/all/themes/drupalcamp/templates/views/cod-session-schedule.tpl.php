@@ -16,7 +16,7 @@
       <?php
               $node = node_load($room_nid);
               if (isset($node->field_track[0]['value'])) {
-                $room['track'] = check_plain($node->field_track[0]['value']);
+                $room['track'] = check_plain($session_attrs['field_track']['allowed_values'][$node->field_track[0]['value']]);
               }
       ?>
       <?php if ($show_rooms[$day_key][$room_nid]): ?>
