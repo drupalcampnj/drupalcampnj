@@ -13,8 +13,14 @@
     <tr>
       <th><?php print t('Time'); ?></th>
       <?php foreach ($rooms as $room_nid => $room): ?>
+      <?php
+              $node = node_load($room_nid);
+              if (isset($node->field_track[0]['value'])) {
+                $room['track'] = check_plain($node->field_track[0]['value']);
+              }
+      ?>
       <?php if ($show_rooms[$day_key][$room_nid]): ?>
-        <th><span class="room-label"><?php print $room['title']; ?></span><?php if(!empty($room['sponsor'])): ?><div class="sponsor-label"><?php print $room['sponsor']; ?></div><?php endif; ?></th>
+        <th><span class="room-label"><?php print $room['title']; ?></span><?php if(!empty($room['track'])): ?><div class="track-label"><?php print $room['track']; ?></div><?php endif; ?></th>
       <?php endif; ?>
       <?php endforeach ?>
     </tr>
