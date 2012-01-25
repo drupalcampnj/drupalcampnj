@@ -808,6 +808,10 @@ tr.selected td {
     background: none repeat scroll 0 0 #442;
 }
 
+div.track-label {
+  color: #969696;
+}
+
 .view-sessions-admin-contact  #views-bulk-operations-form--1 fieldset .form-select {
   width: 450px;
 }
