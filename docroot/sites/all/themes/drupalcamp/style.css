@@ -573,7 +573,7 @@ h1 { font-size: 37px !important; text-transform: uppercase; }
   background: url('images/logo.png') no-repeat 0 0;
 }
 
-.front #content .content {
+.front #content-area .content {
   float: right;
   text-align: right;
   width: 520px;
