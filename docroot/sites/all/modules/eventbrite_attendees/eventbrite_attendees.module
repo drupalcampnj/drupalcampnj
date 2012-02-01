@@ -148,8 +148,8 @@ function eventbrite_attendees_csv_export() {
         $attendee_answers[$ans->answer->question_id] = $ans->answer;
       }
       $row = array();
-      $row[] = $a->attendee->first_name;
-      $row[] = $a->attendee->last_name;
+      $row[] = ucwords($a->attendee->first_name);
+      $row[] = ucwords($a->attendee->last_name);
       $row[] = !empty($a->attendee->company) ? $a->attendee->company : '';
       $row[] = !empty($a->attendee->website) ? $a->attendee->website : '';
       $row[] = !empty($a->attendee->email) ? $a->attendee->email : '';
