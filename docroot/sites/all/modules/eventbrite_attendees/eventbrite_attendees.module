@@ -18,6 +18,13 @@ function eventbrite_attendees_menu() {
     'page callback' => 'eventbrite_attendees_report',
     'access arguments' => array('access site reports'),
   );
+  $items['admin/reports/eventbrite-attendees/csv'] = array(
+    'title' => 'Eventbrite CSV',
+    'description' => 'Export Attendee data',
+    'page callback' => 'eventbrite_attendees_csv_export',
+    'access arguments' => array('access site reports'),
+    'type' => MENU_CALLBAK,
+  );
   $items['eventbrite/attendees'] = array(
     'title' => 'Event attendees',
     'page callback' => 'eventbrite_attendees_listing',
@@ -26,10 +33,10 @@ function eventbrite_attendees_menu() {
   return $items;
 }
 
-function eventbrite_attendees_report() {
-  $json = eventbrite_attendees_fetch();
-  $data = json_decode($json);
-
+/**
+ * Helper function to extract the questions and choices from data.
+ */
+function _eventbrite_attendees_get_questions($data) {
   $question_choices = array();
   $questions = array();
   $opt_out_id = variable_get('eventbrite_attendees_opt_out_id', '');
@@ -59,6 +66,14 @@ function eventbrite_attendees_report() {
       }
     }
   }
+  return array($questions, $question_choices);
+}
+
+function eventbrite_attendees_report() {
+  $json = eventbrite_attendees_fetch();
+  $data = json_decode($json);
+  list($questions, $question_choices) = _eventbrite_attendees_get_questions($data);
+
   $output = '';
 
   $header = array(t('Name'), t('Company'), t('Website'), t('Email'), t('Amount paid'));
@@ -100,9 +115,53 @@ function eventbrite_attendees_report() {
     }
   }
   $output .= "</dl>\n";
+  $output .= "<p>" . l(t('Export CSV'), 'admin/reports/eventbrite-attendees/csv') . "</p>\n";
   $output .= theme('table', $header, $rows, array(), t('All Attendees'));
 
   return $output;
+}
+
+function eventbrite_attendees_csv_export() {
+  $json = eventbrite_attendees_fetch();
+  $data = json_decode($json);
+  list($questions, $question_choices) = _eventbrite_attendees_get_questions($data);
+
+  $output = '';
+
+  $header = array(t('First Name'), t('Last Name'), t('Company'), t('Website'), t('Email'), t('Amount paid'));
+  foreach ($questions as $id => $q) {
+    $header[] = truncate_utf8(check_plain($q), 30, TRUE, TRUE);
+  }
+  // Send response headers to the browser
+  header('Content-Type: text/csv' );
+  header('Content-Disposition: attachment;filename=eventbrite_attendees-' . date('Y-m-d') . '.csv');
+  $fp = fopen('php://output', 'w');
+  fputcsv($fp, $header);
+  if (isset($data->attendees) && is_array($data->attendees)) {
+    foreach($data->attendees as $a) {
+
+      if (!is_array($a->attendee->answers)) {
+        $a->attendee->answers = array();
+      }
+      $attendee_answers = array();
+      foreach ($a->attendee->answers as $ans) {
+        $attendee_answers[$ans->answer->question_id] = $ans->answer;
+      }
+      $row = array();
+      $row[] = $a->attendee->first_name;
+      $row[] = $a->attendee->last_name;
+      $row[] = !empty($a->attendee->company) ? $a->attendee->company : '';
+      $row[] = !empty($a->attendee->website) ? $a->attendee->website : '';
+      $row[] = !empty($a->attendee->email) ? $a->attendee->email : '';
+      $row[] = isset($a->attendee->amount_paid) ? $a->attendee->amount_paid : '';
+      foreach ($questions as $id => $q) {
+        $row[] = isset($attendee_answers[$id]) ? $attendee_answers[$id]->answer_text : '';
+      }
+      fputcsv($fp, $row);
+    }
+  }
+  fclose($fp);
+  exit();
 }
 
 
