@@ -1,5 +1,4 @@
 <?php
-// $Id: pane-rounded-shadow.tpl.php,v 1.1.2.1 2010/07/13 23:55:58 merlinofchaos Exp $
 /**
  * @file
  *
@@ -20,7 +19,7 @@
         <div class="rounded-shadow-right"></div>
       </div>
       <div class="rounded-shadow-left-edge">
-        <div class="rounded-shadow-right-edge clear-block">
+        <div class="rounded-shadow-right-edge clearfix">
           <?php print $output; ?>
         </div>
       </div>

@@ -5,61 +5,77 @@
  */
 
 /**
- * Implementation of hook_features_export_options().
+ * Implements hook_features_export_options().
  */
 function uuid_term_features_export_options() {
   $options = array();
 
-  $query = 'SELECT t.tid, t.name, v.name AS vname, u.uuid
-    FROM {term_data} t 
-    INNER JOIN {uuid_term_data} u ON t.tid = u.tid
-    INNER JOIN {vocabulary} v ON t.vid = v.vid
+  $query = 'SELECT t.tid, t.name, v.name AS vname, t.uuid
+    FROM {taxonomy_term_data} t
+    INNER JOIN {taxonomy_vocabulary} v ON t.vid = v.vid
     ORDER BY v.name ASC, t.name ASC';
-  $result = db_query($query);
-  while ($term = db_fetch_object($result)) {
-    $options[$term->uuid] = $term->vname .' - '. $term->name;
+  $results = db_query($query);
+  foreach ($results as $term) {
+    $options[$term->uuid] = $term->vname . ' - ' . $term->name;
   }
 
   return $options;
 }
 
 /**
- * Implementation of hook_features_export().
+ * Implements hook_features_export().
  */
 function uuid_term_features_export($data, &$export, $module_name = '') {
-  $pipe = array();
-
   $export['dependencies']['taxonomy'] = 'taxonomy';
   $export['dependencies']['uuid'] = 'uuid';
   $export['dependencies']['uuid_features'] = 'uuid_features';
 
   foreach ($data as $uuid) {
-    $export['features']['uuid_term'][$uuid] = $uuid;
-
-    // Get the UUID of the term's vocabulary.
-    $query = 'SELECT uv.uuid FROM {uuid_term_data} utd
-      INNER JOIN {term_data} t ON utd.tid = t.tid
-      INNER JOIN {uuid_vocabulary} uv ON t.vid = uv.vid
-      WHERE utd.uuid = "%s"';
-    $voc_uuid = db_result(db_query($query, $uuid));
-
-    // Add the vocab UUID to the pipe, to be processed by uuid_vocabulary.
-    $export['features']['uuid_vocabulary'][$voc_uuid] = $voc_uuid;
-    
-    // Get the UUID of the term's parents.
-    $tid = uuid_get_serial_id('term_data', 'tid', $uuid);
-    $parents = taxonomy_get_parents($tid);
-    foreach ($parents as $parent) {
-      $parent_uuid = uuid_get_uuid('term_data', 'tid', $parent->tid);
-      $export['features']['uuid_term'][$parent_uuid] = $parent_uuid;
-    }
+    uuid_term_features_get_dependencies($export, $uuid);
   }
-
-  return $pipe;
+  return array();
 }
 
 /**
- * Implementation of hook_features_export_render().
+ * Adds terms and its dependencies to the export.
+ *
+ * Parents and term references are handled recrusively, other references are not
+ * yet supported.
+ */
+function uuid_term_features_get_dependencies(&$export, $uuid) {
+  $terms = entity_uuid_load('taxonomy_term', array($uuid));
+  if (count($terms)) {
+    $term = reset($terms);
+    $export['features']['uuid_term'][$uuid] = $uuid;
+    $export['features']['taxonomy'][$term->vocabulary_machine_name] = $term->vocabulary_machine_name;
+    // Recursively add all parents and the references of the parents.
+    foreach (taxonomy_get_parents($term->tid) as $parent) {
+      if (!in_array($parent->uuid, $export['features']['uuid_term'])) {
+        uuid_term_features_get_dependencies($export, $parent->uuid);
+      }
+    }
+    // Get term references.
+    $instances = field_info_instances('taxonomy_term', $term->vocabulary_machine_name);
+    foreach ($instances as $field_name => $instance) {
+      $field = field_info_field($field_name);
+      if ($field['type'] == 'taxonomy_term_reference') {
+        if (isset($term->$field_name)) {
+          foreach ($term->$field_name as $lang => $values) {
+            foreach ($values as $value) {
+              // $value['tid'] already contains the UUID.
+              if (!in_array($value['tid'], $export['features']['uuid_term'])) {
+                uuid_term_features_get_dependencies($export, $value['tid']);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_features_export_render().
  */
 function uuid_term_features_export_render($module = 'foo', $data) {
   $translatables = $code = array();
@@ -67,35 +83,19 @@ function uuid_term_features_export_render($module = 'foo', $data) {
   $code[] = '  $terms = array();';
   $code[] = '';
   foreach ($data as $uuid) {
-    $tid =  db_result(db_query('SELECT tid FROM {uuid_term_data} WHERE uuid = "%s"', $uuid));
-    $term = taxonomy_get_term($tid);
-    if (!$term) {
+    // @todo reset = TRUE as otherwise references (parent, fields) were destroyed.
+    $terms = entity_uuid_load('taxonomy_term', array($uuid), array(), TRUE);
+    if (!count($terms)) {
       continue;
     }
+    $export = reset($terms);
 
-    $export = array('uuid' => $uuid);
-
-    // Whitelist of term properties.
-    $props = array('name', 'description', 'weight');
-    foreach ($props as $key) {
-      if (isset($term->$key)) {
-        $export[$key] = $term->$key;
-      }
-    }
-    
-    // Get the UUID of the term's parent terms.
-    $parents = taxonomy_get_parents($tid);
-    foreach ($parents as $parent) {
-    	$export['parent'][] = uuid_get_uuid('term_data', 'tid', $parent->tid);
-    }
-
-    // Get the UUID of the term's vocabulary.
-    $query = 'SELECT uv.uuid FROM {uuid_vocabulary} uv WHERE uv.vid = "%s"';
-    $voc_uuid = db_result(db_query($query, $term->vid));
-
-    $export['uuid_vocabulary'] = $voc_uuid;
-
-    $code[] = '  $terms[] = '. features_var_export($export, '  ') .';';
+    // Do not export ids.
+    unset($export->vid);
+    unset($export->tid);
+    // No need to export the rdf mapping.
+    unset($export->rdf_mapping);
+    $code[] = '  $terms[] = ' . features_var_export($export, '  ') . ';';
   }
 
   if (!empty($translatables)) {
@@ -108,42 +108,45 @@ function uuid_term_features_export_render($module = 'foo', $data) {
 }
 
 /**
- * Implementation of hook_features_revert().
+ * Implements hook_features_revert().
  */
 function uuid_term_features_revert($module) {
   uuid_term_features_rebuild($module);
 }
 
 /**
- * Implementation of hook_features_rebuild().
+ * Implements hook_features_rebuild().
  * Rebuilds terms based on UUID from code defaults.
  */
 function uuid_term_features_rebuild($module) {
+  // Import the vocabularies first.
+  taxonomy_features_rebuild($module);
+
   $terms = module_invoke($module, 'uuid_features_default_terms');
   if (!empty($terms)) {
+    // Verify that term objects is saved before any references are resolved.
     foreach ($terms as $data) {
-      $existing = uuid_get_serial_id('term_data', 'tid', $data['uuid']);
-
-      if (!empty($existing)) {
-        $data['tid'] = $existing;
+      $existing = entity_get_id_by_uuid('taxonomy_term', array($data['uuid']));
+      if (!count($existing)) {
+        $voc = taxonomy_vocabulary_machine_name_load($data['vocabulary_machine_name']);
+        // Only save the term, if the corresponding vocabulary already exisits.
+        if ($voc) {
+          $term = new stdClass;
+          $term->uuid = $data['uuid'];
+          $term->vid = $voc->vid;
+          $term->name = $data['name'];
+          taxonomy_term_save($term);
+        }
       }
-      
-      $vid = db_result(db_query('SELECT vid FROM {uuid_vocabulary} WHERE uuid = "%s"', $data['uuid_vocabulary']));
-      if ($vid) {
-        $data['vid'] = $vid;
-        
-        if (isset($data['parent']) && is_array($data['parent'])) {
-	        foreach ($data['parent'] as $key => $parent_uuid) {
-	          $data['parent'][$key] = uuid_get_serial_id('term_data', 'tid', $parent_uuid);
-	        }
-	      }
-
-        $ret = taxonomy_save_term($data);
-
-        // TODO: remove when http://drupal.org/node/860442 is resolved.
-        uuid_set_uuid('term_data', 'tid', $data['tid'], $data['uuid']);
+    }
+    // Save all other data and resolve references.
+    foreach ($terms as $data) {
+      $term = (object) $data;
+      $voc = taxonomy_vocabulary_machine_name_load($term->vocabulary_machine_name);
+      if ($voc) {
+        $term->vid = $voc->vid;
+        entity_uuid_save('taxonomy_term', $term);
       }
-
     }
   }
 }

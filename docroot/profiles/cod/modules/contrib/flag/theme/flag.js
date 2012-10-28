@@ -1,4 +1,3 @@
-// $Id: flag.js,v 1.1.2.7.2.10 2010/12/20 00:46:18 mooffie Exp $
 (function ($) {
 
 /**
@@ -211,7 +210,8 @@ Drupal.flagCookie = function(name, value, options) {
   }
 };
 
-Drupal.behaviors.flagLink = function(context) {
+Drupal.behaviors.flagLink = {};
+Drupal.behaviors.flagLink.attach = function(context) {
   // For anonymous users with the page cache enabled, swap out links with their
   // current state for the user.
   if (Drupal.settings.flag && Drupal.settings.flag.templates) {

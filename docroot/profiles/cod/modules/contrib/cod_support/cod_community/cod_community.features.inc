@@ -1,10 +1,15 @@
 <?php
+/**
+ * @file
+ * cod_community.features.inc
+ */
 
 /**
- * Implementation of hook_views_api().
+ * Implements hook_views_api().
  */
 function cod_community_views_api() {
-  return array(
-    'api' => '2',
-  );
+  list($module, $api) = func_get_args();
+  if ($module == "views" && $api == "views_default") {
+    return array("version" => "3.0");
+  }
 }

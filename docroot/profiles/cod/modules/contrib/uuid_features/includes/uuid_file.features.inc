@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_features_export().
+ * Implements hook_features_export().
  */
 function uuid_file_features_export($data, &$export, $module_name = '') {
   $pipe = array();
@@ -20,7 +20,7 @@ function uuid_file_features_export($data, &$export, $module_name = '') {
 }
 
 /**
- * Implementation of hook_features_export_render().
+ * Implements hook_features_export_render().
  */
 function uuid_file_features_export_render($module, $data) {
   $translatables = $code = array();
@@ -43,7 +43,7 @@ function uuid_file_features_export_render($module, $data) {
       'extension' => $extension,
     );
 
-    $code[] = '  $files[] = '. features_var_export($export, '  ') .';';
+    $code[] = '  $files[] = ' . features_var_export($export, '  ') . ';';
   }
   if (!empty($translatables)) {
     $code[] = features_translatables_export($translatables, '  ');
@@ -54,36 +54,26 @@ function uuid_file_features_export_render($module, $data) {
 }
 
 /**
- * Implementation of hook_features_revert().
+ * Implements hook_features_revert().
  */
 function uuid_file_features_revert($module) {
   uuid_file_features_rebuild($module);
 }
 
 /**
- * Implementation of hook_features_rebuild().
+ * Implements hook_features_rebuild().
  * Rebuilds files based on UUID from code defaults.
  */
 function uuid_file_features_rebuild($module) {
   $files = module_invoke($module, 'uuid_features_default_files');
   if (!empty($files)) {
-    $source_dir = drupal_get_path('module', $module) .'/uuid_file';
+    $source_dir = drupal_get_path('module', $module) . '/uuid_file';
     foreach ($files as $data) {
-      $source = $source_dir .'/'. $data['uuid'] .'.'. $data['extension'];
-      // Sometimes after deleting a file, the record for the uuid is still present.
-      db_query('DELETE FROM {uuid_files} WHERE uuid = "%s"', $data['uuid']);
+      $source = $source_dir . '/' . $data['uuid'] . '.' . $data['extension'];
+      $data = file_get_contents($source);
 
       // Copy the file and save to db.
-      $file = field_file_save_file($source, array(), file_directory_path());
-
-      // Make sure status is set to permanent.  file_set_status (and the rest of
-      // core) expects $file to be an object, while filefields expect an array.
-      $file = (object)$file;
-      file_set_status($file, FILE_STATUS_PERMANENT);
-      $file = (array)$file;
-
-      // Update the uuid.
-      uuid_set_uuid('files', 'fid', $file['fid'], $data['uuid']);
+      $file = file_save_data($data, NULL, FILE_EXISTS_REPLACE);
     }
   }
 }

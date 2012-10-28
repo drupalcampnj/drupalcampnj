@@ -1,5 +1,4 @@
 <?php
-// $Id: strongarm.admin.inc,v 1.1.2.2.2.5 2010/08/04 22:53:54 yhahn Exp $
 
 /**
  * Variable management strongarm form.
@@ -15,39 +14,51 @@ function strongarm_admin_form($form_state) {
       // If variable value does not match global $conf, this value has been
       // hardcoded (e.g. in settings.php) and has been allowed to pass
       // through. It cannot be reverted.
-      if ($conf[$name] !== $variable->value) {
+      $hardcoded = FALSE;
+      $restorable = FALSE;
+      if (isset($conf[$name]) && $conf[$name] !== $variable->value) {
         $storage = t('Hardcoded');
         $hardcoded = TRUE;
       }
-      else {
-        $storage = ($variable->value == $default->value) ? t('Default') : t('Overridden');
-        $hardcoded = FALSE;
+      elseif (!empty($variable->in_code_only)) {
+        $storage = t('In code');
+        $restorable = TRUE;
       }
+      elseif ($variable->value != $default->value) {
+        $storage = t('Overridden');
+        $restorable = TRUE;
+      }
+      else {
+        $storage = t('Saved to DB');
+      }
+
+      $value = $hardcoded ? $conf[$name] : $variable->value;
 
       // If the variable is in the database and differs from its code value,
       // allow administrator to revert its value.
-      if (!$hardcoded && ($variable->export_type & EXPORT_IN_DATABASE) && ($variable->value != $default->value)) {
+      if ($restorable) {
         $form['revert']['#tree'] = TRUE;
-        $form['revert'][$name] = array('#type' => 'checkbox');
+        $form['revert'][$name]['revert'] = array('#type' => 'checkbox');
+        $form['revert'][$name]['value'] = array('#type' => 'value', '#value' => $default->value);
       }
-      $form['name'][$name] = array(
-        '#type' => 'markup',
-        '#value' => $name,
-      );
-      $form['storage'][$name] = array(
-        '#type' => 'markup',
-        '#value' => $storage,
-      );
-      $form['value'][$name] = array(
-        '#type' => 'markup',
-        '#value' => check_plain(_strongarm_readable($variable->value)),
-      );
+
+      if (module_exists('variable') && ($info = variable_get_info($name))) {
+        $form['name'][$name] = array('#markup' => $info['title'] . '<br/>' . $name);
+        $form['storage'][$name] = array('#markup' => $storage);
+        $info['value'] = $variable->value;
+        $form['value'][$name] = array('#markup' => variable_format_value($info));
+      }
+      else {
+        $form['name'][$name] = array('#markup' => $name);
+        $form['storage'][$name] = array('#markup' => $storage);
+        $form['value'][$name] = array('#markup' => check_plain(_strongarm_readable($value)));
+      }
     }
   }
   if (!empty($form['revert'])) {
     $form['submit'] = array(
       '#type' => 'submit',
-      '#value' => t('Reset to defaults'),
+      '#value' => t('Restore values to DB'),
       '#submit' => array('strongarm_admin_revert_submit'),
     );
   }
@@ -60,8 +71,8 @@ function strongarm_admin_form($form_state) {
 function strongarm_admin_revert_submit(&$form, &$form_state) {
   if (!empty($form_state['values']['revert'])) {
     foreach ($form_state['values']['revert'] as $name => $revert) {
-      if ($revert) {
-        variable_del($name);
+      if ($revert['revert']) {
+        variable_set($name, $revert['value']);
       }
     }
     strongarm_flush_caches();
@@ -108,10 +119,12 @@ function _strongarm_readable($var) {
 /**
  * Theme function for the strongarm admin form.
  */
-function theme_strongarm_admin_form($form) {
+function theme_strongarm_admin_form(&$vars) {
+  $form = $vars['form'];
+
   drupal_add_js('misc/tableselect.js');
   $rows = $headers = array();
-  $headers[] = theme('table_select_header_cell');
+  $headers[] = array('class' => array('select-all'));
   $headers[] = t('Variable');
   $headers[] = t('Storage');
   $headers[] = t('Value');
@@ -123,7 +136,7 @@ function theme_strongarm_admin_form($form) {
     $row[] = drupal_render($form['value'][$name]);
     $rows[] = $row;
   }
-  $output = theme('table', $headers, $rows);
-  $output .= drupal_render($form);
+  $output = theme('table', array('header' => $headers, 'rows' => $rows));
+  $output .= drupal_render_children($form);
   return $output;
 }

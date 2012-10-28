@@ -1,13 +1,13 @@
 <?php
-
 /**
- * This file and class must exist for the calendar plugin
- * to be recognized by Views.
+ * @file
+ * A views plugin class that provides a Session Schedule view style.
  *
  * @ingroup views_style_plugins
  */
-class cod_session_views_style_plugin_schedule extends views_plugin_style {
-  
+
+class cod_session_views_plugin_style_schedule extends views_plugin_style {
+
   function init(&$view, &$display, $options = NULL) {
     parent::init($view, $display, $options);
     // Set COD-specific settings.
@@ -28,14 +28,13 @@ class cod_session_views_style_plugin_schedule extends views_plugin_style {
     }
     $interactive_type = $this->options['interactive_type'];
     $view->cod_interactive_type = !empty($view->cod_schedule_interactive) ? $interactive_type : FALSE;
-
     $view->cod_room_queue = $this->options['room_queue'];
     $view->cod_time_queue = $this->options['time_queue'];
 
     // Make sure views does't try to limit the number of items in this view.
     $this->view->pager['items_per_page'] = 0;
   }
-  
+
   /**
    * Set default options
    */
@@ -54,16 +53,7 @@ class cod_session_views_style_plugin_schedule extends views_plugin_style {
    * Style options.
    */
   function options_form(&$form, &$form_state) {
-    $schedule_days = cod_session_days();
-    if (!empty($schedule_days)) {
-      $form['schedule_days'] = array(
-        '#title' => t('Schedule days'),
-        '#default_value' => !empty($this->options['schedule_days']) ? $this->options['schedule_days'] : array(),
-        '#type' => 'checkboxes',
-        '#options' => $schedule_days,
-        '#description' => t('Select which days to show on this display. Defaults to all event days.'),
-      );
-    }
+
     // "interactive" is an internal name, in the UI it's referred to as the
     // scheduling mode.
     $form['schedule_interactive'] = array(
@@ -76,7 +66,7 @@ class cod_session_views_style_plugin_schedule extends views_plugin_style {
     $types = cod_session_schedulable_types();
     $options = array(0 => 'N/A');
     foreach ($types as $type => $content_type) {
-      $options[$type] = check_plain($content_type['name']);
+      $options[$type] = check_plain($content_type);
     }
     $form['interactive_type'] = array(
       '#title' => t('Content type that can be scheduled'),
@@ -95,7 +85,6 @@ class cod_session_views_style_plugin_schedule extends views_plugin_style {
         foreach ($queues as $queue) {
           $options[$queue->qid] = $queue->title;
         }
-    
         $form['room_queue'] = array(
           '#type' => 'radios',
           '#title' => t('Room queue'),

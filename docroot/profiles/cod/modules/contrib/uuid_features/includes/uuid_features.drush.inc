@@ -6,7 +6,7 @@
  */
 
 /**
- * Implementation of hook_drush_command().
+ * Implements hook_drush_command().
  *
  * @See drush_parse_command() for a list of recognized keys.
  *
@@ -30,7 +30,7 @@ function uuid_features_drush_command() {
 }
 
 /**
- * Implementation of hook_drush_help().
+ * Implements hook_drush_help().
  */
 function uuid_features_drush_help($section) {
   switch ($section) {
@@ -49,8 +49,8 @@ function uuid_features_command_update_files($feature = NULL) {
         if (!empty($feature->info['features']['uuid_file'])) {
           $files = $feature->info['features']['uuid_file'];
 
-          $dest = drupal_get_path('module', $module) .'/uuid_file';
-          file_check_directory($dest, FILE_CREATE_DIRECTORY);
+          $dest = drupal_get_path('module', $module) . '/uuid_file';
+          file_prepare_directory($dest, FILE_CREATE_DIRECTORY);
 
           foreach ($files as $uuid) {
             _uuid_features_drush_update_file($module, $uuid);
@@ -77,7 +77,7 @@ function uuid_features_command_update_files($feature = NULL) {
 
 /**
  * Copy the file identified by $uuid into the feature specified by $module.
- * 
+ *
  * @param string $module
  * @param string $uuid
  */
@@ -89,7 +89,7 @@ function _uuid_features_drush_update_file($module, $uuid) {
 
   $root = drush_get_option(array('r', 'root'), drush_locate_root());
   if ($root) {
-    $directory = drupal_get_path('module', $module) .'/uuid_file';
+    $directory = drupal_get_path('module', $module) . '/uuid_file';
     if (!is_dir($directory)) {
       drush_op('mkdir', $directory);
     }
@@ -97,7 +97,7 @@ function _uuid_features_drush_update_file($module, $uuid) {
     $file_parts = explode('.', $file['filepath']);
     $extension = array_pop($file_parts);
 
-    $destination = $directory .'/'. $uuid .'.'. $extension;
+    $destination = $directory . '/' . $uuid . '.' . $extension;
     drush_op('copy', $source, $destination);
     drush_log(dt("Updated file: !uuid - !filename", array('!uuid' => $uuid, '!filename' => basename($destination))), 'ok');
   }

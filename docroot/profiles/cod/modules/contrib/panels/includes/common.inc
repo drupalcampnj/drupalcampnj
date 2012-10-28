@@ -1,5 +1,4 @@
 <?php
-// $Id: common.inc,v 1.10.2.12 2010/08/21 17:39:58 merlinofchaos Exp $
 
 
 /**
@@ -224,7 +223,7 @@ class panels_allowed_layouts {
  * A common settings page for Panels modules, because this code is relevant to
  * any modules that don't already have special requirements.
  */
-function panels_common_settings(&$form_state, $module_name = 'panels_common') {
+function panels_common_settings($form, &$form_state, $module_name = 'panels_common') {
   ctools_include('plugins', 'panels');
   ctools_include('content');
   $content_types = ctools_get_content_types();
@@ -281,7 +280,7 @@ function panels_common_settings(&$form_state, $module_name = 'panels_common') {
 
     $form['content_types'] = array(
       '#tree' => TRUE,
-      '#prefix' => '<div class="clear-block">',
+      '#prefix' => '<div class="clearfix">',
       '#suffix' => '</div>',
     );
     // cheat a bit
@@ -398,7 +397,7 @@ function panels_common_allowed_layouts_form(&$form, &$form_state, $module_name) 
     '#options' => $options,
     '#description' => t('Check the boxes for all layouts you want to allow users choose from when picking a layout. You must allow at least one layout.'),
     '#default_value' => array_keys(array_filter($allowed_layouts->allowed_layout_settings)),
-    '#prefix' => '<div class="clear-block panels-layouts-checkboxes">',
+    '#prefix' => '<div class="clearfix panels-layouts-checkboxes">',
     '#suffix' => '</div>',
     '#checkall' => TRUE,
   );
@@ -480,7 +479,9 @@ function panels_common_get_allowed_layouts($module_name) {
  * Create a visible list of content in a display.
  * Note that the contexts must be pre-loaded.
  */
-function theme_panels_common_content_list($display) {
+function theme_panels_common_content_list($vars) {
+  $display = $vars['display'];
+
   $layout = panels_get_layout($display->layout);
   $content = '<dl class="content-list">';
   foreach (panels_get_regions($layout, $display) as $panel_id => $title) {
@@ -515,16 +516,21 @@ function theme_panels_common_content_list($display) {
  * @return
  *   The rendered output.
  */
-function panels_common_print_layout_links($layouts, $base_path, $link_options = array()) {
+function panels_common_print_layout_links($layouts, $base_path, $link_options = array(), $current_layout = NULL) {
   $output = '';
 
   $categories = array();
   ctools_include('cleanstring');
+  $default_category = '';
   foreach ($layouts as $id => $layout) {
     $category = ctools_cleanstring($layout['category']);
 
     $categories[$category] = $layout['category'];
-    $options[$category][$id] = panels_print_layout_link($id, $layout, $base_path . '/' . $id, $link_options);
+    if ($id == $current_layout) {
+      $default_category = $category;
+    }
+
+    $options[$category][$id] = panels_print_layout_link($id, $layout, $base_path . '/' . $id, $link_options, $current_layout);
   }
 
   $form = array();
@@ -534,13 +540,14 @@ function panels_common_print_layout_links($layouts, $base_path, $link_options = 
     '#options' => $categories,
     '#name' => 'categories',
     '#id' => 'edit-categories',
-    '#value' => '',
+    '#value' => $default_category,
     '#parents' => array('categories'),
+    '#access' => (count($categories) > 1) ? TRUE : FALSE,
   );
 
   $output .= drupal_render($form);
 
-  $output .= '<div class="panels-choose-layout panels-layouts-checkboxes clear-block">';
+  $output .= '<div class="panels-choose-layout panels-layouts-checkboxes clearfix">';
 
   // We're doing these dependencies completely manualy, which is unusual, but
   // the process code only supports doing them in a form.
@@ -555,8 +562,8 @@ function panels_common_print_layout_links($layouts, $base_path, $link_options = 
     );
 
     $output .= '<div id="panels-layout-category-' . $category . '-wrapper">';
-    $output .= '<div id="panels-layout-category-' . $category . '" class="form-checkboxes clear-block">';
-    $output .= '<div class="panels-layouts-category">' . $categories[$category] . '</div>';
+    $output .= '<div id="panels-layout-category-' . $category . '" class="form-checkboxes clearfix">';
+    $output .= (count($categories) > 1) ? '<div class="panels-layouts-category">' . $categories[$category] . '</div>' : '';
 
     foreach ($links as $key => $link) {
       $output .= $link;

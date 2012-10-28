@@ -1,5 +1,4 @@
 <?php
-// $Id: twocol.inc,v 1.1.2.3 2010/06/22 15:54:25 merlinofchaos Exp $
 
 // Plugin definition
 $plugin = array(
@@ -8,7 +7,7 @@ $plugin = array(
   'icon' => 'twocol.png',
   'theme' => 'panels_twocol',
   'css' => 'twocol.css',
-  'panels' => array(
+  'regions' => array(
     'left' => t('Left side'),
     'right' => t('Right side')
   ),

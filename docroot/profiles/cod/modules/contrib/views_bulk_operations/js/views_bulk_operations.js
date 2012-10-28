@@ -1,133 +1,125 @@
 (function ($) {
-// START jQuery
-
-Drupal.vbo = Drupal.vbo || {};
-
-Drupal.behaviors.vbo = function(context) {
-  // Force Firefox to reload the page if Back is hit.
-  // https://developer.mozilla.org/en/Using_Firefox_1.5_caching
-  window.onunload = function(){}
-
-  // Prepare VBO forms for processing.
-  $('form.views-bulk-operations-form', context)
-    .not('.views-bulk-operations-form-step-2, .views-bulk-operations-form-step-3')
-    .each(Drupal.vbo.prepareAction)
-    .each(Drupal.vbo.prepareSelectors);
-}
-
-Drupal.vbo.selectionModes = {
-  all: 1,
-  allPages: 2,
-  none: 3
-}
-
-Drupal.vbo.prepareSelectors = function() {
-  var $form = $(this);
-  var form_id = $form.attr('id');
-
-  $('select.views-bulk-operations-selector', $form).change(function() {
-    if (this.options[this.selectedIndex].value == Drupal.vbo.selectionModes.all || this.options[this.selectedIndex].value == Drupal.vbo.selectionModes.allPages) {
-      var selection = {};
-      $('input:checkbox.vbo-select', $form).each(function() {
-        this.checked = true;
-        $(this).parents('tr:first').addClass('selected');
-        selection[this.value] = 1;
+  Drupal.behaviors.vbo = {
+    attach: function(context) {
+      $('.vbo-views-form', context).each(function() {
+        Drupal.vbo.initTableBehaviors(this);
+        Drupal.vbo.initGenericBehaviors(this);
       });
-      selection['selectall'] = this.options[this.selectedIndex].value == Drupal.vbo.selectionModes.allPages ? 1 : 0;
-      $('input#edit-objects-selectall', $form).val(selection['selectall']);
+    }
+  }
 
-      if (Drupal.settings.vbo[form_id].options.preserve_selection) {
-        $.post(Drupal.settings.basePath+'views-bulk-operations/js/select', {view_name: Drupal.settings.vbo[form_id].view_name, selection: JSON.stringify(selection)});
+  Drupal.vbo = Drupal.vbo || {};
+  Drupal.vbo.initTableBehaviors = function(form) {
+    // If the table is not grouped, "Select all on this page / all pages"
+    // markup gets inserted below the table header.
+    var selectAllMarkup = $('.vbo-table-select-all-markup', form);
+    if (selectAllMarkup.length) {
+      $('tbody', form).prepend('<tr class="views-table-row-select-all even">></tr>');
+      var colspan = $('table th', form).length;
+      $('.views-table-row-select-all', form).html('<td colspan="' + colspan + '">' + selectAllMarkup.html() + '</td>');
+
+      $('.vbo-table-select-all-pages', form).click(function() {
+        Drupal.vbo.tableSelectAllPages(form);
+        return false;
+      });
+      $('.vbo-table-select-this-page', form).click(function() {
+        Drupal.vbo.tableSelectThisPage(form);
+        return false;
+      });
+    }
+
+    $('.vbo-table-select-all', form).show();
+    // This is the "select all" checkbox in (each) table header.
+    $('.vbo-table-select-all', form).click(function() {
+      var table = $(this).closest('table')[0];
+      $('input[id^="edit-views-bulk-operations"]:not(:disabled)', table).attr('checked', this.checked);
+
+      // Toggle the visibility of the "select all" row (if any).
+      if (this.checked) {
+        $('.views-table-row-select-all', table).show();
       }
-    }
-    else if (this.options[this.selectedIndex].value == Drupal.vbo.selectionModes.none) {
-      $('input:checkbox.vbo-select', $form).each(function() {
-        this.checked = false;
-        $(this).parents('tr:first').removeClass('selected');
-      });
-      $('input#edit-objects-selectall', $form).val(0);
-
-      if (Drupal.settings.vbo[form_id].options.preserve_selection) {
-        $.post(Drupal.settings.basePath+'views-bulk-operations/js/select', {view_name: Drupal.settings.vbo[form_id].view_name, selection: JSON.stringify({'selectall': -1})});
+      else {
+        $('.views-table-row-select-all', table).hide();
+        // Disable "select all across pages".
+        Drupal.vbo.tableSelectThisPage(form);
       }
-    }
-  });
+    });
 
-  $('#views-bulk-operations-dropdown select', $form).change(function() {
-    if (Drupal.settings.vbo[form_id].options.preserve_selection) {
-      $.post(Drupal.settings.basePath+'views-bulk-operations/js/select', {view_name: Drupal.settings.vbo[form_id].view_name, selection: JSON.stringify({'operation': this.options[this.selectedIndex].value})});
-    }
-  });
-  
-  $(':checkbox.vbo-select', $form).click(function() {
-    var selection = {};
-    selection[this.value] = this.checked ? 1 : 0;
-    $(this).parents('tr:first')[ this.checked ? 'addClass' : 'removeClass' ]('selected');
-
-    if (Drupal.settings.vbo[form_id].options.preserve_selection) {
-      $.post(Drupal.settings.basePath+'views-bulk-operations/js/select', {view_name: Drupal.settings.vbo[form_id].view_name, selection: JSON.stringify(selection)});
-    }
-  }).each(function() {
-    $(this).parents('tr:first')[ this.checked ? 'addClass' : 'removeClass' ]('selected');
-  });
-
-  // Set up the ability to click anywhere on the row to select it.
-  $('tr.rowclick', $form).click(function(event) {
-    if (event.target.nodeName.toLowerCase() != 'input' && event.target.nodeName.toLowerCase() != 'a') {
-      $(':checkbox.vbo-select', this).each(function() {
-        var checked = this.checked;
-        // trigger() toggles the checkmark *after* the event is set, 
-        // whereas manually clicking the checkbox toggles it *beforehand*.
-        // that's why we manually set the checkmark first, then trigger the
-        // event (so that listeners get notified), then re-set the checkmark
-        // which the trigger will have toggled. yuck!
-        this.checked = !checked;
-        $(this).trigger('click');
-        this.checked = !checked;
-      });
-    }
-  });
-}
-
-Drupal.vbo.prepareAction = function() {
-  // Skip if no view is Ajax-enabled.
-  if (typeof(Drupal.settings.views) == "undefined" || typeof(Drupal.settings.views.ajaxViews) == "undefined") return;
-
-  var $form = $(this);
-  $.each(Drupal.settings.views.ajaxViews, function(i, view) {
-    if (view.view_name == Drupal.settings.vbo[$form.attr('id')].view_name) {
-      var action = $form.attr('action');
-      var params = {};
-      var query = action.replace(/.*?\?/, '').split('&');
-      var cleanUrl = true, replaceAction = false;
-      $.each(query, function(i, str) {
-        var element = str.split('=');
-        if (element[0] == 'view_path') {
-          action = decodeURIComponent(element[1]);
-          replaceAction = true;
-        }
-        else if (element[0] == 'q') {
-          cleanUrl = false;
-        }
-        else if (typeof(view[element[0]]) == 'undefined' && typeof(element[1]) != 'undefined') {
-          params[element[0]] = element[1];
-        }
-      });
-      if (replaceAction) {
-        params = $.param(params);
-        if (cleanUrl) {
-          action = Drupal.settings.basePath + action;
-        }
-        else {
-          params = 'q=' + action + (params.length > 0 ? '&' + params : '');
-          action = Drupal.settings.basePath;
-        }
-        $form.attr('action', action + (params.length > 0 ? '?' + params : ''));
+    // Set up the ability to click anywhere on the row to select it.
+    $('.views-table tbody tr', form).click(function(event) {
+      if (event.target.tagName.toLowerCase() != 'input' && event.target.tagName.toLowerCase() != 'a') {
+        $('input[id^="edit-views-bulk-operations"]:not(:disabled)', this).each(function() {
+          var checked = this.checked;
+          // trigger() toggles the checkmark *after* the event is set,
+          // whereas manually clicking the checkbox toggles it *beforehand*.
+          // that's why we manually set the checkmark first, then trigger the
+          // event (so that listeners get notified), then re-set the checkmark
+          // which the trigger will have toggled. yuck!
+          this.checked = !checked;
+          $(this).trigger('click');
+          this.checked = !checked;
+        });
       }
-    }
-  });
-}
+    });
+  }
 
-// END jQuery
+  Drupal.vbo.tableSelectAllPages = function(form) {
+    $('.vbo-table-this-page', form).hide();
+    $('.vbo-table-all-pages', form).show();
+    // Modify the value of the hidden form field.
+    $('.select-all-rows', form).val('1');
+  }
+  Drupal.vbo.tableSelectThisPage = function(form) {
+    $('.vbo-table-all-pages', form).hide();
+    $('.vbo-table-this-page', form).show();
+    // Modify the value of the hidden form field.
+    $('.select-all-rows', form).val('0');
+  }
+
+  Drupal.vbo.initGenericBehaviors = function(form) {
+    // Show the "select all" fieldset.
+    $('.vbo-select-all-markup', form).show();
+
+    $('.vbo-select-this-page', form).click(function() {
+      $('input[id^="edit-views-bulk-operations"]', form).attr('checked', this.checked);
+      $('.vbo-select-all-pages', form).attr('checked', false);
+
+      // Toggle the "select all" checkbox in grouped tables (if any).
+      $('.vbo-table-select-all', form).attr('checked', this.checked);
+    });
+    $('.vbo-select-all-pages', form).click(function() {
+      $('input[id^="edit-views-bulk-operations"]', form).attr('checked', this.checked);
+      $('.vbo-select-this-page', form).attr('checked', false);
+
+      // Toggle the "select all" checkbox in grouped tables (if any).
+      $('.vbo-table-select-all', form).attr('checked', this.checked);
+
+      // Modify the value of the hidden form field.
+      $('.select-all-rows', form).val(this.checked);
+    });
+
+    $('.vbo-select', form).click(function() {
+      // If a checkbox was deselected, uncheck any "select all" checkboxes.
+      if (!this.checked) {
+        $('.vbo-select-this-page', form).attr('checked', false);
+        $('.vbo-select-all-pages', form).attr('checked', false);
+        // Modify the value of the hidden form field.
+        $('.select-all-rows', form).val('0')
+
+        var table = $(this).closest('table')[0];
+        if (table) {
+          // Uncheck the "select all" checkbox in the table header.
+          $('.vbo-table-select-all', table).attr('checked', false);
+
+          // If there's a "select all" row, hide it.
+          if ($('.vbo-table-select-this-page', table).length) {
+            $('.views-table-row-select-all', table).hide();
+            // Disable "select all across pages".
+            Drupal.vbo.tableSelectThisPage(form);
+          }
+        }
+      }
+    });
+  }
+
 })(jQuery);
-

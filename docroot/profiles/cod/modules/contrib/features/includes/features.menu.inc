@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implementation of hook_features_api().
+ * Implements hook_features_api().
  */
 function menu_features_api() {
   return array(
@@ -28,7 +28,7 @@ function menu_features_api() {
 }
 
 /**
- * Implementation of hook_features_export().
+ * Implements hook_features_export().
  * DEPRECATED: This implementation simply migrates deprecated `menu` items
  * to the `menu_links` type.
  */
@@ -41,19 +41,19 @@ function menu_features_export($data, &$export, $module_name = '') {
 }
 
 /**
- * Implementation of hook_features_export_options().
+ * Implements hook_features_export_options().
  */
 function menu_custom_features_export_options() {
   $options = array();
-  $result = db_query("SELECT * FROM {menu_custom}");
-  while ($row = db_fetch_array($result)) {
-    $options[$row['menu_name']] = $row['title'];
+  $result = db_query("SELECT * FROM {menu_custom} ORDER BY title", array(), array('fetch' => PDO::FETCH_ASSOC));
+  foreach ($result as $menu) {
+    $options[$menu['menu_name']] = $menu['title'];
   }
   return $options;
 }
 
 /**
- * Implementation of hook_features_export().
+ * Implements hook_features_export().
  */
 function menu_custom_features_export($data, &$export, $module_name = '') {
   // Default hooks are provided by the feature module so we need to add
@@ -77,7 +77,7 @@ function menu_custom_features_export($data, &$export, $module_name = '') {
 }
 
 /**
- * Implementation of hook_features_export_render()
+ * Implements hook_features_export_render()
  */
 function menu_custom_features_export_render($module, $data) {
   $code = array();
@@ -86,10 +86,14 @@ function menu_custom_features_export_render($module, $data) {
 
   $translatables = array();
   foreach ($data as $menu_name) {
-    $result = db_query("SELECT menu_name, title, description FROM {menu_custom} WHERE menu_name = '%s'", $menu_name);
-    while ($row = db_fetch_array($result)) {
+    $row = db_select('menu_custom')
+      ->fields('menu_custom')
+      ->condition('menu_name', $menu_name)
+      ->execute()
+      ->fetchAssoc();
+    if ($row) {
       $export = features_var_export($row, '  ');
-      $code[] = "  // Exported menu: {$menu_name}";
+      $code[] = "  // Exported menu: {$menu_name}.";
       $code[] = "  \$menus['{$menu_name}'] = {$export};";
       $translatables[] = $row['title'];
       $translatables[] = $row['description'];
@@ -106,29 +110,32 @@ function menu_custom_features_export_render($module, $data) {
 }
 
 /**
- * Implementation of hook_features_export_revert().
+ * Implements hook_features_revert().
  */
 function menu_custom_features_revert($module) {
   menu_custom_features_rebuild($module);
 }
 
 /**
- * Implementation of hook_features_export_rebuild().
+ * Implements hook_features_rebuild().
  */
 function menu_custom_features_rebuild($module) {
   if ($defaults = features_get_default('menu_custom', $module)) {
     foreach ($defaults as $menu) {
-      $existing = db_result(db_query("SELECT menu_name FROM {menu_custom} WHERE menu_name = '%s'", $menu['menu_name']));
-      drupal_write_record('menu_custom', $menu, $existing ? array('menu_name') : array());
+      menu_save($menu);
     }
   }
 }
 
 /**
- * Implementation of hook_features_export_options().
+ * Implements hook_features_export_options().
  */
 function menu_links_features_export_options() {
-  $menu_links = menu_parent_options(array_reverse(menu_get_menus()), NULL);
+  global $menu_admin;
+  // Need to set this to TRUE in order to get menu links that the
+  // current user may not have access to (i.e. user/login)
+  $menu_admin = TRUE;
+  $menu_links = menu_parent_options(menu_get_menus(), array('mlid' => 0));
   $options = array();
   foreach ($menu_links as $key => $name) {
     list($menu_name, $mlid) = explode(':', $key, 2);
@@ -138,6 +145,7 @@ function menu_links_features_export_options() {
       $options[$identifier] = "{$menu_name}: {$name}";
     }
   }
+  $menu_admin = FALSE;
   return $options;
 }
 
@@ -145,20 +153,11 @@ function menu_links_features_export_options() {
  * Callback for generating the menu link exportable identifier.
  */
 function menu_links_features_identifier($link) {
-  // Look up the node, if it has a uuid, we need to use that instead
-  $path = explode('/',$link['link_path']);
-  if($node = node_load(array('nid' => $path[1]))) {
-    $link['uuid'] = $node->uuid;
-  }
-  if(!empty($link['uuid'])) {
-    return isset($link['menu_name'], $link['uuid']) ? "{$link['menu_name']}:{$link['uuid']}" : FALSE;
-  } else {
-    return isset($link['menu_name'], $link['link_path']) ? "{$link['menu_name']}:{$link['link_path']}" : FALSE;
-  }
+  return isset($link['menu_name'], $link['link_path']) ? "{$link['menu_name']}:{$link['link_path']}" : FALSE;
 }
 
 /**
- * Implementation of hook_features_export().
+ * Implements hook_features_export().
  */
 function menu_links_features_export($data, &$export, $module_name = '') {
   // Default hooks are provided by the feature module so we need to add
@@ -190,7 +189,7 @@ function menu_links_features_export($data, &$export, $module_name = '') {
 }
 
 /**
- * Implementation of hook_features_export_render()
+ * Implements hook_features_export_render()
  */
 function menu_links_features_export_render($module, $data) {
   $code = array();
@@ -203,24 +202,9 @@ function menu_links_features_export_render($module, $data) {
       // Replace plid with a parent path.
       if (!empty($link['plid']) && $parent = menu_link_load($link['plid'])) {
         $link['parent_path'] = $parent['link_path'];
-        // Check for uuid 
-        $parent_path = explode('/',$parent['link_path']);
-
-        if($parent_node = node_load(array('nid' => $parent_path[1]))) {
-          $link['parent_uuid'] = $parent_node->uuid;
-        }
       }
       unset($link['plid']);
       unset($link['mlid']);
-
-      // Load the uuid
-      $path = explode('/',$link['link_path']);
-
-      if($node = node_load(array('nid' => $path[1]))) {
-        $link['uuid'] = $node->uuid;
-        // Otherwise it will always be overridden
-        unset($link['link_path']);
-      }
 
       $code[] = "  // Exported menu link: {$identifier}";
       $code[] = "  \$menu_links['{$identifier}'] = ". features_var_export($link, '  ') .";";
@@ -238,14 +222,14 @@ function menu_links_features_export_render($module, $data) {
 }
 
 /**
- * Implementation of hook_features_export_revert().
+ * Implements hook_features_revert().
  */
 function menu_links_features_revert($module) {
   menu_links_features_rebuild($module);
 }
 
 /**
- * Implementation of hook_features_export_rebuild().
+ * Implements hook_features_rebuild().
  */
 function menu_links_features_rebuild($module) {
   if ($menu_links = features_get_default('menu_links', $module)) {
@@ -262,20 +246,15 @@ function menu_links_features_rebuild_ordered($menu_links, $reset = FALSE) {
   if (!isset($ordered) || $reset) {
     $ordered = array();
     $unordered = features_get_default('menu_links');
+
     // Order all links by depth.
     if ($unordered) {
       do {
         $current = count($unordered);
         foreach ($unordered as $key => $link) {
-          // This doesn't make sense just use the key?
-          // $identifier = menu_links_features_identifier($link);
-          $identifier = $key;
-          // Set the uuid system name if the parent_uuid exists
-          if($link['parent_uuid'] && $parent_node = node_get_by_uuid($link['parent_uuid'])) {
-            $link['parent_path'] = $link['parent_uuid'];
-          }
+          $identifier = menu_links_features_identifier($link);
           $parent = isset($link['parent_path']) ? "{$link['menu_name']}:{$link['parent_path']}" : '';
-          if (empty($parent) || (!empty($parent) && !isset($unordered[$parent]) && !isset($ordered[$parent]))) {
+          if (empty($parent)) {
             $ordered[$identifier] = 0;
             $all_links[$identifier] = $link;
             unset($unordered[$key]);
@@ -285,43 +264,28 @@ function menu_links_features_rebuild_ordered($menu_links, $reset = FALSE) {
             $all_links[$identifier] = $link;
             unset($unordered[$key]);
           }
-          elseif (!empty($parent)) {
-            $ordered[$parent] = 0;
-            $ordered[$identifier] = $ordered[$parent] + 1;
-            $all_links[$identifier] = $link;
-            unset($unordered[$key]);
-          }
         }
       } while (count($unordered) < $current);
     }
     asort($ordered);
   }
+
   // Ensure any default menu items that do not exist are created.
   foreach (array_keys($ordered) as $identifier) {
     $link = $all_links[$identifier];
     $existing = features_menu_link_load($identifier);
-    if (!$existing || !empty($menu_links[$identifier])) {
+    if (!$existing || in_array($link, $menu_links)) {
       // Retrieve the mlid if this is an existing item.
       if ($existing) {
         $link['mlid'] = $existing['mlid'];
       }
-      // Load the actual path based on the uuid if it exists
-      if($link['uuid'] && $node = node_get_by_uuid($link['uuid'])) {
-        $link['link_path'] = 'node/' . $node->nid;
-      }
       // Retrieve the plid for a parent link.
-      if (!empty($link['parent_path'])) {
-        // Load the actual path based on the uuid if it exists
-        if($link['parent_uuid'] && $parent_node = node_get_by_uuid($link['parent_uuid'])) {
-          $link['parent_path'] = $link['parent_uuid'];
-        }
-        $parent = features_menu_link_load("{$link['menu_name']}:{$link['parent_path']}");    
+      if (!empty($link['parent_path']) && $parent = features_menu_link_load("{$link['menu_name']}:{$link['parent_path']}")) {
         $link['plid'] = $parent['mlid'];
       }
       else {
         $link['plid'] = 0;
       }
-      $link['customized'] = TRUE;
       menu_link_save($link);
     }
   }
@@ -332,14 +296,13 @@ function menu_links_features_rebuild_ordered($menu_links, $reset = FALSE) {
  */
 function features_menu_link_load($identifier) {
   list($menu_name, $link_path) = explode(':', $identifier, 2);
-
-  // If $link_path is a valid uuid, set $link_path to the real node path
-  if ($node = node_get_by_uuid($link_path)) {
-    $link_path = 'node/' . $node->nid;
-  }
-
-  $result = db_query("SELECT menu_name, mlid, plid, link_path, router_path, link_title, options, module, hidden, external, has_children, expanded, weight FROM {menu_links} WHERE menu_name = '%s' AND link_path = '%s'", $menu_name, $link_path);
-  while ($link = db_fetch_array($result)) {
+  $link = db_select('menu_links')
+    ->fields('menu_links', array('menu_name', 'mlid', 'plid', 'link_path', 'router_path', 'link_title', 'options', 'module', 'hidden', 'external', 'has_children', 'expanded', 'weight'))
+    ->condition('menu_name', $menu_name)
+    ->condition('link_path', $link_path)
+    ->execute()
+    ->fetchAssoc();
+  if ($link) {
     $link['options'] = unserialize($link['options']);
     return $link;
   }

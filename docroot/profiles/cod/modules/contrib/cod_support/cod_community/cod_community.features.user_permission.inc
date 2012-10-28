@@ -1,17 +1,22 @@
 <?php
+/**
+ * @file
+ * cod_community.features.user_permission.inc
+ */
 
 /**
- * Implementation of hook_user_default_permissions().
+ * Implements hook_user_default_permissions().
  */
 function cod_community_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer site-wide contact form
-  $permissions['administer site-wide contact form'] = array(
-    'name' => 'administer site-wide contact form',
+  // Exported permission: administer contact forms
+  $permissions['administer contact forms'] = array(
+    'name' => 'administer contact forms',
     'roles' => array(
-      '0' => 'site administrator',
+      0 => 'site administrator',
     ),
+    'module' => 'contact',
   );
 
   return $permissions;

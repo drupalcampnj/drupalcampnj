@@ -1,5 +1,4 @@
 <?php
-// $Id: link_views_handler_filter_protocol.inc,v 1.1.4.4 2010/06/14 16:33:53 jcfiala Exp $
 
 /**
  * @file
@@ -10,16 +9,14 @@
  * Filter handler for limiting a view to URLs of a certain protocol.
  */
 class link_views_handler_filter_protocol extends views_handler_filter_string {
-  
   /**
    * Set defaults for the filter options.
    */
-  function option_definition() {
-    $options = parent::option_definition();
-    $options['operator'] = array('default' => 'OR');
-    $options['value'] = array('default' => 'http');
-    $options['case'] = array('default' => 0);
-    return $options;
+  function options(&$options) {
+    parent::options($options);
+    $options['operator'] = 'OR';
+    $options['value'] = 'http';
+    $options['case'] = 0;
   }
 
   /**
@@ -76,7 +73,7 @@ class link_views_handler_filter_protocol extends views_handler_filter_string {
    * Filter down the query to include only the selected protocols.
    */
   function op_protocol($field, $upper) {
-    global $db_type;
+    $db_type = db_driver();
 
     $protocols = $this->value;
 
@@ -105,30 +102,5 @@ class link_views_handler_filter_protocol extends views_handler_filter_string {
     }
 
     $this->query->add_where($this->options['group'], implode(' '. $this->operator .' ', $where_conditions));
-  }
-  
-  /**
-   * Because more than one can be selected, we need to handle the value better.
-   */
-  function admin_summary() {
-    if (!empty($this->options['exposed'])) {
-      return t('exposed');
-    }
-
-    $options = $this->operator_options('short');
-    $output = check_plain($options[$this->operator]);
-    if (in_array($this->operator, $this->operator_values(1))) {
-      $count = 0;
-      foreach ($this->value as $value) {
-        if (!$count) {
-          $output .= ' ' . check_plain($value);
-        }
-        else {
-          $output .= ', ' . check_plain($value);
-        }
-        $count++;
-      }
-    }
-    return $output;
   }
 }

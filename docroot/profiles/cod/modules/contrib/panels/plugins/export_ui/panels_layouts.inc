@@ -1,12 +1,11 @@
 <?php
-// $Id: panels_layouts.inc,v 1.1.2.2 2010/06/22 23:42:22 merlinofchaos Exp $
 
 $plugin = array(
   'schema' => 'panels_layout',
   'access' => 'administer panels layouts',
 
   'menu' => array(
-    'menu prefix' => 'admin/build/panels',
+    'menu prefix' => 'admin/structure/panels',
     'menu item' => 'layouts',
     'menu title' => 'Layouts',
     'menu description' => 'Add, edit or delete custom content layouts.',
@@ -19,7 +18,6 @@ $plugin = array(
 
   'handler' => array(
     'class' => 'panels_layouts_ui',
-    'parent' => 'ctools_export_ui',
   ),
 );
 

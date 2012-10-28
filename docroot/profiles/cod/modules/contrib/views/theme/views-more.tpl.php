@@ -1,10 +1,11 @@
 <?php
-// $Id: views-more.tpl.php,v 1.3 2009/06/02 20:35:52 merlinofchaos Exp $
 /**
  * @file views-more.tpl.php
  * Theme the more link
  *
- * - $more_url: the url for the more link
+ * - $view: The view object.
+ * - $more_url: the url for the more link.
+ * - $link_text: the text for the more link.
  *
  * @ingroup views_templates
  */

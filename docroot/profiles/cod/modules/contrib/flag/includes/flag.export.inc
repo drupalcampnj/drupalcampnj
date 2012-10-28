@@ -1,5 +1,4 @@
 <?php
-// $Id: flag.export.inc,v 1.1.2.8 2011/01/10 12:25:27 mooffie Exp $
 
 /**
  * @file
@@ -17,7 +16,7 @@
  */
 function flag_export_flags($flags = array(), $module = '', $indent = '') {
   module_load_include('inc', 'features', 'features.export'); // For features_var_export() (optional).
-  $output = $indent . '$flags = array();'. "\n";
+  $output = $indent . '$flags = array();' . "\n";
   foreach ($flags as $item) {
     if (is_object($item)) {
       $flag = $item;
@@ -53,7 +52,12 @@ function flag_export_flags($flags = array(), $module = '', $indent = '') {
     // The name is emitted as the key for the array.
     unset($new_flag['name']);
 
-    $output .= $indent . '// Exported flag: "'. check_plain($flag->get_title()) . '"' . ".\n";
+// Do not export the whole entity info, as it is just used as helper data.
+    if (isset($new_flag['entity_info'])) {
+      unset($new_flag['entity_info']);
+    }
+
+    $output .= $indent . '// Exported flag: "' . check_plain($flag->get_title()) . '"' . ".\n";
     $output .= $indent . '$flags[\'' . $flag->name . '\'] = ' . (function_exists('features_var_export') ? features_var_export($new_flag, $indent) : var_export($new_flag, TRUE)) . ";\n";
   }
   $output .= $indent . 'return $flags;';
@@ -72,7 +76,7 @@ function flag_import_form() {
     '#default_value' => '',
     '#rows' => 15,
     '#required' => TRUE,
-    '#description' => t('Paste the code from a <a href="@export-url">flag export</a> here to import it into you site. Flags imported with the same name will update existing flags. Flags with a new name will be created.', array('@export-url' => url('admin/build/flags/export'))),
+    '#description' => t('Paste the code from a <a href="@export-url">flag export</a> here to import it into you site. Flags imported with the same name will update existing flags. Flags with a new name will be created.', array('@export-url' => url(FLAG_ADMIN_PATH . '/export'))),
   );
   $form['submit'] = array(
     '#value' => t('Import'),
@@ -97,8 +101,13 @@ function flag_import_form_validate($form, &$form_state) {
   }
 
   // Create the flag object.
-  foreach ($flags as $config) {
-    $new_flag = flag_flag::factory_by_array($config);
+  foreach ($flags as $flag_name => $flag_info) {
+    // Backward compatibility: old exported flags have their names in $flag_info
+    // instead, so we use the += operator to not overwrite it.
+    $flag_info += array(
+      'name' => $flag_name,
+    );
+    $new_flag = flag_flag::factory_by_array($flag_info);
 
     // Give new flags with the same name a matching FID, which tells Flag to
     // update the existing flag, rather than creating a new one.
@@ -114,7 +123,7 @@ function flag_import_form_validate($form, &$form_state) {
           $message_errors[] = $error['message'];
         }
       }
-      form_set_error('import', $message . theme('item_list', $message_errors));
+      form_set_error('import', $message . theme('item_list', array('items' => $message_errors)));
     }
     else {
       // Save the new flag for the submit handler.
@@ -143,15 +152,13 @@ function flag_import_form_submit($form, &$form_state) {
   }
   _flag_clear_cache();
 
-  $form_state['redirect'] = 'admin/build/flags';
+  $form_state['redirect'] = FLAG_ADMIN_PATH;
 }
 
 /**
  * Export a flag and display it in a form.
  */
-function flag_export_form(&$form_state, $flag = NULL) {
-  $form = array();
-
+function flag_export_form($form, &$form_state, $flag = NULL) {
   // If we were passed a flag, use it as the list of flags to export.
   if ($flag) {
     $flags = array($flag);
@@ -191,7 +198,7 @@ function flag_export_form(&$form_state, $flag = NULL) {
     $form['export'] = array(
       '#type' => 'textarea',
       '#title' => t('Flag exports'),
-      '#description' => t('Use the exported code to later <a href="@import-flag">import</a> it. Exports can be included in modules using <a href="http://drupal.org/node/305086#default-flags">hook_flag_default_flags()</a> or using the <a href="@features-url">Features</a> module.', array('@import-flag' => url('admin/build/flags/import'), '@features-url' => $features_link)),
+      '#description' => t('Use the exported code to later <a href="@import-flag">import</a> it. Exports can be included in modules using <a href="http://drupal.org/node/305086#default-flags">hook_flag_default_flags()</a> or using the <a href="@features-url">Features</a> module.', array('@import-flag' => url(FLAG_ADMIN_PATH . '/import'), '@features-url' => $features_link)),
       '#value' => $code,
       '#rows' => 15,
     );
@@ -213,7 +220,7 @@ function flag_export_form_submit($form, &$form_state) {
 function flag_update_page($flag) {
   if ($flag->is_compatible()) {
     drupal_set_message(t('The flag %name is already up-to-date with the latest Flag API and does not need upgrading.'));
-    drupal_goto('admin/build/flags');
+    drupal_goto(FLAG_ADMIN_PATH);
   }
 
   drupal_set_message(t('The flag %name is currently using the Flag API version @version, which is not compatible with the current version of Flag. You can upgrade this flag by pasting the below code into <em>@module_flag_default_flags()</em> function in the @module.module file.', array('%name' => $flag->name, '@version' => $flag->api_version, '@module' => $flag->module)), 'warning');

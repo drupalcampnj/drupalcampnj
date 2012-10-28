@@ -1,13 +1,13 @@
 ; Conference Organizing Distribution dev snapshot makefile
 ; The purpose of this makefile is to make it easier for people to install
 ; the dev version of COD and its dependencies, including patches, before
-; a new full release of the distribution is rolled.  
+; a new full release of the distribution is rolled.
 api = 2
-core = 6.x
+core = 7.15
 
-projects[drupal] = 6.22
+projects[drupal] = 7.15
 
-projects[cod][type] = profile
+projects[cod][type] = "module"
 projects[cod][download][type] = "git"
 projects[cod][download][url] = "http://git.drupal.org/project/cod.git"
-projects[cod][download][revision] = "6.x-1.x"
+projects[cod][download][branch] = "7.x-1.x"
