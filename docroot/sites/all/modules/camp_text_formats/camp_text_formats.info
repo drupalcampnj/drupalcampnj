@@ -1,0 +1,9 @@
+name = Camp Text Formats
+description = Additional text formats
+core = 7.x
+package = Features
+php = 5.2.4
+dependencies[] = features
+features[features_api][] = api:1
+features[filter][] = filtered_html
+features[filter][] = full_html
