@@ -1,0 +1,36 @@
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.features.field.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.features.field.inc
+index eecc0b3..cb0d27b 100755
+--- a/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.features.field.inc
++++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.features.field.inc
+@@ -1444,6 +1444,9 @@ function cod_session_field_default_fields() {
+       'deleted' => '0',
+       'entity_types' => array(),
+       'field_name' => 'field_track',
++      'field_permissions' => array(
++        'type' => '0',
++      ),
+       'foreign keys' => array(),
+       'indexes' => array(
+         'value' => array(
+@@ -1454,9 +1457,9 @@ function cod_session_field_default_fields() {
+       'module' => 'list',
+       'settings' => array(
+         'allowed_values' => array(
+-          'Track 1' => 'Track 1',
+-          'Track 2' => 'Track 2',
+-          'Track 3' => 'Track 3',
++          'site-building' => 'Site Building & Case Studies',
++          'theming' => 'Theming & Mobile',
++          'development' => 'Drupal Development',
+         ),
+         'allowed_values_function' => '',
+         'field_permissions' => array(
+@@ -1499,7 +1502,7 @@ function cod_session_field_default_fields() {
+       'entity_type' => 'node',
+       'field_name' => 'field_track',
+       'label' => 'Track',
+-      'required' => 0,
++      'required' => 1,
+       'settings' => array(
+         'user_register_form' => FALSE,
+       ),
