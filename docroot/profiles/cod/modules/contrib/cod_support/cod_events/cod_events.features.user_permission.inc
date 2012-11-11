@@ -1,101 +1,101 @@
 <?php
+/**
+ * @file
+ * cod_events.features.user_permission.inc
+ */
 
 /**
- * Implementation of hook_user_default_permissions().
+ * Implements hook_user_default_permissions().
  */
 function cod_events_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: administer UC_Signup
-  $permissions['administer UC_Signup'] = array(
-    'name' => 'administer UC_Signup',
-    'roles' => array(
-      '0' => 'attendee manager',
-    ),
+  // Exported permission: administer free_event registration.
+  $permissions['administer free_event registration'] = array(
+    'name' => 'administer free_event registration',
+    'roles' => array(),
+    'module' => 'registration',
   );
 
-  // Exported permission: administer all signups
-  $permissions['administer all signups'] = array(
-    'name' => 'administer all signups',
+  // Exported permission: create free_event registration.
+  $permissions['create free_event registration'] = array(
+    'name' => 'create free_event registration',
     'roles' => array(
-      '0' => 'attendee manager',
+      0 => 'anonymous user',
+      1 => 'authenticated user',
     ),
+    'module' => 'registration',
   );
 
-  // Exported permission: administer signups for own content
-  $permissions['administer signups for own content'] = array(
-    'name' => 'administer signups for own content',
+  // Exported permission: create free_event registration other anonymous.
+  $permissions['create free_event registration other anonymous'] = array(
+    'name' => 'create free_event registration other anonymous',
     'roles' => array(
-      '0' => 'attendee manager',
-      '1' => 'authenticated user',
+      0 => 'anonymous user',
+      1 => 'authenticated user',
     ),
+    'module' => 'registration',
   );
 
-  // Exported permission: cancel own signups
-  $permissions['cancel own signups'] = array(
-    'name' => 'cancel own signups',
-    'roles' => array(
-      '0' => 'attendee manager',
-      '1' => 'authenticated user',
-    ),
+  // Exported permission: create free_event registration other users.
+  $permissions['create free_event registration other users'] = array(
+    'name' => 'create free_event registration other users',
+    'roles' => array(),
+    'module' => 'registration',
   );
 
-  // Exported permission: cancel signups
-  $permissions['cancel signups'] = array(
-    'name' => 'cancel signups',
+  // Exported permission: delete any free_event registration.
+  $permissions['delete any free_event registration'] = array(
+    'name' => 'delete any free_event registration',
     'roles' => array(
-      '0' => 'attendee manager',
+      0 => 'attendee manager',
     ),
+    'module' => 'registration',
   );
 
-  // Exported permission: edit own signups
-  $permissions['edit own signups'] = array(
-    'name' => 'edit own signups',
+  // Exported permission: delete own free_event registration.
+  $permissions['delete own free_event registration'] = array(
+    'name' => 'delete own free_event registration',
     'roles' => array(
-      '0' => 'attendee manager',
+      0 => 'attendee manager',
     ),
+    'module' => 'registration',
   );
 
-  // Exported permission: email all signed up users
-  $permissions['email all signed up users'] = array(
-    'name' => 'email all signed up users',
+  // Exported permission: update any free_event registration.
+  $permissions['update any free_event registration'] = array(
+    'name' => 'update any free_event registration',
     'roles' => array(
-      '0' => 'attendee manager',
+      0 => 'attendee manager',
     ),
+    'module' => 'registration',
   );
 
-  // Exported permission: email users signed up for own content
-  $permissions['email users signed up for own content'] = array(
-    'name' => 'email users signed up for own content',
+  // Exported permission: update own free_event registration.
+  $permissions['update own free_event registration'] = array(
+    'name' => 'update own free_event registration',
     'roles' => array(
-      '0' => 'attendee manager',
+      0 => 'authenticated user',
     ),
+    'module' => 'registration',
   );
 
-  // Exported permission: purchase signups for other users
-  $permissions['purchase signups for other users'] = array(
-    'name' => 'purchase signups for other users',
+  // Exported permission: view free_event registration.
+  $permissions['view free_event registration'] = array(
+    'name' => 'view free_event registration',
     'roles' => array(
-      '0' => 'anonymous user',
-      '1' => 'authenticated user',
+      0 => 'attendee manager',
     ),
+    'module' => 'registration',
   );
 
-  // Exported permission: sign up for content
-  $permissions['sign up for content'] = array(
-    'name' => 'sign up for content',
+  // Exported permission: view own free_event registration.
+  $permissions['view own free_event registration'] = array(
+    'name' => 'view own free_event registration',
     'roles' => array(
-      '0' => 'attendee manager',
-      '1' => 'authenticated user',
+      0 => 'authenticated user',
     ),
-  );
-
-  // Exported permission: view all signups
-  $permissions['view all signups'] = array(
-    'name' => 'view all signups',
-    'roles' => array(
-      '0' => 'attendee manager',
-    ),
+    'module' => 'registration',
   );
 
   return $permissions;

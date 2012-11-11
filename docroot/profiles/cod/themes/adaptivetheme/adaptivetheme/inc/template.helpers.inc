@@ -1,5 +1,4 @@
 <?php
-
 /**
  * IMPORTANT WARNING: DO NOT MODIFY THIS FILE.
  */
@@ -24,6 +23,20 @@ function load_subtheme_media_queries($files, $theme_name) {
       )
     );
   }
+}
+
+// Load sub-theme responsive stylesheets in link elements - forward compatibility for 7.x-3.x subthemes, never used by 7.x-2.x subthemes.
+function load_subtheme_responsive_styles($file, $theme_key, $media_query) {
+  $path_to_theme = drupal_get_path('theme', $theme_key);
+  $filepath = $path_to_theme . '/css/' . $file;
+  drupal_add_css($filepath, array(
+    'preprocess' => variable_get('preprocess_css', '') == 1 ? TRUE : FALSE,
+    'group' => CSS_THEME,
+    'media' => $media_query,
+    'every_page' => TRUE,
+    'weight' => 99,
+    )
+  );
 }
 
 // Load IE stylesheets, $files is a keyed array of files, keyed by conditional comment, $theme_name is the theme name.

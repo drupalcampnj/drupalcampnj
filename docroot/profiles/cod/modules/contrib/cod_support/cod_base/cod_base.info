@@ -4,7 +4,6 @@ core = 7.x
 package = COD
 php = 5.2.4
 project = cod_base
-dependencies[] = admin
 dependencies[] = admin_menu
 dependencies[] = advanced_help
 dependencies[] = comment
@@ -17,7 +16,6 @@ dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = token
 dependencies[] = views
-dependencies[] = webform
 features[ctools][] = strongarm:strongarm:1
 features[date_format_types][] = date_no_time_
 features[features_api][] = api:1
@@ -28,12 +26,9 @@ features[field][] = user-user-field_profile_last
 features[field][] = user-user-field_profile_org
 features[user_permission][] = access administration menu
 features[user_permission][] = access administration pages
-features[user_permission][] = access all webform results
 features[user_permission][] = access content
 features[user_permission][] = access content overview
 features[user_permission][] = access dashboard
-features[user_permission][] = access own webform results
-features[user_permission][] = access own webform submissions
 features[user_permission][] = access private fields
 features[user_permission][] = access site in maintenance mode
 features[user_permission][] = access site reports
@@ -52,13 +47,8 @@ features[user_permission][] = administer users
 features[user_permission][] = administer views
 features[user_permission][] = bypass node access
 features[user_permission][] = create url aliases
-features[user_permission][] = delete all webform submissions
-features[user_permission][] = delete own webform submissions
-features[user_permission][] = edit all webform submissions
-features[user_permission][] = edit own webform submissions
 features[user_permission][] = flush caches
 features[user_permission][] = notify of path changes
-features[user_permission][] = use admin toolbar
 features[user_permission][] = view advanced help index
 features[user_permission][] = view advanced help popup
 features[user_permission][] = view advanced help topic
@@ -69,9 +59,9 @@ features[variable][] = admin_toolbar
 features[variable][] = date_format_date_no_time_
 files[] = cod_base.module
 
-
-; Information added by drush on 2012-08-18
-version = ""
+; Information added by drush on 2012-11-10
+version = "7.x-1.0-alpha1+0-dev"
+core = "7.x"
 project = "cod_support"
-datestamp = "1345248603"
+datestamp = "1352511671"
 

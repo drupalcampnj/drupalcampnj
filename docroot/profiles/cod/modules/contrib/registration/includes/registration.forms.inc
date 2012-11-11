@@ -13,7 +13,11 @@
  *   object with a node defined.
  */
 function registration_form($form, &$form_state, Registration $registration) {
-  global $user;
+  $wrapper = entity_metadata_wrapper('registration', $registration);
+  $user = $wrapper->user->value();
+  $host = $wrapper->entity->value();
+  $state = $wrapper->state->value();
+
   $form_state['registration'] = $registration;
 
   $who_options = registration_access_people($registration);
@@ -23,12 +27,12 @@ function registration_form($form, &$form_state, Registration $registration) {
   if (isset($registration->registration_id)) {
     $who_default = $registration->registrant_type($user);
   }
-  elseif(count($who_options) == 1) {
+  elseif (count($who_options) == 1) {
     $who_default = key($who_options);
   }
 
   // show a message if there's only one option as we're going to hide the form
-  if (count($who_options) == 1) {
+  if (count($who_options) == 1 && !user_is_anonymous()) {
     $form['who_message'] = array(
       '#markup' => '<div class="registration-who-msg">' .
         t('You are registering: %who', array('%who' => current($who_options))) .
@@ -48,7 +52,7 @@ function registration_form($form, &$form_state, Registration $registration) {
   $form['user'] = array(
     '#type' => 'textfield',
     '#title' => t('User'),
-    '#default_value' => ($registration->user ? $registration->user->name : ''),
+    '#default_value' => ($user ? $user->name : ''),
     '#maxlength' => 60,
     '#size' => 30,
     '#description' => t('Select a user by typing their username to get a list of matches.'),
@@ -98,19 +102,21 @@ function registration_form($form, &$form_state, Registration $registration) {
   $options = array();
   $default_state = -1;
   $states = registration_states(array('show_on_form' => TRUE));
-  foreach ($states as $state) {
-    $options[$state->registration_state_id] = t('@state', array('@state' => $state->label));
-    if ($state->default_state) {
-      $default_state = $state->registration_state_id;
+  // we use "$this_state" variable name because $state is conflicting with variable set above.
+  foreach ($states as $this_state) {
+    $options[$this_state->registration_state_id] = t('@state', array('@state' => $this_state->label));
+    if ($this_state->default_state) {
+      $default_state = $this_state->registration_state_id;
     }
   }
+  
   $form['state'] = array(
     '#type' => 'select',
     '#title' => t('State'),
     '#description' => t('State of this registration'),
-    '#default_value' => ($registration->state ? $registration->state->internalIdentifier() : $default_state),
+    '#default_value' => ($state ? $state->internalIdentifier() : $default_state),
     '#options' => $options,
-    '#access' => !empty($states)
+    '#access' => !empty($states) && user_access('edit ' . $registration->type . ' registration state')
   );
 
   field_attach_form('registration', $registration, $form, $form_state);
@@ -131,8 +137,8 @@ function registration_form($form, &$form_state, Registration $registration) {
     );
   }
 
-  if ($registration->entity) {
-    $uri = entity_uri($registration->entity_type, $registration->entity);
+  if ($host) {
+    $uri = entity_uri($registration->entity_type, $host);
     $form['actions']['cancel'] = array(
       '#type' => 'link',
       '#title' => t('Cancel'),
@@ -206,10 +212,12 @@ function registration_form_submit($form, &$form_state) {
   if (!isset($registration->registration_id)) {
     $registration->author_uid = $GLOBALS['user']->uid;
   }
-
   $registration->count = $form_state['values']['count'];
-  $registration->state = (!empty($form_state['values']['state']))
-    ? $form_state['values']['state'] : NULL;
+
+  if (user_access('edit ' . $registration->type . ' registration state')) {
+    $registration->state = (!empty($form_state['values']['state']))
+      ? $form_state['values']['state'] : NULL;
+  }
 
   switch ($form_state['values']['who_is_registering']) {
     case REGISTRATION_REGISTRANT_TYPE_ANON:
@@ -232,6 +240,8 @@ function registration_form_submit($form, &$form_state) {
   // Save the registration and redirect.
   if (registration_save($registration)) {
     drupal_set_message(t('Registration has been saved.'));
+    $wrapper = entity_metadata_wrapper('registration', $registration);
+    $host = $wrapper->entity->value();
 
     // Redirect to registration
     if (entity_access('view', 'registration', $registration)) {
@@ -239,9 +249,11 @@ function registration_form_submit($form, &$form_state) {
       $form_state['redirect'] = $uri['path'];
     }
     // Redirect to host entity
-    else if (entity_access('view', $registration->entity_type, $registration->entity)) {
-      $uri = entity_uri($registration->entity_type, $registration->entity);
-      $form_state['redirect'] = $uri['path'];
+    else {
+      if (entity_access('view', $registration->entity_type, $host)) {
+        $uri = entity_uri($registration->entity_type, $host);
+        $form_state['redirect'] = $uri['path'];
+      }
     }
   }
   else {
@@ -296,7 +308,9 @@ function registration_delete_confirm_submit($form, &$form_state) {
     watchdog('registration', 'Registration %id deleted.', array('%id' => $registration->registration_id));
     drupal_set_message(t('Registration %id has been deleted.', array('%id' => $registration->registration_id)));
 
-    $uri = entity_uri($registration->entity_type, $registration->entity);
+    $wrapper = entity_metadata_wrapper('registration', $registration);
+    $host = $wrapper->entity->value();
+    $uri = entity_uri($registration->entity_type, $host);
     $form_state['redirect'] = $uri['path'];
   }
 }
@@ -591,13 +605,15 @@ function registration_entity_settings_form_validate($form, &$form_state) {
   $reminder = $form_state['values']['reminder'];
   if ($reminder['send_reminder']
     && (empty($reminder['reminder_settings']['reminder_date']) ||
-      empty($reminder['reminder_settings']['reminder_template']))) {
+      empty($reminder['reminder_settings']['reminder_template']))
+  ) {
     form_set_error('reminder][send_reminder', t('If sending a reminder, provide a date and template.'));
   }
 
   // Validate reminder date
   if (!empty($reminder['reminder_settings']['reminder_date'])
-    && strtotime($reminder['reminder_settings']['reminder_date']) === FALSE) {
+    && strtotime($reminder['reminder_settings']['reminder_date']) === FALSE
+  ) {
     form_set_error('reminder][reminder_settings][reminder_date', t('Reminder date is invalid.'));
   }
 }
@@ -624,6 +640,7 @@ function registration_entity_settings_form_submit($form, &$form_state) {
  * Helper to convert registration entity settings form values into a fields.
  *
  * @param $values
+ *
  * @return array
  */
 function registration_convert_form_settings($values) {

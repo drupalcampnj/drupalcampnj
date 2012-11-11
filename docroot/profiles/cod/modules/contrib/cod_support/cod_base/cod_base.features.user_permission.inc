@@ -30,16 +30,6 @@ function cod_base_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: access all webform results.
-  $permissions['access all webform results'] = array(
-    'name' => 'access all webform results',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'webform',
-  );
-
   // Exported permission: access content.
   $permissions['access content'] = array(
     'name' => 'access content',
@@ -67,26 +57,6 @@ function cod_base_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'dashboard',
-  );
-
-  // Exported permission: access own webform results.
-  $permissions['access own webform results'] = array(
-    'name' => 'access own webform results',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'webform',
-  );
-
-  // Exported permission: access own webform submissions.
-  $permissions['access own webform submissions'] = array(
-    'name' => 'access own webform submissions',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'webform',
   );
 
   // Exported permission: access private fields.
@@ -263,46 +233,6 @@ function cod_base_user_default_permissions() {
     'module' => 'path',
   );
 
-  // Exported permission: delete all webform submissions.
-  $permissions['delete all webform submissions'] = array(
-    'name' => 'delete all webform submissions',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'webform',
-  );
-
-  // Exported permission: delete own webform submissions.
-  $permissions['delete own webform submissions'] = array(
-    'name' => 'delete own webform submissions',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'webform',
-  );
-
-  // Exported permission: edit all webform submissions.
-  $permissions['edit all webform submissions'] = array(
-    'name' => 'edit all webform submissions',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'webform',
-  );
-
-  // Exported permission: edit own webform submissions.
-  $permissions['edit own webform submissions'] = array(
-    'name' => 'edit own webform submissions',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'webform',
-  );
-
   // Exported permission: flush caches.
   $permissions['flush caches'] = array(
     'name' => 'flush caches',
@@ -321,16 +251,6 @@ function cod_base_user_default_permissions() {
       1 => 'content editor',
     ),
     'module' => 'pathauto',
-  );
-
-  // Exported permission: use admin toolbar.
-  $permissions['use admin toolbar'] = array(
-    'name' => 'use admin toolbar',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'content editor',
-    ),
-    'module' => 'admin',
   );
 
   // Exported permission: view advanced help index.

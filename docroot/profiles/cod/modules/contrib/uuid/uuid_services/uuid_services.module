@@ -15,7 +15,7 @@
 function uuid_services_services_resources_alter(&$resources, &$endpoint) {
   foreach (entity_get_info() as $entity_type => $entity_info) {
     if (isset($entity_info['uuid']) && $entity_info['uuid'] == TRUE && isset($resources[$entity_type])) {
-      unset($resources[$entity_type]['create']);
+      unset($resources[$entity_type]['operations']['create']);
 
       // Alter 'retrieve' method to use UUID enabled functions and arguments.
       $resources[$entity_type]['operations']['retrieve']['help'] = t('Retrieve %label entities based on UUID.', array('%label' => $entity_info['label']));
@@ -119,7 +119,13 @@ function _uuid_services_entity_retrieve($entity_type, $uuid) {
  */
 function _uuid_services_entity_update($entity_type, $uuid, $entity) {
   try {
-    $entity = (object)$entity;
+    $controller = entity_get_controller($entity_type);
+    if ($controller instanceof EntityAPIControllerInterface) {
+      $entity = $controller->create($entity);
+    }
+    else {
+      $entity = (object) $entity;
+    }
     entity_uuid_save($entity_type, $entity);
     return $entity;
   }

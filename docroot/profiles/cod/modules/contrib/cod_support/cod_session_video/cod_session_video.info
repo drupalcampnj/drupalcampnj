@@ -10,8 +10,9 @@ name = "COD Session Video"
 package = "COD"
 project = "cod_session_video"
 
-; Information added by drush on 2012-08-18
-version = ""
+; Information added by drush on 2012-11-10
+version = "7.x-1.0-alpha1+0-dev"
+core = "7.x"
 project = "cod_support"
-datestamp = "1345248603"
+datestamp = "1352511671"
 

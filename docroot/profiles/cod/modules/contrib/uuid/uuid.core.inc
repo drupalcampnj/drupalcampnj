@@ -42,8 +42,6 @@ function book_uuid_entities_features_export_entity_alter(&$entity, $entity_type)
   if ($entity_type == 'node') {
     if (!empty($entity->book)) {
       $entity->book['bid'] = current(entity_get_uuid_by_id($entity_type, array($entity->book['bid'])));
-      module_load_include('inc', 'uuid', 'uuid.features.menu');
-      uuid_menu_link_make_universal($entity->book, TRUE);
     }
   }
 }
@@ -58,7 +56,6 @@ function book_entity_uuid_presave(&$entity, $entity_type) {
       if (!$entity->book['bid']) {
         $entity->book['bid'] = 'new';
       }
-      uuid_menu_link_make_local($entity->book);
     }
   }
 }
@@ -132,52 +129,6 @@ function file_entity_uuid_presave(&$entity, $entity_type) {
       $directory = drupal_dirname($entity->uri);
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
       file_unmanaged_save_data(base64_decode($entity->file_contents), $entity->uri, FILE_EXISTS_REPLACE);
-    }
-  }
-}
-
-/**
- * Load path data to entity object for includesion in export.
- */
-function path_entity_uuid_load($entities, $entity_type) {
-  if ($entity_type == 'node') {
-    foreach ($entities as $node) {
-      $sources[] = 'node/' . $node->nid;
-    }
-
-    $result = db_select('url_alias')
-      ->fields('url_alias', array('source', 'alias'))
-      ->condition('source', $sources)
-      ->execute()
-      ->fetchAllKeyed();
-
-    foreach ($result as $source => $alias) {
-      $nid = str_replace('node/', '', $source);
-      $entities[$nid]->path['alias'] = $alias;
-      $entities[$nid]->path['pathauto'] = FALSE;
-      unset($entities[$nid]->path['pid']);
-      unset($entities[$nid]->path['source']);
-      unset($entities[$nid]->path['language']);
-    }
-  }
-  elseif ($entity_type == 'taxonomy_term') {
-    foreach ($entities as $term) {
-      $sources[] = 'taxonomy/term/' . $term->tid;
-    }
-
-    $result = db_select('url_alias')
-      ->fields('url_alias', array('source', 'alias'))
-      ->condition('source', $sources)
-      ->execute()
-      ->fetchAllKeyed();
-
-    foreach ($result as $source => $alias) {
-      $tid = str_replace('taxonomy/term/', '', $source);
-      $entities[$tid]->path['alias'] = $alias;
-      $entities[$tid]->path['pathauto'] = FALSE;
-      unset($entities[$tid]->path['pid']);
-      unset($entities[$tid]->path['source']);
-      unset($entities[$tid]->path['language']);
     }
   }
 }

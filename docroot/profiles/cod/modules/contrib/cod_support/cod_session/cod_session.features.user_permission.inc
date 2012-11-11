@@ -163,24 +163,6 @@ function cod_session_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: schedule schedule_item.
-  $permissions['schedule schedule_item'] = array(
-    'name' => 'schedule schedule_item',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'cod_session',
-  );
-
-  // Exported permission: schedule session.
-  $permissions['schedule session'] = array(
-    'name' => 'schedule session',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'cod_session',
-  );
-
   // Exported permission: view field_accepted.
   $permissions['view field_accepted'] = array(
     'name' => 'view field_accepted',

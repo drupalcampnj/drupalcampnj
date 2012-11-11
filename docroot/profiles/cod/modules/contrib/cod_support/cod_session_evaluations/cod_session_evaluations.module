@@ -27,8 +27,9 @@ function cod_session_evaluations_form_session_evaluation_node_form_alter(&$form,
 * Implements hook_node_view().
 */
 function cod_session_evaluations_node_view($node, $view_mode, $langcode) {
-  // Add session evaluation links to session nodes.
-  
+  //sanity check -- we should only be posting on the session nodes. Return if its any other node or listing
+  //todo -- probably want to be able add the link for a listing of nodes, but we can't at the moment
+  //        since entities aren't loaded on anything but the full view
   if($node->type != 'session' || $view_mode != 'full' || !user_access('create session_evaluation content')) {
     return;
   }
@@ -36,16 +37,22 @@ function cod_session_evaluations_node_view($node, $view_mode, $langcode) {
   $account = $user;
   $bundle = 'session';
 
-  // Verify that the session is accepted.
-  $time_slot = $node->field_session_slot['und'][0]['entity'];
-
-  // Verify that the session is scheduled.
-  if(!cod_session_is_scheduled($node)) {
+  //lets check first that the session was accepted AND its the event has started
+  //how could you evaluate a presentation if it wasn't ever scheduled?
+  if(empty($node->field_session_timeslot)) {
     return;
   }
 
-  // Verify that the session time has passed.
-  if(!($node->field_accepted['und'][0]['value']) || strtotime($time_slot->field_slot_datetime['und'][0]['value']) > mktime()) {
+  $time_slot = $node->field_session_timeslot[LANGUAGE_NONE][0]['entity'];
+  $time_entity = node_load($time_slot->field_slot_types_time_slot[LANGUAGE_NONE][0]['target_id']);
+  //maybe we change this, but I feel like we should show the link as soon as the presentation starts. What if it doesn't go the whole alloted time?
+  $time_start = new DateTime($time_entity->field_slot_datetime[LANGUAGE_NONE][0]['value']);
+
+  //how could you evaluate a presenatation if it never was accepted OR it hasn't occured yet?
+  //note -- TZ handling could cause issues here, but as long as you don't have multiple timezones on one conference, it should be good
+  $now = new DateTime();
+
+  if(!($node->field_accepted['und'][0]['value']) || strtotime($time_start->getTimestamp()) > $now->getTimestamp()) {
     return;
   }
   // Hide the "Provide feedback on this session" links if the user has already

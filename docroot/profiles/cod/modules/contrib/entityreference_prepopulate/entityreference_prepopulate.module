@@ -54,9 +54,36 @@ function entityreference_prepopulate_field_update_instance($instance, $prior_ins
  * not shown, e.g. due to restricted field access.
  */
 function entityreference_prepopulate_field_default_value($entity_type, $entity, $field, $instance, $langcode) {
+  if (module_exists('og') && og_is_group_audience_field($instance['field_name'])) {
+    return entityreference_prepopulate_og_field_default_value($entity_type, $entity, $field, $instance, $langcode);
+  }
   if ($items = entityreference_prepopulate_get_values_from_url($field, $instance)) {
     // TODO: Check field cardinality.
     return $items;
+  }
+}
+
+/**
+ * Default value callback for Organic groups; Filter results by field-mode.
+ */
+function entityreference_prepopulate_og_field_default_value($entity_type, $entity, $field, $instance, $langcode) {
+  if (empty($instance['field_mode'])) {
+    return;
+  }
+  if ($items = entityreference_prepopulate_get_values_from_url($field, $instance)) {
+    // Filter out the items that don't match the field-mode.
+    $gids = array();
+    foreach ($items as $item) {
+      $gids[] = $item['target_id'];
+    }
+    if (!$valid_ids = entityreference_get_selection_handler($field, $instance, $entity_type, $entity)->validateReferencableEntities($gids)) {
+      return;
+    }
+    $valid_items = array();
+    foreach ($valid_ids as $valid_id) {
+      $valid_items[] = array('target_id' => $valid_id);
+    }
+    return $valid_items;
   }
 }
 
@@ -102,23 +129,26 @@ function entityreference_prepopulate_field_attach_form($entity_type, $entity, &$
         continue;
       }
 
-      if (!in_array($settings['fallback'], array('form_error', 'redirect')) && $settings['action'] != 'disable') {
-        continue;
-      }
       $field = $value['field'];
       if (entityreference_prepopulate_get_values_from_url($field, $instance)) {
         if ($settings['action'] == 'disable') {
           $form[$field_name][$lang]['#disabled'] = TRUE;
         }
-        continue;
+        elseif ($settings['action'] == 'hide') {
+          // We don't hide the field via hook_field_access(), as the
+          // default value won't be set.
+          $form[$field_name]['#access'] = FALSE;
+        }
       }
-      $message = t('Field @label must be populated via URL', array('@label' => $instance['label']));
-      if ($settings['fallback'] == 'form_error') {
-        form_error($form, $message);
-      }
-      elseif ($settings['fallback'] == 'redirect') {
-        drupal_set_message($message, 'notice');
-        drupal_goto();
+      elseif (in_array($settings['fallback'], array('form_error', 'redirect'))) {
+        $message = t('Field @label must be populated via URL', array('@label' => $instance['label']));
+        if ($settings['fallback'] == 'form_error') {
+          form_error($form, $message);
+        }
+        elseif ($settings['fallback'] == 'redirect') {
+          drupal_set_message($message, 'notice');
+          drupal_goto();
+        }
       }
     }
   }
@@ -155,10 +185,7 @@ function entityreference_prepopulate_field_access($op, $field, $entity_type, $en
   }
   $items = entityreference_prepopulate_get_values_from_url($field, $instance);
 
-  if (!empty($items) && $settings['action'] == 'hide') {
-    return FALSE;
-  }
-  elseif (empty($items) && $settings['fallback'] == 'hide') {
+  if (empty($items) && $settings['fallback'] == 'hide') {
     return FALSE;
   }
 }

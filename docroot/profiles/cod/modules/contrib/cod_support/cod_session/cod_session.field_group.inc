@@ -134,8 +134,7 @@ function cod_session_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_accepted',
-      1 => 'field_session_slot',
-      2 => 'field_session_room',
+      1 => 'field_session_timeslot',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -164,8 +163,7 @@ function cod_session_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_accepted',
-      1 => 'field_session_slot',
-      2 => 'field_session_room',
+      1 => 'field_session_timeslot',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

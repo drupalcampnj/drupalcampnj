@@ -5,12 +5,12 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function cod_news_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-news-body'
+  // Exported field: 'node-news-body'.
   $fields['node-news-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20,6 +20,9 @@ function cod_news_field_default_fields() {
         0 => 'node',
       ),
       'field_name' => 'body',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -33,8 +36,17 @@ function cod_news_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 'create',
+          'edit' => 0,
+          'edit own' => 'edit own',
+          'view' => 'view',
+          'view own' => 0,
+        ),
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
@@ -49,6 +61,12 @@ function cod_news_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => 0,
+        ),
+        'listing' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => 0,
         ),
         'teaser' => array(

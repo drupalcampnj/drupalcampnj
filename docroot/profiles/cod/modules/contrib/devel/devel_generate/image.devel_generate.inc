@@ -33,7 +33,8 @@ function _image_devel_generate($object, $field, $instance, $bundle) {
       $source->uri = $path;
       $source->uid = 1; // TODO: randomize? Use case specific.
       $source->filemime = 'image/' . pathinfo($path, PATHINFO_EXTENSION);
-      $source->filename = array_pop(explode("//", $path));
+      $filename = explode("//", $path);
+      $source->filename = array_pop($filename);
       $destination_dir = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
       file_prepare_directory($destination_dir, FILE_CREATE_DIRECTORY);
       $destination = $destination_dir . '/' . basename($path);
@@ -89,8 +90,6 @@ function devel_generate_image($extension = 'png', $min_resolution, $max_resoluti
 
     $save_function = 'image'. ($extension == 'jpg' ? 'jpeg' : $extension);
     $save_function($im, drupal_realpath($destination));
-
-    $images[$extension][$min_resolution][$max_resolution][$destination] = $destination;
   }
   return $destination;
 }

@@ -3,7 +3,7 @@
 /**
  * IMPORTANT WARNING: DO NOT MODIFY THIS FILE.
  */
- 
+
 // hook_html_head_alter().
 function adaptivetheme_html_head_alter(&$head_elements) {
   $head_elements['system_meta_content_type']['#attributes'] = array(
@@ -11,10 +11,13 @@ function adaptivetheme_html_head_alter(&$head_elements) {
   );
 }
 
-// hook_js_alter(). Use our own vesion of vertical-tabs.js for better error handling, see http://drupal.org/node/607752
+// hook_js_alter()
 function adaptivetheme_js_alter(&$javascript) {
-  $file = drupal_get_path('theme', 'adaptivetheme') . '/js/vertical-tabs.js';
-  $javascript['misc/vertical-tabs.js'] = drupal_js_defaults($file);
+  // Use our own vesion of vertical-tabs.js for better error handling, see http://drupal.org/node/607752
+  if (isset($javascript['misc/vertical-tabs.js'])) {
+    $file = drupal_get_path('theme', 'adaptivetheme') . '/js/vertical-tabs.js';
+    $javascript['misc/vertical-tabs.js'] = drupal_js_defaults($file);
+  }
 }
 
 // hook_form_FORM_ID_alter().
