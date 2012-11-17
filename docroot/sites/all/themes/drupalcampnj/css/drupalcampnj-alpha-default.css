@@ -1,9 +1,125 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
+html {
+  background: url('../images/bg-tile.jpg') 0 0 repeat-x;
+}
+
+body {
+  background: #151515 url('../images/bg-main.jpg') 50% 0 no-repeat;
+}
+
 #zone-menu-wrapper, #zone-branding-wrapper {
   border-bottom: none;
 }
 
-#zone-menu-wrapper a {
-  display: inline;
+/**
+ *   Site name
+ */
+
+.site-name a {
+  background: url('../images/sb-green-sign.png') 0 0 no-repeat;
+  position: absolute;
+  width: 288px;
+  height: 182px;
+  right: -25px;
+  top: 65px;
+  z-index: 10;
+}
+
+/**
+ *   Branding
+ */
+
+#zone-branding {
+  border-top: none;
+  border-bottom: none;
+  padding: 0;
+  background: none;
+}
+
+/**
+ *   Menu
+ */
+
+#zone-menu {
+  background: none;
+  border-bottom: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow:    none;
+  box-shadow:         none;
+  padding: 0;
+}
+
+#zone-menu li {
+  display: block;
+  float: left;
+  background: url('../images/nav-sign-clasp.png') 50% 0  no-repeat;
+  padding-top: 16px;
+}
+
+#zone-menu a {
+  text-transform: capitalize;
+  font-variant: small-caps;
+  background-color: #00674c;
+  border: 2px solid #fff;
+  padding: 4px 6px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/**
+ *   Content
+ */
+#zone-content-wrapper {
+  background: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow:    none;
+  box-shadow:         none;
+}
+
+#region-content {
+  margin-top: 150px;
+  background-color: #0B0B0B;
+  opacity: 0.9;
+  min-height: 675px; 
+  height:auto !important; 
+  height: 675px; 
+}
+
+/**
+ *   Aside
+ */
+
+#zone-content aside {
+  margin-top: 150px;
+}
+
+/**
+ *   Footer
+ */
+#zone-footer-wrapper {
+  background: none;
+}
+
+#block-views-sponsors-block ul {
+  padding: 0;
+  overflow: hidden;
+}
+
+#block-views-sponsors-block li {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 12px;
+  list-style: none;
+}
+
+#block-views-sponsors-block li span a {
+  outline: none;
+}
+
+#block-views-sponsors-block li span img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }

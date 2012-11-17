@@ -3,7 +3,6 @@
 
 
 body {
-  background: #f1f1f1;
   font-family: "arial", "helvetica", clean, sans-serif;
 }
 
@@ -94,7 +93,7 @@ body {
  */
 
 #zone-footer-wrapper {
-  background: url('../images/footer-bg.png') #121212 0 0 repeat-x;
+  background: url('../images/footer-bg.png') #151515 0 0 repeat-x;
   height: 300px;
   padding: 60px 0 0 0;
 }
