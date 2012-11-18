@@ -92,7 +92,20 @@ body {
  */
 
 #zone-content aside {
-  margin-top: 150px;
+  margin-top: 182px;
+}
+
+.twitter-sign a{
+  text-indent: -9999px;
+  display: block;
+  background: url('../images/sb-twitter-bird.png') 0 0 no-repeat;
+  padding: 0;
+  width: 52px;
+  position: absolute;
+  top: -217px;
+  left: 120px;
+  z-index: 15;
+  margin: 0;
 }
 
 /**

@@ -88,6 +88,18 @@ body {
   padding: 20px 0;
 }
 
+/**
+ *   Aside
+ */
+
+.twitter-sign a {
+  display: block;
+  background: url('../images/sb-twitter-bird.png') left top no-repeat;
+  padding: 10px 0 0 60px;
+  height: 46px;
+  margin: 20px 0 0 0;
+}
+
 /*
  * FOOTER
  */
