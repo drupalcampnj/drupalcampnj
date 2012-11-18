@@ -79,12 +79,21 @@ body {
 }
 
 #region-content {
-  margin-top: 150px;
+  margin-top: 275px;
   background-color: #0B0B0B;
   opacity: 0.9;
-  min-height: 675px; 
+  min-height: 550px; 
   height:auto !important; 
-  height: 675px; 
+  height: 550px;
+  color: #fff;
+}
+
+.region-content-inner {
+  padding: 40px 0 0 40px;
+}
+
+#region-content a {
+  color: #ffca58;
 }
 
 /**
