@@ -96,12 +96,23 @@ body {
   color: #ffca58;
 }
 
+#region-content table {
+  width: 635px;
+  color: #1b1b1b;
+}
+
+#region-content table caption{
+  color: #fff;
+}
+
 /**
  *   Aside
  */
 
 #zone-content aside {
   margin-top: 182px;
+  background: url('../images/sb-pole-entire.png') 76px -50px no-repeat;
+  height: 660px;
 }
 
 .twitter-sign a{
@@ -115,6 +126,37 @@ body {
   left: 120px;
   z-index: 15;
   margin: 0;
+  float: none;
+}
+
+.date-sign {
+  height: 322px;
+  width: 196px;
+  background: url('../images/sb-date-sign.png') 0 0 no-repeat;
+  margin-top: 20px;
+  position: relative;
+  left: 6px;
+}
+
+.signup-sign a {
+  height: 62px;
+  width: 245px;
+  background: url('../images/sb-yellow-sign.png') 0 0 no-repeat;
+  margin-top: 20px;
+  display: block;
+  position: relative;
+  right: 16px;
+  text-indent: -9999px;
+  float: none;
+}
+
+.arrow-sign {
+  height: 128px;
+  width: 128px;
+  background: url('../images/sb-round-sign.png') 0 0 no-repeat;
+  margin-top: 20px;
+  position: relative;
+  left: 40px;
 }
 
 /**

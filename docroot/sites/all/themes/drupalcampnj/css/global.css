@@ -97,7 +97,18 @@ body {
   background: url('../images/sb-twitter-bird.png') left top no-repeat;
   padding: 10px 0 0 60px;
   height: 46px;
-  margin: 20px 0 0 0;
+  margin: 30px 0 0 0;
+  float: left;
+}
+
+.signup-sign a {
+  height: 62px;
+  width: 245px;
+  background: url('../images/sb-yellow-sign.png') 0 0 no-repeat;
+  margin-top: 20px;
+  display: block;
+  text-indent: -9999px;
+  float: right;
 }
 
 /*
