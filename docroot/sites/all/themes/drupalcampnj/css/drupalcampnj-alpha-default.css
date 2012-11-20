@@ -56,8 +56,6 @@ body {
   float: left;
   background: url('../images/nav-sign-clasp.png') 50% 0  no-repeat;
   padding-top: 16px;
-  position: relative;
-  bottom: 5px;
 }
 
 #zone-menu a {
@@ -87,16 +85,21 @@ body {
 
 #region-content {
   margin-top: 275px;
-  background-color: #0B0B0B;
-  opacity: 0.9;
-  min-height: 550px; 
-  height:auto !important; 
-  height: 550px;
   color: #fff;
 }
 
 .region-content-inner {
   padding: 40px 0 0 40px;
+  background-color: #0B0B0B;
+  opacity: 0.9;
+  min-height: 550px; 
+  height:auto !important; 
+  height: 550px;
+
+}
+
+.front .region-content-inner {
+  margin-left: 160px;
 }
 
 #region-content a {

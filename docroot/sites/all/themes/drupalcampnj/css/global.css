@@ -5,7 +5,7 @@ body {
   font-family: "arial", "helvetica", clean, sans-serif;
 }
 
-h1 {
+#zone-content h1 {
   font-size: 2.2em;
   line-height: 1.19318em;
   font-weight: normal;
@@ -14,7 +14,7 @@ h1 {
   padding-bottom: 0em;
   margin-bottom: 0.51136em; }
 
-h2 {
+#zone-content h2, #zone-footer h2 {
   font-size: 1.6em;
   line-height: 1.17188em;
   font-weight: normal;
