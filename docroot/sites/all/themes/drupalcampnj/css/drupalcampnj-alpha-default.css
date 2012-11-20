@@ -1,11 +1,11 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
 html {
-  background: url('../images/bg-tile.jpg') 0 0 repeat-x;
+  background: #151515 url('../images/bg-tile.jpg') 0 0 repeat-x;
 }
 
 body {
-  background: #151515 url('../images/bg-main.jpg') 50% 0 no-repeat;
+  background: url('../images/bg-main.jpg') 50% 0 no-repeat;
 }
 
 #zone-menu-wrapper, #zone-branding-wrapper {
