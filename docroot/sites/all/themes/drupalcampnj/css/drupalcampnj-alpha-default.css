@@ -21,7 +21,7 @@ body {
   position: absolute;
   width: 288px;
   height: 182px;
-  right: -25px;
+  right: -11px;
   top: 65px;
   z-index: 10;
 }
@@ -111,7 +111,7 @@ body {
 
 #zone-content aside {
   margin-top: 182px;
-  background: url('../images/sb-pole-entire.png') 76px -50px no-repeat;
+  background: url('../images/sb-pole-entire.png') 62px -50px no-repeat;
   height: 660px;
 }
 
@@ -135,7 +135,7 @@ body {
   background: url('../images/sb-date-sign.png') 0 0 no-repeat;
   margin-top: 20px;
   position: relative;
-  left: 6px;
+  left: -8px;
 }
 
 .signup-sign a {
@@ -145,7 +145,7 @@ body {
   margin-top: 20px;
   display: block;
   position: relative;
-  right: 16px;
+  right: 32px;
   text-indent: -9999px;
   float: none;
 }
@@ -156,7 +156,7 @@ body {
   background: url('../images/sb-round-sign.png') 0 0 no-repeat;
   margin-top: 20px;
   position: relative;
-  left: 40px;
+  left: 25px;
 }
 
 /**
