@@ -56,6 +56,8 @@ body {
   float: left;
   background: url('../images/nav-sign-clasp.png') 50% 0  no-repeat;
   padding-top: 16px;
+  position: relative;
+  bottom: 5px;
 }
 
 #zone-menu a {
