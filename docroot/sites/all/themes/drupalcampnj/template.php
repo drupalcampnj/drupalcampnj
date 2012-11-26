@@ -15,8 +15,8 @@
 function drupalcampnj_alpha_preprocess_node(&$vars) {
   // custom functionality here
   // The read more link is ugly...
-  if ($vars['node']->type == 'page') {
-    unset($vars['node']->content['links']['node']['#links']['node-readmore']);
+  if ($vars['type'] == 'page') {
+    unset($vars['content']['links']['node']['#links']['node-readmore']);
   }
 }
 
