@@ -10,3 +10,13 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
+
+
+function drupalcampnj_alpha_preprocess_node(&$vars) {
+  // custom functionality here
+  // The read more link is ugly...
+  if ($vars['node']->type == 'page') {
+    unset($vars['node']->content['links']['node']['#links']['node-readmore']);
+  }
+}
+
