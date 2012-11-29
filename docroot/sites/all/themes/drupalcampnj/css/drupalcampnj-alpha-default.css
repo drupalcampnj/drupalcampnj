@@ -245,12 +245,14 @@ body {
 #region-content .view-sponsors h3 {
   clear: both;
   padding-bottom: 1em;
+  border-top: 1px solid #FFCA58;
+  width: 600px;
 }
 
 #region-content .view-sponsors ul {
   float: left;
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 6em;
 }
 
 #region-content .view-sponsors li.views-row-odd {
