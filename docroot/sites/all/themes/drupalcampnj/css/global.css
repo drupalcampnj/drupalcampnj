@@ -121,6 +121,11 @@ h6 {
   padding: 10px 0;
   font-weight: bold;
   text-decoration: none;
+  padding-left: 10px;
+}
+
+#zone-menu a:hover, #zone-menu a:active {
+  background-color: #009a72;
 }
 
 /* 
