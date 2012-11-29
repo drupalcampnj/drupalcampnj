@@ -232,3 +232,33 @@ body {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+
+
+/**
+ *   STYLES FOR SPECIFIC PAGES ARE BELOW
+ */
+
+/**
+ *   Sponsors
+ */
+
+#region-content .view-sponsors h3 {
+  clear: both;
+  padding-bottom: 1em;
+}
+
+#region-content .view-sponsors ul {
+  float: left;
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+#region-content .view-sponsors li.views-row-odd {
+  float: left;
+  margin: 0;
+}
+
+#region-content .view-sponsors li.views-row-even {
+  float: right;
+  padding-right: 4em;
+}
