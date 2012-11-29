@@ -79,13 +79,17 @@ body {
   box-shadow:         none;
 }
 
-#region-content {
+.front #region-content {
   margin-top: 275px;
+}
+
+#region-content {
+  margin-top: 31px;
   color: #fff;
 }
 
 .region-content-inner {
-  padding: 40px 0 0 40px;
+  padding: 40px 40px 0 40px;
   background-color: rgb(11,11,11);
   background-color: rgba(11,11,11,.9);
   min-height: 450px; 
