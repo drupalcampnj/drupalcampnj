@@ -211,23 +211,23 @@ body {
   background: none;
 }
 
-#block-views-sponsors-block ul {
-  padding: 0;
-  overflow: hidden;
-}
-
-#block-views-sponsors-block li {
+#block-views-sponsors-block .row {
   float: left;
-  margin-right: 15px;
-  margin-bottom: 12px;
-  list-style: none;
+  width: 100%;
+  clear: both;
+  margin: 0 0 40px 0;
 }
 
-#block-views-sponsors-block li span a {
+#block-views-sponsors-block .gridCol {
+  float: left;
+  width: 30%;
+}
+
+#block-views-sponsors-block .gridCol a {
   outline: none;
 }
 
-#block-views-sponsors-block li span img {
+#block-views-sponsors-block .gridCol img {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
