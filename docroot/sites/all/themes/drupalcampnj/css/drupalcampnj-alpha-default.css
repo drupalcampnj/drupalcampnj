@@ -258,3 +258,8 @@ body {
   float: right;
   padding-right: 4em;
 }
+
+/* feedback link should be hidden by default*/
+#block-feedback-feedback {
+  display: none;
+}
