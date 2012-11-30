@@ -227,12 +227,6 @@ body {
   outline: none;
 }
 
-#block-views-sponsors-block .gridCol img {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-
 
 /**
  *   STYLES FOR SPECIFIC PAGES ARE BELOW
