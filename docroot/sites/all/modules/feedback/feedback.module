@@ -9,10 +9,13 @@
  * Implements hook_page_build().
  */
 function feedback_page_build(&$page) {
-  $page['page_bottom']['feedback_block'] = array(
-    '#markup' => '<div id="block-feedback-feedback"><div class="content">' . l(t('Feedback'), 'contact') . '</div></div>',
-    '#attached' => array(
-      'css' => array(drupal_get_path('module', 'feedback') . '/feedback.css'),
-    ),
-  );
+  // Add the feedback link everyplace except on admin pages.
+  if (!path_is_admin(current_path())) {
+    $page['page_bottom']['feedback_block'] = array(
+      '#markup' => '<div id="block-feedback-feedback"><div class="content">' . l(t('Feedback'), 'contact') . '</div></div>',
+      '#attached' => array(
+        'css' => array(drupal_get_path('module', 'feedback') . '/feedback.css'),
+      ),
+    );
+  }
 }
