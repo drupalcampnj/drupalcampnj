@@ -18,7 +18,7 @@ body {
   font-size: 1.6em;
   line-height: 1.17188em;
   font-weight: normal;
-  margin-top: 0em;
+  margin-top: 1.6em;
   padding-top: 0.17578em;
   padding-bottom: 0.05859em;
   margin-bottom: 0em; }
@@ -59,6 +59,9 @@ h6 {
   padding-bottom: 0.125em;
   margin-bottom: 0em; }
 
+p, ol, ul, table, pre, code {
+  margin-bottom: 1.5em;
+}
 
 /* 
  * BRANDING 
@@ -145,6 +148,10 @@ h6 {
   background: linear-gradient(to bottom,  #9091bd 0%,#bfa6bb 74%,#d3a49d 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9091bd', endColorstr='#d3a49d',GradientType=0 ); /* IE6-9 */
   padding: 20px 0;
+}
+
+#region-content .node-links ul li a, #region-content .comment-links ul li a {
+  color: black;
 }
 
 /**
