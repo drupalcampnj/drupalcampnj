@@ -63,6 +63,14 @@ p, ol, ul, table, pre, code {
   margin-bottom: 1.5em;
 }
 
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
 /* 
  * BRANDING 
  */
