@@ -187,3 +187,10 @@ h6 {
   background-color: #151515; 
   padding: 60px 0 0 0;
 }
+
+/* feedback link should be hidden by default*/
+#block-feedback-feedback {
+  display: none;
+}
+
+

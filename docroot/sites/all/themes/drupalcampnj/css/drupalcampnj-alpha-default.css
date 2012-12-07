@@ -257,3 +257,13 @@ body {
   float: right;
   padding-right: 4em;
 }
+
+/* feedback link is hidden by default*/
+#block-feedback-feedback {
+  display: block;
+}
+#block-feedback-feedback a {
+  background-color: #0163A4;
+  color: white;
+  font-weight: bold;
+}
