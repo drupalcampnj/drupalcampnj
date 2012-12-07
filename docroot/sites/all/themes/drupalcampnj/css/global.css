@@ -206,7 +206,7 @@ p, ol, ul, table, pre, code {
  * Can't this please be some sort of a function in the theme?
  */
 
-.logged-in .menu-395 {
+.logged-in #zone-menu .menu-395 {
   display: none;
 }
 
