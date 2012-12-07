@@ -200,4 +200,14 @@ p, ol, ul, table, pre, code {
   display: none;
 }
 
+/*
+ * AWFUL CSS HACK TO HIDE EXTRA MENU ITEM FOR SUBMIT SESSION FOR LOGGED IN USERS
+ * 
+ * Can't this please be some sort of a function in the theme?
+ */
+
+.logged-in .menu-395 {
+  display: none;
+}
+
 
