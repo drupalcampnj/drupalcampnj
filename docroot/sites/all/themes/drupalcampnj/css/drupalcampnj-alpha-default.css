@@ -198,6 +198,29 @@ div.vertical-tabs {
 	border: 1px solid #333;
 }
 
+fieldset.collapsible legend {
+	background-color: #333;
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+fieldset.collapsible .fieldset-legend {
+	padding: .5em .5em .5em 15px;
+}
+
+.form-radios {
+	margin-left: 1.5em;
+}
+
+.form-type-textfield label,
+.form-type-textarea label {
+	line-height: 1.5em;
+}
+
+#edit-field-session-timeslot-und {
+	margin: .5em 1.5em;
+}
+
 /**
  *   Aside
  */
