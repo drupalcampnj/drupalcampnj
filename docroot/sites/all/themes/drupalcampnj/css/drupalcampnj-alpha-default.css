@@ -129,7 +129,7 @@ body.admin-menu {
 #region-content ul.tabs a {
   background-color: inherit;
   border: 0;
-  color: #fff;
+  color: #999;
   font-weight: bold;
   padding: 5px 8px 3px 8px;
 }
@@ -138,6 +138,7 @@ body.admin-menu {
   border-bottom: 4px solid #FFCA58;
   border-left: 0;
   border-right: 0;
+  color: #fff;
 }
 
 #region-content table th {
