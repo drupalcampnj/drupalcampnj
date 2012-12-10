@@ -174,8 +174,16 @@ h2 a {
 	text-align: right;
 }
 
-.content p {
+.content p,
+.content ul,
+.content ol,
+.content td {
 	line-height: 1.2em;
+}
+
+.content ul,
+.content ol {
+	margin-left: 2em;
 }
 
 .node-type-sponsor #zone-content h1 {
@@ -198,6 +206,10 @@ h2 a {
 
 .field-name-field-sponsor-logo {
 	margin-bottom: 1em;
+}
+
+.field-name-field-sponsor-logo img {
+	background-color: #1d1919;
 }
 
 .field-name-field-sponsor-url {
