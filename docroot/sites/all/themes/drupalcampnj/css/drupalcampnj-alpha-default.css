@@ -177,6 +177,27 @@ body.admin-menu {
 	font-style: italic;
 }
 
+div.vertical-tabs {
+	border: 1px solid #333;
+}
+
+.vertical-tabs ul.vertical-tabs-list .selected strong {
+	color: white;
+}
+
+.vertical-tabs ul.vertical-tabs-list {
+	border-top: 1px solid #666;
+}
+
+.vertical-tabs ul.vertical-tabs-list li.selected {
+	background-color: #333;
+}
+
+.vertical-tabs ul.vertical-tabs-list li {
+	background: #222;
+	border: 1px solid #333;
+}
+
 /**
  *   Aside
  */
