@@ -166,6 +166,18 @@ ol {
  	color: #00674c;
 }
 
+h2 a {
+	text-decoration: none;
+}
+
+.feed-icon {
+	text-align: right;
+}
+
+.content p {
+	line-height: 1.2em;
+}
+
 /**
  *   Aside
  */

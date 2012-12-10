@@ -110,7 +110,7 @@ body.admin-menu {
 }
 
 .front .region-content-inner {
-  margin-left: 160px;
+  margin-left: 153px;
 }
 
 #region-content a {
@@ -152,14 +152,6 @@ body.admin-menu {
 
 #region-content table caption{
   color: #fff;
-}
-
-h2 a {
-	text-decoration: none;
-}
-
-.feed-icon {
-	text-align: right;
 }
 
 #messages .messages {
@@ -261,6 +253,14 @@ h2 a {
 	margin: inherit;
 }
 
+.page-sponsors .views-field-field-sponsor-logo img {
+	margin-bottom: 20px;
+}
+
+.page-sponsors .item-list ul li {
+	margin-bottom: 0;
+}
+
 
 /**
  *   STYLES FOR SPECIFIC PAGES ARE BELOW
@@ -301,4 +301,5 @@ h2 a {
   background-color: #0163A4;
   color: white;
   font-weight: bold;
+  border: 1px solid #014572;
 }
