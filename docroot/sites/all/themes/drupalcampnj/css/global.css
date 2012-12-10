@@ -162,6 +162,10 @@ ol {
   color: black;
 }
 
+ #region-content a {
+ 	color: #00674c;
+ }
+
 /**
  *   Aside
  */
