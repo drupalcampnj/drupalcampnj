@@ -71,6 +71,17 @@ ol {
   list-style: decimal;
 }
 
+table {
+	table-layout:fixed;
+}
+
+td, th {
+	word-wrap: break-word;
+	overflow: hidden;
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
 /* 
  * BRANDING 
  */
