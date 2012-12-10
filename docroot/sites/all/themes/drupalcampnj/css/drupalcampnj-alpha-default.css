@@ -94,7 +94,7 @@ body.logged-in {
 }
 
 .region-content-inner {
-  padding: 40px;
+  padding: 30px;
   background-color: rgb(11,11,11);
   background-color: rgba(11,11,11,.9);
   min-height: 450px; 
