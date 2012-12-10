@@ -121,19 +121,22 @@ body.admin-menu {
   border: 0;
 }
 
+#region-content ul.primary.tabs {
+	padding-bottom: 4px;
+}
+
 #region-content ul.tabs a {
-  background-color: rgb(11,11,11);
-  background-color: rgba(11,11,11,.9);
+  background-color: inherit;
   border: 0;
   color: #fff;
   font-weight: bold;
-  padding: 5px 8px 0 8px;
+  padding: 5px 8px 3px 8px;
 }
 
 #region-content ul.tabs a.active {
-  border-top: 1px solid #FFCA58;
-  border-left: 1px solid #FFCA58;
-  border-right: 1px solid #FFCA58;
+  border-bottom: 4px solid #FFCA58;
+  border-left: 0;
+  border-right: 0;
 }
 
 #region-content table th {
