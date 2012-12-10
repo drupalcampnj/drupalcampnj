@@ -166,7 +166,8 @@ ol {
  	color: #00674c;
 }
 
-h2 a {
+h2 a,
+.content td a {
 	text-decoration: none;
 }
 
@@ -226,6 +227,14 @@ h2 a {
 
 .field-name-field-sponsor-url a {
 	text-decoration: none;
+}
+
+.page-user .field {
+	margin-bottom: 1em;
+}
+
+.profile h3 {
+	margin-bottom: 1em;
 }
 
 /**
