@@ -148,11 +148,14 @@ body.admin-menu {
 }
 
 #region-content table td {
-  background-color: #111;
   border: 0;
 }
 
-#region-content table td.odd {
+#region-content table tr {
+  background-color: #111;
+}
+
+#region-content table tr.odd {
   background-color: #222;
 }
 
