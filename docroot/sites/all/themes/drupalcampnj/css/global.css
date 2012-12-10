@@ -198,7 +198,8 @@ h2 a,
 	margin-left: 2em;
 }
 
-.content td {
+.content td,
+.content th {
 	vertical-align: top;
 }
 
