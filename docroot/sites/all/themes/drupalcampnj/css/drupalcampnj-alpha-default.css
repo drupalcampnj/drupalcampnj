@@ -156,7 +156,8 @@ body.admin-menu {
 
 #messages .messages {
 	position: absolute;
-	width: 580px;
+	width: 585px;
+	z-index: 2;
 }
 
 .node .submitted {
@@ -280,7 +281,7 @@ body.admin-menu {
 #region-content .view-sponsors ul {
   float: left;
   width: 100%;
-  margin-bottom: 6em;
+  margin-bottom: 1em;
 }
 
 #region-content .view-sponsors li.views-row-odd {

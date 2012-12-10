@@ -178,6 +178,38 @@ h2 a {
 	line-height: 1.2em;
 }
 
+.node-type-sponsor #zone-content h1 {
+	margin-bottom: 0;
+}
+
+.node-type-sponsor #zone-content h1 {
+	margin-bottom: 0;
+}
+
+.field-name-field-sponsor-sponsorship-level {
+	margin-bottom: 1em;
+	font-style: italic;
+}
+
+.field-name-field-sponsor-sponsorship-level {
+	margin-bottom: 1em;
+	font-style: italic;
+}
+
+.field-name-field-sponsor-logo {
+	margin-bottom: 1em;
+}
+
+.field-name-field-sponsor-url {
+	margin-bottom: 1em;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.field-name-field-sponsor-url a {
+	text-decoration: none;
+}
+
 /**
  *   Aside
  */
