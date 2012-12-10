@@ -162,9 +162,9 @@ ol {
   color: black;
 }
 
- #region-content a {
+#region-content a {
  	color: #00674c;
- }
+}
 
 /**
  *   Aside
@@ -205,6 +205,12 @@ ol {
   height: 300px;
   background-color: #151515; 
   padding: 60px 0 0 0;
+}
+
+.views-field-field-sponsor-logo a {
+	display: block;
+	width: 260px;
+	margin: 0 auto .75em auto;
 }
 
 /* feedback link should be hidden by default*/

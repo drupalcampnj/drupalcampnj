@@ -4,7 +4,7 @@ body {
   background: #151515 url('../images/bg-tile.jpg') 0 0 repeat-x;
 }
 
-body.logged-in {
+body.admin-menu {
   background-position: 50% 20px;
 }
 
@@ -253,6 +253,12 @@ h2 a {
 
 #block-views-sponsors-block .gridCol a {
   outline: none;
+}
+
+.views-field-field-sponsor-logo a {
+	display: inherit;
+	width: inherit;
+	margin: inherit;
 }
 
 
