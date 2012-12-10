@@ -153,16 +153,17 @@ body.admin-menu {
 }
 
 #region-content table tr {
-  background-color: #111;
+  background-color: #191919;
 }
 
-#region-content table tr.odd {
-  background-color: #222;
+#region-content table tr.even {
+  background-color: #252525;
 }
 
 #region-content table caption{
   color: #fff;
   margin-bottom: .5em;
+  font-size: 1.25em;
 }
 
 #messages .messages {
