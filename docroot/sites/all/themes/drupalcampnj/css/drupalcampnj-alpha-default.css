@@ -149,6 +149,7 @@ body.admin-menu {
 
 #region-content table td {
   border: 0;
+  background-color: inherit;
 }
 
 #region-content table tr {
