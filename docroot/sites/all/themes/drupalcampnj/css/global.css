@@ -186,6 +186,10 @@ h2 a {
 	margin-left: 2em;
 }
 
+.content td {
+	vertical-align: top;
+}
+
 .node-type-sponsor #zone-content h1 {
 	margin-bottom: 0;
 }
@@ -206,6 +210,7 @@ h2 a {
 
 .field-name-field-sponsor-logo {
 	margin-bottom: 1em;
+	text-align: center;
 }
 
 .field-name-field-sponsor-logo img {
@@ -216,6 +221,7 @@ h2 a {
 	margin-bottom: 1em;
 	font-weight: bold;
 	font-style: italic;
+	text-align: center;
 }
 
 .field-name-field-sponsor-url a {
