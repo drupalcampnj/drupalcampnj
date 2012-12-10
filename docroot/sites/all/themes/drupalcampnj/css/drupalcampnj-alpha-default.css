@@ -1,10 +1,14 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
-html {
+body {
   background: #151515 url('../images/bg-tile.jpg') 0 0 repeat-x;
 }
 
-body {
+body.logged-in {
+  background-position: 50% 20px;
+}
+
+#page {
   background: url('../images/bg-main.jpg') 50% 0 no-repeat;
 }
 
@@ -56,6 +60,7 @@ body {
   float: left;
   background: url('../images/nav-sign-clasp.png') 50% 0  no-repeat;
   padding-top: 16px;
+  margin-right: 0;
 }
 
 #zone-menu a {
@@ -155,6 +160,16 @@ h2 a {
 
 .feed-icon {
 	text-align: right;
+}
+
+#messages .messages {
+	position: absolute;
+	width: 580px;
+}
+
+.node .submited {
+	margin-bottom: 1em;
+	font-style: italic;
 }
 
 /**
