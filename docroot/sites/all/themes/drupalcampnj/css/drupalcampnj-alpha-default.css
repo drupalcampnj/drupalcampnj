@@ -123,6 +123,7 @@ body.admin-menu {
 
 #region-content ul.primary.tabs {
 	padding-bottom: 4px;
+	margin-bottom: 1em;
 }
 
 #region-content ul.tabs a {
