@@ -27,7 +27,7 @@ body.admin-menu {
   width: 288px;
   height: 182px;
   right: -11px;
-  top: 65px;
+  top: 90px;
   z-index: 10;
 }
 
@@ -59,7 +59,7 @@ body.admin-menu {
   display: block;
   float: left;
   background: url('../images/nav-sign-clasp.png') 50% 0  no-repeat;
-  padding-top: 16px;
+  padding: 16px .4em 0 .4em;
   margin-right: 0;
 }
 
@@ -89,7 +89,7 @@ body.admin-menu {
 }
 
 #region-content {
-  margin-top: 31px;
+  margin-top: 50px;
   color: #fff;
 }
 
@@ -227,7 +227,7 @@ fieldset.collapsible .fieldset-legend {
  */
 
 #zone-content aside {
-  margin-top: 182px;
+  margin-top: 202px;
   background: url('../images/sb-pole-entire.png') 62px -50px no-repeat;
   height: 660px;
 }
@@ -239,7 +239,7 @@ fieldset.collapsible .fieldset-legend {
   padding: 0;
   width: 52px;
   position: absolute;
-  top: -217px;
+  top: -211px;
   left: 120px;
   z-index: 15;
   margin: 0;
@@ -265,7 +265,7 @@ fieldset.collapsible .fieldset-legend {
   height: 62px;
   width: 245px;
   background: url('../images/sb-yellow-sign.png') 0 0 no-repeat;
-  margin-top: 20px;
+  margin-top: 15px;
   display: block;
   position: relative;
   right: 32px;
@@ -277,7 +277,7 @@ fieldset.collapsible .fieldset-legend {
   height: 128px;
   width: 128px;
   background: url('../images/sb-round-sign.png') 0 0 no-repeat;
-  margin-top: 20px;
+  margin-top: 15px;
   position: relative;
   left: 25px;
 }
