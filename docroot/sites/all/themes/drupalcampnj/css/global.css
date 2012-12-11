@@ -170,8 +170,9 @@ td, th {
 }
 
 #region-content .node-links {
-	margin-top: -.5em;
-	min-height: .5em;
+	margin-top: -.75em;
+	min-height: .75em;
+	margin-bottom: .5em;
 }
 
 #region-content .node-links ul li a, #region-content .comment-links ul li a {
@@ -184,8 +185,8 @@ td, th {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   background: #333;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #444), color-stop(1, #222));
-  background: -moz-linear-gradient(top center, #444 0%, #222 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #555), color-stop(1, #252525));
+  background: -moz-linear-gradient(top center, #555 0%, #252525 100%);
   border-color: #111;
   color: #ccc;
   text-shadow: #000 0 1px 1px;
