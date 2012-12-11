@@ -169,8 +169,31 @@ td, th {
   padding: 20px 0;
 }
 
+#region-content .node-links {
+	margin-top: -.5em;
+	min-height: .5em;
+}
+
 #region-content .node-links ul li a, #region-content .comment-links ul li a {
-  color: black;
+  color: #ccc;
+}
+
+.node-links ul li a,
+.comment-links ul li a {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #333;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #444), color-stop(1, #222));
+  background: -moz-linear-gradient(top center, #444 0%, #222 100%);
+  border-color: #111;
+  color: #ccc;
+  text-shadow: #000 0 1px 1px;
+}
+
+.node-links ul li a:hover, .comment-links ul li a:hover {
+	background: #222;
+	border-color: #333;
 }
 
 #region-content a {
