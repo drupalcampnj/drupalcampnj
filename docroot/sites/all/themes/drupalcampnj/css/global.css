@@ -333,6 +333,7 @@ h2 a,
 @media all and (max-width: 979px) {
 	.views-field-field-sponsor-logo a {
 		margin: 0;
+		width: inherit;
 	}
 	
 	.views-field-field-sponsor-logo img {
