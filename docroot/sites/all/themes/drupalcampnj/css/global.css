@@ -360,16 +360,17 @@ h2 a,
 		font-weight: bold;
 		font-size: 1.75em;
 	}
+	
+	#zone-content h2 {
+		font-size: 1.4em;
+	}
 }
 
 /*
- * AWFUL CSS HACK TO HIDE EXTRA MENU ITEM FOR SUBMIT SESSION FOR LOGGED IN USERS
+ * CSS hack to hide extra menu item for submit session for logged in users
  * 
- * Can't this please be some sort of a function in the theme?
  */
 
 .logged-in #zone-menu .menu-395 {
   display: none;
 }
-
-
