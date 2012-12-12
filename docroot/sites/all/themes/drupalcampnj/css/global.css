@@ -82,6 +82,10 @@ td, th {
 	padding-bottom: .5em;
 }
 
+iframe, img, embed {
+	max-width: 100%;
+}
+
 /* 
  * BRANDING 
  */
@@ -323,6 +327,21 @@ h2 a,
 /* feedback link should be hidden by default*/
 #block-feedback-feedback {
   display: none;
+}
+
+/* sponsor links in mobile */
+@media all and (max-width: 979px) and (max-device-width: 979px), all and (min-device-width: 1024px) and (max-width: 1024px) and (orientation:landscape) {
+	.views-field-field-sponsor-logo a {
+		margin: 0;
+	}
+	
+	.views-field-field-sponsor-logo img {
+		width: 46%;
+		height: auto;
+		float: left;
+		margin: .5em 2%;
+		max-width: 260px;
+	}
 }
 
 /*
