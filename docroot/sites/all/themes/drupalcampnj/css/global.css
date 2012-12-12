@@ -330,7 +330,7 @@ h2 a,
 }
 
 /* sponsor links in mobile */
-@media all and (max-width: 979px) and (max-device-width: 979px), all and (min-device-width: 1024px) and (max-width: 1024px) and (orientation:landscape) {
+@media all and (max-width: 979px) {
 	.views-field-field-sponsor-logo a {
 		margin: 0;
 	}
