@@ -233,6 +233,16 @@ h2 a,
 	vertical-align: top;
 }
 
+#region-content table caption {
+  margin-bottom: .5em;
+  font-size: 1.25em;
+}
+
+.node .submitted {
+	margin-bottom: 1em;
+	font-style: italic;
+}
+
 .node-type-sponsor #zone-content h1 {
 	margin-bottom: 0;
 }
@@ -346,7 +356,10 @@ h2 a,
 		max-width: 260px;
 	}
 	
-	
+	#zone-content h1 {
+		font-weight: bold;
+		font-size: 1.75em;
+	}
 }
 
 /*

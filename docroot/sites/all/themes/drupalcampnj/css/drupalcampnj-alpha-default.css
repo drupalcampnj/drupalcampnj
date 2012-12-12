@@ -161,21 +161,14 @@ body.admin-menu {
   background-color: #252525;
 }
 
-#region-content table caption{
+#region-content table caption {
   color: #fff;
-  margin-bottom: .5em;
-  font-size: 1.25em;
 }
 
 #messages .messages {
 	position: absolute;
 	width: 585px;
 	z-index: 2;
-}
-
-.node .submitted {
-	margin-bottom: 1em;
-	font-style: italic;
 }
 
 .node-unpublished {
