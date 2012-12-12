@@ -178,6 +178,10 @@ body.admin-menu {
 	font-style: italic;
 }
 
+.node-unpublished {
+	background-color: #332520;
+}
+
 div.vertical-tabs {
 	border: 1px solid #333;
 }
@@ -232,7 +236,7 @@ fieldset.collapsible .fieldset-legend {
   height: 660px;
 }
 
-.twitter-sign a{
+.twitter-sign a {
   text-indent: -9999px;
   display: block;
   background: url('../images/sb-twitter-bird.png') 0 0 no-repeat;
