@@ -204,6 +204,7 @@ fieldset legend {
 
 fieldset .fieldset-legend {
 	padding: .5em;
+	display: block;
 }
 
 fieldset.collapsible .fieldset-legend {
