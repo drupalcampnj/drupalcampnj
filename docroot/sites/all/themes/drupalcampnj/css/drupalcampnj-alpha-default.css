@@ -26,7 +26,7 @@ body.admin-menu {
   position: absolute;
   width: 278px;
   height: 176px;
-  right: -11px;
+  right: -12px;
   top: 90px;
   z-index: 10;
 }
@@ -265,7 +265,7 @@ fieldset.collapsible .fieldset-legend {
   margin-top: 15px;
   display: block;
   position: relative;
-  right: 27px;
+  right: 26px;
   text-indent: -9999px;
   float: none;
 }
