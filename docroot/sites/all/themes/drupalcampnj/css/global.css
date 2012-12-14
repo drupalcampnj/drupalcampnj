@@ -299,7 +299,7 @@ h2 a,
 	margin-bottom: 1em;
 }
 
-.flag-session_vote {
+ul.inline li.flag-session_vote {
 	display: block;
 	padding-top: 1em;
 }
