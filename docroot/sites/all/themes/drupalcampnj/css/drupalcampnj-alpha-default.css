@@ -24,9 +24,9 @@ body.admin-menu {
 .site-name a {
   background: url('../images/sb-green-sign.png') 0 0 no-repeat;
   position: absolute;
-  width: 288px;
-  height: 182px;
-  right: -11px;
+  width: 278px;
+  height: 176px;
+  right: -16px;
   top: 90px;
   z-index: 10;
 }
