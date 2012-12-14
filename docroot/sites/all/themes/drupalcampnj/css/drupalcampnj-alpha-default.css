@@ -26,7 +26,7 @@ body.admin-menu {
   position: absolute;
   width: 278px;
   height: 176px;
-  right: 11px;
+  right: -11px;
   top: 90px;
   z-index: 10;
 }
