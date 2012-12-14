@@ -82,7 +82,7 @@ td, th {
 	padding-bottom: .5em;
 }
 
-iframe, img, embed {
+iframe, img, embed, input, textarea {
 	max-width: 100%;
 }
 
