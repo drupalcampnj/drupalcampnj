@@ -26,7 +26,7 @@ body.admin-menu {
   position: absolute;
   width: 278px;
   height: 176px;
-  right: -16px;
+  right: -111px;
   top: 90px;
   z-index: 10;
 }
@@ -225,7 +225,7 @@ fieldset.collapsible .fieldset-legend {
 
 #zone-content aside {
   margin-top: 202px;
-  background: url('../images/sb-pole-entire.png') 62px -50px no-repeat;
+  background: url('../images/sb-pole-entire.png') 69px -50px no-repeat;
   height: 660px;
 }
 
@@ -237,7 +237,7 @@ fieldset.collapsible .fieldset-legend {
   width: 52px;
   position: absolute;
   top: -211px;
-  left: 120px;
+  left: 106px;
   z-index: 15;
   margin: 0;
   float: none;
@@ -249,7 +249,7 @@ fieldset.collapsible .fieldset-legend {
   background: url('../images/sb-date-sign.png') 0 0 no-repeat;
   margin-top: 20px;
   position: relative;
-  left: -8px;
+  left: -31px;
 }
 
 .signup-sign {
@@ -265,7 +265,7 @@ fieldset.collapsible .fieldset-legend {
   margin-top: 15px;
   display: block;
   position: relative;
-  right: 32px;
+  right: 27px;
   text-indent: -9999px;
   float: none;
 }
@@ -276,7 +276,7 @@ fieldset.collapsible .fieldset-legend {
   background: url('../images/sb-round-sign.png') 0 0 no-repeat;
   margin-top: 15px;
   position: relative;
-  left: 25px;
+  left: 33px;
 }
 
 /**
