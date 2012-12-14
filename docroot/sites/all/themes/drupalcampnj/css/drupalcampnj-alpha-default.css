@@ -26,7 +26,7 @@ body.admin-menu {
   position: absolute;
   width: 278px;
   height: 176px;
-  right: -111px;
+  right: 11px;
   top: 90px;
   z-index: 10;
 }
@@ -249,7 +249,7 @@ fieldset.collapsible .fieldset-legend {
   background: url('../images/sb-date-sign.png') 0 0 no-repeat;
   margin-top: 20px;
   position: relative;
-  left: -31px;
+  left: -2px;
 }
 
 .signup-sign {
