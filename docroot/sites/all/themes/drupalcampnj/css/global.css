@@ -382,7 +382,7 @@ ul.inline li.flag-session_vote {
 }
 
 @media all and (max-width: 479px) {
-	.not-logged-in page-user ul.primary.tabs li {
+	.not-logged-in ul.primary.tabs li {
 		display: block;
 		margin-bottom: .5em;
 	}
