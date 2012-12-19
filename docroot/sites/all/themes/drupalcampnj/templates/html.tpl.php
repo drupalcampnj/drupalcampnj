@@ -20,10 +20,3 @@
   <?php print $page_bottom; ?>
 </body>
 </html>
-
-
-<!--[if lt IE 7]> <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf->version . $rdf->namespaces; ?> class="ie6"> <![endif]-->
-<!--[if IE 7]> <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf->version . $rdf->namespaces; ?> class="ie7"> <![endif]-->
-<!--[if lt IE 7]> <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf->version . $rdf->namespaces; ?> class="ie6"> <![endif]-->
-<!--[if IE 7]> <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf->version . $rdf->namespaces; ?> class="ie7"> <![endif]--><!--[if gt IE 8]><!--> 
-<html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf->version . $rdf->namespaces; ?><!--<![endif]-->
