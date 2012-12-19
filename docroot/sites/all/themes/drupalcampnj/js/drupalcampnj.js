@@ -8,7 +8,7 @@ Drupal.behaviors.yourfunction = {
           var menuid = ".site-name-slogan";        
          
         //This condition will act under the 'mobile' size, and will not be executed on ie6 and ie7
-          if (d.to == 'mobile') {       
+          if (d.to == 'mobile' && !$('html').hasClass('ie6') && !$('html').hasClass('ie7')) {       
               
              //Add a span tag that will aft as the expand button, you can change the output of that button here
              $(menuid).prepend( $("<div id='over-wrapper'><a class='over' href='#'>Menu</a></div>") );     
@@ -24,7 +24,7 @@ Drupal.behaviors.yourfunction = {
             });             
           }
           
-          if (d.to != 'mobile') {            
+          if (d.to != 'mobile' | $('html').hasClass('ie7')) {            
              //remove the expand elements from the accordion menu
              $("div#over-wrapper").remove();
              //show      
