@@ -363,6 +363,7 @@ fieldset.collapsible .fieldset-legend {
 	-ms-transform-origin: 17px 50%;
 }
 #block-feedback-feedback a {
+  writing-mode: tb-rl;
   background-color: #0163A4;
   color: white;
   font-weight: bold;
