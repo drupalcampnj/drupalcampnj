@@ -82,6 +82,7 @@ body.admin-menu {
   -webkit-box-shadow: none;
   -moz-box-shadow:    none;
   box-shadow:         none;
+  filter: progid:DXImageTransform.Microsoft.gradient( enabled=false );
 }
 
 .front #region-content {
@@ -355,7 +356,11 @@ fieldset.collapsible .fieldset-legend {
 
 /* feedback link is hidden by default*/
 #block-feedback-feedback {
-  display: block;
+	display: block;
+	transform: rotate(-90deg);
+	transform-origin: 17px 50%;
+	-ms-transform: rotate(-90deg);
+	-ms-transform-origin: 17px 50%;
 }
 #block-feedback-feedback a {
   background-color: #0163A4;
