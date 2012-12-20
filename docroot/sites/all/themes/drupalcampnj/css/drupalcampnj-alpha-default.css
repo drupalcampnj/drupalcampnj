@@ -368,7 +368,3 @@ fieldset.collapsible .fieldset-legend {
   font-weight: bold;
   border: 2px solid #014572;
 }
-
-html.ie7 #block-feedback-feedback a {
-  writing-mode: tb-rl;
-}

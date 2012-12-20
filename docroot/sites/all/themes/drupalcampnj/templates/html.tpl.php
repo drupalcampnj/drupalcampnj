@@ -5,7 +5,7 @@
 <html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf->version . $rdf->namespaces; ?>>
 <!-- <![endif]-->
 <head<?php print $rdf->profile; ?>>
-  <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>

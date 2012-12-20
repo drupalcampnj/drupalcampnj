@@ -10,7 +10,21 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
-
+ 
+function drupalcampnj_alpha_preprocess_html(&$variables) {
+  // Add conditional stylesheets for IE.
+  drupal_add_css(path_to_theme() . '/css/ie7.css',
+    array(
+      'group' => CSS_THEME,
+      'browsers' => array(
+        'IE' => 'lte IE 7',
+        '!IE' => FALSE,
+      ),
+      'weight' => 999,
+      'every_page' => TRUE,
+    )
+  );
+}
 
 function drupalcampnj_alpha_preprocess_node(&$vars) {
   // custom functionality here
@@ -19,4 +33,5 @@ function drupalcampnj_alpha_preprocess_node(&$vars) {
     unset($vars['content']['links']['node']['#links']['node-readmore']);
   }
 }
+
 
