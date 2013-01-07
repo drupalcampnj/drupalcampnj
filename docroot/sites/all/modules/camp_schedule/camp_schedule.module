@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Code for the Camp Schedule feature.
+ */
+
+include_once 'camp_schedule.features.inc';
+
+
+/**
+ * Implements hook_date_formats()
+ */
+function camp_schedule_date_formats() {
+  return array(
+    array(
+      'type' => 'camp_schedule_time_only',
+      'format' => 'g:i a', 
+      'locales' => array(),
+    ),
+  );
+}
+
+/**
+ * Implements hook_date_format_types()
+ */
+function camp_schedule_date_format_types() {
+  // Define the core date format types.
+  return array(
+    'camp_schedule_session' => 'Session time (no date)',
+  );
+}
+
+/**
+ * Implements hook_enable()
+ */
+function camp_schedule_enable() {
+  variable_set('date_format_camp_schedule_session', 'g:i a');
+}
