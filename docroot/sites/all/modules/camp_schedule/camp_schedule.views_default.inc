@@ -43,27 +43,24 @@ function camp_schedule_views_default_views() {
   $handler->display->display_options['relationships']['field_slot_types_time_slot_target_id']['id'] = 'field_slot_types_time_slot_target_id';
   $handler->display->display_options['relationships']['field_slot_types_time_slot_target_id']['table'] = 'field_data_field_slot_types_time_slot';
   $handler->display->display_options['relationships']['field_slot_types_time_slot_target_id']['field'] = 'field_slot_types_time_slot_target_id';
-  /* Field: Field collection item: Field collection item ID */
-  $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
-  $handler->display->display_options['fields']['item_id']['table'] = 'field_collection_item';
-  $handler->display->display_options['fields']['item_id']['field'] = 'item_id';
-  $handler->display->display_options['fields']['item_id']['label'] = '';
-  $handler->display->display_options['fields']['item_id']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['item_id']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_session_timeslot_node';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content revision: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node_revision';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'field_room_slots_types_allowed_node';
   $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_session_timeslot_node';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_type'] = 'p';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   /* Field: Content: Date and time */
   $handler->display->display_options['fields']['field_slot_datetime']['id'] = 'field_slot_datetime';
   $handler->display->display_options['fields']['field_slot_datetime']['table'] = 'field_data_field_slot_datetime';
@@ -78,17 +75,13 @@ function camp_schedule_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Field: Content: Experience level */
-  $handler->display->display_options['fields']['field_experience']['id'] = 'field_experience';
-  $handler->display->display_options['fields']['field_experience']['table'] = 'field_data_field_experience';
-  $handler->display->display_options['fields']['field_experience']['field'] = 'field_experience';
-  $handler->display->display_options['fields']['field_experience']['relationship'] = 'reverse_field_session_timeslot_node';
-  $handler->display->display_options['fields']['field_experience']['hide_empty'] = TRUE;
   /* Field: Content: Speaker(s) */
   $handler->display->display_options['fields']['field_speakers']['id'] = 'field_speakers';
   $handler->display->display_options['fields']['field_speakers']['table'] = 'field_data_field_speakers';
   $handler->display->display_options['fields']['field_speakers']['field'] = 'field_speakers';
   $handler->display->display_options['fields']['field_speakers']['relationship'] = 'reverse_field_session_timeslot_node';
+  $handler->display->display_options['fields']['field_speakers']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_speakers']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_speakers']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_speakers']['settings'] = array(
     'link' => 0,
@@ -99,7 +92,19 @@ function camp_schedule_views_default_views() {
   $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
   $handler->display->display_options['fields']['field_track']['field'] = 'field_track';
   $handler->display->display_options['fields']['field_track']['relationship'] = 'reverse_field_session_timeslot_node';
+  $handler->display->display_options['fields']['field_track']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_track']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_track']['hide_empty'] = TRUE;
+  /* Field: Content: Experience level */
+  $handler->display->display_options['fields']['field_experience']['id'] = 'field_experience';
+  $handler->display->display_options['fields']['field_experience']['table'] = 'field_data_field_experience';
+  $handler->display->display_options['fields']['field_experience']['field'] = 'field_experience';
+  $handler->display->display_options['fields']['field_experience']['relationship'] = 'reverse_field_session_timeslot_node';
+  $handler->display->display_options['fields']['field_experience']['label'] = '';
+  $handler->display->display_options['fields']['field_experience']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_experience']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_experience']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_experience']['hide_empty'] = TRUE;
   /* Sort criterion: Content: Date and time (field_slot_datetime) */
   $handler->display->display_options['sorts']['field_slot_datetime_value']['id'] = 'field_slot_datetime_value';
   $handler->display->display_options['sorts']['field_slot_datetime_value']['table'] = 'field_data_field_slot_datetime';

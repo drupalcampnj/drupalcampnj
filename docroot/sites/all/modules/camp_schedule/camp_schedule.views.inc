@@ -17,7 +17,7 @@ function camp_schedule_views_plugins() {
         'handler' => 'camp_schedule_views_plugin_style_schedule',
         'theme' => 'camp_schedule_grid',
         'uses row plugin' => FALSE,
-        'uses row class' => TRUE,
+        'uses row class' => FALSE,
         'uses fields' => TRUE,
         'uses options' => TRUE,
         'uses grouping' => FALSE,

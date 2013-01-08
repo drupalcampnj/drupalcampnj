@@ -36,3 +36,125 @@ function camp_schedule_date_format_types() {
 function camp_schedule_enable() {
   variable_set('date_format_camp_schedule_session', 'g:i a');
 }
+
+function template_preprocess_camp_schedule_grid(&$vars) {
+  $view     = $vars['view'];
+
+  // We need the raw data for this grouping, which is passed in as $vars['rows'].
+  // However, the template also needs to use for the rendered fields.  We
+  // therefore swap the raw data out to a new variable and reset $vars['rows']
+  // so that it can get rebuilt.
+  // Store rows so that they may be used by further preprocess functions.
+  $result   = $vars['result'] = $vars['rows'];
+  $vars['rows'] = array();
+  $vars['field_classes'] = array();
+
+  $options  = $view->style_plugin->options;
+  $handler  = $view->style_plugin;
+
+  $row_class_special = isset($options['row_class_special']) ? $options['row_class_special'] : TRUE;
+
+  $fields   = &$view->field;
+
+  $active   = !empty($handler->active) ? $handler->active : '';
+
+  // Some hard-coded mappings for now.
+  $class_mapping = array(
+    'title_1' => 'room-name',
+    'title' => 'title',
+    'field_slot_datetime' => 'time-slot',
+    'field_speakers' => 'speakers',
+    'field_track' => 'track',
+    'field_experience' => 'experience',
+  );
+
+  // Fields must be rendered in order as of Views 2.3, so we will pre-render
+  // everything.
+  $renders = $handler->render_fields($result);
+  
+  $rooms = array();
+  $rows = array();
+  // Find all possible rooms, construct a template array.
+  foreach ($renders as $num => $rf) {
+    // title_1 is the title of the back-referenced room node :(
+    $rooms[$rf['title_1']] = array('class' => array('empty'));
+    // Set up our rows - they should already be in the desired order by time.
+    $rows[$rf['field_slot_datetime']] = array('time' => array('header' => TRUE, 'data' => $rf['field_slot_datetime'], 'class' => array($class_mapping['field_slot_datetime'])));
+  }
+  ksort($rooms);
+  $vars['header'] = array_merge(array(array('class' => array('time-header'))), array_keys($rooms));
+  // Set up each time slot with a list of empty rooms.
+  foreach ($rows as $time => $row) {
+    $rows[$time] = $row + $rooms;
+  }
+  // Populate CSS identifiers.
+  foreach ($fields as $field => $info) {
+    $vars['fields'][$field] = drupal_clean_css_identifier($field);
+  }
+
+  foreach ($renders as $num => $rf) {
+    $cell = &$rows[$rf['field_slot_datetime']][$rf['title_1']];
+    $cell = array();
+    unset($rf['field_slot_datetime']);
+    $strings = array();
+    foreach ($rf as $field => $field_output) {
+      // Add field classes
+      $field_classes = $class_mapping[$field];
+      if ($fields[$field]->options['element_default_classes']) {
+        $field_classes .= " views-field views-field-" . $vars['fields'][$field];
+      }
+      if (in_array($field, array('field_track', 'field_experience'))) {
+        $field_classes .= " " . drupal_clean_css_identifier(drupal_strtolower($field_output));
+      }
+
+      if (!empty($fields[$field]) && empty($fields[$field]->options['exclude'])) {
+        $element_type = $fields[$field]->element_type(TRUE, TRUE);
+        if ($element_type) {
+          $field_output = '<' . $element_type . ' class="' .$field_classes. '">' . $field_output . '</' . $element_type . '>';
+        }
+
+        $strings[]= $field_output;
+      }
+    }
+    $cell['data'] = implode("\n", $strings);
+  }
+
+  // Strip out the string indexes.
+  $vars['rows'] = array_values($rows);
+  $count = 0;
+  foreach ($vars['rows'] as $num => $row) {
+    $vars['row_classes'][$num] = array();
+    if ($row_class_special) {
+      $vars['row_classes'][$num][] = ($count++ % 2 == 0) ? 'odd' : 'even';
+    }
+  }
+
+  if ($row_class_special) {
+    $vars['row_classes'][0][] = 'views-row-first';
+    $vars['row_classes'][count($vars['row_classes']) - 1][] = 'views-row-last';
+  }
+
+  $vars['classes_array'] = array('camp-schedule-grid');
+  if (empty($vars['rows']) && !empty($options['empty_table'])) {
+    $vars['rows'][0][0] = $view->display_handler->render_area('empty');
+    // Calculate the amounts of rows with output.
+    $vars['field_attributes'][0][0]['colspan'] = count($vars['header']);
+    $vars['field_classes'][0][0] = 'views-empty';
+  }
+
+  $vars['classes_array'][] = 'cols-'. count($vars['header']);
+
+  // Add the summary to the list if set.
+  if (!empty($handler->options['summary'])) {
+    $vars['attributes_array'] = array('summary' => filter_xss_admin($handler->options['summary']));
+  }
+
+  // Add the caption to the list if set.
+  if (!empty($handler->options['caption'])) {
+    $vars['caption'] = filter_xss_admin($handler->options['caption']);
+  }
+  else {
+    $vars['caption'] = '';
+  }
+}
+
