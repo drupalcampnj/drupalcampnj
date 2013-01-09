@@ -368,3 +368,9 @@ fieldset.collapsible .fieldset-legend {
   font-weight: bold;
   border: 2px solid #014572;
 }
+
+/* Session grid */
+
+.camp-schedule-grid .date-display-end {
+  display: block;
+}
