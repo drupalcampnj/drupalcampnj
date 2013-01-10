@@ -304,6 +304,11 @@ ul.inline li.flag-session_vote {
  *   CONTENT > SESSION SCHEDULE
  */
 
+.view-camp-session-grid .view-header {
+  display: none;
+}
+
+
 .camp-schedule-grid thead,
 .camp-schedule-grid tbody td.empty{
   display: none;

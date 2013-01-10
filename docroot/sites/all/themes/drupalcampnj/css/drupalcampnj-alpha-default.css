@@ -399,3 +399,8 @@ fieldset.collapsible .fieldset-legend {
 .camp-schedule-grid .date-display-end {
   display: block;
 }
+
+.view-camp-session-grid .view-header {
+  /* un-hide this for wide displays */
+  display: block;
+}
