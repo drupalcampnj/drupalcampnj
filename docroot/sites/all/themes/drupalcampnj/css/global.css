@@ -301,6 +301,50 @@ ul.inline li.flag-session_vote {
 }
 
 /**
+ *   CONTENT > SESSION SCHEDULE
+ */
+
+.camp-schedule-grid thead,
+.camp-schedule-grid tbody td.empty{
+  display: none;
+}
+
+.camp-schedule-grid tbody th,
+.camp-schedule-grid tbody td {
+  display: block;
+}
+
+.camp-schedule-grid tbody th {
+  font-weight: bold;
+  text-align: center;
+  background: #777;
+  color: #fff;
+}
+
+.camp-schedule-grid tbody td {
+  padding-top: 1.5em;
+}
+
+.camp-schedule-grid tbody .room-name {
+  float: left;
+  width: 30%;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.camp-schedule-grid tbody .title,
+.camp-schedule-grid tbody .speakers,
+.camp-schedule-grid tbody .track,
+.camp-schedule-grid tbody .experience {
+  float: right; 
+  width: 65%; 
+}
+
+.camp-schedule-grid tbody .title {
+  font-weight: bold;
+}
+
+/**
  *   Aside
  */
 

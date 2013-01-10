@@ -226,6 +226,31 @@ fieldset.collapsible .fieldset-legend {
 }
 
 /**
+ *   Content > Session Schedule
+ */
+
+.camp-schedule-grid thead{
+  display: table-header-group;
+}
+
+.camp-schedule-grid tbody td,
+.camp-schedule-grid tbody td.empty {
+  display: table-cell;
+  padding-top: .5em;
+}
+
+.camp-schedule-grid tbody .room-name {
+  display: none;
+}
+
+.camp-schedule-grid tbody .title,
+.camp-schedule-grid tbody .speakers,
+.camp-schedule-grid tbody .track,
+.camp-schedule-grid tbody .experience {
+  float: none; 
+}
+
+/**
  *   Aside
  */
 
