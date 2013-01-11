@@ -107,7 +107,7 @@ function template_preprocess_camp_schedule_grid(&$vars) {
         $field_classes .= " " . drupal_clean_css_identifier(drupal_strtolower($field_output));
       }
 
-      if (!empty($fields[$field]) && empty($fields[$field]->options['exclude'])) {
+      if ($field_output && !empty($fields[$field]) && empty($fields[$field]->options['exclude'])) {
         $element_type = $fields[$field]->element_type(TRUE, TRUE);
         if ($element_type) {
           $field_output = '<' . $element_type . ' class="' .$field_classes. '">' . $field_output . '</' . $element_type . '>';
@@ -116,7 +116,11 @@ function template_preprocess_camp_schedule_grid(&$vars) {
         $strings[]= $field_output;
       }
     }
-    $cell['data'] = implode("\n", $strings);
+    // Wrap all elements except the 1st in a DIV.
+    // This is a bit of a hack for the room name which is
+    // first in the View and is hidden in the gird.
+    $cell['data'] = array_shift($strings) . "\n<div class=\"session-details\">";
+    $cell['data'] .= implode("\n", $strings) . "</div>";
   }
 
   // Strip out the string indexes.
