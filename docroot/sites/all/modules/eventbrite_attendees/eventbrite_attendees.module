@@ -274,6 +274,8 @@ function eventbrite_attendees_fetch() {
  * Page callback to display atendees.
  */
 function eventbrite_attendees_listing() {
+  // Flag for when we want to add RDFa
+  $rdf = function_exists('rdf_get_namespaces');
   $json = eventbrite_attendees_fetch();
   $data = json_decode($json);
   $output = '';
@@ -307,12 +309,44 @@ function eventbrite_attendees_listing() {
         continue;
       }
       $listed_attendees++;
-      $row = array();
-      $row[] = check_plain($a->attendee->first_name) . ' ' . check_plain($a->attendee->last_name);
-      $row[] = !empty($a->attendee->company) ? check_plain($a->attendee->company) : '';
-      $row[] = !empty($a->attendee->website) ? l($a->attendee->website, $a->attendee->website) : '';
+      $row = array('data' => array());
+      if ($rdf) {
+        $row['typeof'] = "schema:Person";
+      }
+      $cell = array('data' => check_plain($a->attendee->first_name) . ' ' . check_plain($a->attendee->last_name));
+      if ($rdf) {
+        $cell['property'] = "schema:name";
+      }
+      $row['data'][] = $cell;
+      $cell = array();
+      if (!empty($a->attendee->company)) {
+        $cell['data'] = check_plain($a->attendee->company);
+        if ($rdf) {
+          $cell['property'] = "schema:affiliation";
+        }
+      }
+      $row['data'][] = $cell;
+      $cell = array();
+      if (!empty($a->attendee->website)) {
+        $attributes = array();
+        if ($rdf) {
+          $attributes['rel'] = "schema:url";
+         }
+         // Make sure the website URL is properly formed.
+         preg_match('@(https?://){0,1}(.+)@', $a->attendee->website, $m);
+         if (!$m[1]) {
+           $m[1] = 'http://';
+         }
+         $cell['data'] = l(rtrim($m[2], '/'), $m[1] . $m[2], array('attributes' => $attributes));
+      }
+      $row['data'][] = $cell;
       if ($username_id) {
-        $row[] = $username;
+        $cell = array();
+        $cell['data'] = $username;
+        if ($rdf && $username) {
+          $cell['property'] = "foaf:nick";
+        }
+        $row['data'][] = $cell;
       }
       if ($sponsor_ticket_id && $sponsor_ticket_id == $a->attendee->ticket_id) {
         $sponsor_rows[] = $row;
@@ -328,4 +362,13 @@ function eventbrite_attendees_listing() {
   $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array(), 'caption' => t('Regular Attendees')));
   $output .= '<p>' . t('@total registered attendees (@listed listed)', array('@total' => $total_attendees, '@listed' => $listed_attendees)) . '</p>';
   return $output;
+}
+
+/**
+ * Implements hook_rdf_namespaces().
+ */
+function eventbrite_attendees_rdf_namespaces() {
+  return array(
+    'schema'  => 'http://schema.org/',
+  );
 }
