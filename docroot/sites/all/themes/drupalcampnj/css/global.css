@@ -330,25 +330,58 @@ ul.inline li.flag-session_vote {
   padding-top: 1.5em;
 }
 
-.camp-schedule-grid tbody .room-name {
-  float: left;
-  width: 30%;
-  margin-top: 0;
-  padding-top: 0;
+@media all and (min-width: 345px) {
+  .camp-schedule-grid tbody .room-name {
+    float: left;
+    width: 35%;
+  }
+
+  .camp-schedule-grid tbody .session-details {
+    float: right; 
+    width: 60%; 
+  }
 }
 
-.camp-schedule-grid tbody .title,
-.camp-schedule-grid tbody .speakers,
-.camp-schedule-grid tbody .track,
-.camp-schedule-grid tbody .experience {
-  float: right; 
-  width: 65%; 
-}
+.camp-schedule-grid tbody .room-name {
+    margin-top: 0;
+    padding-top: 0;
+    color: #444;
+  }
 
 .camp-schedule-grid tbody .title {
   font-weight: bold;
+  margin-bottom: 0px;
 }
 
+.camp-schedule-grid tbody .speakers {
+  color: #999;
+  font-size: .9em;
+  display: block;
+}
+
+.camp-schedule-grid tbody .track,
+.camp-schedule-grid tbody .experience {
+  color: #fff;
+  background-color: #aaa;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-size: .9em;
+  display: block;
+  float: left;
+  margin: 0 3px 3px 0;
+}
+
+.camp-schedule-grid tbody .experience.beginner {
+  background-color: #0785ED;
+}
+
+.camp-schedule-grid tbody .experience.advanced {
+  background-color: #FFBF00;
+}
+
+.camp-schedule-grid tbody .experience.advanced {
+  background-color: #AA1430;
+}
 /**
  *   Aside
  */

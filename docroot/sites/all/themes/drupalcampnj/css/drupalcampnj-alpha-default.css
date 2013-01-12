@@ -243,11 +243,9 @@ fieldset.collapsible .fieldset-legend {
   display: none;
 }
 
-.camp-schedule-grid tbody .title,
-.camp-schedule-grid tbody .speakers,
-.camp-schedule-grid tbody .track,
-.camp-schedule-grid tbody .experience {
+.camp-schedule-grid tbody .session-details {
   float: none; 
+  width: 100%;
 }
 
 /**
