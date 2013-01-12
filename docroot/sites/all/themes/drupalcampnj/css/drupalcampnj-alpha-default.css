@@ -231,12 +231,15 @@ fieldset.collapsible .fieldset-legend {
 
 .camp-schedule-grid thead{
   display: table-header-group;
+  position: static;
+  
 }
 
 .camp-schedule-grid tbody td,
 .camp-schedule-grid tbody td.empty {
   display: table-cell;
   padding-top: .5em;
+  position: static;
 }
 
 .camp-schedule-grid tbody .room-name {

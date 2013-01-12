@@ -304,14 +304,12 @@ ul.inline li.flag-session_vote {
  *   CONTENT > SESSION SCHEDULE
  */
 
-.view-camp-session-grid .view-header {
-  display: none;
-}
-
-
+.view-camp-session-grid .view-header,
 .camp-schedule-grid thead,
 .camp-schedule-grid tbody td.empty{
-  display: none;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
 }
 
 .camp-schedule-grid tbody th,
@@ -328,12 +326,14 @@ ul.inline li.flag-session_vote {
 
 .camp-schedule-grid tbody td {
   padding-top: 1.5em;
+  padding-bottom: 1.5em;
 }
 
 @media all and (min-width: 345px) {
   .camp-schedule-grid tbody .room-name {
     float: left;
     width: 35%;
+    text-align: right;
   }
 
   .camp-schedule-grid tbody .session-details {
@@ -342,10 +342,21 @@ ul.inline li.flag-session_vote {
   }
 }
 
+@media all and (min-width: 500px) {
+  .camp-schedule-grid tbody .room-name {
+    width: 40%;
+  }
+
+  .camp-schedule-grid tbody .session-details {
+    width: 55%; 
+  }
+}
+
 .camp-schedule-grid tbody .room-name {
     margin-top: 0;
     padding-top: 0;
-    color: #444;
+    color: #999;
+    font-size: 1em;
   }
 
 .camp-schedule-grid tbody .title {
