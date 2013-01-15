@@ -37,6 +37,16 @@ function camp_schedule_enable() {
   variable_set('date_format_camp_schedule_session', 'g:i a');
 }
 
+function camp_schedule_sort($a, $b) {
+  if ($a['sort']['sticky'] != $b['sort']['sticky']) {
+    return ($a['sort']['sticky'] == t('Yes')) ? -1 : 1;
+  }
+  if ($a['sort']['title_1'] == $b['sort']['title_1']) {
+    return 0;
+  }
+  return ($a['sort']['title_1'] < $b['sort']['title_1']) ? -1 : 1;
+}
+
 function template_preprocess_camp_schedule_grid(&$vars) {
   $view     = $vars['view'];
 
@@ -77,11 +87,14 @@ function template_preprocess_camp_schedule_grid(&$vars) {
   // Find all possible rooms, construct a template array.
   foreach ($renders as $num => $rf) {
     // title_1 is the title of the back-referenced room node :(
-    $rooms[$rf['title_1']] = array('class' => array('empty'));
+    $rooms[$rf['title_1']] = array('class' => array('empty'), 'sort' => $rf);
     // Set up our rows - they should already be in the desired order by time.
     $rows[$rf['field_slot_datetime']] = array('time' => array('header' => TRUE, 'data' => $rf['field_slot_datetime'], 'class' => array($class_mapping['field_slot_datetime'])));
   }
-  ksort($rooms);
+  uasort($rooms, 'camp_schedule_sort');
+  foreach ($rooms as $idx => $r) {
+    unset($rooms[$idx]['sort']);
+  }
   $vars['header'] = array_merge(array(array('class' => array('time-header'))), array_keys($rooms));
   // Set up each time slot with a list of empty rooms.
   foreach ($rows as $time => $row) {
