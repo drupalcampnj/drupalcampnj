@@ -31,6 +31,12 @@ body.admin-menu {
   z-index: 10;
 }
 
+.page-camp-session-schedule .site-name {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
 /**
  *   Branding
  */
@@ -249,6 +255,10 @@ fieldset.collapsible .fieldset-legend {
 .camp-schedule-grid tbody .session-details {
   float: none; 
   width: 100%;
+}
+
+.camp-schedule-grid thead .time-header {
+  width: 90px;
 }
 
 /**
