@@ -413,5 +413,7 @@ fieldset.collapsible .fieldset-legend {
 
 .view-camp-session-grid .view-header {
   /* un-hide this for wide displays */
-  display: block;
+  position: static;
+  top: auto;
+  left: auto;
 }
