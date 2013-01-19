@@ -1,0 +1,13 @@
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.module b/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.module
+index ddd2f50..d8be4d9 100755
+--- a/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.module
++++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_session/cod_session.module
+@@ -78,6 +78,8 @@ function cod_session_schedule_access($node_type = 'session', $account = NULL) {
+   if ($node_type == 'session') {
+     return FALSE;
+   }
++  //PW: HACK so this works somewhat.
++  return user_access('administer nodes', $account);
+   // Also check cod_session's field access override.
+   $node_obj = new stdClass();
+   $node_obj->type = $node_type;
