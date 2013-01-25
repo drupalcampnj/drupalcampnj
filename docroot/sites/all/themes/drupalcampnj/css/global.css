@@ -481,6 +481,11 @@ ul.inline li.flag-session_vote {
 	}
 }
 
+/* hack to hide entity title, next year we are enabling Display Suite */
+.field-name-field-slot-types-time-slot h2 {
+	display: none;
+}
+
 /*
  * CSS hack to hide extra menu item for submit session for logged in users
  * 
