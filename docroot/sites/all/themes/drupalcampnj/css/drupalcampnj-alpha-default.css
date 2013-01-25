@@ -312,6 +312,10 @@ fieldset.collapsible .fieldset-legend {
   float: none;
 }
 
+.signup-sign a.sold-out {
+  background: url('../images/sb-yellow-sold-out.png') 0 0 no-repeat;
+}
+
 .arrow-sign {
   height: 128px;
   width: 128px;
