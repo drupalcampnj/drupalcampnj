@@ -97,7 +97,7 @@ function template_preprocess_camp_bof_schedule_grid(&$vars) {
     // Hack - make sure it's published.
     if (!empty($rf['status'])) {
       $cell['data']['sessions'][] = array(
-        '#prefix' => "\n<div class=\"session-details\">",
+        '#prefix' => "\n<div class=\"session-details ". drupal_clean_css_identifier($rf['type']) .'">',
         '#markup' => implode("\n", $strings),
         '#suffix' => "</div>",
       );
