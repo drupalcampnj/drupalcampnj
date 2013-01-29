@@ -132,7 +132,7 @@ function template_preprocess_camp_schedule_grid(&$vars) {
     // Wrap all elements except the 1st in a DIV.
     // This is a bit of a hack for the room name which is
     // first in the View and is hidden in the gird.
-    $cell['data'] = array_shift($strings) . "\n<div class=\"session-details\">";
+    $cell['data'] = array_shift($strings) . "\n<div class=\"session-details ". drupal_clean_css_identifier($rf['type']) .'">';
     $cell['data'] .= implode("\n", $strings) . "</div>";
   }
 
