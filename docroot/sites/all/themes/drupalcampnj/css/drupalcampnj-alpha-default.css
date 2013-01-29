@@ -261,7 +261,7 @@ fieldset.collapsible .fieldset-legend {
   width: 90px;
 }
 
-.camp-schedule-grid thead th:nth-child(2) {
+.view-camp-session-grid thead th:nth-child(2) {
   width: 105px;
 }
 
@@ -419,6 +419,7 @@ fieldset.collapsible .fieldset-legend {
   display: block;
 }
 
+.view-camp-bof-grid .view-header,
 .view-camp-session-grid .view-header {
   /* un-hide this for wide displays */
   position: static;

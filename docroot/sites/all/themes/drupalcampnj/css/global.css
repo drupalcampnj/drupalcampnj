@@ -309,6 +309,7 @@ ul.inline li.flag-session_vote {
  */
 
 .view-camp-session-grid .view-header,
+.view-camp-bof-grid .view-header,
 .camp-schedule-grid thead,
 .camp-schedule-grid tbody td.empty{
   position: absolute;
