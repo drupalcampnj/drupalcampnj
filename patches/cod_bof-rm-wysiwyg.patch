@@ -1,9 +1,18 @@
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc b/docroot/profiles/cod/modules/contrib/cod_suppor
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc
 old mode 100755
 new mode 100644
-index 23d6ab8..f1f6e78
+index 23d6ab8..9108439
 --- a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc
 +++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc
+@@ -61,7 +61,7 @@ function cod_bof_field_default_fields() {
+           'module' => 'text',
+           'settings' => array(),
+           'type' => 'text_default',
+-          'weight' => 0,
++          'weight' => '0',
+         ),
+         'listing' => array(
+           'label' => 'above',
 @@ -105,7 +105,7 @@ function cod_bof_field_default_fields() {
    $fields['node-bof_session-field_session_timeslot'] = array(
      'field_config' => array(
@@ -31,7 +40,22 @@ index 23d6ab8..f1f6e78
        'deleted' => '0',
        'description' => '',
        'display' => array(
-@@ -182,7 +182,10 @@ function cod_bof_field_default_fields() {
+@@ -157,10 +157,11 @@ function cod_bof_field_default_fields() {
+           'label' => 'above',
+           'module' => 'entityreference',
+           'settings' => array(
+-            'link' => FALSE,
++            'links' => 0,
++            'view_mode' => 'full',
+           ),
+-          'type' => 'entityreference_label',
+-          'weight' => 3,
++          'type' => 'entityreference_entity_view',
++          'weight' => '3',
+         ),
+         'listing' => array(
+           'label' => 'above',
+@@ -182,7 +183,10 @@ function cod_bof_field_default_fields() {
        'settings' => array(
          'behaviors' => array(
            'prepopulate' => array(
@@ -43,13 +67,13 @@ index 23d6ab8..f1f6e78
            ),
          ),
          'user_register_form' => FALSE,
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod_
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.inc
 old mode 100755
 new mode 100644
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
 old mode 100755
 new mode 100644
-index da5fb74..a1c6a55
+index 866fa82..a1c6a55
 --- a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
 +++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
 @@ -3,15 +3,17 @@ description = BoFs are self-scheduled, unconference style sessions
@@ -59,7 +83,7 @@ index da5fb74..a1c6a55
 +version = 7.x-1.0-alpha1
 +project = cod_bof
  dependencies[] = cod_session
--;dependencies[] = commons_wysiwyg
+-dependencies[] = commons_wysiwyg
  dependencies[] = entityreference
 +dependencies[] = entityreference_prepopulate
  dependencies[] = features
@@ -67,7 +91,7 @@ index da5fb74..a1c6a55
  dependencies[] = options
  dependencies[] = strongarm
  dependencies[] = views
--;dependencies[] = views_field_view
+-dependencies[] = views_field_view
 +datestamp = 1352511671
  features[ctools][] = field_group:field_group:1
  features[ctools][] = strongarm:strongarm:1
@@ -84,13 +108,55 @@ index da5fb74..a1c6a55
 -project = "cod_support"
 -datestamp = "1352511671"
 -
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.module b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/co
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.module b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.module
 old mode 100755
 new mode 100644
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.strongarm.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.strongarm.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.strongarm.inc
 old mode 100755
 new mode 100644
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.views_default.inc b/docroot/profiles/cod/modules/contrib/cod_support
+index 2f3c87d..ca3972a
+--- a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.strongarm.inc
++++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.strongarm.inc
+@@ -71,7 +71,29 @@ function cod_bof_strongarm() {
+   $strongarm->api_version = 1;
+   $strongarm->name = 'field_bundle_settings_node__bof_session';
+   $strongarm->value = array(
+-    'view_modes' => array(),
++    'view_modes' => array(
++      'teaser' => array(
++        'custom_settings' => TRUE,
++      ),
++      'listing' => array(
++        'custom_settings' => TRUE,
++      ),
++      'full' => array(
++        'custom_settings' => FALSE,
++      ),
++      'rss' => array(
++        'custom_settings' => FALSE,
++      ),
++      'search_index' => array(
++        'custom_settings' => FALSE,
++      ),
++      'search_result' => array(
++        'custom_settings' => FALSE,
++      ),
++      'token' => array(
++        'custom_settings' => FALSE,
++      ),
++    ),
+     'extra_fields' => array(
+       'form' => array(
+         'title' => array(
+@@ -108,7 +130,7 @@ function cod_bof_strongarm() {
+   $strongarm->name = 'node_options_bof_session';
+   $strongarm->value = array(
+     0 => 'status',
+-    1 => 'promote',
++    1 => 'revision',
+   );
+   $export['node_options_bof_session'] = $strongarm;
+ 
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.views_default.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.views_default.inc
 old mode 100755
 new mode 100644
-
