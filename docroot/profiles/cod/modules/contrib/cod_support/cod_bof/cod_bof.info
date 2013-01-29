@@ -3,15 +3,17 @@ description = BoFs are self-scheduled, unconference style sessions
 core = 7.x
 package = COD
 php = 5.2.4
+version = 7.x-1.0-alpha1
+project = cod_bof
 dependencies[] = cod_session
-;dependencies[] = commons_wysiwyg
 dependencies[] = entityreference
+dependencies[] = entityreference_prepopulate
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = views
-;dependencies[] = views_field_view
+datestamp = 1352511671
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
@@ -40,11 +42,3 @@ features[variable][] = node_options_bof_session
 features[variable][] = node_preview_bof_session
 features[variable][] = node_submitted_bof_session
 features[views_view][] = cod_bof_schedule
-
-
-; Information added by drush on 2012-11-10
-version = "7.x-1.0-alpha1+0-dev"
-core = "7.x"
-project = "cod_support"
-datestamp = "1352511671"
-

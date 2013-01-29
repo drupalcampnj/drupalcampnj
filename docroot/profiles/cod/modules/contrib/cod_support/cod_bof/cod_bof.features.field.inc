@@ -105,7 +105,7 @@ function cod_bof_field_default_fields() {
   $fields['node-bof_session-field_session_timeslot'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_session_timeslot',
@@ -138,7 +138,7 @@ function cod_bof_field_default_fields() {
           'view' => array(
             'args' => array(),
             'display_name' => 'entityreference_1',
-            'view_name' => 'cod_session_timeslot',
+            'view_name' => 'cod_bof_timeslot',
           ),
         ),
         'target_type' => 'field_collection_item',
@@ -149,7 +149,7 @@ function cod_bof_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'bof_session',
       'default_value' => NULL,
-      'default_value_function' => '',
+      'default_value_function' => 'entityreference_prepopulate_field_default_value',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -182,7 +182,10 @@ function cod_bof_field_default_fields() {
       'settings' => array(
         'behaviors' => array(
           'prepopulate' => array(
-            'status' => 0,
+            'action' => 'disable',
+            'fallback' => 'none',
+            'skip_perm' => '0',
+            'status' => 1,
           ),
         ),
         'user_register_form' => FALSE,
