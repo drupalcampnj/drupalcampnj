@@ -261,6 +261,10 @@ fieldset.collapsible .fieldset-legend {
   width: 90px;
 }
 
+.camp-schedule-grid thead th:nth-child(2) {
+  width: 105px;
+}
+
 /**
  *   Aside
  */

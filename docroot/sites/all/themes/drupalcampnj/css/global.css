@@ -295,6 +295,10 @@ h2 a,
 	margin-bottom: 1em;
 }
 
+.field-name-field-speakers .field-item { 
+  margin-right: 0.5em; 
+} 
+
 ul.inline li.flag-session_vote {
 	display: block;
 	padding-top: 1em;
