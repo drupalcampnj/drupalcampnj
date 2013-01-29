@@ -1,21 +1,96 @@
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
-index 866fa82..da5fb74 100755
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc b/docroot/profiles/cod/modules/contrib/cod_suppor
+old mode 100755
+new mode 100644
+index 23d6ab8..f1f6e78
+--- a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc
++++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.field.inc
+@@ -105,7 +105,7 @@ function cod_bof_field_default_fields() {
+   $fields['node-bof_session-field_session_timeslot'] = array(
+     'field_config' => array(
+       'active' => '1',
+-      'cardinality' => '-1',
++      'cardinality' => '1',
+       'deleted' => '0',
+       'entity_types' => array(),
+       'field_name' => 'field_session_timeslot',
+@@ -138,7 +138,7 @@ function cod_bof_field_default_fields() {
+           'view' => array(
+             'args' => array(),
+             'display_name' => 'entityreference_1',
+-            'view_name' => 'cod_session_timeslot',
++            'view_name' => 'cod_bof_timeslot',
+           ),
+         ),
+         'target_type' => 'field_collection_item',
+@@ -149,7 +149,7 @@ function cod_bof_field_default_fields() {
+     'field_instance' => array(
+       'bundle' => 'bof_session',
+       'default_value' => NULL,
+-      'default_value_function' => '',
++      'default_value_function' => 'entityreference_prepopulate_field_default_value',
+       'deleted' => '0',
+       'description' => '',
+       'display' => array(
+@@ -182,7 +182,10 @@ function cod_bof_field_default_fields() {
+       'settings' => array(
+         'behaviors' => array(
+           'prepopulate' => array(
+-            'status' => 0,
++            'action' => 'disable',
++            'fallback' => 'none',
++            'skip_perm' => '0',
++            'status' => 1,
+           ),
+         ),
+         'user_register_form' => FALSE,
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.features.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod_
+old mode 100755
+new mode 100644
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_
+old mode 100755
+new mode 100644
+index da5fb74..a1c6a55
 --- a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
 +++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
-@@ -4,14 +4,14 @@ core = 7.x
+@@ -3,15 +3,17 @@ description = BoFs are self-scheduled, unconference style sessions
+ core = 7.x
  package = COD
  php = 5.2.4
++version = 7.x-1.0-alpha1
++project = cod_bof
  dependencies[] = cod_session
--dependencies[] = commons_wysiwyg
-+;dependencies[] = commons_wysiwyg
+-;dependencies[] = commons_wysiwyg
  dependencies[] = entityreference
++dependencies[] = entityreference_prepopulate
  dependencies[] = features
  dependencies[] = field_group
  dependencies[] = options
  dependencies[] = strongarm
  dependencies[] = views
--dependencies[] = views_field_view
-+;dependencies[] = views_field_view
+-;dependencies[] = views_field_view
++datestamp = 1352511671
  features[ctools][] = field_group:field_group:1
  features[ctools][] = strongarm:strongarm:1
  features[ctools][] = views:views_default:3.0
+@@ -40,11 +42,3 @@ features[variable][] = node_options_bof_session
+ features[variable][] = node_preview_bof_session
+ features[variable][] = node_submitted_bof_session
+ features[views_view][] = cod_bof_schedule
+-
+-
+-; Information added by drush on 2012-11-10
+-version = "7.x-1.0-alpha1+0-dev"
+-core = "7.x"
+-project = "cod_support"
+-datestamp = "1352511671"
+-
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.module b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/co
+old mode 100755
+new mode 100644
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.strongarm.inc b/docroot/profiles/cod/modules/contrib/cod_support/cod
+old mode 100755
+new mode 100644
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.views_default.inc b/docroot/profiles/cod/modules/contrib/cod_support
+old mode 100755
+new mode 100644
+
