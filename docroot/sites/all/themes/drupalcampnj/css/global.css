@@ -398,6 +398,150 @@ ul.inline li.flag-session_vote {
 .camp-schedule-grid tbody .experience.advanced {
   background-color: #AA1430;
 }
+
+
+/**
+ *   CONTENT > SESSION SCHEDULE > TABS
+ */
+
+@media all and (max-width: 979px) {
+
+div.tabs {
+  float:left;
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+
+ul.tabs.primary {
+  border-bottom: none; 
+  clear:left;
+  float:left;
+  position:relative;
+  left:50%;
+  text-align:center;
+}
+
+.page-camp-session-schedule .tabs ul li {
+  display:block;
+  float:left;
+  position:relative;
+  right:50%;
+}
+
+.page-camp-session-schedule .tabs ul li a {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0.2em 0.5em;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00674C', endColorstr='#FF000101');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00b384), color-stop(70%, #00674c));
+  background: -webkit-linear-gradient(#00b384, #00674c 70%);
+  background: -moz-linear-gradient(#00b384, #00674c 70%);
+  background: -o-linear-gradient(#00b384, #00674c 70%);
+  background: linear-gradient(#00b384, #00674c 70%);
+  -webkit-box-shadow: #01ffbc 0 1px 0 inset;
+  -moz-box-shadow: #01ffbc 0 1px 0 inset;
+  box-shadow: #01ffbc 0 1px 0 inset;
+  border: 1px solid #004e39;
+  color: #f6f6f0 !important;
+  text-shadow: #002c21 0 -1px 0;
+  margin-right: 0.5em;
+}
+.page-camp-session-schedule .tabs ul li a:hover {
+  text-decoration: none;
+}
+.page-camp-session-schedule .tabs ul li a:hover {
+  background-color: #004e39;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #009a72), color-stop(75%, #004e39));
+  background: -webkit-linear-gradient(#009a72 3%, #004e39 75%);
+  background: -moz-linear-gradient(#009a72 3%, #004e39 75%);
+  background: -o-linear-gradient(#009a72 3%, #004e39 75%);
+  background: linear-gradient(#009a72 3%, #004e39 75%);
+}
+.page-camp-session-schedule .tabs ul li a:active {
+  -webkit-box-shadow: #003e2e 0 1px 2px inset;
+  -moz-box-shadow: #003e2e 0 1px 2px inset;
+  box-shadow: #003e2e 0 1px 2px inset;
+}
+.page-camp-session-schedule .tabs ul li a.disabled, .page-camp-session-schedule .tabs ul li a[disabled] {
+  opacity: 0.6;
+  background: #00674c;
+  cursor: default;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.page-camp-session-schedule .tabs ul li a::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
+}
+.page-camp-session-schedule .tabs ul li a.active {
+  font-size: 16px;
+  padding: 0.2em 0.5em;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00B384', endColorstr='#FF004E39');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #01ffbc), color-stop(70%, #00b384));
+  background: -webkit-linear-gradient(#01ffbc, #00b384 70%);
+  background: -moz-linear-gradient(#01ffbc, #00b384 70%);
+  background: -o-linear-gradient(#01ffbc, #00b384 70%);
+  background: linear-gradient(#01ffbc, #00b384 70%);
+  -webkit-box-shadow: #4dffd0 0 1px 0 inset;
+  -moz-box-shadow: #4dffd0 0 1px 0 inset;
+  box-shadow: #4dffd0 0 1px 0 inset;
+  border: 1px solid #009a72;
+  color: #f6f6f0;
+  text-shadow: #007959 0 -1px 0;
+}
+.page-camp-session-schedule .tabs ul li a.active:hover {
+  text-decoration: none;
+}
+.page-camp-session-schedule .tabs ul li a.active:hover {
+  background-color: #009a72;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #00e7aa), color-stop(75%, #009a72));
+  background: -webkit-linear-gradient(#00e7aa 3%, #009a72 75%);
+  background: -moz-linear-gradient(#00e7aa 3%, #009a72 75%);
+  background: -o-linear-gradient(#00e7aa 3%, #009a72 75%);
+  background: linear-gradient(#00e7aa 3%, #009a72 75%);
+}
+.page-camp-session-schedule .tabs ul li a.active:active {
+  -webkit-box-shadow: #008b66 0 1px 2px inset;
+  -moz-box-shadow: #008b66 0 1px 2px inset;
+  box-shadow: #008b66 0 1px 2px inset;
+}
+.page-camp-session-schedule .tabs ul li a.active.disabled, .page-camp-session-schedule .tabs ul li a.active[disabled] {
+  opacity: 0.6;
+  background: #00b384;
+  cursor: default;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.page-camp-session-schedule .tabs ul li a.active::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
+.view-content {
+  clear: both;
+}
+
+}
+
 /**
  *   Aside
  */
