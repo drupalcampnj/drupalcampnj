@@ -61,7 +61,7 @@ function cod_bof_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'listing' => array(
           'label' => 'above',
@@ -157,10 +157,11 @@ function cod_bof_field_default_fields() {
           'label' => 'above',
           'module' => 'entityreference',
           'settings' => array(
-            'link' => FALSE,
+            'links' => 0,
+            'view_mode' => 'full',
           ),
-          'type' => 'entityreference_label',
-          'weight' => 3,
+          'type' => 'entityreference_entity_view',
+          'weight' => '3',
         ),
         'listing' => array(
           'label' => 'above',
