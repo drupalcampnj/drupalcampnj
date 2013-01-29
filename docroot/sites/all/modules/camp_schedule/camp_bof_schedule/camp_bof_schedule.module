@@ -90,7 +90,7 @@ function template_preprocess_camp_bof_schedule_grid(&$vars) {
     // Wrap all elements except the 1st in a DIV.
     // This is a bit of a hack for the room name which is
     // first in the View and is hidden in the gird.
-    $cell['data']['room_name'] = array_shift($strings);
+    $cell['data']['room_name']['#markup'] = array_shift($strings);
     if (empty($cell['data']['sessions'])) {
       $cell['data']['sessions'] = array();
     }
