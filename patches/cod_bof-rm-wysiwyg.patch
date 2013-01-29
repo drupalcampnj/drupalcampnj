@@ -1,8 +1,8 @@
-diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_
-index 866fa82..f4625eb 100755
+diff --git a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
+index 866fa82..da5fb74 100755
 --- a/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
 +++ b/docroot/profiles/cod/modules/contrib/cod_support/cod_bof/cod_bof.info
-@@ -4,7 +4,7 @@ core = 7.x
+@@ -4,14 +4,14 @@ core = 7.x
  package = COD
  php = 5.2.4
  dependencies[] = cod_session
@@ -11,4 +11,11 @@ index 866fa82..f4625eb 100755
  dependencies[] = entityreference
  dependencies[] = features
  dependencies[] = field_group
-
+ dependencies[] = options
+ dependencies[] = strongarm
+ dependencies[] = views
+-dependencies[] = views_field_view
++;dependencies[] = views_field_view
+ features[ctools][] = field_group:field_group:1
+ features[ctools][] = strongarm:strongarm:1
+ features[ctools][] = views:views_default:3.0
