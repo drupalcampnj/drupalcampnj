@@ -1,7 +1,7 @@
-name = Camp Schedule
+name = Camp Session Schedule
 description = Create a session grid and other schedule display features.
 core = 7.x
-package = Features
+package = DrupalCamp
 php = 5.2.4
 dependencies[] = cod_session
 dependencies[] = views
