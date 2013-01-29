@@ -137,11 +137,25 @@ function camp_schedule_views_default_views() {
   $handler->display->display_options['filters']['field_slot_datetime_value']['relationship'] = 'field_slot_types_time_slot_target_id';
   $handler->display->display_options['filters']['field_slot_datetime_value']['operator'] = 'starts';
   $handler->display->display_options['filters']['field_slot_datetime_value']['value'] = '2013-02-02';
+  /* Filter criterion: Field collection item: Allowed Schedule Types (field_slot_types_allowed) */
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['id'] = 'field_slot_types_allowed_value';
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['table'] = 'field_data_field_slot_types_allowed';
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['field'] = 'field_slot_types_allowed_value';
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['value'] = 'bof_session';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['path'] = 'camp/session-schedule';
+  $handler->display->display_options['path'] = 'camp/session-schedule/sessions';
+  $handler->display->display_options['menu']['type'] = 'default tab';
+  $handler->display->display_options['menu']['title'] = 'Sessions';
+  $handler->display->display_options['menu']['weight'] = '-10';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['tab_options']['type'] = 'normal';
+  $handler->display->display_options['tab_options']['title'] = 'Sessions';
+  $handler->display->display_options['tab_options']['weight'] = '0';
+  $handler->display->display_options['tab_options']['name'] = 'main-menu';
   $export['camp_session_grid'] = $view;
 
   return $export;
