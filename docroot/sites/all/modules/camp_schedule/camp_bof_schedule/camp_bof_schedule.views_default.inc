@@ -96,9 +96,9 @@ function camp_bof_schedule_views_default_views() {
   $handler->display->display_options['fields']['item_id']['label'] = '';
   $handler->display->display_options['fields']['item_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['item_id']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['item_id']['alter']['text'] = '<em>Add BoF Session</em>';
+  $handler->display->display_options['fields']['item_id']['alter']['text'] = '<em class="add-bof">Add BoF Session</em>';
   $handler->display->display_options['fields']['item_id']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['item_id']['alter']['path'] = 'node/add/bof-session/?field_session_timeslot=[item_id]';
+  $handler->display->display_options['fields']['item_id']['alter']['path'] = 'node/add/bof-session/?field_session_timeslot=[item_id]&destination=camp/session-schedule/bofs';
   $handler->display->display_options['fields']['item_id']['element_label_colon'] = FALSE;
   /* Field: Field collection item: Types Capacity */
   $handler->display->display_options['fields']['field_slot_types_capacity']['id'] = 'field_slot_types_capacity';
@@ -165,6 +165,81 @@ function camp_bof_schedule_views_default_views() {
   $handler->display->display_options['tab_options']['weight'] = '0';
   $handler->display->display_options['tab_options']['name'] = 'main-menu';
   $export['camp_bof_grid'] = $view;
+
+  $view = new view();
+  $view->name = 'cod_bof_timeslot';
+  $view->description = 'View representing the select field for timeslot entity references in sessions, bofs, etc';
+  $view->tag = 'default';
+  $view->base_table = 'field_collection_item';
+  $view->human_name = 'cod_bof_timeslot';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Field collection item: Entity with the Allowed Slot Types (field_room_slots_types_allowed) */
+  $handler->display->display_options['relationships']['field_room_slots_types_allowed_node']['id'] = 'field_room_slots_types_allowed_node';
+  $handler->display->display_options['relationships']['field_room_slots_types_allowed_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_room_slots_types_allowed_node']['field'] = 'field_room_slots_types_allowed_node';
+  $handler->display->display_options['relationships']['field_room_slots_types_allowed_node']['required'] = TRUE;
+  /* Field: Field collection item: Field collection item ID */
+  $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
+  $handler->display->display_options['fields']['item_id']['table'] = 'field_collection_item';
+  $handler->display->display_options['fields']['item_id']['field'] = 'item_id';
+  $handler->display->display_options['fields']['item_id']['label'] = '';
+  $handler->display->display_options['fields']['item_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['item_id']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'field_room_slots_types_allowed_node';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Time Slot */
+  $handler->display->display_options['fields']['field_slot_types_time_slot']['id'] = 'field_slot_types_time_slot';
+  $handler->display->display_options['fields']['field_slot_types_time_slot']['table'] = 'field_data_field_slot_types_time_slot';
+  $handler->display->display_options['fields']['field_slot_types_time_slot']['field'] = 'field_slot_types_time_slot';
+  $handler->display->display_options['fields']['field_slot_types_time_slot']['label'] = '';
+  $handler->display->display_options['fields']['field_slot_types_time_slot']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_slot_types_time_slot']['settings'] = array(
+    'link' => 0,
+  );
+  /* Filter criterion: Field collection item: Allowed Schedule Types (field_slot_types_allowed) */
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['id'] = 'field_slot_types_allowed_value';
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['table'] = 'field_data_field_slot_types_allowed';
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['field'] = 'field_slot_types_allowed_value';
+  $handler->display->display_options['filters']['field_slot_types_allowed_value']['value'] = 'bof_session';
+
+  /* Display: Entity Reference */
+  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'cod_bof_timeslot';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'field_slot_types_time_slot' => 'field_slot_types_time_slot',
+    'title' => 'title',
+    'item_id' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $export['cod_bof_timeslot'] = $view;
 
   return $export;
 }

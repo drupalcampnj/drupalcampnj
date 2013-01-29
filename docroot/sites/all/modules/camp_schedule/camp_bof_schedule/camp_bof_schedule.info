@@ -12,3 +12,4 @@ dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[views_view][] = camp_bof_grid
+features[views_view][] = cod_bof_timeslot
