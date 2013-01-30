@@ -281,20 +281,22 @@ fieldset.collapsible .fieldset-legend {
   -o-border-radius: 6px;
   border-radius: 6px;
   *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFF1A500', endColorstr='#FF8B5F00');
-  background-color: #f1a500;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFBA25', endColorstr='#FFBE8200');
+  background-color: #ffba25;
   border: 0;
-  color: white;
+  color: #1f1f1f;
+  text-shadow: #ffd57a 0 -1px 0;
   margin-top: 5px;
+  font-weight: bold;
 }
 .camp-schedule-grid tbody .add-bof em:hover {
   text-decoration: none;
 }
 .camp-schedule-grid tbody .add-bof em:hover {
-  background-color: #d89300;
+  background-color: #ffb20c;
 }
 .camp-schedule-grid tbody .add-bof em:active {
-  background-color: #c88900;
+  background-color: #fbab00;
 }
 .camp-schedule-grid tbody .add-bof em.disabled, .camp-schedule-grid tbody .add-bof em[disabled] {
   opacity: 0.6;
