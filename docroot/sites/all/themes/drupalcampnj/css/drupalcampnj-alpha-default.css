@@ -252,7 +252,8 @@ fieldset.collapsible .fieldset-legend {
   display: none;
 }
 
-.camp-schedule-grid tbody .session-details {
+.camp-schedule-grid tbody .session-details,
+.camp-schedule-grid tbody .add-bof {
   float: none; 
   width: 100%;
 }

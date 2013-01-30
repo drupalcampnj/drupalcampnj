@@ -334,6 +334,10 @@ ul.inline li.flag-session_vote {
   padding-bottom: 1.5em;
 }
 
+.camp-schedule-grid tbody .add-bof {
+  display: block;
+}
+
 @media all and (min-width: 345px) {
   .camp-schedule-grid tbody .room-name {
     float: left;
@@ -341,7 +345,8 @@ ul.inline li.flag-session_vote {
     text-align: right;
   }
 
-  .camp-schedule-grid tbody .session-details {
+  .camp-schedule-grid tbody .session-details,
+  .camp-schedule-grid tbody .add-bof{
     float: right; 
     width: 60%; 
   }
@@ -352,7 +357,8 @@ ul.inline li.flag-session_vote {
     width: 40%;
   }
 
-  .camp-schedule-grid tbody .session-details {
+  .camp-schedule-grid tbody .session-details,
+  .camp-schedule-grid tbody .add-bof {
     width: 55%; 
   }
 }
