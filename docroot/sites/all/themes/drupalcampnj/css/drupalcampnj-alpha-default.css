@@ -252,8 +252,7 @@ fieldset.collapsible .fieldset-legend {
   display: none;
 }
 
-.camp-schedule-grid tbody .session-details,
-.camp-schedule-grid tbody .add-bof {
+.camp-schedule-grid tbody .session-details {
   float: none; 
   width: 100%;
 }
@@ -264,6 +263,50 @@ fieldset.collapsible .fieldset-legend {
 
 .view-camp-session-grid thead th:nth-child(2) {
   width: 105px;
+}
+
+/* Add BoF Link */
+
+.camp-schedule-grid tbody .add-bof {
+  float: left;
+}
+.camp-schedule-grid tbody .add-bof em {
+  font-size: 13px;
+  padding: 0.2em 0.5em;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFF1A500', endColorstr='#FF8B5F00');
+  background-color: #f1a500;
+  border: 0;
+  color: white;
+  margin-top: 5px;
+}
+.camp-schedule-grid tbody .add-bof em:hover {
+  text-decoration: none;
+}
+.camp-schedule-grid tbody .add-bof em:hover {
+  background-color: #d89300;
+}
+.camp-schedule-grid tbody .add-bof em:active {
+  background-color: #c88900;
+}
+.camp-schedule-grid tbody .add-bof em.disabled, .camp-schedule-grid tbody .add-bof em[disabled] {
+  opacity: 0.6;
+  background: false;
+  cursor: default;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.camp-schedule-grid tbody .add-bof em::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
 }
 
 /**
