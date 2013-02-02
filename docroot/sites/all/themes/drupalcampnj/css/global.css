@@ -577,6 +577,87 @@ ul.tabs.primary {
 }
 
 /**
+ *   FRONT PAGE SESSION BUTTON
+ */
+
+.front .block-block-2 .homepage-session-schedule a {
+  font-size: 16px;
+  padding: 0.4em 0.8em;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00674C', endColorstr='#FF000101');
+  background-color: #00674c;
+  border: 2px solid transparent;
+  color: white !important;
+  margin-right: 0.5em;
+}
+.front .block-block-2 .homepage-session-schedule a:hover {
+  text-decoration: none;
+}
+.front .block-block-2 .homepage-session-schedule a:hover {
+  background-color: #004e39;
+}
+.front .block-block-2 .homepage-session-schedule a:active {
+  background-color: #003e2e;
+}
+.front .block-block-2 .homepage-session-schedule a.disabled, .front .block-block-2 .homepage-session-schedule a[disabled] {
+  opacity: 0.6;
+  background: false;
+  cursor: default;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.front .block-block-2 .homepage-session-schedule a::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
+}
+.front .block-block-2 .homepage-session-schedule a.active {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0.4em 0.8em;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00B384', endColorstr='#FF004E39');
+  background-color: #00b384;
+  border: 2px solid white;
+  color: white !imporant;
+  text-shadow: #003426 0 1px 0;
+}
+.front .block-block-2 .homepage-session-schedule a.active:hover {
+  text-decoration: none;
+}
+.front .block-block-2 .homepage-session-schedule a.active:hover {
+  background-color: #009a72;
+}
+.front .block-block-2 .homepage-session-schedule a.active:active {
+  background-color: #008b66;
+}
+.front .block-block-2 .homepage-session-schedule a.active.disabled, .front .block-block-2 .homepage-session-schedule a.active[disabled] {
+  opacity: 0.6;
+  background: false;.
+  cursor: default;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.front .block-block-2 .homepage-session-schedule a.active::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
+}
+/**
  *   Aside
  */
 
