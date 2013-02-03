@@ -154,7 +154,7 @@ img {
   padding-left: 10px;
 }
 
-#zone-menu a:hover, #zone-menu a:active {
+#zone-menu a:hover, #zone-menu a:active, #zone-menu a.active {
   background-color: #009a72;
 }
 
