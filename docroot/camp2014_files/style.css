@@ -117,3 +117,18 @@ li a.active{color:#000;}#navigation{}.region-navigation{}#main-menu{}#secondary-
 
 
 .field{}.field-type-datetime{}.field-type-filefield{}.field-type-nodereference{}.field-type-number-decimal{}.field-type-number-float{}.field-type-number-integer{}.field-type-text{}.field-type-userreference{}.field-field-FIELDNAME{}
+
+.content {
+    background-color: rgba(11,11,11,.8);
+    padding:25px;
+    margin-right:10px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+.sign-post {
+    margin-left: 49px;
+}
+.sign-bottom {
+    margin-left:83px;
+}
