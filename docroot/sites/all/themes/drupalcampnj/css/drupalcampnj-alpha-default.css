@@ -92,7 +92,7 @@ body.admin-menu {
 }
 
 .front #region-content {
-  margin-top: 0px;
+  margin-top: 50px;
 }
 
 #region-content {
@@ -104,13 +104,13 @@ body.admin-menu {
   padding: 30px;
   background-color: rgb(11,11,11);
   background-color: rgba(11,11,11,.9);
-  min-height: 450px; 
-  height:auto !important; 
+  margin-left: 59px;
+  min-height: 450px;
+    height:auto !important;
   height: 450px;
   -webkit-border-radius: 9px;
      -moz-border-radius: 9px;
           border-radius: 9px;
-    margin-left: 59px;
 }
 
 .front .region-content-inner {
