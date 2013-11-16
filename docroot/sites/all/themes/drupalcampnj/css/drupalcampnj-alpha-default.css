@@ -1,7 +1,7 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
 body {
-  background: #151515 url('../images/bg-tile.jpg') 0 0 repeat-x;
+  background: #151515 url('../images/bg-tile-2014.jpg') 0 0 repeat-x;
 }
 
 body.admin-menu {
@@ -9,7 +9,7 @@ body.admin-menu {
 }
 
 #page {
-  background: url('../images/bg-main.jpg') 50% 0 no-repeat;
+  background: url('../images/bg-main-2014.jpg') 50% 0 no-repeat;
 }
 
 #zone-menu-wrapper, #zone-branding-wrapper {
@@ -338,7 +338,7 @@ fieldset.collapsible .fieldset-legend {
 .date-sign {
   height: 322px;
   width: 196px;
-  background: url('../images/sb-date-sign.png') 0 0 no-repeat;
+  background: url('../images/sb-date-sign-2014.png') 0 0 no-repeat;
   margin-top: 20px;
   position: relative;
   left: -2px;
