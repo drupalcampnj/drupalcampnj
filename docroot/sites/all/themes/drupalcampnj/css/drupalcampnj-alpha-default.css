@@ -92,7 +92,7 @@ body.admin-menu {
 }
 
 .front #region-content {
-  margin-top: 170px;
+  margin-top: 0px;
 }
 
 #region-content {
@@ -110,14 +110,15 @@ body.admin-menu {
   -webkit-border-radius: 9px;
      -moz-border-radius: 9px;
           border-radius: 9px;
+    margin-left: 59px;
 }
 
 .front .region-content-inner {
-  background-color: rgba(11,11,11,.8);
+  background-color: rgba(11,11,11,.9);
 }
 
 .front .region-content-inner {
-  margin-left: 123px;
+  margin-left: 59px;
 }
 
 #region-content a {
