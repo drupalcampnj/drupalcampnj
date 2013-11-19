@@ -80,6 +80,11 @@ body.admin-menu {
   border-radius: 3px;
 }
 
+ul#main-menu, ul#secondary-menu {
+    margin-bottom: 0;
+    display: inline-block;
+}
+
 /**
  *   Content
  */
