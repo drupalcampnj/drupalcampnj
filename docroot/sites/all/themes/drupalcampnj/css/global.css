@@ -763,19 +763,19 @@ ul.tabs.primary {
 .views-field-field-sponsor-logo {
     border-radius: 20px;
 }
-.views-field-field-sponsor-logo.diamond {
+.views-field-field-sponsor-logo.Diamond-Sponsor {
     background: #444444;
     border: 3px solid #ffffff;
 }
-.views-field-field-sponsor-logo.platinum {
+.views-field-field-sponsor-logo.Platinum-Sponsor {
     background: #333333;
     border: 3px solid #e1e1e1;
 }
-.views-field-field-sponsor-logo.gold {
+.views-field-field-sponsor-logo.Gold-Sponsor {
     background: #222222;
     border: 3px solid #c79602;
 }
-.views-field-field-sponsor-logo.silver {
+.views-field-field-sponsor-logo.Silver-Sponsor {
     background: transparent;
     border: 3px solid #959595;
 }
