@@ -695,17 +695,30 @@ ul.tabs.primary {
 
 #zone-footer-wrapper {
   background: url('../images/footer-bg.png') #151515 0 0 repeat-x;
-  min-height: 300px; 
-  height:auto !important; 
-  height: 300px;
-  background-color: #151515; 
+  background-color: #151515;
   padding: 60px 0 0 0;
+}
+
+#region-footer-first {
+    min-height: 300px;
+    height:auto !important;
+    height: 300px;
 }
 
 .views-field-field-sponsor-logo a {
 	display: block;
 	width: 260px;
 	margin: 0 auto .75em auto;
+}
+
+.archives {
+    text-align: center;
+    color: white;
+    font-size: .9em;
+}
+
+.archives a {
+    color: #ffca58;
 }
 
 /* feedback link should be hidden by default*/
