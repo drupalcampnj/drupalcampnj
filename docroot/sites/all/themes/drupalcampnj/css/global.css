@@ -715,17 +715,18 @@ ul.tabs.primary {
 
 /* mobile tweaks, sponsor logos */
 @media all and (max-width: 979px) {
+    .page-sponsors .item-list {clear: both;}
 	.views-field-field-sponsor-logo a {
 		margin: 0;
 		width: inherit;
 	}
 	
 	.views-field-field-sponsor-logo img {
-		width: 46%;
+        width: 85%; /* was 46% in 2013 */
 		height: auto;
 		float: left;
 		margin: .5em 2%;
-		max-width: 260px;
+		max-width: 254px;
 	}
 	
 	#zone-content h1 {
@@ -779,7 +780,7 @@ ul.tabs.primary {
     max-width: 254px;
 }
 .views-field-field-sponsor-logo.Silver-Sponsor img {
-    background: transparent;
+    background: #151515;
     border: 3px solid #959595;
     border-radius: 20px;
     max-width: 254px;

@@ -80,6 +80,11 @@ body.admin-menu {
   border-radius: 3px;
 }
 
+#zone-menu li.menu-497 a {
+    background-color: #ffca58;
+    color: #151515;
+}
+
 ul#main-menu, ul#secondary-menu {
     margin-bottom: 0;
     display: inline-block;
