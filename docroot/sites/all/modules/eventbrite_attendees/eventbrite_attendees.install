@@ -36,10 +36,11 @@ function eventbrite_attendees_schema() {
         'default' => 0,
       ),
       'event_id' => array(
-        'description' => t('The identifier for an event.'),
-        'type' => 'int',
-        'unsigned' => TRUE,
+        'description' => t('The numeric identifier for an event (can be larger then a 32 bit int, so use a string column).'),
+        'type' => 'varchar',
+        'length' => 16,
         'not null' => TRUE,
+        'default' => '',
       ),
       'ticket_id' => array(
         'description' => t('The identifier for a ticket type.'),
