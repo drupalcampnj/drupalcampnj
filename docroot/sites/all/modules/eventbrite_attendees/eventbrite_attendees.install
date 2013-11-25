@@ -42,7 +42,7 @@ function eventbrite_attendees_schema() {
         'not null' => TRUE,
       ),
       'ticket_id' => array(
-        'description' => t('Theidentifier for a ticket type.'),
+        'description' => t('The identifier for a ticket type.'),
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
@@ -179,3 +179,11 @@ function eventbrite_attendees_schema() {
   return $schema;
 }
 
+/**
+ * Install schema if the module was updated from an earlier version.
+ */
+function eventbrite_attendees_update_7200() {
+  if (!db_table_exists('eventbrite_attendees')) {
+    drupal_install_schema("eventbrite_attendees");
+  }
+}

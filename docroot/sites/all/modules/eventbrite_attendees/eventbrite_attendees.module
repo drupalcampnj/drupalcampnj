@@ -250,7 +250,7 @@ function eventbrite_attendees_test() {
  * Load all attendee data and answers into an array keyed by ID.
  */
 function eventbrite_attendees_load() {
-  $data = db_query('SELECT * FROM {eventbrite_attendees}')->fetchAllAssoc('id');
+  $data = db_query('SELECT * FROM {eventbrite_attendees} ORDER BY first_name, last_name')->fetchAllAssoc('id');
   foreach ($data as $id => $a) {
     $a->answers = array();
   }
@@ -276,6 +276,7 @@ function eventbrite_attendees_cron() {
   // Eventbrite is based in CA - need to use their local time.
   $now = new DateTime(null, timezone_open('America/Los_Angeles'));
   $data = eventbrite_attendees_fetch($since);
+  watchdog('eventbrite_attendees', 'Fetching data since "@since"', array('@since' => $since));
 
   // Only update the timestamp if we got some data back, since
   // errors could also give use an empty result.
@@ -284,6 +285,7 @@ function eventbrite_attendees_cron() {
     $time = $now->format('Y-m-d H:i:s');
     cache_set('eventbrite_attendees:last_fetch', $time);
     eventbrite_attendees_update_data($data);
+    watchdog('eventbrite_attendees', 'Added/updated !count attendees and setting new fetch time "@since"', array('!count' => count($data->attendees), '@since' => $time));
     eventbrite_attendees_sync_users();
   }
 }
