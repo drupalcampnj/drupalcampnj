@@ -18,6 +18,12 @@ function eventbrite_attendees_menu() {
     'page callback' => 'eventbrite_attendees_report',
     'access arguments' => array('access site reports'),
   );
+  $items['admin/reports/eventbrite-attendees/test'] = array(
+    'title' => 'Eventbrite Full Data test',
+    'description' => 'Test',
+    'page callback' => 'eventbrite_attendees_test',
+    'access arguments' => array('access site reports'),
+  );
   $items['admin/reports/eventbrite-attendees/csv'] = array(
     'title' => 'Eventbrite CSV',
     'description' => 'Export Attendee data',
@@ -41,26 +47,25 @@ function _eventbrite_attendees_get_questions($data) {
   $questions = array();
   $opt_out_id = variable_get('eventbrite_attendees_opt_out_id', '');
   // pre-analyze questions
-  if (isset($data->attendees) && is_array($data->attendees)) {
-    foreach ($data->attendees as $a) {
-      if (is_array($a->attendee->answers)) {
-        foreach ($a->attendee->answers as $ans) {
-          // We don't need to see opt-out here.
-          if ($ans->answer->question_id == $opt_out_id && !empty($ans->answer->answer_text)) {
-            continue;
+
+  foreach ($data as $a) {
+    if (is_array($a->answers)) {
+      foreach ($a->answers as $ans) {
+        // We don't need to see opt-out here.
+        if ($ans->question_id == $opt_out_id) {
+          continue;
+        }
+        $questions[$ans->question_id] = $ans->question;
+        if ($ans->question_type == "multiple choice") {
+          if (!isset($question_choices[$ans->question_id])) {
+            $question_choices[$ans->question_id] = array();
           }
-          $questions[$ans->answer->question_id] = $ans->answer->question;
-          if ($ans->answer->question_type == "multiple choice") {
-            if (!isset($question_choices[$ans->answer->question_id])) {
-              $question_choices[$ans->answer->question_id] = array();
+          $choices = explode(' | ', $ans->answer_text);
+          foreach ($choices as $c) {
+            if (!isset($question_choices[$ans->question_id][$c])) {
+              $question_choices[$ans->question_id][$c] = 0;
             }
-            $choices = explode(' | ', $ans->answer->answer_text);
-            foreach ($choices as $c) {
-              if (!isset($question_choices[$ans->answer->question_id][$c])) {
-                $question_choices[$ans->answer->question_id][$c] = 0;
-              }
-              $question_choices[$ans->answer->question_id][$c]++;
-            }
+            $question_choices[$ans->question_id][$c]++;
           }
         }
       }
@@ -70,12 +75,12 @@ function _eventbrite_attendees_get_questions($data) {
 }
 
 /**
- * @todo Please document this function.
- * @see http://drupal.org/node/1354
+ * Page callback that displays a table of all attendee data.
+ *
+ * This page is for administrators to see all attendees and stats on them.
  */
 function eventbrite_attendees_report() {
-  $json = eventbrite_attendees_fetch();
-  $data = json_decode($json);
+  $data = eventbrite_attendees_load();
   list($questions, $question_choices) = _eventbrite_attendees_get_questions($data);
 
   $output = '';
@@ -87,29 +92,19 @@ function eventbrite_attendees_report() {
 
   $rows = array();
 
-  if (isset($data->attendees) && is_array($data->attendees)) {
-    foreach ($data->attendees as $a) {
-
-      if (!is_array($a->attendee->answers)) {
-        $a->attendee->answers = array();
-      }
-      $attendee_answers = array();
-      foreach ($a->attendee->answers as $ans) {
-        $attendee_answers[$ans->answer->question_id] = $ans->answer;
-      }
-
-      $row = array();
-      $row[] = check_plain($a->attendee->first_name) . ' ' . check_plain($a->attendee->last_name);
-      $row[] = !empty($a->attendee->company) ? check_plain($a->attendee->company) : '';
-      $row[] = !empty($a->attendee->website) ? l($a->attendee->website, $a->attendee->website) : '';
-      $row[] = !empty($a->attendee->email) ? check_plain($a->attendee->email) : '';
-      $row[] = isset($a->attendee->amount_paid) ? check_plain($a->attendee->amount_paid) : '';
-      foreach ($questions as $id => $q) {
-        $row[] = isset($attendee_answers[$id]) ? check_plain($attendee_answers[$id]->answer_text) : '';
-      }
-      $rows[] = $row;
+  foreach ($data as $attendee) {
+    $row = array();
+    $row[] = check_plain($attendee->first_name) . ' ' . check_plain($attendee->last_name);
+    $row[] = !empty($attendee->company) ? check_plain($attendee->company) : '';
+    $row[] = !empty($attendee->website) ? l($attendee->website, $attendee->website) : '';
+    $row[] = !empty($attendee->email) ? check_plain($attendee->email) : '';
+    $row[] = isset($attendee->amount_paid) ? check_plain($attendee->amount_paid) : '';
+    foreach ($questions as $id => $q) {
+      $row[] = isset($attendee->answers[$id]) ? check_plain($attendee->answers[$id]->answer_text) : '';
     }
+    $rows[] = $row;
   }
+
   $output .= "<h3>" .  t('Answer summary') . "</h3>\n";
   $output .= "<dl>\n";
   foreach ($question_choices as $id => $choices) {
@@ -126,12 +121,10 @@ function eventbrite_attendees_report() {
 }
 
 /**
- * @todo Please document this function.
- * @see http://drupal.org/node/1354
+ * Page callback to download a CSV file with all attendee data.
  */
 function eventbrite_attendees_csv_export() {
-  $json = eventbrite_attendees_fetch();
-  $data = json_decode($json);
+  $data = eventbrite_attendees_load();
   list($questions, $question_choices) = _eventbrite_attendees_get_questions($data);
 
   $output = '';
@@ -145,29 +138,21 @@ function eventbrite_attendees_csv_export() {
   header('Content-Disposition: attachment;filename=eventbrite_attendees-' . date('Y-m-d') . '.csv');
   $fp = fopen('php://output', 'w');
   fputcsv($fp, $header);
-  if (isset($data->attendees) && is_array($data->attendees)) {
-    foreach ($data->attendees as $a) {
 
-      if (!is_array($a->attendee->answers)) {
-        $a->attendee->answers = array();
-      }
-      $attendee_answers = array();
-      foreach ($a->attendee->answers as $ans) {
-        $attendee_answers[$ans->answer->question_id] = $ans->answer;
-      }
-      $row = array();
-      $row[] = ucfirst($a->attendee->first_name);
-      $row[] = ucfirst($a->attendee->last_name);
-      $row[] = !empty($a->attendee->company) ? $a->attendee->company : '';
-      $row[] = !empty($a->attendee->website) ? $a->attendee->website : '';
-      $row[] = !empty($a->attendee->email) ? $a->attendee->email : '';
-      $row[] = isset($a->attendee->amount_paid) ? $a->attendee->amount_paid : '';
-      foreach ($questions as $id => $q) {
-        $row[] = isset($attendee_answers[$id]) ? $attendee_answers[$id]->answer_text : '';
-      }
-      fputcsv($fp, $row);
+  foreach ($data as $attendee) {
+    $row = array();
+    $row[] = ucfirst($attendee->first_name);
+    $row[] = ucfirst($attendee->last_name);
+    $row[] = !empty($attendee->company) ? $attendee->company : '';
+    $row[] = !empty($attendee->website) ? $attendee->website : '';
+    $row[] = !empty($attendee->email) ? $attendee->email : '';
+    $row[] = isset($attendee->amount_paid) ? $attendee->amount_paid : '';
+    foreach ($questions as $id => $q) {
+      $row[] = isset($attendee->answers[$id]) ? $attendee->answers[$id]->answer_text : '';
     }
+    fputcsv($fp, $row);
   }
+
   fclose($fp);
   exit();
 }
@@ -224,6 +209,25 @@ function eventbrite_attendees_configure_form($form, &$form_state) {
     '#default_value' => variable_get('eventbrite_attendees_sponsor_ticket_id', ''),
     '#description' => t('The Eventbrite ticket ID purchased by individual sponsors.'),
   );
+  $form['user_sync'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('User sync'),
+  );
+  $form['user_sync']['eventbrite_attendees_create_users'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Sync and create Drupal user accounts'),
+    '#default_value' => variable_get('eventbrite_attendees_create_users', 0),
+    '#description' => t('If enabled, a Drupal user account will be created for each attendee who registers.'),
+  );
+  $options = array(0 => t('- None -')) + user_roles(TRUE);
+  unset($options[DRUPAL_AUTHENTICATED_RID]);
+  $form['user_sync']['eventbrite_attendees_sync_role'] = array(
+    '#type' => 'radios',
+    '#title' => t('Extra role for Drupal user accounts'),
+    '#options' => $options,
+    '#default_value' => variable_get('eventbrite_attendees_sync_role', 0),
+    '#description' => t('Optional extra role to give to user accounts created from attendees.'),
+  );
   $form = system_settings_form($form);
   $form['#submit'][] = 'eventbrite_attendees_cache_clear';
   return $form;
@@ -236,38 +240,225 @@ function eventbrite_attendees_cache_clear() {
   cache_clear_all('eventbrite_attendees:', 'cache', TRUE);
 }
 
+function eventbrite_attendees_test() {
+  $data = eventbrite_attendees_fetch();
+  eventbrite_attendees_update_data($data);
+  return '<pre>' . print_r(eventbrite_attendees_load(),1) . '</pre>';
+}
+
 /**
- * Fetch and cache data from Eventbrite.
+ * Load all attendee data and answers into an array keyed by ID.
  */
-function eventbrite_attendees_fetch() {
+function eventbrite_attendees_load() {
+  $data = db_query('SELECT * FROM {eventbrite_attendees} ORDER BY first_name, last_name')->fetchAllAssoc('id');
+  foreach ($data as $id => $a) {
+    $a->answers = array();
+  }
+  $answers = db_query('SELECT * FROM {eventbrite_attendee_answers}')->fetchAll();
+  foreach ($answers as $ans) {
+    if (isset($data[$ans->attendee_id])) {
+      $data[$ans->attendee_id]->answers[$ans->question_id] = $ans;
+    }
+  }
+  return $data;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function eventbrite_attendees_cron() {
+  $since = '';
+  // Use cache rather than variable table to avoid extra cache clears.
+  $cache = cache_get('eventbrite_attendees:last_fetch');
+  if (isset($cache->data)) {
+    $since = $cache->data;
+  }
+  // Eventbrite is based in CA - need to use their local time.
+  $now = new DateTime(null, timezone_open('America/Los_Angeles'));
+  $data = eventbrite_attendees_fetch($since);
+  watchdog('eventbrite_attendees', 'Fetching data since "@since"', array('@since' => $since));
+
+  // Only update the timestamp if we got some data back, since
+  // errors could also give use an empty result.
+  if (isset($data->attendees) && is_array($data->attendees) && $data->attendees) {
+    // ISO date/time in CA local time.
+    $time = $now->format('Y-m-d H:i:s');
+    cache_set('eventbrite_attendees:last_fetch', $time);
+    eventbrite_attendees_update_data($data);
+    watchdog('eventbrite_attendees', 'Added/updated !count attendees and setting new fetch time "@since"', array('!count' => count($data->attendees), '@since' => $time));
+    eventbrite_attendees_sync_users();
+  }
+}
+
+
+/**
+ * Fetch data from Eventbrite.
+ *
+ * @param string $modified_after
+ *   Optional date and time in ISO-like format like '2013-01-28 00:00:00'.
+ *   Needs to us San Francisco, CA time zone. Only attendees modified on or
+ *   after this date/time will be returned.
+ *
+ * @return
+ *   API result Object decded from JSON. $result->attendees is an array of
+ *   attendees, if any were returned.
+ */
+function eventbrite_attendees_fetch($modified_after = '') {
   $user_key = variable_get('eventbrite_attendees_user_key', '');
   $app_key = variable_get('eventbrite_attendees_app_key', '');
   $event_id = variable_get('eventbrite_attendees_event_id', '');
   if (empty($user_key) || empty($app_key) || empty($event_id)) {
-    // Empty JSON.
-    return '{}';
+    // Empty data.
+    return array();
   }
-  $data = NULL;
-  $cid = 'eventbrite_attendees:event_list_attendees';
-  $cache = cache_get($cid);
-  if ($cache && isset($cache->data)) {
-    $data = $cache->data;
+  $data = array();
+
+  $base_url = 'https://www.eventbrite.com/json/event_list_attendees?';
+  $query = array();
+  $query['page'] = 0;
+  $query['id'] = $event_id;
+  $query['app_key'] = $app_key;
+  $query['user_key'] = $user_key;
+  if ($modified_after) {
+    $query['modified_after'] = $modified_after;
   }
-  if (!isset($data)) {
-    $base_url = 'https://www.eventbrite.com/json/event_list_attendees?';
-    $query = array();
-    $query['page'] = 0;
-    $query['id'] = $event_id;
-    $query['app_key'] = $app_key;
-    $query['user_key'] = $user_key;
-    $url = $base_url . drupal_http_build_query($query);
-    $result = drupal_http_request($url);
-    $data = $result->data;
-    if ($result->code == 200) {
-      cache_set($cid, $data, 'cache', CACHE_TEMPORARY);
+  $url = $base_url . drupal_http_build_query($query);
+  $result = drupal_http_request($url);
+  if ($result->code == 200) {
+    $data = json_decode($result->data);
+    if (!empty($data->error) && $data->error->error_type != "Not Found") {
+      watchdog('eventbrite_attendees', 'Error type: "@error_type".  Error message: "@error_message"', array('@error_type' => $data->error->error_type, '@error_message' => $data->error->message), WATCHDOG_ERROR);
     }
   }
+  else {
+    watchdog('eventbrite_attendees', 'Non-200 response: @code.  Error message: "@error_message"', array('@code' => $result->code, '@error_message' => $result->error), WATCHDOG_ERROR);
+  }
+
   return $data;
+}
+
+/**
+ * Callback to insert/update atendees with API data.
+ */
+function eventbrite_attendees_update_data($data) {
+  if (isset($data->attendees) && is_array($data->attendees)) {
+    foreach ($data->attendees as $a) {
+      if (!is_array($a->attendee->answers)) {
+        $a->attendee->answers = array();
+      }
+      $attendee_answers = array();
+      foreach ($a->attendee->answers as $ans) {
+        $attendee_answers[$ans->answer->question_id] = $ans->answer;
+        $attendee_answers[$ans->answer->question_id]->attendee_id = $a->attendee->id;
+      }
+      $primary_keys = array();
+      $existing_answers = array();
+      $existing = db_query('SELECT 1 FROM {eventbrite_attendees} WHERE id = :id', array('id' => $a->attendee->id))->fetchField();
+      if ($existing) {
+        $primary_keys[] = 'id';
+        $existing_answers = db_query('SELECT question_id, 1 FROM {eventbrite_attendee_answers} WHERE attendee_id = :id', array('id' => $a->attendee->id))->fetchAllKeyed();
+      }
+      drupal_write_record('eventbrite_attendees', $a->attendee, $primary_keys);
+      foreach ($attendee_answers as $question_id => $answer) {
+        $primary_keys = isset($existing_answers[$question_id]) ? array('attendee_id', 'question_id') : array();
+        drupal_write_record('eventbrite_attendee_answers', $answer, $primary_keys);
+        // Clear this id from the list.
+        unset($existing_answers[$question_id]);
+      }
+      if ($existing_answers) {
+        // Wipe all left-over existing answers since they no longer appear,
+        // rather than changing value, when unchecked or omitted.
+        db_delete('eventbrite_attendee_answers')
+          ->condition('attendee_id', $a->attendee->id)
+          ->condition('question_id', array_keys($existing_answers))
+          ->execute();
+      }
+    }
+  }
+}
+
+/**
+ * Mapping of Eventbite attendee fields to Drupal user fields.
+ */
+function eventbrite_attendees_map_users() {
+  // For now just assume user fields from COD cod_base feature
+  $default = array(
+   'first_name' => 'field_profile_first',
+   'last_name' => 'field_profile_last',
+   'company' => 'field_profile_org',
+  );
+  $map = variable_get('eventbrite_attendees_user_field_map', $default);
+  return $map;
+}
+
+/**
+ * Load all attendees, and create a Drupal user account for any that need one.
+ */
+function eventbrite_attendees_sync_users() {
+  $sync = variable_get('eventbrite_attendees_create_users', FALSE);
+  if (!$sync) {
+    return;
+  }
+  $map = eventbrite_attendees_map_users();
+  $data = db_query('SELECT * FROM {eventbrite_attendees} WHERE uid = 0')->fetchAllAssoc('id');
+  foreach ($data as $attendee) {
+    // Try to match to an existing user.
+    $uid = db_query('SELECT uid FROM {users} WHERE mail = :email', array('email' => $attendee->email))->fetchField();
+    $edit = array();
+    if ($uid) {
+      $account = user_load($uid);
+    }
+    else {
+      $account = new stdClass();
+      $account->uid = NULL;
+      $account->mail = $account->init = $attendee->email;
+      $account->roles = array();
+      $account->cache = 0;
+      $account->status = 1;
+      $edit['pass'] = user_password();
+      if (!empty($attendee->first_name) && !empty($attendee->last_name)) {
+        $name = $attendee->first_name . ' ' . $attendee->last_name;
+      }
+      elseif (preg_match('/^([^@]+)/', $attendee->email, $m)) {
+        $name = $m[1];
+      }
+      else {
+        // Skip this user;
+        continue;
+      }
+      do {
+        $existing_name = db_query('SELECT name FROM {users} WHERE name = :name', array('name' => $name))->fetchField();
+        if ($existing_name) {
+          // Add a random character.
+          $name .= user_password(1);
+        }
+      } while ($existing_name);
+      $account->name = $name;
+    }
+    $rid = variable_get('eventbrite_attendees_sync_role', 0);
+    if ($rid) {
+      $account->roles[$rid] = $rid;
+    }
+    foreach ($attendee as $key => $value) {
+      if (!empty($map[$key])) {
+        $field = $map[$key];
+        $account->{$field}[LANGUAGE_NONE][0]['value'] = $value;
+      }
+    }
+    user_save($account, $edit);
+    // Record the relationship.
+    db_update('eventbrite_attendees')
+      ->fields(array('uid' => $account->uid))
+      ->condition('id', $attendee->id)
+      ->execute();
+    if (!$uid) {
+      // Created a new account, send email. @see _user_mail_notify().
+      $params['account'] = $account;
+      $language = user_preferred_language($account);
+      $mail = drupal_mail('user', 'register_admin_created', $account->mail, $language, $params);
+      // @todo if $mail['result'] is empty, we could queue and retry.
+    }
+  }
 }
 
 /**
@@ -276,8 +467,7 @@ function eventbrite_attendees_fetch() {
 function eventbrite_attendees_listing() {
   // Flag for when we want to add RDFa
   $rdf = function_exists('rdf_get_namespaces');
-  $json = eventbrite_attendees_fetch();
-  $data = json_decode($json);
+  $data = eventbrite_attendees_load();
   $output = '';
   $header = array(t('Name'), t('Company'), t('Website'));
   $sponsor_rows = array();
@@ -290,70 +480,68 @@ function eventbrite_attendees_listing() {
   $sponsor_ticket_id = variable_get('eventbrite_attendees_sponsor_ticket_id', '');
   $total_attendees = 0;
   $listed_attendees = 0;
-  if (isset($data->attendees) && is_array($data->attendees)) {
-    foreach ($data->attendees as $a) {
-      $opt_out = FALSE;
-      $username = '';
-      if (is_array($a->attendee->answers)) {
-        foreach ($a->attendee->answers as $ans) {
-          if ($ans->answer->question_id == $opt_out_id && !empty($ans->answer->answer_text)) {
-            $opt_out = TRUE;
-          }
-          if ($ans->answer->question_id == $username_id && !empty($ans->answer->answer_text)) {
-            $username = $ans->answer->answer_text;
-          }
+  foreach ($data as $attendee) {
+    $opt_out = FALSE;
+    $username = '';
+    if (is_array($attendee->answers)) {
+      foreach ($attendee->answers as $ans) {
+        if ($ans->question_id == $opt_out_id && !empty($ans->answer_text)) {
+          $opt_out = TRUE;
+        }
+        if ($ans->question_id == $username_id && !empty($ans->answer_text)) {
+          $username = $ans->answer_text;
         }
       }
-      $total_attendees++;
-      if ($opt_out) {
-        continue;
-      }
-      $listed_attendees++;
-      $row = array('data' => array());
+    }
+    $total_attendees++;
+    if ($opt_out) {
+      continue;
+    }
+    $listed_attendees++;
+    $row = array('data' => array());
+    if ($rdf) {
+      $row['typeof'] = "schema:Person";
+    }
+    $cell = array('data' => check_plain($attendee->first_name . ' ' . $attendee->last_name));
+    if ($rdf) {
+      $cell['property'] = "schema:name";
+    }
+    $row['data'][] = $cell;
+    $cell = array();
+    if (!empty($attendee->company)) {
+      $cell['data'] = check_plain($attendee->company);
       if ($rdf) {
-        $row['typeof'] = "schema:Person";
+        $cell['property'] = "schema:affiliation";
       }
-      $cell = array('data' => check_plain($a->attendee->first_name) . ' ' . check_plain($a->attendee->last_name));
+    }
+    $row['data'][] = $cell;
+    $cell = array();
+    if (!empty($attendee->website)) {
+      $attributes = array();
       if ($rdf) {
-        $cell['property'] = "schema:name";
-      }
-      $row['data'][] = $cell;
+        $attributes['rel'] = "schema:url";
+       }
+       // Make sure the website URL is properly formed.
+       preg_match('@(https?://){0,1}(.+)@', $attendee->website, $m);
+       if (!$m[1]) {
+         $m[1] = 'http://';
+       }
+       $cell['data'] = l(rtrim($m[2], '/'), $m[1] . $m[2], array('attributes' => $attributes));
+    }
+    $row['data'][] = $cell;
+    if ($username_id) {
       $cell = array();
-      if (!empty($a->attendee->company)) {
-        $cell['data'] = check_plain($a->attendee->company);
-        if ($rdf) {
-          $cell['property'] = "schema:affiliation";
-        }
+      $cell['data'] = $username;
+      if ($rdf && $username) {
+        $cell['property'] = "foaf:nick";
       }
       $row['data'][] = $cell;
-      $cell = array();
-      if (!empty($a->attendee->website)) {
-        $attributes = array();
-        if ($rdf) {
-          $attributes['rel'] = "schema:url";
-         }
-         // Make sure the website URL is properly formed.
-         preg_match('@(https?://){0,1}(.+)@', $a->attendee->website, $m);
-         if (!$m[1]) {
-           $m[1] = 'http://';
-         }
-         $cell['data'] = l(rtrim($m[2], '/'), $m[1] . $m[2], array('attributes' => $attributes));
-      }
-      $row['data'][] = $cell;
-      if ($username_id) {
-        $cell = array();
-        $cell['data'] = $username;
-        if ($rdf && $username) {
-          $cell['property'] = "foaf:nick";
-        }
-        $row['data'][] = $cell;
-      }
-      if ($sponsor_ticket_id && $sponsor_ticket_id == $a->attendee->ticket_id) {
-        $sponsor_rows[] = $row;
-      }
-      else {
-        $rows[] = $row;
-      }
+    }
+    if ($sponsor_ticket_id && $sponsor_ticket_id == $attendee->ticket_id) {
+      $sponsor_rows[] = $row;
+    }
+    else {
+      $rows[] = $row;
     }
   }
   if ($sponsor_rows) {
