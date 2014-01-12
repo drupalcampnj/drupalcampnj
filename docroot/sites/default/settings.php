@@ -512,6 +512,10 @@ $conf['404_fast_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><titl
 
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/blinkdev5/cod7-settings.inc');
+  // Hack to make sure sendmail works on cron with acquia php 5.3
+  if (drupal_is_cli()) {
+    ini_set('sendmail_path', '/usr/sbin/sendmail -t -i');
+  }
 } else {
   require('local.settings.php');
 }

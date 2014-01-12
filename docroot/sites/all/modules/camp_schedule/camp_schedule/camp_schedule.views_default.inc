@@ -24,7 +24,10 @@ function camp_schedule_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Saturday Schedule';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -145,7 +148,7 @@ function camp_schedule_views_default_views() {
   $handler->display->display_options['filters']['field_slot_datetime_value']['field'] = 'field_slot_datetime_value';
   $handler->display->display_options['filters']['field_slot_datetime_value']['relationship'] = 'field_slot_types_time_slot_target_id';
   $handler->display->display_options['filters']['field_slot_datetime_value']['operator'] = 'starts';
-  $handler->display->display_options['filters']['field_slot_datetime_value']['value'] = '2013-02-02';
+  $handler->display->display_options['filters']['field_slot_datetime_value']['value'] = '2014-02-01';
   /* Filter criterion: Field collection item: Allowed Schedule Types (field_slot_types_allowed) */
   $handler->display->display_options['filters']['field_slot_types_allowed_value']['id'] = 'field_slot_types_allowed_value';
   $handler->display->display_options['filters']['field_slot_types_allowed_value']['table'] = 'field_data_field_slot_types_allowed';
