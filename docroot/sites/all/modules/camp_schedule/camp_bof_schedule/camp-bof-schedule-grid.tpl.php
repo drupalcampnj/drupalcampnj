@@ -1,6 +1,6 @@
 <?php
   if (!user_is_logged_in()) {
-    print l('<em>' . t('Login to add a session') . '</em>', 'user/login', array('html' => TRUE, 'query' => drupal_get_destination()));
+    print l('<em>' . t('Login to add a session') . '</em>', 'user/login', array('html' => TRUE, 'query' => array('destination' => drupal_get_path_alias())));
   }
 ?>
 <table <?php if ($classes) { print 'class="'. $classes . '" '; } ?><?php print $attributes; ?>>
