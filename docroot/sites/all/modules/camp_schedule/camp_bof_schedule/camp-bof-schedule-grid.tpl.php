@@ -1,4 +1,8 @@
-
+<?php
+  if (!user_is_logged_in()) {
+    print l(t('<em>Login to add a session</em>'), 'user/login', array('query' => drupal_get_destination())));
+  }
+?>
 <table <?php if ($classes) { print 'class="'. $classes . '" '; } ?><?php print $attributes; ?>>
    <?php if (!empty($title) || !empty($caption)) : ?>
      <caption><?php print $caption . $title; ?></caption>

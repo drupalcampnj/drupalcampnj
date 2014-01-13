@@ -36,7 +36,7 @@ function camp_bof_schedule_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'Feb. 1<sup>at</sup>, 2014  <p>See the <a href="/session-room-list">room list</a> for information about the rooms when scheduling a BoF</p>';
+  $handler->display->display_options['header']['area']['content'] = 'Feb. 1<sup>st</sup>, 2014 <p>See the <a href="/session-room-list">room list</a> for information about the rooms when scheduling a BoF</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_session_timeslot_node']['id'] = 'reverse_field_session_timeslot_node';
