@@ -107,7 +107,7 @@ function template_preprocess_camp_bof_schedule_grid(&$vars) {
       $cell['data']['add_bof'] = array('#markup' => $rf['item_id']);
     }
     elseif (!user_is_logged_in()) {
-      $cell['data']['add_bof'] = array('#markup' => l(t('Login to add a session'), 'user/login', array('query' => drupal_get_destination()));
+      $cell['data']['add_bof'] = array('#markup' => l(t('Login to add a session'), 'user/login', array('query' => drupal_get_destination())));
     }
     // Remove the link if it's at capacity.  This is a hack, since
     // the field collection limit on capacity doesn't really work.
