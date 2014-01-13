@@ -36,7 +36,7 @@ function camp_bof_schedule_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'Feb. 2<sup>nd</sup>, 2013  <p>See the <a href="/session-room-list">room list</a> for information about the rooms when scheduling a BoF</p>';
+  $handler->display->display_options['header']['area']['content'] = 'Feb. 1<sup>at</sup>, 2014  <p>See the <a href="/session-room-list">room list</a> for information about the rooms when scheduling a BoF</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Relationship: Entity Reference: Referencing entity */
   $handler->display->display_options['relationships']['reverse_field_session_timeslot_node']['id'] = 'reverse_field_session_timeslot_node';
@@ -147,7 +147,7 @@ function camp_bof_schedule_views_default_views() {
   $handler->display->display_options['filters']['field_slot_datetime_value']['field'] = 'field_slot_datetime_value';
   $handler->display->display_options['filters']['field_slot_datetime_value']['relationship'] = 'field_slot_types_time_slot_target_id';
   $handler->display->display_options['filters']['field_slot_datetime_value']['operator'] = 'starts';
-  $handler->display->display_options['filters']['field_slot_datetime_value']['value'] = '2013-02-02';
+  $handler->display->display_options['filters']['field_slot_datetime_value']['value'] = '2014-02-01';
   $handler->display->display_options['filters']['field_slot_datetime_value']['group'] = 1;
   /* Filter criterion: Field collection item: Allowed Schedule Types (field_slot_types_allowed) */
   $handler->display->display_options['filters']['field_slot_types_allowed_value']['id'] = 'field_slot_types_allowed_value';
@@ -189,7 +189,7 @@ function camp_bof_schedule_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Camp Room List';
+  $handler->display->display_options['title'] = 'Camp BoF Room List';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -224,12 +224,13 @@ function camp_bof_schedule_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'room' => 'room',
   );
-  /* Filter criterion: Content: Nid */
-  $handler->display->display_options['filters']['nid']['id'] = 'nid';
-  $handler->display->display_options['filters']['nid']['table'] = 'node';
-  $handler->display->display_options['filters']['nid']['field'] = 'nid';
-  $handler->display->display_options['filters']['nid']['operator'] = '!=';
-  $handler->display->display_options['filters']['nid']['value']['value'] = '35';
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'starts';
+  $handler->display->display_options['filters']['title']['value'] = 'Friend 1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

@@ -105,11 +105,14 @@ function template_preprocess_camp_bof_schedule_grid(&$vars) {
     // Check access to add a BoF
     if (user_access('create bof_session content')) {
       $cell['data']['add_bof'] = array('#markup' => $rf['item_id']);
-      // Remove the link if it's at capacity.  This is a hack, since
-      // the field collection limit on capacity doesn't really work.
-      if (count($cell['data']['sessions']) >= $rf['field_slot_types_capacity']) {
-        unset($cell['data']['add_bof']);
-      }
+    }
+    elseif (!user_is_logged_in()) {
+      $cell['data']['add_bof'] = array('#markup' => l(t('Login to add a session'), 'user/login', array('query' => drupal_get_destination()));
+    }
+    // Remove the link if it's at capacity.  This is a hack, since
+    // the field collection limit on capacity doesn't really work.
+    if (count($cell['data']['sessions']) >= $rf['field_slot_types_capacity']) {
+      unset($cell['data']['add_bof']);
     }
   }
 
