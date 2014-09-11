@@ -133,6 +133,13 @@ i.scroll {
 i.scroll:hover {
   color: #0a5175;
 }
+
+
+div.archives {
+  float: right;
+  padding: 1em;
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {
