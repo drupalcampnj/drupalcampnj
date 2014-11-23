@@ -1,0 +1,67 @@
+// Bootstrap variables.
+@import 'variables.less';
+
+// Insert your styling here.
+
+.view-cod-sponsors {
+
+  h3 {
+    clear: both;
+    color: @gray;
+    background: #f5f5f5;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: @font-size-h4;
+    padding: 5px 0;
+    border-bottom: 3px double @gray-light;
+    border-top: 3px double @gray-light;
+  }
+
+  .views-row-last {
+    margin-bottom: 20px;
+  }
+
+}
+
+.view-cod-sponsors.view-display-id-block_1,
+.view-cod-sponsors.view-display-id-block_3{
+
+  .views-row-odd {
+    float: left;
+    width: 49%;
+    clear: both;
+  }
+
+  .views-row-even {
+    float: right;
+    width: 49%;
+    clear: none;
+  }
+
+  .views-row {
+    height: 150px;
+    line-height: 150px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+
+  @media (min-width: @screen-sm) {
+    .views-row {
+      float: left;
+      width: 24.5%;
+      clear: none;
+    }
+
+    //.views-row:nth-child(4n+1) {
+    //   clear: both;
+    // }
+
+  }
+}
+
+// Diamond Sponsors block in sidebar
+
+.view-cod-sponsors.view-display-id-block{
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+// Bootstrap variables.
+@import 'variables.less';
+
+// Insert your styling here.
+.navbar-default {
+  background-color: @blue-light;
+  background: -webkit-gradient(linear, left top, left bottom, from(@blue-light), to(@blue-dark));
+  background: -webkit-linear-gradient(top, @blue-light, @blue-dark);
+  background: -moz-linear-gradient(top, @blue-light, @blue-dark);
+  background: -ms-linear-gradient(top, @blue-light, @blue-dark);
+  background: -o-linear-gradient(top, @blue-light, @blue-dark);
+  .navbar-nav > li > a {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+}
+
+.navbar {
+  @media (min-width: @screen-sm-min) {
+    padding-top: 15px;
+  }
+
+  .navbar-brand { 
+    font-size: 1.8em;
+    @media (min-width: @screen-sm-min) {
+      padding-right: 10px;
+      position: relative;
+      bottom: 4px;
+    }
+    @media (min-width: @screen-md-min) {
+      padding-right: 60px;
+    }
+  }
+  
+  .logo {
+    width: 250px;
+  }
+}

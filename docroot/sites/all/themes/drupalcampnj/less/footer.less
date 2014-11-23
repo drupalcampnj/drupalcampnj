@@ -1,0 +1,27 @@
+// Bootstrap variables.
+@import 'variables.less';
+
+// Insert your styling here.
+footer.container {
+  width: 100%;
+}
+footer .region-footer {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+footer {
+  background-color: @red-light;
+  background: -webkit-gradient(linear, left top, left bottom, from(@red-light), to(@red-dark));
+  background: -webkit-linear-gradient(top, @red-light, @red-dark);
+  background: -moz-linear-gradient(top, @red-light, @red-dark);
+  background: -ms-linear-gradient(top, @red-light, @red-dark);
+  background: -o-linear-gradient(top, @red-light, @red-dark);
+  color: #ffffff;
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: underline;
+}
