@@ -568,3 +568,6 @@ if (file_exists('/var/www/site-php')) {
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/drupalcampnj/drupalcampnj-settings.inc');
 }
+elseif (file_exists(__DIR__ . '/settings.local.php')) {
+   require __DIR__ . '/settings.local.php';
+}
