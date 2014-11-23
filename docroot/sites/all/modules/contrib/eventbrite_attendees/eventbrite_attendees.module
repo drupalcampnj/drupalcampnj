@@ -228,6 +228,22 @@ function eventbrite_attendees_configure_form($form, &$form_state) {
     '#default_value' => variable_get('eventbrite_attendees_sync_role', 0),
     '#description' => t('Optional extra role to give to user accounts created from attendees.'),
   );
+  if (module_exists('og')) {
+    $form['og'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Organic groups'),
+    );
+    $groups = array();
+    $nids = og_get_all_group();
+    foreach (db_query('SELECT nid, title FROM {node} WHERE nid IN(:nids) AND status = 1', array(':nids' => $nids)) as $row) {
+      $groups[$row->nid] = $row->title;
+    }
+    $form['og']['eventbrite_attendees_group'] = array(
+      '#type' => 'select',
+      '#title' => t('Organic group for attendees'),
+      '#options' => $groups,
+    );
+  }
   $form = system_settings_form($form);
   $form['#submit'][] = 'eventbrite_attendees_cache_clear';
   return $form;
@@ -399,6 +415,14 @@ function eventbrite_attendees_sync_users() {
   if (!$sync) {
     return;
   }
+  $gid = 0;
+  if (module_exists('og')) {
+    $gid = variable_get('eventbrite_attendees_group', 0);
+  }
+  if ($gid) {
+    $group = node_load($gid);
+  }
+  $rid = variable_get('eventbrite_attendees_sync_role', 0);
   $map = eventbrite_attendees_map_users();
   $data = db_query('SELECT * FROM {eventbrite_attendees} WHERE uid = 0')->fetchAllAssoc('id');
   foreach ($data as $attendee) {
@@ -440,7 +464,6 @@ function eventbrite_attendees_sync_users() {
       } while ($existing_name);
       $account->name = $name;
     }
-    $rid = variable_get('eventbrite_attendees_sync_role', 0);
     if ($rid) {
       $account->roles[$rid] = $rid;
     }
@@ -462,6 +485,10 @@ function eventbrite_attendees_sync_users() {
       $language = user_preferred_language($account);
       $mail = drupal_mail('user', 'register_admin_created', $account->mail, $language, $params);
       // @todo if $mail['result'] is empty, we could queue and retry.
+    }
+    if ($gid) {
+      // Make sure the user is an active member of the selected group.
+      og_group('node', $gid, array('entity' => $account));
     }
   }
 }
