@@ -6637,6 +6637,22 @@ img {
 p:last-child {
   margin-bottom: 2em;
 }
+@media (min-width: 768px) {
+  .node-sponsor .field {
+    float: right;
+    width: 60%;
+  }
+}
+.node-sponsor .field-name-field-sponsor-logo {
+  text-align: center;
+  margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .node-sponsor .field-name-field-sponsor-logo {
+    float: left;
+    width: 35%;
+  }
+}
 .view-cod-sponsors h3 {
   clear: both;
   color: #555555;
