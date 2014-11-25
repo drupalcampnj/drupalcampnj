@@ -6639,13 +6639,14 @@ p:last-child {
 }
 @media (min-width: 768px) {
   .node-sponsor .field.field-name-field-sponsor-body {
+    clear: right;
     float: right;
     width: 60%;
-    clear: right;
   }
 }
 @media (min-width: 768px) {
   .node-sponsor .field {
+    clear: left;
     float: left;
     width: 35%;
   }
