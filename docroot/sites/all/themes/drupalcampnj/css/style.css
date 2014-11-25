@@ -6638,17 +6638,17 @@ p:last-child {
   margin-bottom: 2em;
 }
 @media (min-width: 768px) {
-  .node-sponsor .field {
+  .node-sponsor .field-name-field-sponsor-body {
     float: right;
     width: 60%;
   }
 }
-.node-sponsor .field-name-field-sponsor-logo {
+.node-sponsor .field {
   text-align: center;
   margin-bottom: 15px;
 }
 @media (min-width: 768px) {
-  .node-sponsor .field-name-field-sponsor-logo {
+  .node-sponsor .field {
     float: left;
     width: 35%;
   }
@@ -6763,4 +6763,3 @@ footer a {
   color: #ffffff;
   text-decoration: underline;
 }
-/*# sourceMappingURL=style.css.map */
