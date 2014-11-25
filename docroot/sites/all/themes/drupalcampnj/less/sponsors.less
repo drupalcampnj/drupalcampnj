@@ -4,7 +4,7 @@
 // Insert your styling here.
 
 .view-cod-sponsors {
-
+  
   h3 {
     clear: both;
     color: @gray;
@@ -17,15 +17,71 @@
     border-top: 3px double @gray-light;
   }
 
+  .views-row {
+    padding: 0px 5px;
+  }
+  
   .views-row-last {
     margin-bottom: 20px;
   }
 
 }
 
+// 2 across grids for Platiunum sponsors
+.page-node-sponsors .view-cod-sponsors.view-display-id-block_2 {
+    text-align: left;
+    
+    .views-row-odd {
+    float: left;
+    width: 49%;
+    clear: both;
+  }
+
+  .views-row-even {
+    float: right;
+    width: 49%;
+    clear: none;
+  }
+
+  .views-row {
+    height: 150px;
+    line-height: 150px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+}
+
+// Platinum should be two across under @screen-md
+.view-cod-sponsors.view-display-id-block_2 {
+  @media (max-width: @screen-md) {
+        text-align: left;
+    
+    .views-row-odd {
+    float: left;
+    width: 49%;
+    clear: both;
+  }
+
+  .views-row-even {
+    float: right;
+    width: 49%;
+    clear: none;
+  }
+
+  .views-row {
+    height: 150px;
+    line-height: 150px;
+    white-space: nowrap;
+    text-align: center;
+  }
+  }
+  
+}
+
+// 4 across grids for Gold and Silver sponsors
 .view-cod-sponsors.view-display-id-block_1,
 .view-cod-sponsors.view-display-id-block_3{
-
   .views-row-odd {
     float: left;
     width: 49%;
@@ -60,8 +116,8 @@
   }
 }
 
-// Diamond Sponsors block in sidebar
-
-.view-cod-sponsors.view-display-id-block{
+// Diamond and Platinum Sponsors blocks in sidebar
+.view-cod-sponsors.view-display-id-block,
+.view-cod-sponsors.view-display-id-block_2{
   text-align: center;
 }
