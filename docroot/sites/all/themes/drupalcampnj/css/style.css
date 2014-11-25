@@ -6641,12 +6641,14 @@ p:last-child {
   .node-sponsor .field.field-name-field-sponsor-body {
     float: right;
     width: 60%;
+    clear: none;
   }
 }
 @media (min-width: 768px) {
   .node-sponsor .field {
     float: left;
     width: 35%;
+    clear: both;
   }
 }
 .node-sponsor .field-name-field-sponsor-logo {
