@@ -6601,8 +6601,6 @@ img {
   background: -moz-linear-gradient(top, #60bfbe, #4d9998);
   background: -ms-linear-gradient(top, #60bfbe, #4d9998);
   background: -o-linear-gradient(top, #60bfbe, #4d9998);
-  border-bottom: 15px solid transparent;
-  borer-image: url("../images/dcnj2015-neon-border") repeat;
 }
 .navbar-default .navbar-nav > li > a {
   font-weight: 600;
