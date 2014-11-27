@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 modules=(cod_support)
 themes=()
 
@@ -9,15 +10,14 @@ pull_git() {
     fi
     git pull origin 7.x-1.x
 
-    cd $BUILD_PATH/repos/modules/contrib
-    for i in "${modules[@]}"; do
+    for i in `cat $BUILD_PATH/repos.txt`; do
       echo $i
-      cd $i
+      cd "${BUILD_PATH}/repos/${i}"
       if [[ -n $RESET ]]; then
         git reset --hard HEAD
       fi
-      git pull origin 7.x-1.x
-      cd ..
+      git fetch origin
+      git pull origin
     done
 }
 
@@ -87,7 +87,6 @@ build_distro() {
           mv $BUILD_PATH/docroot/sites $BUILD_PATH/sites
           ln -s ../sites $BUILD_PATH/docroot/sites
         fi
-        chmod -R 777 $BUILD_PATH/docroot/sites/default
 
         ## put cod profile and modules into the profile folder
         rm -rf docroot/profiles/cod
@@ -102,9 +101,9 @@ build_distro() {
         cd $BUILD_PATH/docroot/profiles
         eval $UNTAR
         cd cod
-        ln -s ../../../cod_profile/* .
-        ln -s ../../../../cod_profile/modules/cod ${BUILD_PATH}/docroot/profiles/cod/modules/
-        ln -s ../../../../cod_profile/themes/cod ${BUILD_PATH}/docroot/profiles/cod/themes/
+        for line in $(cat $BUILD_PATH/cod_profile/MANIFEST.txt); do
+          ln -s ${BUILD_PATH}/cod_profile/${line} ${BUILD_PATH}/docroot/profiles/cod/${line}
+        done
         for line in $(cat $BUILD_PATH/repos.txt); do
           ln -s ../../../../../repos/${line} ${BUILD_PATH}/docroot/profiles/cod/$(echo ${line} | awk -F/ '{print $1}')/contrib/
         done
@@ -121,6 +120,7 @@ build_distro() {
     mkdir $BUILD_PATH
     build_distro $BUILD_PATH $USERNAME
   fi
+  pull_git $BUILD_PATH
 }
 
 # This allows you to test the make file without needing to upload it to drupal.org and run the main make file.

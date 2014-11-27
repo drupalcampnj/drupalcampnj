@@ -2139,115 +2139,11 @@ function cod_session_views_default_views() {
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['required'] = TRUE;
-  /* Field: Bulk operations: Content */
-  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
-  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['label'] = 'Select';
-  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['views_bulk_operations']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
-    'action::node_assign_owner_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::views_bulk_operations_delete_item' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::system_message_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::node_make_sticky_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::node_make_unsticky_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::views_bulk_operations_argument_selector_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::node_promote_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::node_publish_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::system_goto_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::node_unpromote_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::node_save_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::system_send_email_action' => array(
-      'selected' => 1,
-      'skip_confirmation' => 0,
-      'override_label' => 1,
-      'label' => 'Email Speakers',
-      'postpone_processing' => 0,
-    ),
-    'action::node_unpublish_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::node_unpublish_by_keyword_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
-    ),
-  );
+  /* Field: Global: Send e-mail */
+  $handler->display->display_options['fields']['views_send']['id'] = 'views_send';
+  $handler->display->display_options['fields']['views_send']['table'] = 'views';
+  $handler->display->display_options['fields']['views_send']['field'] = 'views_send';
+  $handler->display->display_options['fields']['views_send']['label'] = 'E-mail Speaker';
   /* Field: Global: View result counter */
   $handler->display->display_options['fields']['counter']['id'] = 'counter';
   $handler->display->display_options['fields']['counter']['table'] = 'views';
@@ -2290,12 +2186,12 @@ function cod_session_views_default_views() {
   $handler->display->display_options['fields']['field_speakers']['table'] = 'field_data_field_speakers';
   $handler->display->display_options['fields']['field_speakers']['field'] = 'field_speakers';
   $handler->display->display_options['fields']['field_speakers']['element_label_colon'] = FALSE;
-  /* Field: User: First name */
+  /* Field: Field: First name */
   $handler->display->display_options['fields']['field_profile_first']['id'] = 'field_profile_first';
   $handler->display->display_options['fields']['field_profile_first']['table'] = 'field_data_field_profile_first';
   $handler->display->display_options['fields']['field_profile_first']['field'] = 'field_profile_first';
   $handler->display->display_options['fields']['field_profile_first']['relationship'] = 'field_speakers_target_id';
-  /* Field: User: Last name */
+  /* Field: Field: Last name */
   $handler->display->display_options['fields']['field_profile_last']['id'] = 'field_profile_last';
   $handler->display->display_options['fields']['field_profile_last']['table'] = 'field_data_field_profile_last';
   $handler->display->display_options['fields']['field_profile_last']['field'] = 'field_profile_last';
@@ -2764,18 +2660,18 @@ function cod_session_views_default_views() {
   $handler->display->display_options['fields']['ops']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['ops']['empty'] = 'Confirmed';
   $handler->display->display_options['fields']['ops']['hide_alter_empty'] = FALSE;
-  /* Contextual filter: Broken/missing handler */
-  $handler->display->display_options['arguments']['field_speakers_uid']['id'] = 'field_speakers_uid';
-  $handler->display->display_options['arguments']['field_speakers_uid']['table'] = 'field_data_field_speakers';
-  $handler->display->display_options['arguments']['field_speakers_uid']['field'] = 'field_speakers_uid';
-  $handler->display->display_options['arguments']['field_speakers_uid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_speakers_uid']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['field_speakers_uid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_speakers_uid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_speakers_uid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_speakers_uid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_speakers_uid']['validate']['type'] = 'user';
-  $handler->display->display_options['arguments']['field_speakers_uid']['validate_options']['type'] = 'either';
+  /* Contextual filter: Content: Speaker(s) (field_speakers) */
+  $handler->display->display_options['arguments']['field_speakers_target_id']['id'] = 'field_speakers_target_id';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['table'] = 'field_data_field_speakers';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['field'] = 'field_speakers_target_id';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_speakers_target_id']['validate']['type'] = 'user';
+  $handler->display->display_options['arguments']['field_speakers_target_id']['validate_options']['type'] = 'either';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
     2 => 'AND',

@@ -4,10 +4,9 @@ core = 7.x
 package = Chaos tool suite
 dependencies[] = ctools
 
-
-; Information added by drush on 2014-10-16
-version = "7.x-1.4+8-dev"
+; Information added by Drupal.org packaging script on 2014-11-19
+version = "7.x-1.5"
 core = "7.x"
 project = "ctools"
-datestamp = "1413483588"
+datestamp = "1416423525"
 

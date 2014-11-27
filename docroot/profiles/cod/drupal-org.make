@@ -5,7 +5,7 @@ core = 7.x
 ; Contributed modules.
 projects[acquia_connector][type] = "module"
 projects[acquia_connector][subdir] = "contrib"
-projects[acquia_connector][version] = "2.14"
+projects[acquia_connector][version] = "2.15"
 
 projects[addressfield][type] = "module"
 projects[addressfield][subdir] = "contrib"
@@ -36,6 +36,21 @@ projects[advanced_help][type] = "module"
 projects[advanced_help][version] = "1.1"
 projects[advanced_help][subdir] = "contrib"
 
+projects[apachesolr][type] = "module"
+projects[apachesolr][subdir] = "contrib"
+projects[apachesolr][version] = "1.6"
+
+projects[apachesolr_og][type] = "module"
+projects[apachesolr_og][subdir] = "contrib"
+projects[apachesolr_og][download][type] = "git"
+projects[apachesolr_og][download][url] = "http://git.drupal.org/project/apachesolr_og.git"
+projects[apachesolr_og][download][branch] = "7.x-1.x"
+projects[apachesolr_og][download][revision] = "49820b4a4fcff7c1c4efe449da033fb6d8711ac5"
+
+; Check the user object before trying to display a result.
+; https://drupal.org/node/2077281#comment-7807937
+projects[apachesolr_og][patch][] = "http://drupal.org/files/issues/apachesolr_og-check-for-anonymous.patch"
+
 projects[auto_nodetitle][type] = "module"
 projects[auto_nodetitle][subdir] = "contrib"
 projects[auto_nodetitle][version] = "1.0"
@@ -58,7 +73,7 @@ projects[ckeditor][patch][] = "http://drupal.org/files/issues/ckeditor-accomodat
 
 projects[cod_support][type] = "module"
 projects[cod_support][subdir] = "contrib"
-projects[cod_support][version] = "1.0-beta4"
+projects[cod_support][version] = "1.0-beta5"
 ;projects[cod_support][download][type] = "git"
 ;projects[cod_support][download][url] = "http://git.drupal.org/project/cod_support.git"
 ;projects[cod_support][download][branch] = "7.x-1.x"
@@ -74,6 +89,28 @@ projects[commerce_features][version] = "1.0"
 projects[commerce_stock][type] = "module"
 projects[commerce_stock][subdir] = "contrib"
 projects[commerce_stock][version] = "2.0"
+
+; Commerce Coupon 2.x suite
+projects[commerce_coupon][type] = "module"
+projects[commerce_coupon][subdir] = "contrib"
+projects[commerce_coupon][download][type] = "git"
+projects[commerce_coupon][download][url] = "http://git.drupal.org/project/commerce_coupon.git"
+projects[commerce_coupon][download][branch] = "7.x-2.x"
+projects[commerce_coupon][download][revision] = "cf5398ef642da0be7939fb07ff873e884824824f"
+
+projects[commerce_discount][type] = "module"
+projects[commerce_discount][subdir] = "contrib"
+projects[commerce_discount][download][type] = "git"
+projects[commerce_discount][download][url] = "http://git.drupal.org/project/commerce_discount.git"
+projects[commerce_discount][download][branch] = "7.x-1.x"
+projects[commerce_discount][download][revision] = "aa4f42317e5ed172f5a4efc0486f3e44b84a1cb2"
+
+projects[commerce_coupon_batch][type] = "module"
+projects[commerce_coupon_batch][subdir] = "contrib"
+projects[commerce_coupon_batch][download][type] = "git"
+projects[commerce_coupon_batch][download][url] = "http://git.drupal.org/project/commerce_coupon_batch.git"
+projects[commerce_coupon_batch][download][branch] = "7.x-2.x"
+projects[commerce_coupon_batch][download][revision] = "aa4a794cf339f6567c9763af33be132f85437410"
 
 projects[content_access][type] = "module"
 projects[content_access][subdir] = "contrib"
@@ -92,10 +129,7 @@ projects[context][version] = "3.3"
 
 projects[ctools][type] = "module"
 projects[ctools][subdir] = "contrib"
-projects[ctools][download][type] = "git"
-projects[ctools][download][url] = "http://git.drupal.org/project/ctools.git"
-projects[ctools][download][branch] = "7.x-1.x"
-projects[ctools][download][revision] = "9097155fe25f460c3c98719567f2cf8305dcae14"
+projects[ctools][version] = "1.5"
 
 projects[date][type] = "module"
 projects[date][subdir] = "contrib"
@@ -120,6 +154,7 @@ projects[diff][version] = "3.2"
 
 projects[efq_extra_field][type] = "module"
 projects[efq_extra_field][subdir] = "contrib"
+projects[efq_extra_field][version] = "1.0-alpha1"
 projects[efq_extra_field][download][type] = "git"
 projects[efq_extra_field][download][url] = "http://git.drupal.org/project/efq_extra_field.git"
 projects[efq_extra_field][download][branch] = "7.x-1.x"
@@ -180,18 +215,19 @@ projects[field_permissions][version] = "1.0-beta2"
 
 projects[field_select_ct][type] = "module"
 projects[field_select_ct][subdir] = "contrib"
-projects[field_select_ct][version] = "1.0-alpha1"
+projects[field_select_ct][version] = "1.0"
 
 projects[field_collection][type] = "module"
 projects[field_collection][subdir] = "contrib"
-projects[field_collection][download][type] = "git"
-projects[field_collection][download][url] = "http://git.drupal.org/project/field_collection.git"
-projects[field_collection][download][branch] = "7.x-1.x"
-projects[field_collection][download][revision] = "ae778f2"
+projects[field_collection][version] = "1.0-beta8"
 
 projects[flag][type] = "module"
 projects[flag][subdir] = "contrib"
 projects[flag][version] = "3.5"
+
+projects[inline_conditions][type] = "module"
+projects[inline_conditions][version] = "1.0-alpha4"
+projects[inline_conditions][subdir] = "contrib"
 
 projects[inline_entity_form][type] = "module"
 projects[inline_entity_form][version] = "1.5"
@@ -211,7 +247,7 @@ projects[libraries][version] = "2.2"
 
 projects[link][type] = "module"
 projects[link][subdir] = "contrib"
-projects[link][version] = "1.2"
+projects[link][version] = "1.3"
 
 projects[module_filter][type] = "module"
 projects[module_filter][subdir] = "contrib"
@@ -256,6 +292,13 @@ projects[og][patch][] = "http://drupal.org/files/issues/og_id_user_access.patch"
 ; http://drupal.org/node/1902086#comment-7026516
 ; projects[og][patch][] = "http://drupal.org/files/1902086-og-ref-respect-og-user-access-3.patch"
 
+projects[og_menu][type] = "module"
+projects[og_menu][subdir] = "contrib"
+projects[og_menu][download][type] = "git"
+projects[og_menu][download][url] = "http://git.drupal.org/project/og_menu.git"
+projects[og_menu][download][branch] = "7.x-3.x"
+projects[og_menu][download][revision] = "fd255c7b900938c2d00c9c2232f2055705e0cca0"
+
 projects[og_vocab][type] = "module"
 projects[og_vocab][subdir] = "contrib"
 projects[og_vocab][version] = "1.2"
@@ -287,6 +330,10 @@ projects[quicktabs][version] = "3.6"
 projects[quicktabs][subdir] = "contrib"
 projects[quicktabs][patch][] = "http://drupal.org/files/2104643-revert-qt-487518-5.patch"
 
+projects[r4032login][type] = "module"
+projects[r4032login][subdir] = "contrib"
+projects[r4032login][version] = "1.8"
+
 projects[realname][type] = "module"
 projects[realname][subdir] = "contrib"
 projects[realname][version] = "1.2"
@@ -313,6 +360,13 @@ projects[strongarm][download][type] = "git"
 projects[strongarm][download][url] = "http://git.drupal.org/project/strongarm.git"
 projects[strongarm][download][branch] = "7.x-2.x"
 projects[strongarm][download][revision] = "5a2326ba67"
+
+projects[themekey][type] = "module"
+projects[themekey][subdir] = "contrib"
+projects[themekey][download][type] = "git"
+projects[themekey][download][url] = "http://git.drupal.org/project/themekey.git"
+projects[themekey][download][branch] = "7.x-2.x"
+projects[themekey][download][revision] = "7bddcfa2f7ae36abc6d1a27a0b0a8e92d174b568"
 
 ; For COD releases, we peg it to a release of ticket. For dev, we use the dev branch.
 projects[ticket][type] = "module"
@@ -358,10 +412,11 @@ projects[views_autorefresh][subdir] = "contrib"
 
 projects[views_datasource][type] = "module"
 projects[views_datasource][subdir] = "contrib"
+projects[views_datasource][version] = "1.x-dev"
 projects[views_datasource][download][type] = "git"
 projects[views_datasource][download][url] = "http://git.drupal.org/project/views_datasource.git"
 projects[views_datasource][download][branch] = "7.x-1.x"
-projects[views_datasource][download][revision] = "0d6849221"
+projects[views_datasource][download][revision] = "b17317e72f4e8e018c61"
 
 projects[views_field_view][version] = "1.1"
 projects[views_field_view][type] = "module"
@@ -384,16 +439,17 @@ projects[votingapi][version] = "2.12"
 projects[votingapi][subdir] = "contrib"
 
 projects[webform][type] = "module"
-projects[webform][version] = "3.21"
+projects[webform][version] = "4.1"
 projects[webform][subdir] = "contrib"
 
 ; Contributed themes.
+; This hash of Omega Git is before the Susy 1 to 2 re-write.
 projects[omega][type] = "theme"
 projects[omega][subdir] = "contrib"
 projects[omega][download][type] = "git"
 projects[omega][download][url] = "http://git.drupal.org/project/omega.git"
 projects[omega][download][branch] = "7.x-4.x"
-projects[omega][download][revision] = "3e00917a9843c3e2e0ad4bf8a68eef2dc4c34f09"
+projects[omega][download][revision] = "a4d56d4d4868ef"
 
 projects[adminimal_theme][type] = "theme"
 projects[adminimal_theme][subdir] = "contrib"

@@ -37,6 +37,7 @@ dependencies[] = views_autorefresh
 dependencies[] = views_bulk_operations
 dependencies[] = views_content
 dependencies[] = views_json
+dependencies[] = views_send
 dependencies[] = views_ui
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
@@ -139,9 +140,9 @@ features[views_view][] = cod_session_speakers
 features[views_view][] = cod_session_tracks
 features[views_view][] = cod_session_user_presentations
 
-; Information added by Drupal.org packaging script on 2014-10-16
-version = "7.x-1.0-beta4"
+; Information added by Drupal.org packaging script on 2014-11-20
+version = "7.x-1.0-beta5"
 core = "7.x"
 project = "cod_support"
-datestamp = "1413472457"
+datestamp = "1416444190"
 
