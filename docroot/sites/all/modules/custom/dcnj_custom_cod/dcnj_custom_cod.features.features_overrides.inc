@@ -161,21 +161,6 @@ function dcnj_custom_cod_features_override_default_overrides() {
   $overrides["page_manager_pages.event_dashboard.default_handlers|page_event_dashboard_panel_context|conf|display|panels|middle|2"] = 'new-2d5361da-fead-4dbe-9250-fc7eabea8011';
   $overrides["page_manager_pages.program.menu|parent|type"] = 'none';
 
-  // Exported overrides for: rules_config
-  $overrides["rules_config.rules_default_event_flag.0"] = Array;
-  $overrides["rules_config.rules_default_event_flag.1"] = Array;
-  $overrides["rules_config.rules_og_member_active.0"] = Array;
-  $overrides["rules_config.rules_og_member_active.1"] = Array;
-  $overrides["rules_config.rules_og_member_active.2"] = Array;
-  $overrides["rules_config.rules_og_member_active.3"] = Array;
-  $overrides["rules_config.rules_og_member_pending.0"] = Array;
-  $overrides["rules_config.rules_og_member_pending.1"] = Array;
-  $overrides["rules_config.rules_og_member_pending.2"] = Array;
-  $overrides["rules_config.rules_og_member_pending.3"] = Array;
-  $overrides["rules_config.rules_og_new_content.0"] = Array;
-  $overrides["rules_config.rules_og_new_content.1"] = Array;
-  $overrides["rules_config.rules_og_new_content.2"] = Array;
-
   // Exported overrides for: user_permission
   $overrides["user_permission.create session content.roles|authenticated user"]["DELETED"] = TRUE;
   $overrides["user_permission.create session content.roles|camp attendee"] = 'camp attendee';
