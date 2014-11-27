@@ -6626,6 +6626,9 @@ img {
     padding-right: 60px;
   }
 }
+.navbar .navbar-btn {
+  margin-bottom: 0;
+}
 .navbar .logo {
   width: 250px;
 }
