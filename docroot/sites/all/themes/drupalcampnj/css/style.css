@@ -6658,6 +6658,9 @@ p:last-child {
   text-align: center;
   margin-bottom: 15px;
 }
+.btn-user > .btn {
+  width: 48%;
+}
 .view-cod-sponsors h3 {
   clear: both;
   color: #555555;
