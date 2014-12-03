@@ -221,3 +221,30 @@ function cod_session_update_7014() {
 
   return array();
 }
+
+/**
+ * Update session views to fix an issue with broken handlers for session confirmation.
+ */
+function cod_session_update_7015() {
+  $revert = array(
+    'cod_session' => array('views_view'),
+  );
+  features_revert($revert);
+
+  return array();
+}
+
+/**
+ * Enable views send to create bulk email messages for speakers.
+ * Note: this is a stopgap measure until we get message API integrated into COD.
+ */
+function cod_session_update_7016() {
+  module_enable(array('views_send'));
+
+  $revert = array(
+    'cod_session' => array('views_view'),
+  );
+  features_revert($revert);
+
+  return array();
+}

@@ -3,3 +3,5 @@ description = Generates a page listing attendees at an upcoming event whose regi
 core = 7.x
 
 configure = admin/config/content/eventbrite-attendees
+
+files[] = src/AttendeeList.php

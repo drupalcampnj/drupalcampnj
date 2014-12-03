@@ -279,33 +279,6 @@ function dcnj_custom_cod_default_page_manager_pages_alter(&$data) {
 }
 
 /**
- * Implements hook_default_rules_configuration_alter().
- */
-function dcnj_custom_cod_default_rules_configuration_alter(&$data) {
-  if (isset($data['rules_default_event_flag'])) {
-    $data['rules_default_event_flag'][0] = Array; /* WAS: '' */
-    $data['rules_default_event_flag'][1] = Array; /* WAS: '' */
-  }
-  if (isset($data['rules_og_member_active'])) {
-    $data['rules_og_member_active'][0] = Array; /* WAS: '' */
-    $data['rules_og_member_active'][1] = Array; /* WAS: '' */
-    $data['rules_og_member_active'][2] = Array; /* WAS: '' */
-    $data['rules_og_member_active'][3] = Array; /* WAS: '' */
-  }
-  if (isset($data['rules_og_member_pending'])) {
-    $data['rules_og_member_pending'][0] = Array; /* WAS: '' */
-    $data['rules_og_member_pending'][1] = Array; /* WAS: '' */
-    $data['rules_og_member_pending'][2] = Array; /* WAS: '' */
-    $data['rules_og_member_pending'][3] = Array; /* WAS: '' */
-  }
-  if (isset($data['rules_og_new_content'])) {
-    $data['rules_og_new_content'][0] = Array; /* WAS: '' */
-    $data['rules_og_new_content'][1] = Array; /* WAS: '' */
-    $data['rules_og_new_content'][2] = Array; /* WAS: '' */
-  }
-}
-
-/**
  * Implements hook_user_default_permissions_alter().
  */
 function dcnj_custom_cod_user_default_permissions_alter(&$data) {

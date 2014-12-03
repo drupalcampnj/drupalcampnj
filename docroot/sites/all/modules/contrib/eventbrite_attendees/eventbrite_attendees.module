@@ -42,13 +42,13 @@ function eventbrite_attendees_menu() {
 /**
  * Helper function to extract the questions and choices from data.
  */
-function _eventbrite_attendees_get_questions($data) {
+function _eventbrite_attendees_get_questions(EventbriteAttendeeList $list) {
   $question_choices = array();
   $questions = array();
   $opt_out_id = variable_get('eventbrite_attendees_opt_out_id', '');
   // pre-analyze questions
 
-  foreach ($data as $a) {
+  foreach ($list as $a) {
     if (is_array($a->answers)) {
       foreach ($a->answers as $ans) {
         // We don't need to see opt-out here.
@@ -80,8 +80,8 @@ function _eventbrite_attendees_get_questions($data) {
  * This page is for administrators to see all attendees and stats on them.
  */
 function eventbrite_attendees_report() {
-  $data = eventbrite_attendees_load();
-  list($questions, $question_choices) = _eventbrite_attendees_get_questions($data);
+  $list = eventbrite_attendees_load();
+  list($questions, $question_choices) = _eventbrite_attendees_get_questions($list);
 
   $output = '';
 
@@ -92,7 +92,7 @@ function eventbrite_attendees_report() {
 
   $rows = array();
 
-  foreach ($data as $attendee) {
+  foreach ($list as $attendee) {
     $row = array();
     $row[] = check_plain($attendee->first_name) . ' ' . check_plain($attendee->last_name);
     $row[] = !empty($attendee->company) ? check_plain($attendee->company) : '';
@@ -124,8 +124,8 @@ function eventbrite_attendees_report() {
  * Page callback to download a CSV file with all attendee data.
  */
 function eventbrite_attendees_csv_export() {
-  $data = eventbrite_attendees_load();
-  list($questions, $question_choices) = _eventbrite_attendees_get_questions($data);
+  $list = eventbrite_attendees_load();
+  list($questions, $question_choices) = _eventbrite_attendees_get_questions($list);
 
   $output = '';
 
@@ -139,7 +139,7 @@ function eventbrite_attendees_csv_export() {
   $fp = fopen('php://output', 'w');
   fputcsv($fp, $header);
 
-  foreach ($data as $attendee) {
+  foreach ($list as $attendee) {
     $row = array();
     $row[] = ucfirst($attendee->first_name);
     $row[] = ucfirst($attendee->last_name);
@@ -233,15 +233,16 @@ function eventbrite_attendees_configure_form($form, &$form_state) {
       '#type' => 'fieldset',
       '#title' => t('Organic groups'),
     );
-    $groups = array();
+    $groups = array(0 => t('- None -'));
     $nids = og_get_all_group();
-    foreach (db_query('SELECT nid, title FROM {node} WHERE nid IN(:nids) AND status = 1', array(':nids' => $nids)) as $row) {
+    foreach (db_query('SELECT nid, title FROM {node} WHERE nid IN(:nids) AND status = 1 ORDER BY title', array(':nids' => $nids)) as $row) {
       $groups[$row->nid] = $row->title;
     }
     $form['og']['eventbrite_attendees_group'] = array(
       '#type' => 'select',
       '#title' => t('Organic group for attendees'),
       '#options' => $groups,
+      '#default_value' => variable_get('eventbrite_attendees_group', 0),
     );
   }
   $form = system_settings_form($form);
@@ -257,13 +258,17 @@ function eventbrite_attendees_cache_clear() {
 }
 
 function eventbrite_attendees_test() {
-  $data = eventbrite_attendees_fetch();
-  eventbrite_attendees_update_data($data);
-  return '<pre>' . print_r(eventbrite_attendees_load(),1) . '</pre>';
+  $list = eventbrite_attendees_fetch();
+  if ($list) {
+    eventbrite_attendees_update_data($list);
+  }
+  return '<pre>' . print_r(eventbrite_attendees_load(), TRUE) . '</pre>';
 }
 
 /**
  * Load all attendee data and answers into an array keyed by ID.
+ *
+ * @return EventbriteAttendeeList
  */
 function eventbrite_attendees_load() {
   $data = db_query('SELECT * FROM {eventbrite_attendees} ORDER BY first_name, last_name')->fetchAllAssoc('id');
@@ -276,7 +281,7 @@ function eventbrite_attendees_load() {
       $data[$ans->attendee_id]->answers[$ans->question_id] = $ans;
     }
   }
-  return $data;
+  return new EventbriteAttendeeList($data, 'attending');
 }
 
 /**
@@ -291,18 +296,22 @@ function eventbrite_attendees_cron() {
   }
   // Eventbrite is based in CA - need to use their local time.
   $now = new DateTime(null, timezone_open('America/Los_Angeles'));
-  $data = eventbrite_attendees_fetch($since);
+  $list = eventbrite_attendees_fetch($since, 'attending');
   watchdog('eventbrite_attendees', 'Fetching data since "@since"', array('@since' => $since));
 
   // Only update the timestamp if we got some data back, since
   // errors could also give use an empty result.
-  if (isset($data->attendees) && is_array($data->attendees) && $data->attendees) {
+  if ($list) {
     // ISO date/time in CA local time.
     $time = $now->format('Y-m-d H:i:s');
     cache_set('eventbrite_attendees:last_fetch', $time);
-    eventbrite_attendees_update_data($data);
-    watchdog('eventbrite_attendees', 'Added/updated !count attendees and setting new fetch time "@since"', array('!count' => count($data->attendees), '@since' => $time));
+    eventbrite_attendees_update_data($list);
+    watchdog('eventbrite_attendees', 'Added/updated !count attendees and setting new fetch time "@since"', array('!count' => count($list), '@since' => $time));
     eventbrite_attendees_sync_users();
+  }
+  $list = eventbrite_attendees_fetch($since, 'not_attending');
+  if ($list) {
+    eventbrite_attendees_not_attending($list);
   }
 }
 
@@ -314,12 +323,13 @@ function eventbrite_attendees_cron() {
  *   Optional date and time in ISO-like format like '2013-01-28 00:00:00'.
  *   Needs to us San Francisco, CA time zone. Only attendees modified on or
  *   after this date/time will be returned.
+ * @param string $status
+ *   Valid values are 'attending', 'not_attending' and 'all'.
  *
- * @return
- *   API result Object decded from JSON. $result->attendees is an array of
- *   attendees, if any were returned.
+ * @return EventbriteAttendeeList
+ *   API result object decoded from JSON or NULL on error.
  */
-function eventbrite_attendees_fetch($modified_after = '') {
+function eventbrite_attendees_fetch($modified_after = '', $status = 'attending') {
   $user_key = variable_get('eventbrite_attendees_user_key', '');
   $app_key = variable_get('eventbrite_attendees_app_key', '');
   $event_id = variable_get('eventbrite_attendees_event_id', '');
@@ -335,61 +345,86 @@ function eventbrite_attendees_fetch($modified_after = '') {
   $query['id'] = $event_id;
   $query['app_key'] = $app_key;
   $query['user_key'] = $user_key;
+  $query['status'] = $status;
   if ($modified_after) {
     $query['modified_after'] = $modified_after;
   }
   $url = $base_url . drupal_http_build_query($query);
   $result = drupal_http_request($url);
+  $list = NULL;
   if ($result->code == 200) {
     $data = json_decode($result->data);
     if (!empty($data->error) && $data->error->error_type != "Not Found") {
       watchdog('eventbrite_attendees', 'Error type: "@error_type".  Error message: "@error_message"', array('@error_type' => $data->error->error_type, '@error_message' => $data->error->message), WATCHDOG_ERROR);
+    }
+    else {
+      $list = EventbriteAttendeeList::fromJsonData($data->attendees, $status);
     }
   }
   else {
     watchdog('eventbrite_attendees', 'Non-200 response: @code.  Error message: "@error_message"', array('@code' => $result->code, '@error_message' => $result->error), WATCHDOG_ERROR);
   }
 
-  return $data;
+  return $list;
 }
 
 /**
- * Callback to insert/update atendees with API data.
+ * Callback to insert/update attendees with API data.
  */
-function eventbrite_attendees_update_data($data) {
-  if (isset($data->attendees) && is_array($data->attendees)) {
-    foreach ($data->attendees as $a) {
-      if (!is_array($a->attendee->answers)) {
-        $a->attendee->answers = array();
-      }
-      $attendee_answers = array();
-      foreach ($a->attendee->answers as $ans) {
-        $attendee_answers[$ans->answer->question_id] = $ans->answer;
-        $attendee_answers[$ans->answer->question_id]->attendee_id = $a->attendee->id;
-      }
-      $primary_keys = array();
-      $existing_answers = array();
-      $existing = db_query('SELECT 1 FROM {eventbrite_attendees} WHERE id = :id', array('id' => $a->attendee->id))->fetchField();
-      if ($existing) {
-        $primary_keys[] = 'id';
-        $existing_answers = db_query('SELECT question_id, 1 FROM {eventbrite_attendee_answers} WHERE attendee_id = :id', array('id' => $a->attendee->id))->fetchAllKeyed();
-      }
-      drupal_write_record('eventbrite_attendees', $a->attendee, $primary_keys);
-      foreach ($attendee_answers as $question_id => $answer) {
-        $primary_keys = isset($existing_answers[$question_id]) ? array('attendee_id', 'question_id') : array();
-        drupal_write_record('eventbrite_attendee_answers', $answer, $primary_keys);
-        // Clear this id from the list.
-        unset($existing_answers[$question_id]);
-      }
-      if ($existing_answers) {
-        // Wipe all left-over existing answers since they no longer appear,
-        // rather than changing value, when unchecked or omitted.
-        db_delete('eventbrite_attendee_answers')
-          ->condition('attendee_id', $a->attendee->id)
-          ->condition('question_id', array_keys($existing_answers))
-          ->execute();
-      }
+function eventbrite_attendees_update_data(EventbriteAttendeeList $list) {
+  foreach ($list as $attendee) {
+    $primary_keys = array();
+    $existing_answers = array();
+    $existing = db_query('SELECT 1 FROM {eventbrite_attendees} WHERE id = :id', array('id' => $attendee->id))->fetchField();
+    if ($existing) {
+      $primary_keys[] = 'id';
+      $existing_answers = db_query('SELECT question_id, 1 FROM {eventbrite_attendee_answers} WHERE attendee_id = :id', array('id' => $attendee->id))->fetchAllKeyed();
     }
+    drupal_write_record('eventbrite_attendees', $attendee, $primary_keys);
+    foreach ($attendee->answers as $question_id => $answer) {
+      $primary_keys = isset($existing_answers[$question_id]) ? array('attendee_id', 'question_id') : array();
+      drupal_write_record('eventbrite_attendee_answers', $answer, $primary_keys);
+      // Clear this id from the list.
+      unset($existing_answers[$question_id]);
+    }
+    if ($existing_answers) {
+      // Wipe all left-over existing answers since they no longer appear,
+      // rather than changing value, when unchecked or omitted.
+      db_delete('eventbrite_attendee_answers')
+        ->condition('attendee_id', $attendee->id)
+        ->condition('question_id', array_keys($existing_answers))
+        ->execute();
+    }
+  }
+}
+
+/**
+ * Remove from the event list people who are not attending.
+ */
+function eventbrite_attendees_not_attending(EventbriteAttendeeList $list) {
+  $gid = 0;
+  if (module_exists('og')) {
+    $gid = variable_get('eventbrite_attendees_group', 0);
+  }
+  $rid = variable_get('eventbrite_attendees_sync_role', 0);
+  $uids = array();
+  foreach ($list as $attendee) {
+    $uid = db_query('SELECT uid FROM {eventbrite_attendees} WHERE id = :id', array('id' => $attendee->id))->fetchField();
+    if ($uid && $gid) {
+      og_ungroup('node', $gid, 'user', $uid);
+    }
+    if ($uid) {
+      $uids[] = $uid;
+      db_delete('eventbrite_attendees')
+        ->condition('id', $attendee->id)
+        ->execute();
+      db_delete('eventbrite_attendee_answers')
+        ->condition('attendee_id', $attendee->id)
+        ->execute();
+    }
+  }
+  if ($uids && $rid) {
+    user_multiple_role_edit($uids, 'remove_role', $rid);
   }
 }
 
@@ -418,9 +453,6 @@ function eventbrite_attendees_sync_users() {
   $gid = 0;
   if (module_exists('og')) {
     $gid = variable_get('eventbrite_attendees_group', 0);
-  }
-  if ($gid) {
-    $group = node_load($gid);
   }
   $rid = variable_get('eventbrite_attendees_sync_role', 0);
   $map = eventbrite_attendees_map_users();

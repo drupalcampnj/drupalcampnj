@@ -5,8 +5,8 @@ package = Panels
 dependencies[] = panels
 
 
-; Information added by drush on 2014-10-16
+; Information added by drush on 2014-11-20
 version = ""
 project = "panels_tabs"
-datestamp = "1413483558"
+datestamp = "1416445108"
 
