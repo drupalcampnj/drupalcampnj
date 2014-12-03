@@ -75,7 +75,7 @@ function eventbrite_attendees_schema() {
         'default' => '',
       ),
       'discount' => array(
-        'description' => t('Discout or access code used.'),
+        'description' => t('Discount or access code used.'),
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
