@@ -378,7 +378,7 @@ function eventbrite_attendees_update_data(EventbriteAttendeeList $list) {
     $existing = db_query('SELECT 1 FROM {eventbrite_attendees} WHERE id = :id', array('id' => $attendee->id))->fetchField();
     if ($existing) {
       $primary_keys[] = 'id';
-      $existing_answers = db_query('SELECT question_id, 1 FROM {eventbrite_attendee_answers} WHERE attendee_id = :id', array('id' => $a->attendee->id))->fetchAllKeyed();
+      $existing_answers = db_query('SELECT question_id, 1 FROM {eventbrite_attendee_answers} WHERE attendee_id = :id', array('id' => $attendee->id))->fetchAllKeyed();
     }
     drupal_write_record('eventbrite_attendees', $attendee, $primary_keys);
     foreach ($attendee->answers as $question_id => $answer) {
