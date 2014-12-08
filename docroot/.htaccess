@@ -99,6 +99,12 @@ DirectoryIndex index.php index.html index.htm
   # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   # RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
 
+  # Redirect HTTP to HTTPS on prod
+  RewriteCond %{ENV:AH_SITE_ENVIRONMENT} =prod
+  RewriteCond %{HTTPS} =off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://www.drupalcampnj.org%{REQUEST_URI} [L,R=301]
+
   # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
   # VirtualDocumentRoot and the rewrite rules are not working properly.
   # For example if your site is at http://example.com/drupal uncomment and
