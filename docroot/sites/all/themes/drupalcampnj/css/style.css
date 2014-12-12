@@ -6661,6 +6661,12 @@ p:last-child {
 .btn-user > .btn {
   width: 48%;
 }
+@media (min-width: 992px) and (max-width: 1200px) {
+  .btn-group .btn {
+    font-size: .85em;
+    padding: 12px 3px;
+  }
+}
 .view-cod-sponsors h3 {
   clear: both;
   color: #555555;
@@ -6771,3 +6777,4 @@ footer a {
   color: #ffffff;
   text-decoration: underline;
 }
+/*# sourceMappingURL=style.css.map */
