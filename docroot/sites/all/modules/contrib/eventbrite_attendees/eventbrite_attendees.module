@@ -309,9 +309,19 @@ function eventbrite_attendees_cron() {
     watchdog('eventbrite_attendees', 'Added/updated !count attendees and setting new fetch time "@since"', array('!count' => count($list), '@since' => $time));
     eventbrite_attendees_sync_users();
   }
-  $list = eventbrite_attendees_fetch($since, 'not_attending');
-  if ($list) {
-    eventbrite_attendees_not_attending($list);
+  $last_check = 0;
+  $cache = cache_get('eventbrite_attendees:last_not_attending_check');
+  if (isset($cache->data)) {
+    $last_check = $cache->data;
+  }
+  // Remove people only once per 3 hours to avoid hitting API limits.
+  if (REQUEST_TIME - $last_check >= 3 * 3600) {
+    $list = eventbrite_attendees_fetch($since, 'not_attending');
+    if ($list) {
+      eventbrite_attendees_not_attending($list);
+    }
+    cache_set('eventbrite_attendees:last_not_attending_check', REQUEST_TIME);
+    watchdog('eventbrite_attendees', 'Checked for people who are not attending, found !count', array('!count' => count($list)));
   }
 }
 
@@ -337,7 +347,6 @@ function eventbrite_attendees_fetch($modified_after = '', $status = 'attending')
     // Empty data.
     return array();
   }
-  $data = array();
 
   $base_url = 'https://www.eventbrite.com/json/event_list_attendees?';
   $query = array();
@@ -355,7 +364,7 @@ function eventbrite_attendees_fetch($modified_after = '', $status = 'attending')
   if ($result->code == 200) {
     $data = json_decode($result->data);
     if (!empty($data->error) && $data->error->error_type != "Not Found") {
-      watchdog('eventbrite_attendees', 'Error type: "@error_type".  Error message: "@error_message"', array('@error_type' => $data->error->error_type, '@error_message' => $data->error->message), WATCHDOG_ERROR);
+      watchdog('eventbrite_attendees', 'Error type: "@error_type".  Error message: "@error_message"', array('@error_type' => $data->error->error_type, '@error_message' => $data->error->error_message), WATCHDOG_ERROR);
     }
     else {
       $list = EventbriteAttendeeList::fromJsonData($data->attendees, $status);
