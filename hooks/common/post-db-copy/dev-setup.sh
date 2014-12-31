@@ -23,3 +23,6 @@ drush6 @$site.$target_env vset --exact -y maillog_log 1
 drush6 @$site.$target_env vset --exact -y maillog_send 0
 
 drush6 @$site.$target_env -y en maillog
+
+# Use a different eventbrite App key for dev/test
+drush6 @$site.$target_env vset -y eventbrite_attendees_app_key 'JIEIINZ6SY57T7FKG6'
