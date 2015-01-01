@@ -6658,6 +6658,10 @@ p:last-child {
   text-align: center;
   margin-bottom: 15px;
 }
+.node-session .field-name-field-news-image {
+  float: left;
+  margin: 0 1em 1em 0;
+}
 .btn-user > .btn {
   width: 48%;
 }
@@ -6777,4 +6781,3 @@ footer a {
   color: #ffffff;
   text-decoration: underline;
 }
-/*# sourceMappingURL=style.css.map */
