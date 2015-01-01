@@ -301,7 +301,7 @@ function eventbrite_attendees_cron() {
 
   // Only update the timestamp if we got some data back, since
   // errors could also give use an empty result.
-  if ($list) {
+  if (count($list) > 0) {
     // ISO date/time in CA local time.
     $time = $now->format('Y-m-d H:i:s');
     cache_set('eventbrite_attendees:last_fetch', $time);
