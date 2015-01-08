@@ -490,7 +490,7 @@ function eventbrite_attendees_sync_users() {
         $name = $m[1];
       }
       // Remove any invalid characters.
-      preg_replace('/[^\x{80}-\x{F7} a-z0-9@_.\'-]/i', '_', $name);
+      $name = preg_replace('/[^\x{80}-\x{F7} a-z0-9@_.\'-]/i', '_', $name);
       // If we did not find a name, or it's invalid assign a random one.
       $error = user_validate_name($name);
       if ($error) {
