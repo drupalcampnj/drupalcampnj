@@ -156,6 +156,7 @@ function camp_schedule_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'field_timeslot_room_target_id';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_type'] = 'span';
   /* Field: Time: Date and time */
   $handler->display->display_options['fields']['field_evttime_date']['id'] = 'field_evttime_date';
   $handler->display->display_options['fields']['field_evttime_date']['table'] = 'field_data_field_evttime_date';
@@ -177,6 +178,7 @@ function camp_schedule_views_default_views() {
   $handler->display->display_options['fields']['field_speakers']['field'] = 'field_speakers';
   $handler->display->display_options['fields']['field_speakers']['label'] = '';
   $handler->display->display_options['fields']['field_speakers']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_speakers']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_speakers']['settings'] = array(
     'link' => 1,
   );
@@ -187,10 +189,12 @@ function camp_schedule_views_default_views() {
   $handler->display->display_options['fields']['field_experience']['field'] = 'field_experience';
   $handler->display->display_options['fields']['field_experience']['label'] = '';
   $handler->display->display_options['fields']['field_experience']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_experience']['element_type'] = 'span';
   /* Field: Content: Session Track */
   $handler->display->display_options['fields']['og_vocabulary']['id'] = 'og_vocabulary';
   $handler->display->display_options['fields']['og_vocabulary']['table'] = 'field_data_og_vocabulary';
   $handler->display->display_options['fields']['og_vocabulary']['field'] = 'og_vocabulary';
+  $handler->display->display_options['fields']['og_vocabulary']['element_type'] = 'span';
   $handler->display->display_options['fields']['og_vocabulary']['settings'] = array(
     'link' => 0,
   );
