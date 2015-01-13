@@ -6662,6 +6662,42 @@ p:last-child {
   float: left;
   margin: 0 1em 1em 0;
 }
+.view-camp-session-grid .view-header {
+  display: none;
+}
+@media (max-width: 992px) {
+  .view-camp-session-grid thead {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+@media (max-width: 992px) {
+  .view-camp-session-grid td,
+  .view-camp-session-grid th {
+    display: block;
+  }
+}
+@media (max-width: 992px) {
+  .view-camp-session-grid th {
+    font-weight: bold;
+    text-align: center;
+    background: #777;
+    color: #fff;
+    padding: 5px 0;
+  }
+}
+.view-camp-session-grid td {
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+.view-camp-session-grid td span {
+  font-size: .85em;
+  padding-right: 1.25em;
+}
+.view-camp-session-grid td a {
+  text-transform: uppercase;
+}
 .btn-user > .btn {
   width: 48%;
 }
@@ -6781,3 +6817,4 @@ footer a {
   color: #ffffff;
   text-decoration: underline;
 }
+/*# sourceMappingURL=style.css.map */

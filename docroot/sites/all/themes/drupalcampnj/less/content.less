@@ -34,3 +34,48 @@ p:last-child {
   float: left;
   margin: 0 1em 1em 0;
 }
+
+// Responsive grid for Sessions
+
+.view-camp-session-grid{
+  .view-header {
+    display: none; 
+  }
+
+  thead {
+    @media (max-width: @screen-md) {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  }
+  td, th {
+    @media (max-width: @screen-md){
+      display: block;
+    }
+  }
+  
+  th {
+    @media (max-width: @screen-md) {
+      font-weight: bold;
+      text-align: center;
+      background: #777;
+      color: #fff;
+      padding: 5px 0;
+    }
+  }
+  
+  td {
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+    
+    span {
+      font-size: .85em;
+      padding-right: 1.25em;
+    }
+    
+    a {
+      text-transform: uppercase;
+    }
+  }
+}
