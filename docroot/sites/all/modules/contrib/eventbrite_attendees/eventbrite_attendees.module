@@ -482,17 +482,20 @@ function eventbrite_attendees_sync_users() {
       $account->status = 1;
       $edit['pass'] = user_password();
       $name = '';
+      $error = TRUE;
       if (!empty($attendee->first_name) && !empty($attendee->last_name)) {
         // Use trim since extra spaces cause later validation failures.
         $name = trim($attendee->first_name) . ' ' . trim($attendee->last_name);
+        // Remove any invalid characters.
+        $name = preg_replace('/[^\x{80}-\x{F7} a-z0-9@_.\'-]/i', '_', $name);
+        $error = user_validate_name($name);
       }
-      elseif (preg_match('/^([^@]+)/', $attendee->email, $m)) {
-        $name = $m[1];
+      if ((!$name || $error) && preg_match('/^([^@]+)/', $attendee->email, $m)) {
+        // Remove any invalid characters.
+        $name = preg_replace('/[^\x{80}-\x{F7} a-z0-9@_.\'-]/i', '_', $m[1]);
+        $error = user_validate_name($name);
       }
-      // Remove any invalid characters.
-      $name = preg_replace('/[^\x{80}-\x{F7} a-z0-9@_.\'-]/i', '_', $name);
       // If we did not find a name, or it's invalid assign a random one.
-      $error = user_validate_name($name);
       if ($error) {
         $name = strtolower(user_password(6));
       }
