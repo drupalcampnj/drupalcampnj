@@ -48,32 +48,45 @@ p:last-child {
       top: -9999px;
       left: -9999px;
     }
+
+    th {
+      @media (min-width: @screen-md) {
+        text-align: left;
+      }
+    }
   }
   td, th {
+    vertical-align: top;
+    padding: 2em .5em;
+    @media (min-width: @screen-md) {
+      font-size: .95em;
+    }
+
     @media (max-width: @screen-md){
       display: block;
     }
   }
-  
+
   th {
-    @media (max-width: @screen-md) {
-      font-weight: bold;
-      text-align: center;
-      background: #777;
-      color: #fff;
-      padding: 5px 0;
-    }
+    background: #777;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
   }
-  
+
   td {
-    padding: 20px 0;
     border-bottom: 1px solid #ccc;
-    
+
     span {
       font-size: .85em;
       padding-right: 1.25em;
+
+      @media (min-width: @screen-md) {
+        display: block;
+      }
     }
-    
+
     a {
       text-transform: uppercase;
     }
