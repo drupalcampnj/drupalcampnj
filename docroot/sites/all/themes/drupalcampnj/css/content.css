@@ -57,8 +57,8 @@ p:last-child {
   }
 }
 .view-camp-session-grid th {
-  background: #777;
-  color: #fff;
+  background: #555;
+  color: #f5f5f5;
   font-weight: bold;
   text-align: center;
 }
@@ -79,6 +79,11 @@ p:last-child {
 }
 .view-camp-session-grid td {
   border-bottom: 1px solid #ccc;
+}
+@media (max-width: 992px) {
+  .view-camp-session-grid td.empty {
+    display: none;
+  }
 }
 .view-camp-session-grid td span {
   font-size: .85em;
@@ -114,13 +119,13 @@ p:last-child {
   padding: 2px 5px;
 }
 .view-camp-session-grid td span.experience.beginner {
-  background: #0785ED;
+  background: #0C6FD5;
 }
 .view-camp-session-grid td span.experience.intermediate {
-  background: #dd9d00;
+  background: #4D9998;
 }
 .view-camp-session-grid td span.experience.advanced {
-  background: #AA1430;
+  background: #BF190C;
 }
 .view-camp-session-grid td a {
   text-transform: uppercase;

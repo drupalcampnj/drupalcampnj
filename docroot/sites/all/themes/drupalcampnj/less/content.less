@@ -69,8 +69,8 @@ p:last-child {
   }
 
   th {
-    background: #777;
-    color: #fff;
+    background: #555;
+    color: #f5f5f5;
     font-weight: bold;
     text-align: center;
     @media (min-width: @screen-md) {
@@ -92,6 +92,11 @@ p:last-child {
   td {
     border-bottom: 1px solid #ccc;
 
+    &.empty { 
+      @media (max-width: @screen-md) {
+        display: none;
+      }
+    }
     span {
       font-size: .85em;
       padding-right: 1.25em;
@@ -124,13 +129,13 @@ p:last-child {
         padding: 2px 5px;
       }
       &.experience.beginner {
-        background: #0785ED;
+        background: #0C6FD5;
       }
       &.experience.intermediate {
-        background: #dd9d00;
+        background: #4D9998;
       }
       &.experience.advanced {
-        background: #AA1430;
+        background: #BF190C;
       }
 
     }
