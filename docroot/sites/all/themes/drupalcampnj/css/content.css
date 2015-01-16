@@ -47,7 +47,7 @@ p:last-child {
   .view-camp-session-grid td,
   .view-camp-session-grid th {
     font-size: .95em;
-    padding: 2em 1em;
+    padding: 2em .75em;
   }
 }
 @media (max-width: 992px) {
@@ -69,7 +69,7 @@ p:last-child {
 }
 @media (min-width: 992px) {
   .view-camp-session-grid th.time-slot {
-    width: 95px;
+    width: 100px;
   }
 }
 @media (min-width: 992px) {
