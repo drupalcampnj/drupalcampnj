@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function eventbrite_attendees_uninstall() {
+  variable_del('eventbrite_attendees_user_key');
+  variable_del('eventbrite_attendees_app_key');
+  variable_del('eventbrite_attendees_event_id');
+  variable_del('eventbrite_attendees_opt_out_id');
+  variable_del('eventbrite_attendees_username_id');
+  variable_del('eventbrite_attendees_sponsor_ticket_id');
+}
