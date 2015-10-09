@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the DCNJ Custom COD feature.
- */
-
-include_once 'dcnj_custom_cod.features.inc';
