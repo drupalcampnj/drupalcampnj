@@ -1,0 +1,33 @@
+/**
+  *   Base Partials
+  * 
+  *   Generally included here are only Compass Extension
+  *   imports and imports for variables, functions, mixins, and extendables.
+*/
+
+/**
+  *   Compass Imports
+*/
+@import 'compass';
+
+
+/**
+  *   Compass Extensions
+*/
+//@import 'color-schemer';
+@import 'modular-scale';
+@import 'breakpoint';
+@import 'singularitygs';
+//@import 'singularity-extras';
+// Leave out extras as it requires sassy-math, which has a dependency problem.
+// https://github.com/Team-Sass/Sassy-math/issues/26
+@import 'toolkit';
+
+
+/**
+  *   Private Imports
+*/
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'extendables';

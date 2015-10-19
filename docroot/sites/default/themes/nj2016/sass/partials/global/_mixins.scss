@@ -1,0 +1,21 @@
+/**
+ *   Mixins
+ */
+
+@mixin standard-layout {
+  
+  padding-left: rhythm(1);
+  padding-right: rhythm(1);
+  @include breakpoint($bp-desktop) {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding-left: 0;
+        padding-right: 0;
+  }
+}
+
+@mixin hidden {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}

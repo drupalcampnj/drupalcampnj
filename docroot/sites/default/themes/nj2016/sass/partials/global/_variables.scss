@@ -1,0 +1,99 @@
+/**
+  *  Breakpoints
+*/
+$bp-tablet: 45em;
+$bp-desktop: 65em;
+$bp-wide: 70em;
+
+
+/**
+  *  Grids and gutters
+*/
+$grids: 3;
+$grids: add-grid(20 69 at $bp-tablet);
+$grids: add-grid(100 123 77 123 at $bp-desktop);
+
+$gutters: 1/4;
+$gutters: add-gutter(3 at $bp-tablet);
+$gutters: add-gutter(10 at $bp-desktop);
+
+
+/**
+  *  Font Size and Line Height for vertical rhythm
+*/
+
+$base-size      : 17px;
+$ratio              : major-third() fifth();
+
+$normpx         : $base-size;
+$medpx          : ms(1);
+$smallpx         : ms(-1);
+$xsmallpx       : ms(-2);
+$xxsmallpx     : ms(-3);
+$xxxsmallpx   : ms(-4);
+$largepx         : ms(2);
+$xlargepx       : ms(3);
+$xxlargepx      : ms(4);
+$xxxlargepx    : ms(5);
+
+$base-font-size:  $normpx;
+$base-line-height: $smallpx;
+$relative-font-sizing: true;
+
+$rhythm-unit: 'em';
+$indent-amount: $base-size;
+
+
+/**
+  *  Font Size for Headers
+*/
+$h1-font-size              : $xxlargepx !default;
+$h2-font-size              : $largepx !default;
+$h3-font-size              : $normpx !default;
+$h4-font-size              : $smallpx !default;
+$h5-font-size              : $xsmallpx !default;
+$h6-font-size              : $xxsmallpx !default;
+
+
+/**
+  *  Other font sizes
+*/
+
+
+/**
+  *  Font Stacks
+*/
+$tahoma:         Tahoma, Verdana, "DejaVu Sans", sans-serif;
+$helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
+$arial:               Arial, Helvetica, "Nimbus Sans L", sans-serif;
+
+
+/**
+  *  Variables for use from the Font Stacks
+  *  Don't call the font stacks directly!
+*/
+$base-font-family: $helvetica;
+
+
+/**
+  *  Colors
+*/
+// Base colors
+
+
+// Derived colors
+// Create colors from base colors above using color-schemer.
+
+
+// Color assignments
+// Similar to the font-stacks...don't call colors directly in partials. 
+// Instead, create variables and assign base or derived colors from above.
+
+
+/**
+*  Sprites
+*/
+    
+// Set this to true to force CSS output to exactly match normalize.css.
+$strict-normalize: false;
+ 

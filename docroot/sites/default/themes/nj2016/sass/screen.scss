@@ -1,0 +1,49 @@
+/**
+ *   No styles are acually here. 
+ * 
+ *   Imports all other files. Based on https://smacss.com/book/categorizing
+ *   
+ */
+
+/**
+ *    Import Global
+ *   
+ *   Sets variables, mixins, etc to be used later.
+ */
+@import 'partials/global/global';
+
+/**
+ *   Base Import
+ *   
+ *   Sets variables, mixins, etc to be used later.
+ */
+@import 'partials/base/base';
+
+/**
+*  Layout Import
+*/
+@import 'partials/layout/layout';
+
+/**
+*  Module Import
+*/
+@import 'partials/module/module';
+
+/**
+*  State Import
+*/
+@import 'partials/state/state';
+
+/**
+*  Theme Import
+*/
+@import 'partials/theme/theme';
+
+
+
+/**
+ *   Print styles
+ */
+// @media print {
+//  @import "_print.scss";
+// }
