@@ -30,6 +30,13 @@ function eventbrite_attendees_menu() {
     'page callback' => 'eventbrite_attendees_listing',
     'access arguments' => array('access content'),
   );
+  $items['eventbrite/webhook/%'] = array(
+    'title' => 'Eventbrite Webhook',
+    'page callback' => 'eventbrite_attendees_webhook',
+    'access callback' => 'eventbrite_attendees_webhook_access',
+    'access arguments' => array(2),
+    'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -199,6 +206,15 @@ function eventbrite_attendees_configure_form($form, &$form_state) {
     '#description' => t('The Eventbrite event ID for the event whose attendees you want to list.'),
     '#required' => TRUE,
   );
+  $form['webhook'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Webhook configuration'),
+  );
+  $form['webhook']['eventbrite_attendees_webhook_url'] = array(
+    '#type' => 'markup',
+    '#title' => t('Eventbrite Webhook URL'),
+    '#markup' => url('eventbrite/webhook/' . eventbrite_attendees_get_webhook_token(), array('absolute' => TRUE)),
+  );
   $form['additional'] = array(
     '#type' => 'fieldset',
     '#title' => t('Additional configuration'),
@@ -367,4 +383,20 @@ function eventbrite_attendees_rdf_namespaces() {
   return array(
     'schema'  => 'http://schema.org/',
   );
+}
+
+function eventbrite_attendees_webhook() {
+
+}
+
+function eventbrite_attendees_webhook_access($token) {
+  return $token === eventbrite_attendees_get_webhook_token();
+}
+
+function eventbrite_attendees_get_webhook_token() {
+  if (!($key = variable_get('eventbrite_attendees_webhook_token', 0))) {
+    $key = drupal_random_key();
+    variable_set('eventbrite_attendees_webhook_token', $key);
+  }
+  return $key;
 }
