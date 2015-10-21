@@ -5,7 +5,7 @@
  */
 function eventbrite_attendees_menu() {
   $items = array();
-  $items['admin/config/content/eventbrite-attendees'] = array(
+  $items['admin/config/services/eventbrite-attendees'] = array(
     'title' => 'Eventbrite Configuration',
     'description' => 'Set API keys and data mappings',
     'page callback' => 'drupal_get_form',
