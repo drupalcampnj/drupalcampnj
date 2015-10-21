@@ -304,27 +304,8 @@ function eventbrite_attendees_load() {
  * Implements hook_cron().
  */
 function eventbrite_attendees_cron() {
-  $since = '';
-  // Use cache rather than variable table to avoid extra cache clears.
-  $cache = cache_get('eventbrite_attendees:last_fetch');
-  if (isset($cache->data)) {
-    $since = $cache->data;
-  }
-  // Eventbrite is based in CA - need to use their local time.
-  $now = new DateTime(null, timezone_open('America/Los_Angeles'));
-  $list = eventbrite_attendees_fetch($since, 'attending');
-  watchdog('eventbrite_attendees', 'Fetching data since "@since"', array('@since' => $since));
+  $since = eventbrite_attendees_sync_new(TRUE);
 
-  // Only update the timestamp if we got some data back, since
-  // errors could also give use an empty result.
-  if (count($list) > 0) {
-    // ISO date/time in CA local time.
-    $time = $now->format('Y-m-d H:i:s');
-    cache_set('eventbrite_attendees:last_fetch', $time);
-    eventbrite_attendees_update_data($list);
-    watchdog('eventbrite_attendees', 'Added/updated !count attendees and setting new fetch time "@since"', array('!count' => count($list), '@since' => $time));
-    eventbrite_attendees_sync_users();
-  }
   $last_check = 0;
   $cache = cache_get('eventbrite_attendees:last_not_attending_check');
   if (isset($cache->data)) {
@@ -339,6 +320,41 @@ function eventbrite_attendees_cron() {
     cache_set('eventbrite_attendees:last_not_attending_check', REQUEST_TIME);
     watchdog('eventbrite_attendees', 'Checked for people who are not attending, found !count', array('!count' => count($list)));
   }
+}
+
+/**
+ * @return array
+ */
+function eventbrite_attendees_sync_new($update_last_fetch = FALSE) {
+// Eventbrite is based in CA - need to use their local time.
+  $now = new DateTime(NULL, timezone_open('America/Los_Angeles'));
+
+  $since = '';
+  // Use cache rather than variable table to avoid extra cache clears.
+  $cache = cache_get('eventbrite_attendees:last_fetch');
+  if (isset($cache->data)) {
+    $since = $cache->data;
+  }
+
+  $list = eventbrite_attendees_fetch($since, 'attending');
+  watchdog('eventbrite_attendees', 'Fetching data since "@since"', array('@since' => $since));
+
+  // Only update the timestamp if we got some data back, since
+  // errors could also give use an empty result.
+  if (count($list) > 0) {
+    // ISO date/time in CA local time.
+    $time = $now->format('Y-m-d H:i:s');
+    if ($update_last_fetch) {
+      cache_set('eventbrite_attendees:last_fetch', $time);
+    }
+    eventbrite_attendees_update_data($list);
+    watchdog('eventbrite_attendees', 'Added/updated !count attendees and setting new fetch time "@since"', array(
+      '!count' => count($list),
+      '@since' => $time
+    ));
+    eventbrite_attendees_sync_users();
+  }
+  return $since;
 }
 
 
@@ -655,7 +671,8 @@ function eventbrite_attendees_rdf_namespaces() {
 
 function eventbrite_attendees_webhook() {
   $data = file_get_contents('php://input');
-  if ($data){
+  if ($data) {
+    eventbrite_attendees_sync_new();
     drupal_json_output(array('success' => TRUE));
     watchdog('eventbrite_attendees', print_r(json_decode($data), TRUE));
   }
