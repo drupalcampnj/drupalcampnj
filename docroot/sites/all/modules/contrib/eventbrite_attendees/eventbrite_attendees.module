@@ -386,7 +386,10 @@ function eventbrite_attendees_rdf_namespaces() {
 }
 
 function eventbrite_attendees_webhook() {
-
+  $data = file_get_contents('php://input');
+  drupal_json_output(array('success' => TRUE));
+  watchdog('eventbrite_attendees', print_r(json_decode($data), TRUE));
+  exit;
 }
 
 function eventbrite_attendees_webhook_access($token) {
