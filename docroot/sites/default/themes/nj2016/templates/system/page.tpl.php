@@ -74,7 +74,7 @@
 
 <div id="page-wrapper">
 
-  <div id="header">
+  <header>
 
     <?php if ($site_name): ?>
       <?php if ($title): ?>
@@ -102,7 +102,7 @@
         </div></div> <!-- /.section, /#navigation -->
     <?php endif; ?>
 
-  </div> <!-- /#header -->
+  </header> <!-- /#header -->
 
   <?php if ($page['navigation']): ?>
     <nav>
