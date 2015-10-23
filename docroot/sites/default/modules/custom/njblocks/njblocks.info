@@ -1,0 +1,5 @@
+name = DrupalCampNJ Custom Blocks
+description = Provides reusable blocks. Allows control of block content via code.
+core = 7.x
+package = DrupalCampNJ
+dependencies[] = context

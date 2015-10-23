@@ -1,0 +1,43 @@
+<?php
+
+/**
+* Implements hook_block_info().
+*/
+function njblocks_block_info() {
+  $blocks = array();
+
+  $blocks['footer_contact_info'] = array(
+    'info' => t('Contact Information for Footer'),
+  );
+
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function njblocks_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'footer_contact_info':
+      $block['subject'] = t('Contact the Organizers') . '!';
+      $block['content'] = theme('footer_contact_info');
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function njblocks_theme() {
+  return array(
+    'footer_contact_info' => array(
+      'template' => 'templates/footer_contact_info',
+      'arguments' => array(),
+    ),
+  );
+}
+

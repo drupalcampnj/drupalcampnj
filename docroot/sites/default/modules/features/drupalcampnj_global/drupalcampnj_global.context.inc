@@ -32,6 +32,12 @@ function drupalcampnj_global_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'njblocks-footer_contact_info' => array(
+          'module' => 'njblocks',
+          'delta' => 'footer_contact_info',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

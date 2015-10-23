@@ -5,6 +5,7 @@ package = Features
 dependencies[] = block
 dependencies[] = context
 dependencies[] = ctools
+dependencies[] = njblocks
 features[context][] = drupalcampnj_global
 features[ctools][] = context:context:3
 features[features_api][] = api:2
