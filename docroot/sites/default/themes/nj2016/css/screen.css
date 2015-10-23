@@ -87,7 +87,7 @@ html {
  */
 /* line 19, ../sass/partials/base/_normalize.scss */
 html {
-  font-family: Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  font-family: "Merriweather", Georgia, serif;
   /* 1 */
   -ms-text-size-adjust: 100%;
   /* 2 */
@@ -472,7 +472,7 @@ textarea {
   /* 2 */
   margin: 0;
   /* 3 */
-  *font-family: Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  *font-family: "Merriweather", Georgia, serif;
   /* 4 */
   *vertical-align: middle;
   /* 5 */

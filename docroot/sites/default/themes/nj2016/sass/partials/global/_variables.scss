@@ -67,12 +67,15 @@ $tahoma:         Tahoma, Verdana, "DejaVu Sans", sans-serif;
 $helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
 $arial:               Arial, Helvetica, "Nimbus Sans L", sans-serif;
 
+$merriweather:  "Merriweather",Georgia,serif;
+$opensans: "Open Sans","Helvetica Neue",Arial,sans-serif;
+
 
 /**
   *  Variables for use from the Font Stacks
   *  Don't call the font stacks directly!
 */
-$base-font-family: $helvetica;
+$base-font-family: $merriweather;
 
 
 /**

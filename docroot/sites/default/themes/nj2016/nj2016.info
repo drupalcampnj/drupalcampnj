@@ -53,3 +53,11 @@ settings[magic_performance__active_tab] = 'edit-css'
 settings[magic_css_excludes_regex] = ''
 settings[magic_js_excludes_regex] = ''
 
+; ========================================
+; Fonts
+; @fontyourface will also need to be enabled.
+; ========================================
+
+fonts[google_fonts_api][] = "Merriweather&subset=latin#300"
+fonts[google_fonts_api][] = "Open Sans&subset=latin#300"
+
