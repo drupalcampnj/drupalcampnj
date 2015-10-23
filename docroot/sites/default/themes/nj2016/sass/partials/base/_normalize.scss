@@ -1,5 +1,11 @@
 /* normalize-scss 3.0.3+normalize.3.0.3 | MIT/GPLv2 License | bit.ly/normalize-scss */
 
+
+// After the default variables are set, import the required Compass partials.
+@import "compass/support";
+@import "compass/css3/box-sizing";
+@import "compass/typography/vertical_rhythm";
+
 @if not $strict-normalize or support-legacy-browser(ie, "7") {
   /**
    * Establish a vertical rhythm unit using $base-font-size, $base-line-height,

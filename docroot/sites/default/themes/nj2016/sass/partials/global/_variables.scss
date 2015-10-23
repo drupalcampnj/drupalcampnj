@@ -37,11 +37,11 @@ $xxlargepx      : ms(4);
 $xxxlargepx    : ms(5);
 
 $base-font-size:  $normpx;
-$base-line-height: $smallpx;
+$base-line-height: 20px;
 $relative-font-sizing: true;
 
 $rhythm-unit: 'em';
-$indent-amount: $base-size;
+$indent-amount: $normpx * 2;
 
 
 /**
