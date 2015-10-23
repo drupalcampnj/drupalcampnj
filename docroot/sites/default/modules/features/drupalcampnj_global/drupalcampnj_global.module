@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the drupalcampnj_global feature.
+ */
+
+include_once 'drupalcampnj_global.features.inc';
