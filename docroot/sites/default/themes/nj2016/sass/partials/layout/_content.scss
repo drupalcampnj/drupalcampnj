@@ -6,6 +6,7 @@
 
 .content-inner {
   @include standard-layout();
+  @include clearfix();
 }
 
 .not-front {

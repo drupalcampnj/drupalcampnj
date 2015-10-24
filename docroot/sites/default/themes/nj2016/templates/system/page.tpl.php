@@ -72,78 +72,79 @@
  */
 ?>
 
-  <header>
+<header>
 
-    <?php if ($site_name): ?>
-      <?php if ($title): ?>
-        <div id="site-name">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-        </div>
-      <?php else: /* Use h1 when the content title is empty */ ?>
-        <h1 id="site-name">
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-        </h1>
-      <?php endif; ?>
-
-      <?php if ($site_slogan): ?>
-        <div id="site-slogan"><?php print $site_slogan; ?></div>
-      <?php endif; ?>
-      <!-- /#name-and-slogan -->
+  <?php if ($site_name): ?>
+    <?php if ($title): ?>
+      <div id="site-name">
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+      </div>
+    <?php else: /* Use h1 when the content title is empty */ ?>
+      <h1 id="site-name">
+        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
+      </h1>
     <?php endif; ?>
 
-    <?php print render($page['header']); ?>
-
-    <?php if ($main_menu || $secondary_menu): ?>
-      <div id="navigation"><div class="section">
-          <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
-          <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
-        </div></div> <!-- /.section, /#navigation -->
+    <?php if ($site_slogan): ?>
+      <div id="site-slogan"><?php print $site_slogan; ?></div>
     <?php endif; ?>
+    <!-- /#name-and-slogan -->
+  <?php endif; ?>
 
-  </header> <!-- /#header -->
+  <?php print render($page['header']); ?>
 
+  <?php if ($main_menu || $secondary_menu): ?>
+    <div id="navigation"><div class="section">
+        <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
+        <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
+      </div></div> <!-- /.section, /#navigation -->
+  <?php endif; ?>
   <?php if ($page['navigation']): ?>
     <nav>
       <?php print render($page['navigation']); ?>
     </nav>
   <?php endif; ?>
 
-  <div class="content-wrapper">
-    <div class="content-inner">
-      <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
-      <?php print $messages; ?>
-      <main>
+</header> <!-- /#header -->
 
-        <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-        <a id="main-content"></a>
-        <?php print render($title_prefix); ?>
-        <?php print render($title_suffix); ?>
-        <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-        <?php print render($page['help']); ?>
-        <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
-        <?php print render($page['content']); ?>
-        <?php print $feed_icons; ?>
-      </main> <!-- /main -->
 
-      <?php if ($page['sidebar_first']): ?>
-        <aside class="sidebar-first">
-          <?php print render($page['sidebar_first']); ?>
-        </aside> <!-- /#sidebar-first -->
-      <?php endif; ?>
 
-      <?php if ($page['sidebar_second']): ?>
-        <aside class="sidebar-second">
-          <?php print render($page['sidebar_second']); ?>
-        </aside> <!-- /#sidebar-second -->
-      <?php endif; ?>
-    </div>
+<div class="content-wrapper">
+  <div class="content-inner">
+    <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
+    <?php print $messages; ?>
+    <main>
+
+      <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
+      <a id="main-content"></a>
+      <?php print render($title_prefix); ?>
+      <?php print render($title_suffix); ?>
+      <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+      <?php print render($page['help']); ?>
+      <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+      <?php print render($page['content']); ?>
+      <?php print $feed_icons; ?>
+    </main> <!-- /main -->
+
+    <?php if ($page['sidebar_first']): ?>
+      <aside class="sidebar-first">
+        <?php print render($page['sidebar_first']); ?>
+      </aside> <!-- /#sidebar-first -->
+    <?php endif; ?>
+
+    <?php if ($page['sidebar_second']): ?>
+      <aside class="sidebar-second">
+        <?php print render($page['sidebar_second']); ?>
+      </aside> <!-- /#sidebar-second -->
+    <?php endif; ?>
   </div>
-        
-  <?php if ($page['sponsors']): ?>
-    <section class="sponsors">
-      <?php print render($page['sponsors']); ?>
-    </section> <!-- /#sponsors -->
-  <?php endif; ?>
+</div>
+
+<?php if ($page['sponsors']): ?>
+  <section class="sponsors">
+    <?php print render($page['sponsors']); ?>
+  </section> <!-- /#sponsors -->
+<?php endif; ?>
 
 <footer>
   <?php print render($page['footer']); ?>

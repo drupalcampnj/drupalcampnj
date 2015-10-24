@@ -1,0 +1,10 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+
+header {
+  @include standard-layout();
+}
+

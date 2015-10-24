@@ -689,23 +689,49 @@ h1, h2, h3, h4, h5, h6 {
   * 
   *  See https://smacss.com/book/type-layout
 */
-/* line 7, ../sass/partials/layout/_content.scss */
-.content-inner {
-  padding-left: 0.375em;
-  padding-right: 0.375em;
+/* line 7, ../sass/partials/layout/_header.scss */
+header {
+  padding-left: 0.75em;
+  padding-right: 0.75em;
 }
 @media (min-width: 65em) {
-  /* line 7, ../sass/partials/layout/_content.scss */
-  .content-inner {
-    max-width: 1024px;
+  /* line 7, ../sass/partials/layout/_header.scss */
+  header {
+    max-width: 1140px;
     margin: 0 auto;
     padding-left: 0;
     padding-right: 0;
   }
 }
 
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+/* line 7, ../sass/partials/layout/_content.scss */
+.content-inner {
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
 @media (min-width: 65em) {
-  /* line 12, ../sass/partials/layout/_content.scss */
+  /* line 7, ../sass/partials/layout/_content.scss */
+  .content-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* line 13, ../vendor/bundle/ruby/1.9.1/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
+.content-inner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 65em) {
+  /* line 13, ../sass/partials/layout/_content.scss */
   .not-front main {
     width: 65.38462%;
     float: left;
@@ -715,7 +741,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 @media (min-width: 65em) {
-  /* line 18, ../sass/partials/layout/_content.scss */
+  /* line 19, ../sass/partials/layout/_content.scss */
   .not-front .sidebar-first {
     width: 30.76923%;
     float: right;
@@ -726,7 +752,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 65em) {
-  /* line 26, ../sass/partials/layout/_content.scss */
+  /* line 27, ../sass/partials/layout/_content.scss */
   .front main {
     width: 48.07692%;
     float: left;
@@ -736,13 +762,33 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 @media (min-width: 65em) {
-  /* line 32, ../sass/partials/layout/_content.scss */
+  /* line 33, ../sass/partials/layout/_content.scss */
   .front .sidebar-first {
     width: 48.07692%;
     float: right;
     margin-left: 0;
     margin-right: 0;
     clear: none;
+  }
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+/* line 7, ../sass/partials/layout/_footer.scss */
+footer {
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+@media (min-width: 65em) {
+  /* line 7, ../sass/partials/layout/_footer.scss */
+  footer {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

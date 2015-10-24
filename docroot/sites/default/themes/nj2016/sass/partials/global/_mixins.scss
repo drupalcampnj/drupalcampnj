@@ -4,10 +4,10 @@
 
 @mixin standard-layout {
   
-  padding-left: rhythm(1);
-  padding-right: rhythm(1);
+  padding-left: rhythm(2);
+  padding-right: rhythm(2);
   @include breakpoint($bp-desktop) {
-        max-width: 1024px;
+        max-width: 1140px;
         margin: 0 auto;
         padding-left: 0;
         padding-right: 0;
