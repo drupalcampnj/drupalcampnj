@@ -4,10 +4,14 @@
 * Implements hook_block_info().
 */
 function njblocks_block_info() {
-  $blocks = array();
-
-  $blocks['footer_contact_info'] = array(
-    'info' => t('Contact Information for Footer'),
+  
+  $blocks = array(
+    'footer_contact_info' => array(
+      'info' => t('Contact Information for Footer'),
+    ),
+    'tickets_registration' => array(
+      'info' => t('Ticket information and Register button'),
+    ),
   );
 
   return $blocks;
@@ -24,6 +28,10 @@ function njblocks_block_view($delta = '') {
       $block['subject'] = t('Contact the Organizers') . '!';
       $block['content'] = theme('footer_contact_info');
       break;
+    case 'tickets_registration':
+      $block['subject'] = t('Tickets start at $30');
+      $block['content'] = theme('tickets_registration');
+      break;
   }
 
   return $block;
@@ -36,6 +44,10 @@ function njblocks_theme() {
   return array(
     'footer_contact_info' => array(
       'template' => 'templates/footer_contact_info',
+      'arguments' => array(),
+    ),
+    'tickets_registration' => array(
+      'template' => 'templates/tickets_registration',
       'arguments' => array(),
     ),
   );
