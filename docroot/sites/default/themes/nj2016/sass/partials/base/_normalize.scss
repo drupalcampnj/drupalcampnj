@@ -195,7 +195,7 @@ h1 {
 @if not $strict-normalize or support-legacy-browser(ie, "7") {
   h2 {
     @include adjust-font-size-to( $h2-font-size );
-    @include leader(1, $h2-font-size);
+    @include leader(4, $h2-font-size);
     @include trailer(1, $h2-font-size);
   }
 

@@ -18,8 +18,6 @@ GEM
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
     ffi (1.9.10)
-    modular-scale (2.1.1)
-      compass (>= 0.12.0)
     multi_json (1.11.2)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
@@ -38,7 +36,6 @@ PLATFORMS
 
 DEPENDENCIES
   compass (~> 1.0)
-  modular-scale (~> 2.0)
   sass (~> 3.3)
   singularitygs (~> 1.4)
   toolkit (~> 2.0)

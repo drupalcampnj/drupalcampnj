@@ -32,6 +32,7 @@
 */
 /**
   *  Font Size and Line Height for vertical rhythm
+  *  See http://www.negativelabs.com/sandbox/type_grid/ for size choices
 */
 /**
   *  Font Size for Headers
@@ -234,51 +235,51 @@ dfn {
 /* line 181, ../sass/partials/base/_normalize.scss */
 h1 {
   /* Set the font-size and line-height while keeping a proper vertical rhythm. */
-  font-size: 6.8541em;
-  line-height: 1.03952em;
+  font-size: 3em;
+  line-height: 1.125em;
   /* Set 1 unit of vertical rhythm on the top and bottom margins. */
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0.125em;
+  margin-bottom: 0.125em;
 }
 
 /* line 196, ../sass/partials/base/_normalize.scss */
 h2 {
-  font-size: 2.61803em;
-  line-height: 1.1459em;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  font-size: 2em;
+  line-height: 1.125em;
+  margin-top: 0.75em;
+  margin-bottom: 0.1875em;
 }
 
 /* line 202, ../sass/partials/base/_normalize.scss */
 h3 {
+  font-size: 1.5em;
+  line-height: 1.25em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* line 208, ../sass/partials/base/_normalize.scss */
+h4 {
   font-size: 1em;
   line-height: 1.5em;
   margin-top: 0.375em;
   margin-bottom: 0.375em;
 }
 
-/* line 208, ../sass/partials/base/_normalize.scss */
-h4 {
-  font-size: 0.61803em;
-  line-height: 1.82029em;
-  margin-top: 9px;
-  margin-bottom: 9px;
-}
-
 /* line 214, ../sass/partials/base/_normalize.scss */
 h5 {
-  font-size: 0.38197em;
-  line-height: 1.96353em;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-top: 0.375em;
+  margin-bottom: 0.375em;
 }
 
 /* line 220, ../sass/partials/base/_normalize.scss */
 h6 {
-  font-size: 0.23607em;
-  line-height: 3.17705em;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-top: 0.375em;
+  margin-bottom: 0.375em;
 }
 
 /**

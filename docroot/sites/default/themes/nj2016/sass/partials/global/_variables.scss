@@ -20,39 +20,36 @@ $gutters: add-gutter(10 at $bp-desktop);
 
 /**
   *  Font Size and Line Height for vertical rhythm
+  *  See http://www.negativelabs.com/sandbox/type_grid/ for size choices
 */
 
-$base-size      : 16px;
-$ratio              : major-third() fifth();
+$xxxsmallpx   : 16px;
+$xxsmallpx     : 20px;
+$xsmallpx       : 24px;
+$smallpx         : 30px;
+$medpx          : 32px;
+$largepx         : 40px;
+$xlargepx       : 48px;
+$xxlargepx      : 60px;
+$xxxlargepx    : 80px;
 
-$normpx         : $base-size;
-$medpx          : ms(1);
-$smallpx         : ms(-1);
-$xsmallpx       : ms(-2);
-$xxsmallpx     : ms(-3);
-$xxxsmallpx   : ms(-4);
-$largepx         : ms(2);
-$xlargepx       : ms(3);
-$xxlargepx      : ms(4);
-$xxxlargepx    : ms(5);
-
-$base-font-size:  $normpx;
+$base-font-size:  $xxxsmallpx;
 $base-line-height: 6px;
 $relative-font-sizing: true;
 
 $rhythm-unit: 'em';
-$indent-amount: $normpx * 2;
+$indent-amount: $xxxsmallpx * 2;
 
 
 /**
   *  Font Size for Headers
 */
-$h1-font-size              : $xxlargepx !default;
-$h2-font-size              : $largepx !default;
-$h3-font-size              : $normpx !default;
-$h4-font-size              : $smallpx !default;
-$h5-font-size              : $xsmallpx !default;
-$h6-font-size              : $xxsmallpx !default;
+$h1-font-size              : $xlargepx !default;
+$h2-font-size              : $medpx !default;
+$h3-font-size              : $xsmallpx !default;
+$h4-font-size              : $xxxsmallpx !default;
+$h5-font-size              : $xxxsmallpx !default;
+$h6-font-size              : $xxxsmallpx !default;
 
 
 /**

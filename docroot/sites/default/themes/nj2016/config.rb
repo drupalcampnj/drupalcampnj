@@ -1,5 +1,4 @@
 #require 'color-schemer'
-require 'modular-scale'
 require 'singularitygs'
 require 'breakpoint'
 # require 'singularity-extras'
