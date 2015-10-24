@@ -246,7 +246,7 @@ h1 {
 h2 {
   font-size: 2em;
   line-height: 1.125em;
-  margin-top: 0.75em;
+  margin-top: 0.375em;
   margin-bottom: 0.1875em;
 }
 
@@ -254,7 +254,7 @@ h2 {
 h3 {
   font-size: 1.5em;
   line-height: 1.25em;
-  margin-top: 0.25em;
+  margin-top: 0.5em;
   margin-bottom: 0.25em;
 }
 
@@ -262,7 +262,7 @@ h3 {
 h4 {
   font-size: 1em;
   line-height: 1.5em;
-  margin-top: 0.375em;
+  margin-top: 0.75em;
   margin-bottom: 0.375em;
 }
 
@@ -270,7 +270,7 @@ h4 {
 h5 {
   font-size: 1em;
   line-height: 1.5em;
-  margin-top: 0.375em;
+  margin-top: 0.75em;
   margin-bottom: 0.375em;
 }
 
@@ -278,7 +278,7 @@ h5 {
 h6 {
   font-size: 1em;
   line-height: 1.5em;
-  margin-top: 0.375em;
+  margin-top: 0.75em;
   margin-bottom: 0.375em;
 }
 

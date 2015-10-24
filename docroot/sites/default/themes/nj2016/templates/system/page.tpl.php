@@ -125,15 +125,21 @@
       </main> <!-- /main -->
 
       <?php if ($page['sidebar_first']): ?>
-        <aside id="sidebar-first">
+        <aside class="sidebar-first">
           <?php print render($page['sidebar_first']); ?>
         </aside> <!-- /#sidebar-first -->
       <?php endif; ?>
 
       <?php if ($page['sidebar_second']): ?>
-        <aside id="sidebar-second">
+        <aside class="sidebar-second">
           <?php print render($page['sidebar_second']); ?>
         </aside> <!-- /#sidebar-second -->
+      <?php endif; ?>
+        
+      <?php if ($page['sponsors']): ?>
+        <section class="sponsors">
+          <?php print render($page['sponsors']); ?>
+        </section> <!-- /#sponsors -->
       <?php endif; ?>
 
 <footer>
