@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the drupalcampnj_sponsors feature.
+ */
+
+include_once 'drupalcampnj_sponsors.features.inc';

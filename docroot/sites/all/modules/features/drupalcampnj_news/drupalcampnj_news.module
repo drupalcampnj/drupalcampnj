@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the drupalcampnj_news feature.
+ */
+
+include_once 'drupalcampnj_news.features.inc';
