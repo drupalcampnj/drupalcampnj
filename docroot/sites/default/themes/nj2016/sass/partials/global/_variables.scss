@@ -22,7 +22,7 @@ $gutters: add-gutter(10 at $bp-desktop);
   *  Font Size and Line Height for vertical rhythm
 */
 
-$base-size      : 17px;
+$base-size      : 16px;
 $ratio              : major-third() fifth();
 
 $normpx         : $base-size;
@@ -37,7 +37,7 @@ $xxlargepx      : ms(4);
 $xxxlargepx    : ms(5);
 
 $base-font-size:  $normpx;
-$base-line-height: 20px;
+$base-line-height: 6px;
 $relative-font-sizing: true;
 
 $rhythm-unit: 'em';

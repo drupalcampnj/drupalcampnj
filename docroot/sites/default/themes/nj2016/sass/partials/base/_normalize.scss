@@ -23,6 +23,7 @@
  */
 
 html {
+  @include adjust-leading-to(4);
   font-family: $base-font-family; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
