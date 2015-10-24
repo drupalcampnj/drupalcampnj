@@ -1,0 +1,30 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+
+.content-inner {
+  @include standard-layout();
+}
+
+main {
+  @include breakpoint($bp-desktop) { 
+        @include grid-span(8, 1);
+      }
+}
+
+.front {
+    main {
+     @include breakpoint($bp-desktop) { 
+        @include grid-span(6, 1);
+      } 
+    }
+    
+    .sidebar-first {
+     @include breakpoint($bp-desktop) { 
+        @include grid-span(6, 7);
+      } 
+    }
+  
+}

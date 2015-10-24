@@ -108,10 +108,11 @@
     </nav>
   <?php endif; ?>
 
-
+  <div class="content-wrapper">
+    <div class="content-inner">
+      <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
       <?php print $messages; ?>
       <main>
-        <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
 
         <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
         <a id="main-content"></a>
@@ -135,12 +136,14 @@
           <?php print render($page['sidebar_second']); ?>
         </aside> <!-- /#sidebar-second -->
       <?php endif; ?>
+    </div>
+  </div>
         
-      <?php if ($page['sponsors']): ?>
-        <section class="sponsors">
-          <?php print render($page['sponsors']); ?>
-        </section> <!-- /#sponsors -->
-      <?php endif; ?>
+  <?php if ($page['sponsors']): ?>
+    <section class="sponsors">
+      <?php print render($page['sponsors']); ?>
+    </section> <!-- /#sponsors -->
+  <?php endif; ?>
 
 <footer>
   <?php print render($page['footer']); ?>

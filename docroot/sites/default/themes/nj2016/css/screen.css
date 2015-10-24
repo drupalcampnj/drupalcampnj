@@ -684,6 +684,58 @@ h1, h2, h3, h4, h5, h6 {
   *   Private Imports
 */
 /**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+/* line 7, ../sass/partials/layout/_content.scss */
+.content-inner {
+  padding-left: 0.375em;
+  padding-right: 0.375em;
+}
+@media (min-width: 65em) {
+  /* line 7, ../sass/partials/layout/_content.scss */
+  .content-inner {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 65em) {
+  /* line 11, ../sass/partials/layout/_content.scss */
+  main {
+    width: 65.38462%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none;
+  }
+}
+
+@media (min-width: 65em) {
+  /* line 18, ../sass/partials/layout/_content.scss */
+  .front main {
+    width: 48.07692%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none;
+  }
+}
+@media (min-width: 65em) {
+  /* line 24, ../sass/partials/layout/_content.scss */
+  .front .sidebar-first {
+    width: 48.07692%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+  }
+}
+
+/**
 *  Module Import
 */
 /**
