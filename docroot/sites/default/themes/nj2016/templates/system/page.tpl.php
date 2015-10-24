@@ -72,8 +72,6 @@
  */
 ?>
 
-<div id="page-wrapper">
-
   <header>
 
     <?php if ($site_name): ?>
@@ -110,8 +108,6 @@
     </nav>
   <?php endif; ?>
 
-  <div id="page">
-    <div id="page-inner">
 
       <?php print $messages; ?>
       <main>
@@ -140,9 +136,7 @@
         </aside> <!-- /#sidebar-second -->
       <?php endif; ?>
 
-    </div></div><!-- /#page-inner, /#page --> 
-</div> <!-- /#main, /#main-wrapper -->
 <footer>
   <?php print render($page['footer']); ?>
 </footer> <!-- /#footer -->
-</div></div> <!-- /#page, /#page-wrapper -->
+
