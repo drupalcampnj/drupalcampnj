@@ -26,10 +26,10 @@ function drupalcampnj_global_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'block-1' => array(
-          'module' => 'block',
+        'menu_block-1' => array(
+          'module' => 'menu_block',
           'delta' => '1',
-          'region' => 'footer',
+          'region' => 'navigation',
           'weight' => '-10',
         ),
         'njblocks-footer_contact_info' => array(
