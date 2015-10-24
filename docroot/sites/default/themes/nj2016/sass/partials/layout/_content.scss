@@ -8,23 +8,31 @@
   @include standard-layout();
 }
 
-main {
-  @include breakpoint($bp-desktop) { 
-        @include grid-span(8, 1);
-      }
+.not-front {
+  main {
+    @include breakpoint($bp-desktop) { 
+      @include grid-span(8, 1);
+    }
+  }
+  
+  .sidebar-first {
+    @include breakpoint($bp-desktop) { 
+      @include grid-span(4, 9);
+    } 
+  }
 }
 
 .front {
-    main {
-     @include breakpoint($bp-desktop) { 
-        @include grid-span(6, 1);
-      } 
-    }
-    
-    .sidebar-first {
-     @include breakpoint($bp-desktop) { 
-        @include grid-span(6, 7);
-      } 
-    }
+  main {
+    @include breakpoint($bp-desktop) { 
+      @include grid-span(6, 1);
+    } 
+  }
+  
+  .sidebar-first {
+    @include breakpoint($bp-desktop) { 
+      @include grid-span(6, 7);
+    } 
+  }
   
 }

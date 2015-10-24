@@ -29,6 +29,7 @@
 */
 /**
   *  Grids and gutters
+  *  Singularity 1.2 syntax: https://github.com/at-import/Singularity/wiki/Creating-Grids
 */
 /**
   *  Font Size and Line Height for vertical rhythm
@@ -704,8 +705,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 65em) {
-  /* line 11, ../sass/partials/layout/_content.scss */
-  main {
+  /* line 12, ../sass/partials/layout/_content.scss */
+  .not-front main {
     width: 65.38462%;
     float: left;
     margin-right: -100%;
@@ -713,9 +714,19 @@ h1, h2, h3, h4, h5, h6 {
     clear: none;
   }
 }
-
 @media (min-width: 65em) {
   /* line 18, ../sass/partials/layout/_content.scss */
+  .not-front .sidebar-first {
+    width: 30.76923%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+  }
+}
+
+@media (min-width: 65em) {
+  /* line 26, ../sass/partials/layout/_content.scss */
   .front main {
     width: 48.07692%;
     float: left;
@@ -725,7 +736,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 @media (min-width: 65em) {
-  /* line 24, ../sass/partials/layout/_content.scss */
+  /* line 32, ../sass/partials/layout/_content.scss */
   .front .sidebar-first {
     width: 48.07692%;
     float: right;
