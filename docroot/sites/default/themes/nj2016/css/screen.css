@@ -673,6 +673,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
+/* line 16, ../sass/partials/base/_base.scss */
+body {
+  color: #333;
+}
+
 /**
 *  Layout Import
 */
@@ -691,19 +696,8 @@ h1, h2, h3, h4, h5, h6 {
 */
 /* line 7, ../sass/partials/layout/_header.scss */
 header {
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  padding-top: 1.5em;
-  padding-bottom: 0.75em;
-}
-@media (min-width: 65em) {
-  /* line 7, ../sass/partials/layout/_header.scss */
-  header {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding-left: 0;
-    padding-right: 0;
-  }
+  margin-bottom: 2.25em;
+  padding: 1.5em 0.75em 0.75em 0.75em;
 }
 /* line 13, ../vendor/bundle/ruby/1.9.1/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
 header:after {
@@ -713,24 +707,16 @@ header:after {
 }
 
 @media (min-width: 65em) {
-  /* line 14, ../sass/partials/layout/_header.scss */
+  /* line 13, ../sass/partials/layout/_header.scss */
   .site-name {
-    width: 13.46154%;
     float: left;
-    margin-right: -100%;
-    margin-left: 0;
-    clear: none;
   }
 }
 
 @media (min-width: 65em) {
-  /* line 20, ../sass/partials/layout/_header.scss */
+  /* line 19, ../sass/partials/layout/_header.scss */
   nav {
-    width: 65.38462%;
     float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
   }
 }
 
@@ -858,6 +844,49 @@ header:after {
   * 
   *  See https://smacss.com/book/type-module
 */
+/* line 7, ../sass/partials/module/_header.scss */
+header {
+  background: url('../images/backgrounds/header-crops.jpg?1445807877');
+  background-size: cover;
+  background-position: top center;
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+/* line 8, ../sass/partials/module/_sitename.scss */
+.site-name a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+/* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.site-name a:visited {
+  color: rgba(255, 255, 255, 0.7);
+}
+/* line 21, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.site-name a:focus {
+  color: rgba(255, 255, 255, 0.7);
+}
+/* line 24, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.site-name a:hover {
+  color: white;
+}
+/* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.site-name a:active {
+  color: white;
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
 /* line 7, ../sass/partials/module/_nav.scss */
 nav {
   list-style-type: none;
@@ -867,6 +896,31 @@ nav, nav li {
   margin: 0;
   padding: 0;
   display: inline;
+}
+/* line 9, ../sass/partials/module/_nav.scss */
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+/* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+nav a:visited {
+  color: rgba(255, 255, 255, 0.7);
+}
+/* line 21, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+nav a:focus {
+  color: rgba(255, 255, 255, 0.7);
+}
+/* line 24, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+nav a:hover {
+  color: white;
+}
+/* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+nav a:active {
+  color: white;
 }
 
 /**

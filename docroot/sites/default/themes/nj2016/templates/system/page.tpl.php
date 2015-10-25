@@ -73,7 +73,6 @@
 ?>
 
 <header>
-
   <?php if ($site_name): ?>
     <?php if ($title): ?>
       <div class="site-name">
@@ -104,7 +103,6 @@
       <?php print render($page['navigation']); ?>
     </nav>
   <?php endif; ?>
-
 </header> <!-- /#header -->
 
 

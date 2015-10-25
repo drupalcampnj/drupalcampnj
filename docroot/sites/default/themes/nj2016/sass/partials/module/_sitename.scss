@@ -4,15 +4,13 @@
   *  See https://smacss.com/book/type-module
 */
 
-nav {
-  @include inline-list();
+.site-name {
   a {
     text-decoration: none;
     text-transform: uppercase;
     font-family: $opensans;
     font-weight: bold;
     font-size: 14px;
-    @include link-colors($header-link-normal, $header-link-hover, $header-link-active, $header-link-visited, $header-link-focus);
-  }
+    @include link-colors($header-link-normal, $header-link-hover, $header-link-active, $header-link-visited, $header-link-focus);  }
 }
 

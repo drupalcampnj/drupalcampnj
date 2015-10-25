@@ -5,21 +5,20 @@
 */
 
 header {
-  @include standard-layout();
   @include clearfix();
-  padding-top: rhythm(4);
-  padding-bottom: rhythm(2);
+  margin-bottom: rhythm(6);
+  padding: rhythm(4) rhythm(2) rhythm(2) rhythm(2);
 }
 
 .site-name {
     @include breakpoint($bp-desktop) {
-      @include grid-span(2,1);
+      float: left;
     }
 }
 
 nav {
   @include breakpoint($bp-desktop) { 
-      @include grid-span(8, 5);
+      float: right;
     }
 }
 
