@@ -693,6 +693,8 @@ h1, h2, h3, h4, h5, h6 {
 header {
   padding-left: 0.75em;
   padding-right: 0.75em;
+  padding-top: 1.5em;
+  padding-bottom: 0.75em;
 }
 @media (min-width: 65em) {
   /* line 7, ../sass/partials/layout/_header.scss */
@@ -701,6 +703,34 @@ header {
     margin: 0 auto;
     padding-left: 0;
     padding-right: 0;
+  }
+}
+/* line 13, ../vendor/bundle/ruby/1.9.1/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
+header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (min-width: 65em) {
+  /* line 14, ../sass/partials/layout/_header.scss */
+  .site-name {
+    width: 13.46154%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none;
+  }
+}
+
+@media (min-width: 65em) {
+  /* line 20, ../sass/partials/layout/_header.scss */
+  nav {
+    width: 65.38462%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
   }
 }
 
@@ -823,6 +853,22 @@ footer {
 /**
   *   Private Imports
 */
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+/* line 7, ../sass/partials/module/_nav.scss */
+nav {
+  list-style-type: none;
+}
+/* line 6, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_inline-list.scss */
+nav, nav li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
 /**
 *  State Import
 */

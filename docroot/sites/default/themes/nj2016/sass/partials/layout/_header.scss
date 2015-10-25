@@ -6,5 +6,20 @@
 
 header {
   @include standard-layout();
+  @include clearfix();
+  padding-top: rhythm(4);
+  padding-bottom: rhythm(2);
+}
+
+.site-name {
+    @include breakpoint($bp-desktop) {
+      @include grid-span(2,1);
+    }
+}
+
+nav {
+  @include breakpoint($bp-desktop) { 
+      @include grid-span(8, 5);
+    }
 }
 
