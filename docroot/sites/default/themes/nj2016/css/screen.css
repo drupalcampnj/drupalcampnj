@@ -875,14 +875,8 @@ nav, nav li {
   *  See https://smacss.com/book/type-module
 */
 /* line 7, ../sass/partials/module/_sponsors.scss */
-nav {
-  list-style-type: none;
-}
-/* line 6, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_inline-list.scss */
-nav, nav li {
-  margin: 0;
-  padding: 0;
-  display: inline;
+.sponsors {
+  background: #38653C;
 }
 
 /**

@@ -4,7 +4,7 @@
   *  See https://smacss.com/book/type-module
 */
 
-nav {
-  @include inline-list();
+.sponsors {
+  background: $sponsors-background-color;
 }
 
