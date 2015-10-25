@@ -1,6 +1,7 @@
 #require 'color-schemer'
 require 'singularitygs'
 require 'breakpoint'
+require 'sassy-buttons'
 # require 'singularity-extras'
 require 'toolkit'
 

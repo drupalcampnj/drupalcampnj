@@ -10,11 +10,18 @@
   text-align: center;
   color: $text-offset;
   
-  p {
+  .description {
     font-style: italic;
+    padding-top: rhythm(2);
   }
   
-  a {
+  .registration-link {
+    text-decoration: none;
+    margin: rhythm(2) 0;
+    text-transform: uppercase;
+    font-family: $opensans;
+    font-weight: bold;
+    @include sassy-button("flat", 10px, 19px, #fff, #fff, #000);
     
   }
 }

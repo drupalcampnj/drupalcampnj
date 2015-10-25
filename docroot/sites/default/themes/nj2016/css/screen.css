@@ -882,8 +882,57 @@ nav, nav li {
   color: #fff;
 }
 /* line 13, ../sass/partials/module/_njblocks-tickets-registration.scss */
-#block-njblocks-tickets-registration p {
+#block-njblocks-tickets-registration .description {
   font-style: italic;
+  padding-top: 0.75em;
+}
+/* line 18, ../sass/partials/module/_njblocks-tickets-registration.scss */
+#block-njblocks-tickets-registration .registration-link {
+  text-decoration: none;
+  margin: 0.75em 0;
+  text-transform: uppercase;
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFCCCCCC');
+  background-color: #fff;
+  border: 0;
+  color: #000;
+  text-shadow: white 0 1px 0;
+}
+/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+#block-njblocks-tickets-registration .registration-link:hover {
+  text-decoration: none;
+}
+/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+#block-njblocks-tickets-registration .registration-link:hover {
+  background-color: #f2f2f2;
+}
+/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+#block-njblocks-tickets-registration .registration-link:active {
+  background-color: #ebebeb;
+}
+/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+#block-njblocks-tickets-registration .registration-link.disabled, #block-njblocks-tickets-registration .registration-link[disabled] {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  background: false;
+  cursor: default;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
+#block-njblocks-tickets-registration .registration-link::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
 }
 
 /**
