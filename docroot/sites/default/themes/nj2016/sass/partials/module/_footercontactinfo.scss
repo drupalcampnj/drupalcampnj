@@ -4,7 +4,8 @@
   *  See https://smacss.com/book/type-module
 */
 
-nav {
+#block-njblocks-footer-contact-info {
   @include inline-list();
+  text-align: center;
 }
 

@@ -82,6 +82,7 @@ $base-font-family: $merriweather;
 */
 // Base colors
 
+$green: #38653C;
 
 // Derived colors
 // Create colors from base colors above using color-schemer.
@@ -91,6 +92,7 @@ $base-font-family: $merriweather;
 // Similar to the font-stacks...don't call colors directly in partials. 
 // Instead, create variables and assign base or derived colors from above.
 
+$sponsors-background-color: $green;
 
 /**
 *  Sprites

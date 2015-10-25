@@ -808,13 +808,13 @@ header:after {
   *  See https://smacss.com/book/type-layout
 */
 /* line 7, ../sass/partials/layout/_sponsors.scss */
-.sponsors {
+.region-sponsors {
   padding-left: 0.75em;
   padding-right: 0.75em;
 }
 @media (min-width: 65em) {
   /* line 7, ../sass/partials/layout/_sponsors.scss */
-  .sponsors {
+  .region-sponsors {
     max-width: 1140px;
     margin: 0 auto;
     padding-left: 0;
@@ -828,13 +828,13 @@ header:after {
   *  See https://smacss.com/book/type-layout
 */
 /* line 7, ../sass/partials/layout/_footer.scss */
-footer {
+.region-footer {
   padding-left: 0.75em;
   padding-right: 0.75em;
 }
 @media (min-width: 65em) {
   /* line 7, ../sass/partials/layout/_footer.scss */
-  footer {
+  .region-footer {
     max-width: 1140px;
     margin: 0 auto;
     padding-left: 0;
@@ -856,7 +856,7 @@ footer {
 /**
   *   Base Partials
   * 
-  *  See https://smacss.com/book/type-layout
+  *  See https://smacss.com/book/type-module
 */
 /* line 7, ../sass/partials/module/_nav.scss */
 nav {
@@ -864,6 +864,39 @@ nav {
 }
 /* line 6, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_inline-list.scss */
 nav, nav li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+/* line 7, ../sass/partials/module/_sponsors.scss */
+nav {
+  list-style-type: none;
+}
+/* line 6, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_inline-list.scss */
+nav, nav li {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+/* line 7, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info {
+  list-style-type: none;
+  text-align: center;
+}
+/* line 6, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/lists/_inline-list.scss */
+#block-njblocks-footer-contact-info, #block-njblocks-footer-contact-info li {
   margin: 0;
   padding: 0;
   display: inline;
