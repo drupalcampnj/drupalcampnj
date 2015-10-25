@@ -83,6 +83,7 @@ $base-font-family: $merriweather;
 // Base colors
 
 $green: #38653C;
+$red: #C33534;
 
 // Derived colors
 // Create colors from base colors above using color-schemer.
@@ -93,6 +94,8 @@ $green: #38653C;
 // Instead, create variables and assign base or derived colors from above.
 
 $sponsors-background-color: $green;
+$njblocks-tickets-registration: $red;
+$text-offset: #fff;
 
 /**
 *  Sprites

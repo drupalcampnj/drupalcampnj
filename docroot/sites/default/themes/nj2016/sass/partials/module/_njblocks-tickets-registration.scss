@@ -1,0 +1,20 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+
+#block-njblocks-tickets-registration {
+  background-color: $njblocks-tickets-registration;
+  padding: rhythm(2);
+  text-align: center;
+  color: $text-offset;
+  
+  p {
+    font-style: italic;
+  }
+  
+  a {
+    
+  }
+}

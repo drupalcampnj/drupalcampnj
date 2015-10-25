@@ -874,6 +874,23 @@ nav, nav li {
   * 
   *  See https://smacss.com/book/type-module
 */
+/* line 7, ../sass/partials/module/_njblocks-tickets-registration.scss */
+#block-njblocks-tickets-registration {
+  background-color: #C33534;
+  padding: 0.75em;
+  text-align: center;
+  color: #fff;
+}
+/* line 13, ../sass/partials/module/_njblocks-tickets-registration.scss */
+#block-njblocks-tickets-registration p {
+  font-style: italic;
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
 /* line 7, ../sass/partials/module/_sponsors.scss */
 .sponsors {
   background: #38653C;
@@ -894,6 +911,10 @@ nav, nav li {
   margin: 0;
   padding: 0;
   display: inline;
+}
+/* line 11, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info ul {
+  margin-left: 0;
 }
 
 /**
