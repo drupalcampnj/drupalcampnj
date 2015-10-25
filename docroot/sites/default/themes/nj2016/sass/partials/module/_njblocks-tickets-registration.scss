@@ -21,7 +21,7 @@
     text-transform: uppercase;
     font-family: $opensans;
     font-weight: bold;
-    @include sassy-button("flat", 10px, 19px, #fff, #fff, #000);
+    @include sassy-button("flat", rhythm(4), 100%, #fff, #fff, #000);
     
   }
 }
