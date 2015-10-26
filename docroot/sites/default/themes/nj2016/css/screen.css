@@ -1124,7 +1124,7 @@ nav a:active {
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFCCCCCC');
   background-color: #fff;
   border: 0;
-  color: #000;
+  color: #333;
   text-shadow: white 0 1px 0;
 }
 /* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
