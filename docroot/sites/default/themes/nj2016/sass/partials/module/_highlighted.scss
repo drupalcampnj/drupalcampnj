@@ -1,0 +1,19 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+
+.region-highlighted {
+  text-align: center;
+  
+  .front & {
+    @include background(image-url("backgrounds/header-crops.jpg"));
+    background-size: cover;
+    background-position: center center;
+    border-bottom: 1px solid $header-border;
+    padding: rhythm(30) 0 rhythm(70) 0;
+    margin: 0 0 rhythm(10) 0;
+  }
+}
+

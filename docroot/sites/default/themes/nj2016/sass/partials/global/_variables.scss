@@ -58,6 +58,9 @@ $h6-font-size              : $xxxsmallpx !default;
   *  Other font sizes
 */
 
+$njblocks-camp-highlights-h2: $xxlargepx;
+$njblocks-camp-highlights-description: $xxsmallpx;
+$njblocks-camp-highlights-camp: $smallpx;
 
 /**
   *  Font Stacks
@@ -85,6 +88,7 @@ $base-font-family: $merriweather;
 $green: #38653C;
 $red: #C33534;
 $gray: #333;
+$blue: #6488BC;
 
 // Derived colors
 // Create colors from base colors above using color-schemer.
@@ -99,11 +103,17 @@ $njblocks-tickets-registration: $red;
 $text: $gray;
 $text-offset: #fff;
 
+$header-border: rgba(255, 255, 255, 0.3);
 $header-link-normal:  rgba(255, 255, 255, 0.7);
 $header-link-hover: white;
 $header-link-active: white;
 $header-link-visited: rgba(255, 255, 255, 0.7);
 $header-link-focus: rgba(255, 255, 255, 0.7);
+
+$register-button: $red;
+$learn-more-button: $blue;
+
+$njblocks-camp-hr: $red;
 
 
 /**

@@ -32,6 +32,12 @@ function drupalcampnj_global_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'njblocks-camp_highlights' => array(
+          'module' => 'njblocks',
+          'delta' => 'camp_highlights',
+          'region' => 'highlighted',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

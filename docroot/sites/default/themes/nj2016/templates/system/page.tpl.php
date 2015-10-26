@@ -105,7 +105,7 @@
   <?php endif; ?>
 </header> <!-- /#header -->
 
-
+    <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
 
 <div class="content-wrapper">
   <div class="content-inner">
@@ -113,7 +113,6 @@
     <?php print $messages; ?>
     <main>
 
-      <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php print render($title_suffix); ?>

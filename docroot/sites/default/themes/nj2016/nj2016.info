@@ -61,4 +61,5 @@ settings[magic_js_excludes_regex] = ''
 
 fonts[google_fonts_api][] = "Merriweather&subset=latin#300"
 fonts[google_fonts_api][] = "Open Sans&subset=latin#300"
+fonts[google_fonts_api][] = "Open Sans&subset=latin#700"
 

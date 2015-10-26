@@ -8,17 +8,23 @@ header {
   @include clearfix();
   margin-bottom: rhythm(6);
   padding: rhythm(4) rhythm(2) rhythm(2) rhythm(2);
+  
+  .front & {
+    background: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    width: 99%;
+  }
 }
 
 .site-name {
-    @include breakpoint($bp-desktop) {
-      float: left;
-    }
+  @include breakpoint($bp-desktop) {
+    float: left;
+  }
 }
 
 nav {
   @include breakpoint($bp-desktop) { 
-      float: right;
-    }
+    float: right;
+  }
 }
 

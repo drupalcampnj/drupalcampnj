@@ -12,6 +12,9 @@ function njblocks_block_info() {
     'tickets_registration' => array(
       'info' => t('Ticket information and Register button'),
     ),
+     'camp_highlights' => array(
+      'info' => t('Large Information about the Camp'),
+    ),
   );
 
   return $blocks;
@@ -32,6 +35,10 @@ function njblocks_block_view($delta = '') {
       $block['subject'] = t('Tickets start at $30');
       $block['content'] = theme('tickets_registration');
       break;
+    case 'camp_highlights':
+      $block['subject'] = "5<sup>th</sup>".('Annual New Jersey DrupalCamp');
+      $block['content'] = theme('camp_highlights');
+      break;
   }
 
   return $block;
@@ -48,6 +55,10 @@ function njblocks_theme() {
     ),
     'tickets_registration' => array(
       'template' => 'templates/tickets_registration',
+      'arguments' => array(),
+    ),
+    'camp_highlights' => array(
+      'template' => 'templates/camp_highlights',
       'arguments' => array(),
     ),
   );

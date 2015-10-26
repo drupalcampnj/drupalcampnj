@@ -1,0 +1,58 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+
+#block-njblocks-camp-highlights {
+  padding: rhythm(2);
+  text-align: center;
+  color: $text-offset;
+  
+  h2 {
+    font-size: $njblocks-camp-highlights-h2;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: 2px 2px #333;
+    margin-bottom: rhythm(2);
+  }
+  
+  hr {
+    border-color: $njblocks-camp-hr;
+    border-width: 3px;
+    max-width: 50px;
+  }
+  
+  ul {
+    margin: rhythm(8) 0 rhythm(5) 0;
+    @include no-bullet();
+    font-family: $opensans;
+    font-weight: 700;
+    
+    .training, .mentoring {
+      @include adjust-font-size-to( $njblocks-camp-highlights-description );
+      @include leader(1, $njblocks-camp-highlights-description);
+      @include trailer(1, $njblocks-camp-highlights-description);
+    }
+    .camp {
+      @include adjust-font-size-to( $njblocks-camp-highlights-camp );
+      @include leader(2, $njblocks-camp-highlights-camp);
+      @include trailer(3, $njblocks-camp-highlights-camp);
+    }
+  }
+  
+  .register, .learn-more {
+    text-decoration: none;
+    margin: rhythm(2) 0;
+    text-transform: uppercase;
+    font-family: $opensans;
+    font-weight: bold;
+    @include sassy-button("flat", rhythm(4), 100%, $register-button, $register-button , #fff);
+  }
+  
+  .learn-more {
+    @include sassy-button("flat", rhythm(4), 100%, $learn-more-button, $learn-more-button, #fff);
+  }
+  
+}
+
