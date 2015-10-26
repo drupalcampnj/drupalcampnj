@@ -26,6 +26,7 @@ header {
 nav {
     .menu {
       text-align: center;
+      padding-left: 0;
     }
   @include breakpoint($bp-desktop) { 
     float: right;

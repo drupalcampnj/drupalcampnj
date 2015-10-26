@@ -726,6 +726,7 @@ header:after {
 /* line 27, ../sass/partials/layout/_header.scss */
 nav .menu {
   text-align: center;
+  padding-left: 0;
 }
 @media (min-width: 65em) {
   /* line 26, ../sass/partials/layout/_header.scss */
@@ -1198,6 +1199,7 @@ nav a.active {
 /* line 11, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul {
   margin-left: 0;
+  padding-left: 0;
 }
 
 /**
