@@ -712,6 +712,10 @@ header:after {
   width: 99%;
 }
 
+/* line 19, ../sass/partials/layout/_header.scss */
+.site-name {
+  text-align: center;
+}
 @media (min-width: 65em) {
   /* line 19, ../sass/partials/layout/_header.scss */
   .site-name {
@@ -719,10 +723,16 @@ header:after {
   }
 }
 
+/* line 27, ../sass/partials/layout/_header.scss */
+nav .menu {
+  text-align: center;
+}
 @media (min-width: 65em) {
-  /* line 25, ../sass/partials/layout/_header.scss */
+  /* line 26, ../sass/partials/layout/_header.scss */
   nav {
     float: right;
+    position: relative;
+    bottom: 6px;
   }
 }
 
@@ -1086,6 +1096,10 @@ nav a:hover {
 }
 /* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 nav a:active {
+  color: white;
+}
+/* line 17, ../sass/partials/module/_nav.scss */
+nav a.active {
   color: white;
 }
 

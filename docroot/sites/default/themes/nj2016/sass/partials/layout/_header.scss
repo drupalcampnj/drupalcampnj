@@ -17,14 +17,20 @@ header {
 }
 
 .site-name {
+  text-align: center;
   @include breakpoint($bp-desktop) {
     float: left;
   }
 }
 
 nav {
+    .menu {
+      text-align: center;
+    }
   @include breakpoint($bp-desktop) { 
     float: right;
+    position: relative;
+    bottom: 6px;
   }
 }
 
