@@ -61,6 +61,7 @@ $h6-font-size              : $xxxsmallpx !default;
 $njblocks-camp-highlights-h2: $xxlargepx;
 $njblocks-camp-highlights-description: $xxsmallpx;
 $njblocks-camp-highlights-camp: $smallpx;
+$njblocks-icons: $largepx;
 
 /**
   *  Font Stacks
@@ -98,7 +99,7 @@ $blue: #6488BC;
 // Similar to the font-stacks...don't call colors directly in partials. 
 // Instead, create variables and assign base or derived colors from above.
 
-$sponsors-background-color: $green;
+$footer-background-color: $green;
 $njblocks-tickets-registration: $red;
 $text: $gray;
 $text-offset: #fff;
@@ -114,6 +115,8 @@ $register-button: $red;
 $learn-more-button: $blue;
 
 $njblocks-camp-hr: $red;
+$njblocks-icons-color: $text-offset;
+$njblocks-icons-coloroffset: rgba(245,245,245,0.7);
 
 
 /**

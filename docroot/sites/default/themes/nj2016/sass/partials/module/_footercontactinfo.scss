@@ -8,9 +8,51 @@
   @include inline-list();
   text-align: center;
   
-    ul {
-      margin-left: 0;
-      padding-left: 0;
+  h2 {
+    @include trailer(8, $h2-font-size);
+  }
+  
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+    
+    a {
+      @include link-colors($njblocks-icons-color,$njblocks-icons-coloroffset,$njblocks-icons-color,$njblocks-icons-color,$njblocks-icons-color);
     }
+    i {
+      font-size: $njblocks-icons;
+    }
+  }
+  
+  .contact {
+    @include clearfix();
+    padding: rhythm(4) 0;
+    
+    li {
+      padding: rhythm(4) 0;
+    }
+    li:first-child{
+      display: block;
+      @include breakpoint($bp-desktop) {
+        @include grid-span(3,4);
+      }
+    }
+    li:last-child {
+      display: block;
+      @include breakpoint($bp-desktop) {
+        @include grid-span(3,7);
+      }
+    }
+  }
+  
+  .archives {
+    li {
+      border-right: 1px solid $text-offset;
+      padding: 0 rhythm(2) 0 rhythm(1.5);
+    }
+    li:last-child{
+      border-right: none;
+    }
+  }
 }
 

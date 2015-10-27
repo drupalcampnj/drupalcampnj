@@ -857,7 +857,7 @@ nav .menu {
 */
 /* line 7, ../sass/partials/module/_header.scss */
 header {
-  background: url('../images/backgrounds/header-crops.jpg?1445807877');
+  background: url('../images/backgrounds/header-crops.jpg?1445911599');
   background-size: cover;
   background-position: top center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -905,7 +905,7 @@ header {
 }
 /* line 10, ../sass/partials/module/_highlighted.scss */
 .front .region-highlighted {
-  background: url('../images/backgrounds/header-crops.jpg?1445807877');
+  background: url('../images/backgrounds/header-crops.jpg?1445911599');
   background-size: cover;
   background-position: center center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -1169,9 +1169,11 @@ nav a.active {
   * 
   *  See https://smacss.com/book/type-module
 */
-/* line 7, ../sass/partials/module/_sponsors.scss */
-.sponsors {
+/* line 7, ../sass/partials/module/_footer.scss */
+footer {
   background: #38653C;
+  color: #fff;
+  padding: 5.625em 0;
 }
 
 /**
@@ -1191,9 +1193,88 @@ nav a.active {
   display: inline;
 }
 /* line 11, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info h2 {
+  margin-bottom: 1.5em;
+}
+/* line 15, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul {
   margin-left: 0;
   padding-left: 0;
+}
+/* line 19, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info ul a {
+  color: #fff;
+}
+/* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+#block-njblocks-footer-contact-info ul a:visited {
+  color: #fff;
+}
+/* line 21, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+#block-njblocks-footer-contact-info ul a:focus {
+  color: #fff;
+}
+/* line 24, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+#block-njblocks-footer-contact-info ul a:hover {
+  color: rgba(245, 245, 245, 0.7);
+}
+/* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+#block-njblocks-footer-contact-info ul a:active {
+  color: #fff;
+}
+/* line 22, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info ul i {
+  font-size: 40px;
+}
+/* line 27, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info .contact {
+  padding: 1.5em 0;
+}
+/* line 13, ../vendor/bundle/ruby/1.9.1/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
+#block-njblocks-footer-contact-info .contact:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 31, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info .contact li {
+  padding: 1.5em 0;
+}
+/* line 34, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info .contact li:first-child {
+  display: block;
+}
+@media (min-width: 55em) {
+  /* line 34, ../sass/partials/module/_footercontactinfo.scss */
+  #block-njblocks-footer-contact-info .contact li:first-child {
+    width: 22.11538%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 25.96154%;
+    clear: none;
+  }
+}
+/* line 40, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info .contact li:last-child {
+  display: block;
+}
+@media (min-width: 55em) {
+  /* line 40, ../sass/partials/module/_footercontactinfo.scss */
+  #block-njblocks-footer-contact-info .contact li:last-child {
+    width: 22.11538%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 51.92308%;
+    clear: none;
+  }
+}
+/* line 49, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info .archives li {
+  border-right: 1px solid #fff;
+  padding: 0 0.75em 0 0.5625em;
+}
+/* line 53, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info .archives li:last-child {
+  border-right: none;
 }
 
 /**
