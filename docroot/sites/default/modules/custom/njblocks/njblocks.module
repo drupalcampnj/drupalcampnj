@@ -36,7 +36,7 @@ function njblocks_block_view($delta = '') {
       $block['content'] = theme('tickets_registration');
       break;
     case 'camp_highlights':
-      $block['subject'] = "5<sup>th</sup>".('Annual New Jersey DrupalCamp');
+      $block['subject'] = "5<sup>th</sup>".t('Annual') . "<br />" .t('DrupalCamp NJ');
       $block['content'] = theme('camp_highlights');
       break;
   }
