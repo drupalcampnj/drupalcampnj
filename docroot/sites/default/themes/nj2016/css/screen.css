@@ -716,7 +716,7 @@ header:after {
 .site-name {
   text-align: center;
 }
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 19, ../sass/partials/layout/_header.scss */
   .site-name {
     float: left;
@@ -728,7 +728,7 @@ nav .menu {
   text-align: center;
   padding-left: 0;
 }
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 26, ../sass/partials/layout/_header.scss */
   nav {
     float: right;
@@ -747,13 +747,11 @@ nav .menu {
   padding-left: 0.75em;
   padding-right: 0.75em;
 }
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 7, ../sass/partials/layout/_content.scss */
   .content-inner {
     max-width: 1140px;
     margin: 0 auto;
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 /* line 13, ../vendor/bundle/ruby/1.9.1/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
@@ -763,7 +761,7 @@ nav .menu {
   clear: both;
 }
 
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 13, ../sass/partials/layout/_content.scss */
   .not-front main {
     width: 65.38462%;
@@ -773,7 +771,7 @@ nav .menu {
     clear: none;
   }
 }
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 19, ../sass/partials/layout/_content.scss */
   .not-front .sidebar-first {
     width: 30.76923%;
@@ -784,7 +782,7 @@ nav .menu {
   }
 }
 
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 27, ../sass/partials/layout/_content.scss */
   .front main {
     width: 48.07692%;
@@ -794,7 +792,7 @@ nav .menu {
     clear: none;
   }
 }
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 33, ../sass/partials/layout/_content.scss */
   .front .sidebar-first {
     width: 48.07692%;
@@ -815,13 +813,11 @@ nav .menu {
   padding-left: 0.75em;
   padding-right: 0.75em;
 }
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 7, ../sass/partials/layout/_sponsors.scss */
   .region-sponsors {
     max-width: 1140px;
     margin: 0 auto;
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 
@@ -835,13 +831,11 @@ nav .menu {
   padding-left: 0.75em;
   padding-right: 0.75em;
 }
-@media (min-width: 65em) {
+@media (min-width: 55em) {
   /* line 7, ../sass/partials/layout/_footer.scss */
   .region-footer {
     max-width: 1140px;
     margin: 0 auto;
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 
