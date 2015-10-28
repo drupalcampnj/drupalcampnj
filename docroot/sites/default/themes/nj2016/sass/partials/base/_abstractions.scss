@@ -1,0 +1,18 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-base
+*/
+
+
+.btn-yellow {
+  @include sassy-button("flat", rhythm(4), 100%, $yellow, $yellow, #fff);
+}
+
+.btn-red {
+  @include sassy-button("flat", rhythm(4), 100%, $red, $red, #fff);
+}
+
+.btn-white {
+  @include sassy-button("flat", rhythm(4), 100%, #fff, #fff, #333);
+}
