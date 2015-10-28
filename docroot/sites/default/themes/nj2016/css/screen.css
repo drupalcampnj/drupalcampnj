@@ -1173,7 +1173,7 @@ nav a.active {
 footer {
   background: #38653C;
   color: #fff;
-  padding: 5.625em 0;
+  padding: 3.75em 0;
 }
 
 /**
@@ -1194,16 +1194,27 @@ footer {
 }
 /* line 11, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info h2 {
-  margin-bottom: 1.5em;
+  margin-bottom: 0.9375em;
 }
 /* line 15, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info hr {
+  border-color: #fff;
+  border-width: 3px;
+  max-width: 50px;
+}
+/* line 21, ../sass/partials/module/_footercontactinfo.scss */
+#block-njblocks-footer-contact-info p {
+  padding-top: 1.125em;
+}
+/* line 25, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul {
   margin-left: 0;
   padding-left: 0;
 }
-/* line 19, ../sass/partials/module/_footercontactinfo.scss */
+/* line 29, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul a {
   color: #fff;
+  text-decoration: none;
 }
 /* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 #block-njblocks-footer-contact-info ul a:visited {
@@ -1221,13 +1232,13 @@ footer {
 #block-njblocks-footer-contact-info ul a:active {
   color: #fff;
 }
-/* line 22, ../sass/partials/module/_footercontactinfo.scss */
+/* line 33, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul i {
   font-size: 40px;
 }
-/* line 27, ../sass/partials/module/_footercontactinfo.scss */
+/* line 38, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact {
-  padding: 1.5em 0;
+  padding: 0.75em 0;
 }
 /* line 13, ../vendor/bundle/ruby/1.9.1/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
 #block-njblocks-footer-contact-info .contact:after {
@@ -1235,16 +1246,16 @@ footer {
   display: table;
   clear: both;
 }
-/* line 31, ../sass/partials/module/_footercontactinfo.scss */
+/* line 42, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact li {
-  padding: 1.5em 0;
+  padding: 0.375em 0;
 }
-/* line 34, ../sass/partials/module/_footercontactinfo.scss */
+/* line 45, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact li:first-child {
   display: block;
 }
 @media (min-width: 55em) {
-  /* line 34, ../sass/partials/module/_footercontactinfo.scss */
+  /* line 45, ../sass/partials/module/_footercontactinfo.scss */
   #block-njblocks-footer-contact-info .contact li:first-child {
     width: 22.11538%;
     float: left;
@@ -1253,12 +1264,12 @@ footer {
     clear: none;
   }
 }
-/* line 40, ../sass/partials/module/_footercontactinfo.scss */
+/* line 51, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact li:last-child {
   display: block;
 }
 @media (min-width: 55em) {
-  /* line 40, ../sass/partials/module/_footercontactinfo.scss */
+  /* line 51, ../sass/partials/module/_footercontactinfo.scss */
   #block-njblocks-footer-contact-info .contact li:last-child {
     width: 22.11538%;
     float: left;
@@ -1267,12 +1278,12 @@ footer {
     clear: none;
   }
 }
-/* line 49, ../sass/partials/module/_footercontactinfo.scss */
+/* line 60, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .archives li {
   border-right: 1px solid #fff;
   padding: 0 0.75em 0 0.5625em;
 }
-/* line 53, ../sass/partials/module/_footercontactinfo.scss */
+/* line 64, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .archives li:last-child {
   border-right: none;
 }
