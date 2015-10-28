@@ -907,10 +907,11 @@ header {
 .front .region-highlighted {
   background: url('../images/backgrounds/header-crops.jpg?1445911599');
   background-size: cover;
-  background-position: center center;
+  background-position: center bottom;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 11.25em 0 26.25em 0;
   margin: 0 0 3.75em 0;
+  padding: 7.5em;
+  height: 1000px;
 }
 
 /**
