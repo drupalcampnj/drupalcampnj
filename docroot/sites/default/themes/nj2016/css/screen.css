@@ -1020,11 +1020,11 @@ header {
   -webkit-border-radius: 1.5em;
   border-radius: 1.5em;
   *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF6488BC', endColorstr='#FF385682');
-  background-color: #6488BC;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDAC1F', endColorstr='#FF9A6D0C');
+  background-color: #EDAC1F;
   border: 0;
   color: #fff;
-  text-shadow: #304a70 0 -1px 0;
+  text-shadow: #825c0a 0 -1px 0;
 }
 /* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
 #block-njblocks-camp-highlights .learn-more:hover {
@@ -1032,11 +1032,11 @@ header {
 }
 /* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
 #block-njblocks-camp-highlights .learn-more:hover {
-  background-color: #527ab4;
+  background-color: #e09f12;
 }
 /* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
 #block-njblocks-camp-highlights .learn-more:active {
-  background-color: #4b73ad;
+  background-color: #d29511;
 }
 /* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
 #block-njblocks-camp-highlights .learn-more.disabled, #block-njblocks-camp-highlights .learn-more[disabled] {
