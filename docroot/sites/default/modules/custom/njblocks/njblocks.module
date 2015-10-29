@@ -43,7 +43,6 @@ function njblocks_block_view($delta = '') {
       $block['content'] = theme('camp_highlights');
       break;
     case 'twitter_timeline':
-      $block['subject'] = "Tweets from @DrupalCampNJ";
       $block['content'] = theme('twitter_timeline');
       break;
   }
