@@ -128,6 +128,12 @@ function drupalcampnj_global_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'njblocks-twitter_timeline' => array(
+          'module' => 'njblocks',
+          'delta' => 'twitter_timeline',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

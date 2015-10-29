@@ -54,6 +54,14 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['uid']['label'] = '';
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: Content: Audience */
+  $handler->display->display_options['fields']['field_audience']['id'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['table'] = 'field_data_field_audience';
+  $handler->display->display_options['fields']['field_audience']['field'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['label'] = '';
+  $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
   /* Field: Content: Track */
   $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
   $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
@@ -101,6 +109,32 @@ function drupalcampnj_sessions_views_default_views() {
     16 => 0,
     11 => 0,
   );
+  $handler->display->display_options['filters']['field_audience_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_audience_value']['group_info']['label'] = 'Audience';
+  $handler->display->display_options['filters']['field_audience_value']['group_info']['identifier'] = 'field_audience_value';
+  $handler->display->display_options['filters']['field_audience_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Beginner',
+      'operator' => 'or',
+      'value' => array(
+        'Beginner' => 'Beginner',
+      ),
+    ),
+    2 => array(
+      'title' => 'Intermediate',
+      'operator' => 'or',
+      'value' => array(
+        'Intermediate' => 'Intermediate',
+      ),
+    ),
+    3 => array(
+      'title' => 'Advanced',
+      'operator' => 'or',
+      'value' => array(
+        'Advanced' => 'Advanced',
+      ),
+    ),
+  );
   /* Filter criterion: Content: Track (field_track) */
   $handler->display->display_options['filters']['field_track_value']['id'] = 'field_track_value';
   $handler->display->display_options['filters']['field_track_value']['table'] = 'field_data_field_track';
@@ -134,7 +168,50 @@ function drupalcampnj_sessions_views_default_views() {
 
   /* Display: Proposed Page */
   $handler = $view->new_display('page', 'Proposed Page', 'page');
-  $handler->display->display_options['path'] = 'program/sessions/proposed';
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Propose a Session';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<p>In order to submit a session for DrupalCamp NJ you must first <a href="http://bit.ly/dcnj2016" target="_blank">register for the camp</a>. Once you register, an account will be setup for you so that you can <a href="/user/login">login to the site</a> and <a href="/node/add/session">propose a session</a>. Your session submission should include a title, a description, the intended audience (beginner, intermediate, advanced), and track (site building, theming & front end, development, case studies).</p>
+
+<p>Session submissions will close on Friday, December 4, 2015, so that the full schedule can be posted before the end of the year. No sessions will be considered if submitted after this deadline.</p>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Author uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'node';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: Content: Audience */
+  $handler->display->display_options['fields']['field_audience']['id'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['table'] = 'field_data_field_audience';
+  $handler->display->display_options['fields']['field_audience']['field'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['label'] = '';
+  $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
+  /* Field: Content: Track */
+  $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
+  $handler->display->display_options['fields']['field_track']['field'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['label'] = '';
+  $handler->display->display_options['fields']['field_track']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
+  $handler->display->display_options['path'] = 'program/sessions/propose';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Proposed Sessions';
   $handler->display->display_options['menu']['weight'] = '0';
