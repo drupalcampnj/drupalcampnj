@@ -15,6 +15,9 @@ function njblocks_block_info() {
      'camp_highlights' => array(
       'info' => t('Large Information about the Camp'),
     ),
+    'twitter_timeline' => array(
+      'info' => t('Twitter Timeline Widget'),
+    ),
   );
 
   return $blocks;
@@ -39,6 +42,10 @@ function njblocks_block_view($delta = '') {
       $block['subject'] = "5<sup>th</sup>".t('Annual') . "<br />" .t('DrupalCamp NJ');
       $block['content'] = theme('camp_highlights');
       break;
+    case 'twitter_timeline':
+      $block['subject'] = "";
+      $block['content'] = theme('twitter_timeline');
+      break;
   }
 
   return $block;
@@ -59,6 +66,10 @@ function njblocks_theme() {
     ),
     'camp_highlights' => array(
       'template' => 'templates/camp_highlights',
+      'arguments' => array(),
+    ),
+    'twitter_timeline' => array(
+      'template' => 'templates/twitter_timeline',
       'arguments' => array(),
     ),
   );
