@@ -1051,8 +1051,7 @@ header {
   background-position: center bottom;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin: 0 0 3.75em 0;
-  padding: 7.5em;
-  height: 1000px;
+  padding: 4.125em 0 11.25em 0;
 }
 
 /**

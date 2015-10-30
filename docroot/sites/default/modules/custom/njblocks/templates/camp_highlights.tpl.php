@@ -1,6 +1,4 @@
 <?php ?>
-
-<hr>
 <ul>
   <li class="training">Training: Friday, January 29</li>
   <li class="camp">Camp: Saturday, January 30</li>
