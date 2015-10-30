@@ -819,6 +819,32 @@ body {
   color: #333;
 }
 
+/* line 21, ../sass/partials/base/_base.scss */
+a {
+  color: #6488BC;
+  text-decoration: none;
+}
+/* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+a:visited {
+  color: #6488BC;
+}
+/* line 21, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+a:focus {
+  color: #6488BC;
+}
+/* line 24, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+a:hover {
+  color: #6488BC;
+}
+/* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+a:active {
+  color: #6488BC;
+}
+/* line 25, ../sass/partials/base/_base.scss */
+a:hover {
+  text-decoration: underline;
+}
+
 /**
 *  Layout Import
 */

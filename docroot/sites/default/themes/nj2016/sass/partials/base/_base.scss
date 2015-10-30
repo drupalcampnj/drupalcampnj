@@ -17,3 +17,12 @@ h1, h2, h3, h4, h5, h6 {
 body {
   color: $text;
 }
+
+a {
+  @include link-colors($base-link-normal,$base-link-normal,$base-link-normal,$base-link-normal,$base-link-normal);
+  text-decoration: none;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+}
