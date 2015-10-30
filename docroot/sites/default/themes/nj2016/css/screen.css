@@ -1334,25 +1334,21 @@ footer {
   display: inline;
 }
 /* line 11, ../sass/partials/module/_footercontactinfo.scss */
-#block-njblocks-footer-contact-info h2 {
-  margin-bottom: 0.9375em;
-}
-/* line 15, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info hr {
   border-color: #fff;
   border-width: 3px;
   max-width: 50px;
 }
-/* line 21, ../sass/partials/module/_footercontactinfo.scss */
+/* line 17, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info p {
   padding-top: 1.125em;
 }
-/* line 25, ../sass/partials/module/_footercontactinfo.scss */
+/* line 21, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul {
   margin-left: 0;
   padding-left: 0;
 }
-/* line 29, ../sass/partials/module/_footercontactinfo.scss */
+/* line 25, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul a {
   color: #fff;
   text-decoration: none;
@@ -1373,11 +1369,11 @@ footer {
 #block-njblocks-footer-contact-info ul a:active {
   color: #fff;
 }
-/* line 33, ../sass/partials/module/_footercontactinfo.scss */
+/* line 29, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info ul i {
   font-size: 40px;
 }
-/* line 38, ../sass/partials/module/_footercontactinfo.scss */
+/* line 34, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact {
   padding: 0.75em 0;
 }
@@ -1387,16 +1383,16 @@ footer {
   display: table;
   clear: both;
 }
-/* line 42, ../sass/partials/module/_footercontactinfo.scss */
+/* line 38, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact li {
   padding: 0.375em 0;
 }
-/* line 45, ../sass/partials/module/_footercontactinfo.scss */
+/* line 41, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact li:first-child {
   display: block;
 }
 @media (min-width: 55em) {
-  /* line 45, ../sass/partials/module/_footercontactinfo.scss */
+  /* line 41, ../sass/partials/module/_footercontactinfo.scss */
   #block-njblocks-footer-contact-info .contact li:first-child {
     width: 22.11538%;
     float: left;
@@ -1405,12 +1401,12 @@ footer {
     clear: none;
   }
 }
-/* line 51, ../sass/partials/module/_footercontactinfo.scss */
+/* line 47, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .contact li:last-child {
   display: block;
 }
 @media (min-width: 55em) {
-  /* line 51, ../sass/partials/module/_footercontactinfo.scss */
+  /* line 47, ../sass/partials/module/_footercontactinfo.scss */
   #block-njblocks-footer-contact-info .contact li:last-child {
     width: 22.11538%;
     float: left;
@@ -1419,12 +1415,12 @@ footer {
     clear: none;
   }
 }
-/* line 60, ../sass/partials/module/_footercontactinfo.scss */
+/* line 56, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .archives li {
   border-right: 1px solid #fff;
   padding: 0 0.75em 0 0.5625em;
 }
-/* line 64, ../sass/partials/module/_footercontactinfo.scss */
+/* line 60, ../sass/partials/module/_footercontactinfo.scss */
 #block-njblocks-footer-contact-info .archives li:last-child {
   border-right: none;
 }

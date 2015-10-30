@@ -1,5 +1,4 @@
 <?php ?>
-<hr>
 <p>Get in touch with us if you are interested in sponsoring, speaking, or volunteering.</p>
 
 <ul class="contact">

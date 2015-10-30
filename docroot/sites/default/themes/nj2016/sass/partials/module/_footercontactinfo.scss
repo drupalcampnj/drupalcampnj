@@ -8,10 +8,6 @@
   @include inline-list();
   text-align: center;
   
-  h2 {
-    @include trailer(5, $h2-font-size);
-  }
-  
   hr {
     border-color: $text-offset;
     border-width: 3px;
