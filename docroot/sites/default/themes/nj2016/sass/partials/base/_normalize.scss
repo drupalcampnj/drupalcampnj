@@ -195,32 +195,32 @@ h1 {
 @if not $strict-normalize or support-legacy-browser(ie, "7") {
   h2 {
     @include adjust-font-size-to( $h2-font-size );
-    @include leader(2, $h2-font-size);
-    @include trailer(1, $h2-font-size);
+    @include leader(4, $h2-font-size);
+    @include trailer(2, $h2-font-size);
   }
 
   h3 {
     @include adjust-font-size-to( $h3-font-size );
-    @include leader(2, $h3-font-size);
-    @include trailer(1, $h3-font-size);
+    @include leader(4, $h3-font-size);
+    @include trailer(2, $h3-font-size);
   }
 
   h4 {
     @include adjust-font-size-to( $h4-font-size );
-    @include leader(2, $h4-font-size);
-    @include trailer(1, $h4-font-size);
+    @include leader(4, $h4-font-size);
+    @include trailer(2, $h4-font-size);
   }
 
   h5 {
     @include adjust-font-size-to( $h5-font-size );
-    @include leader(2, $h5-font-size);
-    @include trailer(1, $h5-font-size);
+    @include leader(4, $h5-font-size);
+    @include trailer(2, $h5-font-size);
   }
 
   h6 {
     @include adjust-font-size-to( $h6-font-size );
-    @include leader(2, $h6-font-size);
-    @include trailer(1, $h6-font-size);
+    @include leader(4, $h6-font-size);
+    @include trailer(2, $h6-font-size);
   }
 }
 
@@ -242,7 +242,7 @@ h1 {
 
   p,
   pre {
-    @include output-rhythm(margin, rhythm(1) 0);
+    @include output-rhythm(margin, rhythm(2) 0);
   }
 }
 
@@ -286,7 +286,7 @@ sub {
   menu,
   ol,
   ul {
-    @include output-rhythm(margin, rhythm(1) 0);
+    @include output-rhythm(margin, rhythm(2) 0);
   }
 
   @if not $strict-normalize {
