@@ -1,0 +1,22 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+
+.image-left, %left {
+  float: left;
+  margin: 0 rhythm(4) rhythm(4) 0;
+}
+
+.image-right, %right {
+  float: right;
+  margin: 0 0 rhythm(4) rhythm(4);
+}
+
+.view-news {
+    .views-field-field-image {
+      @extend %left;
+    }
+}
+

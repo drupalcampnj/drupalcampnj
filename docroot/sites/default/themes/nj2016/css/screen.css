@@ -1516,6 +1516,23 @@ footer {
 }
 
 /**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+/* line 7, ../sass/partials/module/_images.scss */
+.image-left, .view-news .views-field-field-image {
+  float: left;
+  margin: 0 1.5em 1.5em 0;
+}
+
+/* line 12, ../sass/partials/module/_images.scss */
+.image-right {
+  float: right;
+  margin: 0 0 1.5em 1.5em;
+}
+
+/**
 *  State Import
 */
 /**
