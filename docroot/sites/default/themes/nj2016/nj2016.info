@@ -12,6 +12,12 @@ stylesheets[all][0] = 'css/screen.css'
 stylesheets[all][] = 'dcnjicon/css/dcnj-icons.css'
 
 ; ========================================
+; Scripts
+; ========================================
+
+scripts[] = scripts/nj2016.js
+
+; ========================================
 ; Regions
 ; ========================================
 

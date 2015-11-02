@@ -5,4 +5,4 @@
   <li class="mentoring">Mentoring &amp; Collaboration: Sunday, January 31</li>
 </ul>
 <a href="http://bit.ly/dcnj2016" class="btn-action">Register</a> 
-<a href="/about" class="btn-info">Find Out More</a>
+<a href="#block-system-main" class="btn-info">Find Out More</a>
