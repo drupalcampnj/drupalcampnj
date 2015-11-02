@@ -9,7 +9,7 @@
   @include clearfix();
 }
 
-.not-front {
+.not-front.sidebar-first {
   main {
     @include breakpoint($bp-desktop) { 
       @include grid-span(8, 1);

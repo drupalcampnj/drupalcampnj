@@ -90,6 +90,12 @@ function drupalcampnj_global_context_default_contexts() {
           'region' => 'sponsors',
           'weight' => '-7',
         ),
+        'views-sponsors-block_4' => array(
+          'module' => 'views',
+          'delta' => 'sponsors-block_4',
+          'region' => 'sponsors',
+          'weight' => '-6',
+        ),
         'njblocks-footer_contact_info' => array(
           'module' => 'njblocks',
           'delta' => 'footer_contact_info',
@@ -116,6 +122,7 @@ function drupalcampnj_global_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
+        '~sponsors' => '~sponsors',
       ),
     ),
   );

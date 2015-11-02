@@ -810,7 +810,7 @@ nav .menu {
 
 @media (min-width: 55em) {
   /* line 13, ../sass/partials/layout/_content.scss */
-  .not-front main {
+  .not-front.sidebar-first main {
     width: 65.38462%;
     float: left;
     margin-right: -100%;
@@ -820,7 +820,7 @@ nav .menu {
 }
 @media (min-width: 55em) {
   /* line 19, ../sass/partials/layout/_content.scss */
-  .not-front .sidebar-first {
+  .not-front.sidebar-first .sidebar-first {
     width: 30.76923%;
     float: right;
     margin-left: 0;
@@ -1258,15 +1258,64 @@ footer {
   * 
   *  See https://smacss.com/book/type-module
 */
-/* line 8, ../sass/partials/module/_sponsors.scss */
+/* line 9, ../sass/partials/module/_sponsors.scss */
 .node-type-sponsor h1 {
   position: absolute;
   left: -9999px;
   top: -9999px;
 }
-/* line 11, ../sass/partials/module/_sponsors.scss */
+/* line 12, ../sass/partials/module/_sponsors.scss */
 .node-type-sponsor .field-name-field-image {
   text-align: center;
+}
+
+/* line 13, ../vendor/bundle/ruby/2.1.0/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
+.view-sponsors:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 20, ../sass/partials/module/_sponsors.scss */
+.view-sponsors h3 {
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 3px double #ddd;
+  border-top: 3px double #ddd;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+/* line 29, ../sass/partials/module/_sponsors.scss */
+.view-sponsors .views-row {
+  height: 150px;
+  line-height: 150px;
+  white-space: nowrap;
+  text-align: center;
+}
+/* line 35, ../sass/partials/module/_sponsors.scss */
+.view-sponsors .views-row-odd {
+  float: left;
+  width: 49.5%;
+}
+/* line 39, ../sass/partials/module/_sponsors.scss */
+.view-sponsors .views-row-even {
+  float: right;
+  width: 49.5%;
+}
+
+/* line 47, ../sass/partials/module/_sponsors.scss */
+.view-display-id-block .views-row-odd {
+  float: none;
+  width: 100%;
+}
+
+@media (min-width: 45em) {
+  /* line 56, ../sass/partials/module/_sponsors.scss */
+  .view-display-id-block_2 .views-row, .view-display-id-block_3 .views-row, .view-display-id-block_4 .views-row {
+    float: left;
+    width: 24.5%;
+  }
 }
 
 /**

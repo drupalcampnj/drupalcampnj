@@ -4,12 +4,58 @@
   *  See https://smacss.com/book/type-module
 */
 
+// Sponsor landing page
 .node-type-sponsor {
-    h1 {
-      @include hidden();
-    }
+  h1 {
+    @include hidden();
+  }
   .field-name-field-image {
     text-align: center;
   }
 }
 
+// Sponsors region
+.view-sponsors {
+  @include clearfix();
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 3px double #ddd;
+    border-top: 3px double #ddd;
+    @include adjust-font-size-to( $base-font-size );
+    @include leader(4, $base-font-size);
+    @include trailer(4, $base-font-size);
+  }
+  .views-row {
+    height: 150px;
+    line-height: 150px;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .views-row-odd {
+    float: left;
+    width: 49.5%
+  }
+  .views-row-even {
+    float: right;
+    width: 49.5%;
+  }
+}
+
+// Diamond
+.view-display-id-block {
+  .views-row-odd {
+    float: none;
+    width: 100%;
+  }
+}
+
+// Gold, Silver, Corporate
+.view-display-id-block_2, .view-display-id-block_3, .view-display-id-block_4 {
+  @include breakpoint($bp-tablet) {
+    .views-row {
+      float: left;
+      width: 24.5%;
+    }
+  }
+}
