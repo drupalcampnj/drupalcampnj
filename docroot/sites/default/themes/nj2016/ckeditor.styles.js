@@ -66,7 +66,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
                 element : 'a',
                 attributes :
                 {
-                    'class' : 'btn--positive'
+                    'class' : 'btn-positive'
                 }
             }
         ]);
