@@ -8,5 +8,8 @@
     h1 {
       @include hidden();
     }
+  .field-name-field-image {
+    text-align: center;
+  }
 }
 
