@@ -46,27 +46,27 @@ if(typeof(CKEDITOR) !== 'undefined') {
             //    }
             //}
             {
-                name : 'Button Red',
+                name : 'Red Button',
                 element : 'a',
                 attributes :
                 {
-                    'class' : 'btn-red'
+                    'class' : 'btn-action'
                 }
             },
             {
-                name : 'Button Yellow',
+                name : 'Yellow Button',
                 element : 'a',
                 attributes :
                 {
-                    'class' : 'btn-yellow'
+                    'class' : 'btn-info'
                 }
             },
             {
-                name : 'Button White',
+                name : 'Green Button',
                 element : 'a',
                 attributes :
                 {
-                    'class' : 'btn-white'
+                    'class' : 'btn--positive'
                 }
             }
         ]);
