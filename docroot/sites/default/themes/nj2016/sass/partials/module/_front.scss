@@ -1,0 +1,12 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+
+.front {
+    h1 {
+      @include hidden();
+    }
+}
+

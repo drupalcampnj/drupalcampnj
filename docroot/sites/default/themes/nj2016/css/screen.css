@@ -1452,6 +1452,30 @@ footer {
 }
 
 /**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+/* line 8, ../sass/partials/module/_front.scss */
+.front h1 {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+/* line 8, ../sass/partials/module/_sponsors.scss */
+.node-type-sponsor h1 {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+/**
 *  State Import
 */
 /**
