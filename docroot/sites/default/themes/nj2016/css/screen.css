@@ -668,158 +668,17 @@ th {
   padding: 0;
 }
 
-/* line 3, ../sass/partials/base/_abstractions.scss */
-.btn-yellow, .btn-red, .btn-white {
-  text-decoration: none;
-  margin: 0.75em 0;
-  text-transform: uppercase;
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-  font-weight: bold;
-}
-
-/* line 10, ../sass/partials/base/_abstractions.scss */
-.btn-yellow {
-  font-size: 100%;
-  padding: 0.5em 1.5em;
-  display: inline-block;
-  cursor: pointer;
-  -moz-border-radius: 1.5em;
-  -webkit-border-radius: 1.5em;
-  border-radius: 1.5em;
-  *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDAC1F', endColorstr='#FF9A6D0C');
-  background-color: #EDAC1F;
-  border: 0;
-  color: #fff;
-  text-shadow: #825c0a 0 -1px 0;
-}
-/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-yellow:hover {
-  text-decoration: none;
-}
-/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-yellow:hover {
-  background-color: #e09f12;
-}
-/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-yellow:active {
-  background-color: #d29511;
-}
-/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-yellow.disabled, .btn-yellow[disabled] {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-  opacity: 0.6;
-  background: false;
-  cursor: default;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
-.btn-yellow::-moz-focus-inner {
-  padding: 0 !important;
-  margin: -1px !important;
-}
-
-/* line 13, ../sass/partials/base/_abstractions.scss */
-.btn-red {
-  font-size: 100%;
-  padding: 0.5em 1.5em;
-  display: inline-block;
-  cursor: pointer;
-  -moz-border-radius: 1.5em;
-  -webkit-border-radius: 1.5em;
-  border-radius: 1.5em;
-  *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFC33534', endColorstr='#FF721F1F');
-  background-color: #C33534;
-  border: 0;
-  color: #fff;
-  text-shadow: #5e1a19 0 -1px 0;
-}
-/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-red:hover {
-  text-decoration: none;
-}
-/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-red:hover {
-  background-color: #af302f;
-}
-/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-red:active {
-  background-color: #a32c2b;
-}
-/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-red.disabled, .btn-red[disabled] {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-  opacity: 0.6;
-  background: false;
-  cursor: default;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
-.btn-red::-moz-focus-inner {
-  padding: 0 !important;
-  margin: -1px !important;
-}
-
-/* line 16, ../sass/partials/base/_abstractions.scss */
-.btn-white {
-  font-size: 100%;
-  padding: 0.5em 1.5em;
-  display: inline-block;
-  cursor: pointer;
-  -moz-border-radius: 1.5em;
-  -webkit-border-radius: 1.5em;
-  border-radius: 1.5em;
-  *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFCCCCCC');
-  background-color: #fff;
-  border: 0;
-  color: #333;
-  text-shadow: white 0 1px 0;
-}
-/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-white:hover {
-  text-decoration: none;
-}
-/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-white:hover {
-  background-color: #f2f2f2;
-}
-/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-white:active {
-  background-color: #ebebeb;
-}
-/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-.btn-white.disabled, .btn-white[disabled] {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-  opacity: 0.6;
-  background: false;
-  cursor: default;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
-.btn-white::-moz-focus-inner {
-  padding: 0 !important;
-  margin: -1px !important;
-}
-
-/* line 13, ../sass/partials/base/_base.scss */
+/* line 12, ../sass/partials/base/_base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
-/* line 17, ../sass/partials/base/_base.scss */
+/* line 16, ../sass/partials/base/_base.scss */
 body {
   color: #333;
 }
 
-/* line 21, ../sass/partials/base/_base.scss */
+/* line 20, ../sass/partials/base/_base.scss */
 a {
   color: #6488BC;
   text-decoration: none;
@@ -840,7 +699,7 @@ a:hover {
 a:active {
   color: #6488BC;
 }
-/* line 25, ../sass/partials/base/_base.scss */
+/* line 24, ../sass/partials/base/_base.scss */
 a:hover {
   text-decoration: underline;
 }
@@ -1128,97 +987,6 @@ header {
   margin-top: 0.4em;
   margin-bottom: 0.6em;
 }
-/* line 44, ../sass/partials/module/_njblocks-camp-highlights.scss */
-#block-njblocks-camp-highlights .register, #block-njblocks-camp-highlights .learn-more {
-  text-decoration: none;
-  margin: 0.75em 0;
-  text-transform: uppercase;
-  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-  font-weight: bold;
-  font-size: 100%;
-  padding: 0.5em 1.5em;
-  display: inline-block;
-  cursor: pointer;
-  -moz-border-radius: 1.5em;
-  -webkit-border-radius: 1.5em;
-  border-radius: 1.5em;
-  *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFC33534', endColorstr='#FF721F1F');
-  background-color: #C33534;
-  border: 0;
-  color: #fff;
-  text-shadow: #5e1a19 0 -1px 0;
-}
-/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .register:hover, #block-njblocks-camp-highlights .learn-more:hover {
-  text-decoration: none;
-}
-/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .register:hover, #block-njblocks-camp-highlights .learn-more:hover {
-  background-color: #af302f;
-}
-/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .register:active, #block-njblocks-camp-highlights .learn-more:active {
-  background-color: #a32c2b;
-}
-/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .register.disabled, #block-njblocks-camp-highlights .register[disabled], #block-njblocks-camp-highlights .learn-more.disabled, #block-njblocks-camp-highlights .learn-more[disabled] {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-  opacity: 0.6;
-  background: false;
-  cursor: default;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
-#block-njblocks-camp-highlights .register::-moz-focus-inner, #block-njblocks-camp-highlights .learn-more::-moz-focus-inner {
-  padding: 0 !important;
-  margin: -1px !important;
-}
-/* line 53, ../sass/partials/module/_njblocks-camp-highlights.scss */
-#block-njblocks-camp-highlights .learn-more {
-  font-size: 100%;
-  padding: 0.5em 1.5em;
-  display: inline-block;
-  cursor: pointer;
-  -moz-border-radius: 1.5em;
-  -webkit-border-radius: 1.5em;
-  border-radius: 1.5em;
-  *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDAC1F', endColorstr='#FF9A6D0C');
-  background-color: #EDAC1F;
-  border: 0;
-  color: #fff;
-  text-shadow: #825c0a 0 -1px 0;
-}
-/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .learn-more:hover {
-  text-decoration: none;
-}
-/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .learn-more:hover {
-  background-color: #e09f12;
-}
-/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .learn-more:active {
-  background-color: #d29511;
-}
-/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
-#block-njblocks-camp-highlights .learn-more.disabled, #block-njblocks-camp-highlights .learn-more[disabled] {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-  opacity: 0.6;
-  background: false;
-  cursor: default;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
-#block-njblocks-camp-highlights .learn-more::-moz-focus-inner {
-  padding: 0 !important;
-  margin: -1px !important;
-}
 
 /**
   *   Base Partials
@@ -1473,6 +1241,203 @@ footer {
   position: absolute;
   left: -9999px;
   top: -9999px;
+}
+
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+/* line 7, ../sass/partials/module/_buttons.scss */
+.btn, .btn-action, .btn-positive, .btn-info {
+  text-decoration: none;
+  margin: 0.75em 0;
+  text-transform: uppercase;
+  font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+}
+
+/* line 15, ../sass/partials/module/_buttons.scss */
+.btn-action {
+  font-size: 100%;
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  -moz-border-radius: 1.5em;
+  -webkit-border-radius: 1.5em;
+  border-radius: 1.5em;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFC33534', endColorstr='#FF721F1F');
+  background-color: #C33534;
+  border: 0;
+  color: #ffffff;
+  text-shadow: #5e1a19 0 -1px 0;
+  color: #fff;
+}
+/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-action:hover {
+  text-decoration: none;
+}
+/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-action:hover {
+  background-color: #af302f;
+}
+/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-action:active {
+  background-color: #a32c2b;
+}
+/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-action.disabled, .btn-action[disabled] {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  background: false;
+  cursor: default;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
+.btn-action::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
+}
+/* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-action:visited {
+  color: #fff;
+}
+/* line 21, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-action:focus {
+  color: #fff;
+}
+/* line 24, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-action:hover {
+  color: #fff;
+}
+/* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-action:active {
+  color: #fff;
+}
+
+/* line 21, ../sass/partials/module/_buttons.scss */
+.btn-positive {
+  font-size: 100%;
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  -moz-border-radius: 1.5em;
+  -webkit-border-radius: 1.5em;
+  border-radius: 1.5em;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF38653C', endColorstr='#FF142315');
+  background-color: #38653C;
+  border: 0;
+  color: #ffffff;
+  text-shadow: #0b130b 0 -1px 0;
+  color: #fff;
+}
+/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-positive:hover {
+  text-decoration: none;
+}
+/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-positive:hover {
+  background-color: #2f5532;
+}
+/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-positive:active {
+  background-color: #294b2c;
+}
+/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-positive.disabled, .btn-positive[disabled] {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  background: false;
+  cursor: default;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
+.btn-positive::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
+}
+/* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-positive:visited {
+  color: #fff;
+}
+/* line 21, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-positive:focus {
+  color: #fff;
+}
+/* line 24, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-positive:hover {
+  color: #fff;
+}
+/* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-positive:active {
+  color: #fff;
+}
+
+/* line 27, ../sass/partials/module/_buttons.scss */
+.btn-info {
+  font-size: 100%;
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  -moz-border-radius: 1.5em;
+  -webkit-border-radius: 1.5em;
+  border-radius: 1.5em;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDAC1F', endColorstr='#FF9A6D0C');
+  background-color: #EDAC1F;
+  border: 0;
+  color: #ffffff;
+  text-shadow: #825c0a 0 -1px 0;
+  color: #fff;
+}
+/* line 15, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-info:hover {
+  text-decoration: none;
+}
+/* line 42, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-info:hover {
+  background-color: #e09f12;
+}
+/* line 44, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-info:active {
+  background-color: #d29511;
+}
+/* line 6, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/sassy-buttons/_sassy-button-pseudo-states.sass */
+.btn-info.disabled, .btn-info[disabled] {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  background: false;
+  cursor: default;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 74, ../vendor/bundle/ruby/1.9.1/gems/sassy-buttons-0.2.6/stylesheets/_sassy-buttons.sass */
+.btn-info::-moz-focus-inner {
+  padding: 0 !important;
+  margin: -1px !important;
+}
+/* line 18, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-info:visited {
+  color: #fff;
+}
+/* line 21, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-info:focus {
+  color: #fff;
+}
+/* line 24, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-info:hover {
+  color: #fff;
+}
+/* line 27, ../vendor/bundle/ruby/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.btn-info:active {
+  color: #fff;
 }
 
 /**

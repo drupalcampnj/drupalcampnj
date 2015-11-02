@@ -1,0 +1,32 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+
+.btn, %btn {
+  text-decoration: none;
+  margin: rhythm(2) 0;
+  text-transform: uppercase;
+  font-family: $opensans;
+  font-weight: bold;
+}
+
+.btn-action {
+  @extend %btn;
+  @include sassy-button("flat", rhythm(4), 100%, $red, $red, #ffffff);
+  @include link-colors($text-offset,$text-offset,$text-offset,$text-offset,$text-offset);
+}
+
+.btn-positive {
+  @extend %btn;
+  @include sassy-button("flat", rhythm(4), 100%, $green, $green, #ffffff);
+  @include link-colors($text-offset,$text-offset,$text-offset,$text-offset,$text-offset);
+}
+
+.btn-info {
+  @extend %btn;
+  @include sassy-button("flat", rhythm(4), 100%, $yellow, $yellow, #ffffff);
+  @include link-colors($text-offset,$text-offset,$text-offset,$text-offset,$text-offset);
+}
+
