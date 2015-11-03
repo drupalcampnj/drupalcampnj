@@ -105,12 +105,12 @@ $njblocks-tickets-registration: $red;
 $text: $gray;
 $text-offset: #fff;
 
-$header-border: rgba(255, 255, 255, 0.3);
-$header-link-normal:  rgba(255, 255, 255, 0.7);
-$header-link-hover: white;
-$header-link-active: white;
-$header-link-visited: rgba(255, 255, 255, 0.7);
-$header-link-focus: rgba(255, 255, 255, 0.7);
+$header-link-normal:  white;
+$header-link-hover: $blue;
+$header-link-active: $blue;
+$header-link-visited: white;
+$header-link-focus: white;
+$header-link-class-active: white;
 
 $base-link-normal: $blue;
 

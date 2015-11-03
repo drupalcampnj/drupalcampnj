@@ -744,7 +744,7 @@ a:hover {
 /* line 7, ../sass/partials/layout/_header.scss */
 header {
   margin-bottom: 2.25em;
-  padding: 1.5em 0.75em 0.75em 0.75em;
+  padding: 1.5em 0.75em 0em 0.75em;
 }
 /* line 13, ../vendor/bundle/ruby/2.1.0/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
 header:after {
@@ -754,33 +754,28 @@ header:after {
 }
 /* line 12, ../sass/partials/layout/_header.scss */
 .front header {
-  background: rgba(255, 255, 255, 0.3);
   position: absolute;
   width: 100%;
 }
 
-/* line 19, ../sass/partials/layout/_header.scss */
-.site-name {
-  text-align: center;
-}
 @media (min-width: 55em) {
-  /* line 19, ../sass/partials/layout/_header.scss */
+  /* line 18, ../sass/partials/layout/_header.scss */
   .site-name {
     float: left;
   }
 }
 
-/* line 27, ../sass/partials/layout/_header.scss */
+/* line 25, ../sass/partials/layout/_header.scss */
 nav .menu {
   text-align: center;
   padding-left: 0;
 }
 @media (min-width: 55em) {
-  /* line 26, ../sass/partials/layout/_header.scss */
+  /* line 24, ../sass/partials/layout/_header.scss */
   nav {
     float: right;
     position: relative;
-    bottom: 6px;
+    bottom: 11px;
   }
 }
 
@@ -907,7 +902,10 @@ header {
   background: url('../images/backgrounds/header-crops.jpg?1445911599');
   background-size: cover;
   background-position: top center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+/* line 12, ../sass/partials/module/_header.scss */
+.front header {
+  background: transparent;
 }
 
 /**
@@ -915,30 +913,34 @@ header {
   * 
   *  See https://smacss.com/book/type-module
 */
-/* line 8, ../sass/partials/module/_sitename.scss */
+/* line 7, ../sass/partials/module/_sitename.scss */
+.site-name {
+  text-align: center;
+}
+/* line 9, ../sass/partials/module/_sitename.scss */
 .site-name a {
   text-decoration: none;
   text-transform: uppercase;
   font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: bold;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  color: white;
 }
 /* line 18, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 .site-name a:visited {
-  color: rgba(255, 255, 255, 0.7);
+  color: white;
 }
 /* line 21, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 .site-name a:focus {
-  color: rgba(255, 255, 255, 0.7);
+  color: white;
 }
 /* line 24, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 .site-name a:hover {
-  color: white;
+  color: #6488BC;
 }
 /* line 27, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 .site-name a:active {
-  color: white;
+  color: #6488BC;
 }
 
 /**
@@ -955,7 +957,6 @@ header {
   background: url('../images/backgrounds/header-crops.jpg?1445911599');
   background-size: cover;
   background-position: center bottom;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin: 0 0 3.75em 0;
   padding: 4.125em 0 11.25em 0;
 }
@@ -1031,27 +1032,35 @@ nav a {
   font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: bold;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  color: white;
 }
 /* line 18, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 nav a:visited {
-  color: rgba(255, 255, 255, 0.7);
+  color: white;
 }
 /* line 21, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 nav a:focus {
-  color: rgba(255, 255, 255, 0.7);
+  color: white;
 }
 /* line 24, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 nav a:hover {
-  color: white;
+  color: #6488BC;
 }
 /* line 27, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 nav a:active {
-  color: white;
+  color: #6488BC;
 }
 /* line 17, ../sass/partials/module/_nav.scss */
+nav a:hover {
+  text-decoration: none;
+}
+/* line 20, ../sass/partials/module/_nav.scss */
 nav a.active {
   color: white;
+}
+/* line 22, ../sass/partials/module/_nav.scss */
+nav a.active:hover {
+  color: #6488BC;
 }
 
 /**

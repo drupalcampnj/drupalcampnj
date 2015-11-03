@@ -7,17 +7,15 @@
 header {
   @include clearfix();
   margin-bottom: rhythm(6);
-  padding: rhythm(4) rhythm(2) rhythm(2) rhythm(2);
+  padding: rhythm(4) rhythm(2) rhythm(0) rhythm(2);
   
   .front & {
-    background: rgba(255, 255, 255, 0.3);
     position: absolute;
     width: 100%;
   }
 }
 
 .site-name {
-  text-align: center;
   @include breakpoint($bp-desktop) {
     float: left;
   }
@@ -31,7 +29,7 @@ nav {
   @include breakpoint($bp-desktop) { 
     float: right;
     position: relative;
-    bottom: 6px;
+    bottom: 11px;
   }
 }
 

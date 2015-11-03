@@ -8,6 +8,9 @@ header {
   @include background(image-url("backgrounds/header-crops.jpg"));
   background-size: cover;
   background-position: top center;
-  border-bottom: 1px solid $header-border;
+  
+  .front & {
+    background: transparent;
+  }
 } 
 

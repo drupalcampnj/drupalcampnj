@@ -14,9 +14,15 @@ nav {
     font-size: 14px;
     @include link-colors($header-link-normal, $header-link-hover, $header-link-active, $header-link-visited, $header-link-focus);
     
-        &.active {
-          color: $header-link-active;
-        }
+    &:hover {
+      text-decoration: none;
+    }
+    &.active {
+      color: $header-link-class-active;
+      &:hover {
+        color: $header-link-hover;
+      }
+    }
   }
 }
 

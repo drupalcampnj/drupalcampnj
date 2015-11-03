@@ -5,12 +5,13 @@
 */
 
 .site-name {
+  text-align: center;
   a {
     text-decoration: none;
     text-transform: uppercase;
     font-family: $opensans;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
     @include link-colors($header-link-normal, $header-link-hover, $header-link-active, $header-link-visited, $header-link-focus);  }
 }
 

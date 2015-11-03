@@ -11,7 +11,6 @@
     @include background(image-url("backgrounds/header-crops.jpg"));
     background-size: cover;
     background-position: center bottom;
-    border-bottom: 1px solid $header-border;
     margin: 0 0 rhythm(10) 0;
     padding: rhythm(11) 0 rhythm(30) 0;
   }
