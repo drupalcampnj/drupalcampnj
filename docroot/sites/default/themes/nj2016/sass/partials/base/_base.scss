@@ -22,7 +22,15 @@ a {
   @include link-colors($base-link-normal,$base-link-normal,$base-link-normal,$base-link-normal,$base-link-normal);
   text-decoration: none;
   
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  h1 &, h2 &, h3 &, h4 &, h5 &, h6 & {
+    @include link-colors($text,$base-link-normal,$base-link-normal,$text,$base-link-normal);
+    
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
+  }
 }
