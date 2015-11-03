@@ -178,7 +178,9 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<p>In order to submit a session for DrupalCamp NJ you must first <a href="http://bit.ly/dcnj2016" target="_blank">register for the camp</a>. Once you register, an account will be setup for you so that you can <a href="/user/login">login to the site</a> and <a href="/node/add/session">propose a session</a>. Your session submission should include a title, a description, the intended audience (beginner, intermediate, advanced), and track (site building, theming & front end, development, case studies).</p>
 
-<p>Session submissions will close on Friday, December 4, 2015, so that the full schedule can be posted before the end of the year. No sessions will be considered if submitted after this deadline.</p>';
+<p>Session submissions will close on Friday, December 4, 2015, so that the full schedule can be posted before the end of the year. No sessions will be considered if submitted after this deadline.</p>
+
+<p><a href="/node/add/session" class="btn-action">Propose a Session</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
@@ -213,7 +215,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'program/sessions/propose';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Proposed Sessions';
+  $handler->display->display_options['menu']['title'] = 'Propose a Session';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
