@@ -257,11 +257,11 @@ dfn {
 /* line 181, ../sass/partials/base/_normalize.scss */
 h1 {
   /* Set the font-size and line-height while keeping a proper vertical rhythm. */
-  font-size: 3em;
-  line-height: 1.125em;
+  font-size: 2.5em;
+  line-height: 1.2em;
   /* Set 1 unit of vertical rhythm on the top and bottom margins. */
-  margin-top: 0.125em;
-  margin-bottom: 0.125em;
+  margin-top: 0.15em;
+  margin-bottom: 0.15em;
 }
 
 /* line 196, ../sass/partials/base/_normalize.scss */
