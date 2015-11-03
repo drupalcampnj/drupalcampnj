@@ -1521,7 +1521,7 @@ footer {
   *  See https://smacss.com/book/type-module
 */
 /* line 7, ../sass/partials/module/_images.scss */
-.image-left, .view-news .views-field-field-image {
+.image-left, .view-news .views-field-field-image, .field-name-field-image {
   float: left;
   margin: 0 1.5em 1.5em 0;
 }
