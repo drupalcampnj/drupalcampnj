@@ -1,0 +1,13 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+
+#block-njblocks-twitter-timeline {
+  display: none;
+    @include breakpoint($bp-tablet) {
+      display: block;
+    }
+}
+

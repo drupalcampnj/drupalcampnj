@@ -906,6 +906,22 @@ nav .menu {
 }
 
 /**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-layout
+*/
+/* line 7, ../sass/partials/layout/_njblocks-twitter-timeline.scss */
+#block-njblocks-twitter-timeline {
+  display: none;
+}
+@media (min-width: 45em) {
+  /* line 7, ../sass/partials/layout/_njblocks-twitter-timeline.scss */
+  #block-njblocks-twitter-timeline {
+    display: block;
+  }
+}
+
+/**
 *  Module Import
 */
 /**
