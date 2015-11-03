@@ -24,27 +24,23 @@ if(typeof(CKEDITOR) !== 'undefined') {
 
             /* Object Styles */
 
-            //{
-            //    name : 'Image on Left',
-            //    element : 'img',
-            //    attributes :
-            //    {
-            //        'style' : 'padding: 5px; margin-right: 5px',
-            //        'border' : '2',
-            //        'align' : 'left'
-            //    }
-            //},
-            //
-            //{
-            //    name : 'Image on Right',
-            //    element : 'img',
-            //    attributes :
-            //    {
-            //        'style' : 'padding: 5px; margin-left: 5px',
-            //        'border' : '2',
-            //        'align' : 'right'
-            //    }
-            //}
+            {
+                name : 'Image on Left',
+                element : 'img',
+                attributes :
+                {
+                    'class' : 'image-left'
+                }
+            },
+
+            {
+                name : 'Image on Right',
+                element : 'img',
+                attributes :
+                {
+                    'class' : 'image-right'
+                }
+            },
             {
                 name : 'Red Button',
                 element : 'a',
