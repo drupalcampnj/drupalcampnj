@@ -976,11 +976,11 @@ header {
 }
 /* line 24, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 .site-name a:hover {
-  color: #6488BC;
+  color: #EDAC1F;
 }
 /* line 27, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 .site-name a:active {
-  color: #6488BC;
+  color: #EDAC1F;
 }
 
 /**
@@ -1084,11 +1084,11 @@ nav a:focus {
 }
 /* line 24, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 nav a:hover {
-  color: #6488BC;
+  color: #EDAC1F;
 }
 /* line 27, ../vendor/bundle/ruby/2.1.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
 nav a:active {
-  color: #6488BC;
+  color: #EDAC1F;
 }
 /* line 17, ../sass/partials/module/_nav.scss */
 nav a:hover {
@@ -1100,7 +1100,7 @@ nav a.active {
 }
 /* line 22, ../sass/partials/module/_nav.scss */
 nav a.active:hover {
-  color: #6488BC;
+  color: #EDAC1F;
 }
 
 /**
