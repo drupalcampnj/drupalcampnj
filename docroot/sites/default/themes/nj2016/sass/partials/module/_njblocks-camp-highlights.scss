@@ -34,9 +34,6 @@
     @include no-bullet();
     font-family: $opensans;
     font-weight: 700;
-    @include breakpoint($bp-mobile-only) {
-      display: table-footer-group;
-    }
     
     .training, .mentoring {
       @include adjust-font-size-to( $njblocks-camp-highlights-description );
@@ -47,11 +44,6 @@
       @include adjust-font-size-to( $njblocks-camp-highlights-camp );
       @include leader(2, $njblocks-camp-highlights-camp);
       @include trailer(3, $njblocks-camp-highlights-camp);
-    }
-  }
-  .actions {
-    @include breakpoint($bp-mobile-only) {
-      display: table-header-group;
     }
   }
 }
