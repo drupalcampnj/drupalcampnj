@@ -12,7 +12,7 @@
   h2 {
     @include breakpoint($bp-mobile-only) {
       @include leader(10, $njblocks-camp-highlights-h2-mobile);
-     @include adjust-font-size-to($njblocks-camp-highlights-h2-mobile);
+      @include adjust-font-size-to($njblocks-camp-highlights-h2-mobile);
     }
     @include breakpoint($bp-tablet) {
       @include adjust-font-size-to($njblocks-camp-highlights-h2);
@@ -23,17 +23,22 @@
     margin-bottom: rhythm(2);
   }
   
-  hr {
-    border-color: $njblocks-camp-hr;
-    border-width: 3px;
-    max-width: 50px;
+  .content {
+    @include breakpoint($bp-mobile-only){
+      display: flex;
+      flex-direction: column-reverse;
+    }
   }
   
   ul {
-    margin: rhythm(8) 0 rhythm(5) 0;
     @include no-bullet();
     font-family: $opensans;
     font-weight: 700;
+    padding: 0;
+    
+    @include breakpoint($bp-tablet) {
+      margin: rhythm(8) 0 rhythm(5) 0;
+    }
     
     .training, .mentoring {
       @include adjust-font-size-to( $njblocks-camp-highlights-description );
