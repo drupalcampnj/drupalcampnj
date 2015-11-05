@@ -16,12 +16,10 @@ nav {
     
     &:hover {
       text-decoration: none;
+      border-bottom: 3px solid $header-link-border;
     }
     &.active {
-      color: $header-link-class-active;
-      &:hover {
-        color: $header-link-hover;
-      }
+      border-bottom: 3px solid $header-link-border;
     }
   }
 }
