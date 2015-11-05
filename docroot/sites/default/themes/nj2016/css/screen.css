@@ -1014,19 +1014,33 @@ header {
 }
 /* line 12, ../sass/partials/module/_njblocks-camp-highlights.scss */
 #block-njblocks-camp-highlights h2 {
-  font-size: 60px;
   text-transform: uppercase;
   font-weight: 700;
   text-shadow: 2px 2px #333;
   margin-bottom: 0.75em;
 }
-/* line 20, ../sass/partials/module/_njblocks-camp-highlights.scss */
+@media (min-width: 0) and (max-width: 45em) {
+  /* line 12, ../sass/partials/module/_njblocks-camp-highlights.scss */
+  #block-njblocks-camp-highlights h2 {
+    margin-top: 1.5em;
+    font-size: 2.5em;
+    line-height: 1.2em;
+  }
+}
+@media (min-width: 45em) {
+  /* line 12, ../sass/partials/module/_njblocks-camp-highlights.scss */
+  #block-njblocks-camp-highlights h2 {
+    font-size: 3.75em;
+    line-height: 1.1em;
+  }
+}
+/* line 26, ../sass/partials/module/_njblocks-camp-highlights.scss */
 #block-njblocks-camp-highlights hr {
   border-color: #C33534;
   border-width: 3px;
   max-width: 50px;
 }
-/* line 26, ../sass/partials/module/_njblocks-camp-highlights.scss */
+/* line 32, ../sass/partials/module/_njblocks-camp-highlights.scss */
 #block-njblocks-camp-highlights ul {
   margin: 3em 0 1.875em 0;
   list-style-image: none;
@@ -1035,14 +1049,14 @@ header {
   font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
 }
-/* line 32, ../sass/partials/module/_njblocks-camp-highlights.scss */
+/* line 38, ../sass/partials/module/_njblocks-camp-highlights.scss */
 #block-njblocks-camp-highlights ul .training, #block-njblocks-camp-highlights ul .mentoring {
   font-size: 1.25em;
   line-height: 1.2em;
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
-/* line 37, ../sass/partials/module/_njblocks-camp-highlights.scss */
+/* line 43, ../sass/partials/module/_njblocks-camp-highlights.scss */
 #block-njblocks-camp-highlights ul .camp {
   font-size: 1.875em;
   line-height: 1.2em;

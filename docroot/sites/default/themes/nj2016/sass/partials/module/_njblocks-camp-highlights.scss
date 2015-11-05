@@ -10,7 +10,13 @@
   color: $text-offset;
   
   h2 {
-    font-size: $njblocks-camp-highlights-h2;
+    @include breakpoint($bp-mobile-only) {
+      @include leader(10, $njblocks-camp-highlights-h2-mobile);
+     @include adjust-font-size-to($njblocks-camp-highlights-h2-mobile);
+    }
+    @include breakpoint($bp-tablet) {
+      @include adjust-font-size-to($njblocks-camp-highlights-h2);
+    }
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 2px 2px #333;

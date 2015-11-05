@@ -5,6 +5,8 @@ $bp-tablet: 45em;
 $bp-desktop: 55em;
 $bp-wide: 70em;
 
+$bp-mobile-only: 0 $bp-tablet;
+
 
 /**
   *  Grids and gutters
@@ -59,6 +61,7 @@ $h6-font-size              : $xxxsmallpx !default;
 */
 
 $njblocks-camp-highlights-h2: $xxlargepx;
+$njblocks-camp-highlights-h2-mobile: $largepx;
 $njblocks-camp-highlights-description: $xxsmallpx;
 $njblocks-camp-highlights-camp: $smallpx;
 $njblocks-icons: $largepx;
