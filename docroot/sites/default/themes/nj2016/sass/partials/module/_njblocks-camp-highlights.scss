@@ -31,14 +31,13 @@
   }
   
   ul {
-    margin: rhythm(8) 0 rhythm(5) 0;
     @include no-bullet();
     font-family: $opensans;
     font-weight: 700;
     padding: 0;
     
-    @include breakpoint($bp-mobile-only) {
-      
+    @include breakpoint($bp-tablet) {
+      margin: rhythm(8) 0 rhythm(5) 0;
     }
     
     .training, .mentoring {
