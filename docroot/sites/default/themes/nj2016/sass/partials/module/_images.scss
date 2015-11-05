@@ -15,12 +15,14 @@
 }
 
 .view-news {
-    .views-field-field-image {
-      @extend %left;
-    }
+  .views-field-field-image {
+    @extend %left;
+  }
 }
 
-.field-name-field-image {
-  @extend %left;
+.node-article {
+  .field-name-field-image {
+    @extend %left;
+  }
 }
 
