@@ -1049,15 +1049,16 @@ header {
   margin-left: 0;
   font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
+  padding: 0;
 }
-/* line 43, ../sass/partials/module/_njblocks-camp-highlights.scss */
+/* line 44, ../sass/partials/module/_njblocks-camp-highlights.scss */
 #block-njblocks-camp-highlights ul .training, #block-njblocks-camp-highlights ul .mentoring {
   font-size: 1.25em;
   line-height: 1.2em;
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
-/* line 48, ../sass/partials/module/_njblocks-camp-highlights.scss */
+/* line 49, ../sass/partials/module/_njblocks-camp-highlights.scss */
 #block-njblocks-camp-highlights ul .camp {
   font-size: 1.875em;
   line-height: 1.2em;
