@@ -7,6 +7,10 @@
 .content-inner {
   @include standard-layout();
   @include clearfix();
+  
+  main {
+    padding-bottom: rhythm(5);
+  }
 }
 
 .not-front.sidebar-first {

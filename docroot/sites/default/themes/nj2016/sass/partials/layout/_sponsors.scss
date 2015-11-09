@@ -6,5 +6,6 @@
 
 .region-sponsors {
   @include standard-layout();
+  padding-bottom: rhythm(10);
 }
 
