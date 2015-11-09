@@ -58,6 +58,12 @@
   }
 }
 
+// Platinum 
+.view-display-id-block_1 .views-row {
+  height: 175px;
+  line-height: 175px;
+}
+
 // Gold, Silver, Corporate
 .view-display-id-block_2, .view-display-id-block_3, .view-display-id-block_4 {
   @include breakpoint($bp-tablet) {

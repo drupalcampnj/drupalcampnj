@@ -12,6 +12,63 @@ function drupalcampnj_sponsors_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function drupalcampnj_sponsors_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: sponsor-large.
+  $styles['sponsor-large'] = array(
+    'label' => 'sponsor-large',
+    'effects' => array(
+      3 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 400,
+          'height' => 200,
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: sponsor-medium.
+  $styles['sponsor-medium'] = array(
+    'label' => 'sponsor-medium',
+    'effects' => array(
+      2 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 300,
+          'height' => 175,
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: sponsor-small.
+  $styles['sponsor-small'] = array(
+    'label' => 'sponsor-small',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 220,
+          'height' => 150,
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function drupalcampnj_sponsors_node_info() {
