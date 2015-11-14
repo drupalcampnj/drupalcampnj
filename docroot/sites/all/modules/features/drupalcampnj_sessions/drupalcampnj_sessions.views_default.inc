@@ -39,7 +39,12 @@ function drupalcampnj_sessions_views_default_views() {
   );
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['columns'] = '1';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -176,7 +181,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>In order to submit a session for DrupalCamp NJ you must first <a href="http://bit.ly/dcnj2016" target="_blank">register for the camp</a>. Once you register, an account will be setup for you so that you can <a href="/user/login">login to the site</a> and <a href="/node/add/session">propose a session</a>. Your session submission should include a title, a description, the intended audience (beginner, intermediate, advanced), and track (site building, theming & front end, development, case studies).</p>
+  $handler->display->display_options['header']['area']['content'] = '<p>In order to submit a session for DrupalCamp NJ, you must first <a href="http://bit.ly/dcnj2016" target="_blank">register for the camp</a>. Once you register, an account will be set up for you so that you can <a href="/user/login">log in to the site</a> and propose a session. Your session submission should include a title, a description, the intended audience (beginner, intermediate, advanced), and track (site building, theming & front end, development, case studies).</p>
 
 <p>Session submissions will close on Friday, December 4, 2015, so that the full schedule can be posted before the end of the year. No sessions will be considered if submitted after this deadline.</p>
 
@@ -213,6 +218,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_track']['label'] = '';
   $handler->display->display_options['fields']['field_track']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_track']['type'] = 'list_key';
   $handler->display->display_options['path'] = 'program/sessions/propose';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Propose a Session';
@@ -223,6 +229,25 @@ function drupalcampnj_sessions_views_default_views() {
 
   /* Display: Accepted Page */
   $handler = $view->new_display('page', 'Accepted Page', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Accepted Sessions';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>A full list of accepted sessions, will be posted by the end of 2015. Session submissions are currently open and will close on Friday, December 4, 2015</p>
+
+<p><a href="/program/sessions/propose" class="btn-action">Propose a Session</a></p>';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'A list of accepted session will be made available in December of 2015.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -261,6 +286,32 @@ function drupalcampnj_sessions_views_default_views() {
     16 => 0,
     11 => 0,
   );
+  $handler->display->display_options['filters']['field_audience_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_audience_value']['group_info']['label'] = 'Audience (field_audience)';
+  $handler->display->display_options['filters']['field_audience_value']['group_info']['identifier'] = 'field_audience_value';
+  $handler->display->display_options['filters']['field_audience_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Beginner',
+      'operator' => 'or',
+      'value' => array(
+        'Beginner' => 'Beginner',
+      ),
+    ),
+    2 => array(
+      'title' => 'Intermediate',
+      'operator' => 'or',
+      'value' => array(
+        'Intermediate' => 'Intermediate',
+      ),
+    ),
+    3 => array(
+      'title' => 'Advanced',
+      'operator' => 'or',
+      'value' => array(
+        'Advanced' => 'Advanced',
+      ),
+    ),
+  );
   /* Filter criterion: Content: Track (field_track) */
   $handler->display->display_options['filters']['field_track_value']['id'] = 'field_track_value';
   $handler->display->display_options['filters']['field_track_value']['table'] = 'field_data_field_track';
@@ -291,8 +342,7 @@ function drupalcampnj_sessions_views_default_views() {
     16 => 0,
     11 => 0,
   );
-  $handler->display->display_options['path'] = 'program/sessions/accepted';
-  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['path'] = 'program/sessions';
   $handler->display->display_options['menu']['title'] = 'Accepted Sessions';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';

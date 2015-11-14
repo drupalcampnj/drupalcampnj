@@ -22,7 +22,7 @@ function drupalcampnj_sessions_node_info() {
       'description' => t('A session for the camp.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
+      'help' => t('<strong class="msg error"><em>Session submissions will close on Friday, December 4, 2015, so that the full schedule can be posted before the end of the year. No sessions will be considered if submitted after this deadline.</em></strong>'),
     ),
   );
   drupal_alter('node_info', $items);
