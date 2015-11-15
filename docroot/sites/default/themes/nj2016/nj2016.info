@@ -1,72 +1,61 @@
-name = 'DrupalCampNJ 2016'
-description = 'Responsive theme for DrupalCampNJ2016. Uses Stark and Magic to give a clean starting point. No 
-contributed base theme.'
-version = '1.0-dev'
-core = '7.x'
+name = DrupalCampNJ 2016
+description = Responsive theme for DrupalCampNJ2016. Uses Stark and Magic to give a clean starting point. No 
+contributed base theme.
+version = 1.0-dev
+core = 7.x
 
 ; ========================================
 ; Stylesheets
 ; ========================================
 
-stylesheets[all][0] = 'css/screen.css'
-stylesheets[all][] = 'dcnjicon/css/dcnj-icons.css'
+stylesheets[all][0] = css/screen.css
+stylesheets[all][1] = dcnjicon/css/dcnj-icons.css
 
 ; ========================================
 ; Scripts
 ; ========================================
 
-scripts[] = scripts/nj2016.js
+scripts[0] = scripts/nj2016.js
 
 ; ========================================
 ; Regions
 ; ========================================
 
-regions[content] = 'Content'
-regions[navigation] = 'Navigation'
-regions[sidebar_first] = 'Sidebar First'
-regions[sidebar_second] = 'Sidebar Second'
-regions[sponsors] = 'Sponsors'
-regions[footer] = 'Footer'
-regions[highlighted] = 'Highlighted'
-regions[help] = 'Help'
-regions[page_top] = 'Page top'
-regions[page_bottom] = 'Page bottom'
+regions[content] = Content
+regions[navigation] = Navigation
+regions[sidebar_first] = Sidebar First
+regions[sidebar_second] = Sidebar Second
+regions[sponsors] = Sponsors
+regions[footer] = Footer
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
 
 ; ========================================
 ; Settings
 ; ========================================
 
-settings[toggle_logo] = '1'
-settings[toggle_name] = '1'
-settings[toggle_slogan] = '1'
-settings[toggle_node_user_picture] = '0'
-settings[toggle_comment_user_picture] = '0'
-settings[toggle_comment_user_verification] = '0'
-settings[toggle_favicon] = '1'
-settings[toggle_main_menu] = '0'
-settings[toggle_secondary_menu] = '0'
-settings[default_logo] = '1'
-settings[logo_path] = ''
-settings[logo_upload] = ''
-settings[default_favicon] = '1'
-settings[favicon_path] = ''
-settings[favicon_upload] = ''
-settings[magic_embedded_mqs] = '0'
-settings[magic_css_excludes] = ''
-settings[magic_footer_js] = '0'
-settings[magic_library_head] = '0'
-settings[magic_experimental_js] = '0'
-settings[magic_js_excludes] = ''
-settings[magic_performance__active_tab] = 'edit-css'
-settings[magic_css_excludes_regex] = ''
-settings[magic_js_excludes_regex] = ''
-
-; ========================================
-; Fonts
-; @fontyourface will also need to be enabled.
-; ========================================
-
-fonts[google_fonts_api][] = "Merriweather&subset=latin#300"
-fonts[google_fonts_api][] = "Open Sans&subset=latin#300"
-fonts[google_fonts_api][] = "Open Sans&subset=latin#700"
-
+settings[toggle_logo] = 1
+settings[toggle_name] = 1
+settings[toggle_slogan] = 1
+settings[toggle_node_user_picture] = 0
+settings[toggle_comment_user_picture] = 0
+settings[toggle_comment_user_verification] = 0
+settings[toggle_favicon] = 1
+settings[toggle_main_menu] = 0
+settings[toggle_secondary_menu] = 0
+settings[default_logo] = 1
+settings[logo_path] = 
+settings[logo_upload] = 
+settings[default_favicon] = 1
+settings[favicon_path] = 
+settings[favicon_upload] = 
+settings[magic_css_excludes] = system/system.theme.css
+settings[magic_footer_js] = 0
+settings[magic_library_head] = 0
+settings[magic_experimental_js] = 0
+settings[magic_js_excludes] = 
+fonts[google_fonts_api][0] = Merriweather&subset=latin#300
+fonts[google_fonts_api][1] = Open Sans&subset=latin#300
+fonts[google_fonts_api][2] = Open Sans&subset=latin#700

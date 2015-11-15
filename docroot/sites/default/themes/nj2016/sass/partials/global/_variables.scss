@@ -65,6 +65,7 @@ $njblocks-camp-highlights-h2-mobile: $largepx;
 $njblocks-camp-highlights-description: $xxsmallpx;
 $njblocks-camp-highlights-camp: $smallpx;
 $njblocks-icons: $largepx;
+$caption-font-size: $xsmallpx;
 
 /**
   *  Font Stacks
@@ -82,6 +83,7 @@ $opensans: "Open Sans","Helvetica Neue",Arial,sans-serif;
   *  Don't call the font stacks directly!
 */
 $base-font-family: $merriweather;
+$offset-font-family: $opensans;
 
 
 /**
@@ -124,6 +126,9 @@ $learn-more-button: $yellow;
 $njblocks-camp-hr: $red;
 $njblocks-icons-color: $text-offset;
 $njblocks-icons-coloroffset: rgba(245,245,245,0.7);
+
+//same as yellow above
+$table-zebra: rgba(237,172,31,0.10);
 
 
 /**

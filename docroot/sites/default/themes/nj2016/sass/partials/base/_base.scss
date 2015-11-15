@@ -34,3 +34,22 @@ a {
     }
   }
 }
+
+table {
+  font-family: $offset-font-family;
+  caption {
+    @include adjust-font-size-to( $caption-font-size );
+    @include leader( 4,$caption-font-size );
+    font-weight: bold;
+  }
+  th {
+    text-align: left;
+     padding: rhythm(2) rhythm(1) 0 rhythm(1);
+  }
+  td {
+    padding: rhythm(2) rhythm(1);
+  }
+  .even {
+    background-color: $table-zebra;
+  }
+}
