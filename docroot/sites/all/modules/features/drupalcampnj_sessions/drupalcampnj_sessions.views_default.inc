@@ -29,17 +29,14 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'field_track',
-      'rendered' => 0,
+      'rendered' => 1,
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
-  $handler->display->display_options['style_options']['columns'] = '1';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -175,6 +172,8 @@ function drupalcampnj_sessions_views_default_views() {
   $handler = $view->new_display('page', 'Proposed Page', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Propose a Session';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'view-sessions--proposed';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -231,6 +230,8 @@ function drupalcampnj_sessions_views_default_views() {
   $handler = $view->new_display('page', 'Accepted Page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Accepted Sessions';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'view-sessions--accepted';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Unfiltered text */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
