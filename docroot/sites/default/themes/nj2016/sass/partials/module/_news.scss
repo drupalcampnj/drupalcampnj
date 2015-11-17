@@ -1,0 +1,12 @@
+/**
+  *   Base Partials
+  * 
+  *  See https://smacss.com/book/type-module
+*/
+
+.view-news {
+  .views-row {
+    @include clearfix();
+  }
+}
+
