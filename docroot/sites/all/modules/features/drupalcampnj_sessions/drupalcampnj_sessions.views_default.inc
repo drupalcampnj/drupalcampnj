@@ -180,9 +180,9 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>In order to submit a session for DrupalCamp NJ, you must first <a href="http://bit.ly/dcnj2016" target="_blank">register for the camp</a>. Once you register, an account will be set up for you so that you can <a href="/user/login">log in to the site</a> and propose a session. Your session submission should include a title, a description, the intended audience (beginner, intermediate, advanced), and track (site building, theming & front end, development, case studies).</p>
+  $handler->display->display_options['header']['area']['content'] = '<p>In order to submit a session for DrupalCamp NJ, you must first register for the camp. Once you register, an account will be set up for you so that you can log in to the site and propose a session. Your session submission should include a title, a description, the intended audience (beginner, intermediate, advanced), and track (site building, theming & front end, development, case studies).</p>
 
-<p>Session submissions will close on Friday, December 4, 2015, so that the full schedule can be posted before the end of the year. No sessions will be considered if submitted after this deadline.</p>
+<p>Session submissions will close on <strong>Friday, December 18, 2015</strong>, so that the full schedule can be posted in early January. No sessions will be considered if submitted after this deadline.</p>
 
 <p><a href="/node/add/session" class="btn-action">Propose a Session</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
