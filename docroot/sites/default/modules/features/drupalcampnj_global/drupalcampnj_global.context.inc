@@ -135,11 +135,17 @@ function drupalcampnj_global_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'njblocks-training_tickets' => array(
+          'module' => 'njblocks',
+          'delta' => 'training_tickets',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
         'njblocks-twitter_timeline' => array(
           'module' => 'njblocks',
           'delta' => 'twitter_timeline',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),

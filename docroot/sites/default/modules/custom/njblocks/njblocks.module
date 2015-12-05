@@ -10,7 +10,10 @@ function njblocks_block_info() {
       'info' => t('Contact Information for Footer'),
     ),
     'tickets_registration' => array(
-      'info' => t('Ticket information and Register button'),
+      'info' => t('Saturday Camp ticket information'),
+    ),
+    'training_tickets' => array(
+      'info' => t('Friday Training ticket information'),
     ),
      'camp_highlights' => array(
       'info' => t('Large Information about the Camp'),
@@ -35,8 +38,12 @@ function njblocks_block_view($delta = '') {
       $block['content'] = theme('footer_contact_info');
       break;
     case 'tickets_registration':
-      $block['subject'] = t('Tickets start at $30');
+      $block['subject'] = t('Saturday Camp Tickets');
       $block['content'] = theme('tickets_registration');
+      break;
+    case 'training_tickets':
+      $block['subject'] = t('Friday Training Tickets');
+      $block['content'] = theme('training_tickets');
       break;
     case 'camp_highlights':
       $block['subject'] = "5<sup>th</sup>".t('Annual') . "<br />" .t('DrupalCamp NJ');
@@ -61,6 +68,10 @@ function njblocks_theme() {
     ),
     'tickets_registration' => array(
       'template' => 'templates/tickets_registration',
+      'arguments' => array(),
+    ),
+    'training_tickets' => array(
+      'template' => 'templates/training_tickets',
       'arguments' => array(),
     ),
     'camp_highlights' => array(
