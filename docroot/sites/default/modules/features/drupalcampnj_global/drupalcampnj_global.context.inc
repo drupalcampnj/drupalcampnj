@@ -123,6 +123,8 @@ function drupalcampnj_global_context_default_contexts() {
       'values' => array(
         '~<front>' => '~<front>',
         '~sponsors' => '~sponsors',
+        '~program/trainings' => '~program/trainings',
+        '~news/community-trainings-friday-january-29' => '~news/community-trainings-friday-january-29',
       ),
     ),
   );
@@ -152,6 +154,35 @@ function drupalcampnj_global_context_default_contexts() {
   );
   $context->condition_mode = 0;
   $export['drupalcampnj_subpages'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'drupalcampnj_training';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'program/trainings' => 'program/trainings',
+        'news/community-trainings-friday-january-29' => 'news/community-trainings-friday-january-29',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'njblocks-training_tickets' => array(
+          'module' => 'njblocks',
+          'delta' => 'training_tickets',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['drupalcampnj_training'] = $context;
 
   return $export;
 }

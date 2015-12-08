@@ -16,6 +16,7 @@ features[ckeditor_profile][] = Advanced
 features[context][] = drupalcampnj_front
 features[context][] = drupalcampnj_global
 features[context][] = drupalcampnj_subpages
+features[context][] = drupalcampnj_training
 features[ctools][] = context:context:3
 features[features_api][] = api:2
 features[filter][] = filtered_html
