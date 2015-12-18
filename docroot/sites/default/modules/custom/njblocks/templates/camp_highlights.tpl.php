@@ -6,5 +6,5 @@
 </ul>
 <div class="actions">
   <a href="http://bit.ly/dcnj2016" class="btn-action">Register</a>
-  <a href="#block-system-main" class="btn-info">Find Out More</a>
+  <a href="/about" class="btn-info">Find Out More</a>
 </div>
