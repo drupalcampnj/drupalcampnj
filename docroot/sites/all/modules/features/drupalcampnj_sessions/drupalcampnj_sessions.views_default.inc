@@ -171,21 +171,16 @@ function drupalcampnj_sessions_views_default_views() {
   /* Display: Proposed Page */
   $handler = $view->new_display('page', 'Proposed Page', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Propose a Session';
+  $handler->display->display_options['title'] = 'Proposed Sessions';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'view-sessions--proposed';
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>In order to submit a session for DrupalCamp NJ, you must first register for the camp. Once you register, an account will be set up for you so that you can log in to the site and propose a session. Your session submission should include a title, a description, the intended audience (beginner, intermediate, advanced), and track (site building, theming & front end, development, case studies).</p>
-
-<p>Session submissions will close on <strong>Friday, December 18, 2015</strong>, so that the full schedule can be posted in early January. No sessions will be considered if submitted after this deadline.</p>
-
-<p><a href="/node/add/session" class="btn-action">Propose a Session</a></p>';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>The window for session submissions has ended. The full schedule for the 2016 camp will be posted in early January.</p>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -220,7 +215,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_track']['type'] = 'list_key';
   $handler->display->display_options['path'] = 'program/sessions/propose';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Propose a Session';
+  $handler->display->display_options['menu']['title'] = 'Proposed Session';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
