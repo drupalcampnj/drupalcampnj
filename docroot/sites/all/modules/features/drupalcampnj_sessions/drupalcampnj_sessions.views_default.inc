@@ -87,10 +87,10 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Sort criterion: Content: Timeslot (field_timeslot) */
+  $handler->display->display_options['sorts']['field_timeslot_value']['id'] = 'field_timeslot_value';
+  $handler->display->display_options['sorts']['field_timeslot_value']['table'] = 'field_data_field_timeslot';
+  $handler->display->display_options['sorts']['field_timeslot_value']['field'] = 'field_timeslot_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -242,6 +242,11 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_track']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_track']['type'] = 'list_key';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['path'] = 'program/sessions/propose';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Proposed Session';
