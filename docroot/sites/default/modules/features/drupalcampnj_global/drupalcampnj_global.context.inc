@@ -125,6 +125,7 @@ function drupalcampnj_global_context_default_contexts() {
         '~sponsors' => '~sponsors',
         '~program/trainings' => '~program/trainings',
         '~news/community-trainings-friday-january-29' => '~news/community-trainings-friday-january-29',
+        '~program/sessions' => '~program/sessions',
       ),
     ),
   );
