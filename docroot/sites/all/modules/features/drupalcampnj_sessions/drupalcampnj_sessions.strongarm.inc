@@ -13,6 +13,13 @@ function drupalcampnj_sessions_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_session_grid';
+  $strongarm->value = 'g:ia';
+  $export['date_format_session_grid'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__session';
   $strongarm->value = array(
     'view_modes' => array(

@@ -36,6 +36,7 @@ features[field_instance][] = node-session-field_track
 features[field_instance][] = node-session-field_version
 features[node][] = session
 features[user_role][] = attendee
+features[variable][] = date_format_session_grid
 features[variable][] = field_bundle_settings_node__session
 features[variable][] = menu_options_session
 features[variable][] = menu_parent_session

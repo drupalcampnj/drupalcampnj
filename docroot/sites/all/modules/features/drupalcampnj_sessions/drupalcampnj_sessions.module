@@ -5,3 +5,28 @@
  */
 
 include_once 'drupalcampnj_sessions.features.inc';
+
+// Custom Date Format
+
+/**
+ * Implements hook_date_formats().
+ */
+function drupalcampnj_sessions_date_formats() {
+  return array(
+    // Creates a new format for a new, custom format type.
+    array(
+      'type' => 'drupalcampnj_sessions_grid',
+      'format' => 'g:ia',
+      'locales' => array(),
+    ),
+  );
+}
+
+/**
+ * Implements hook_date_format_types().
+ */
+function drupalcampnj_sessions_date_format_types() {
+  return array(
+    'drupalcampnj_sessions_grid' => t('DrupalCampNJ Sessions Grid'),
+  );
+}
