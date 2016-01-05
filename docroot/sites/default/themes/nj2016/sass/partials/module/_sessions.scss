@@ -1,11 +1,11 @@
 /**
   *   Base Partials
-  * 
+  *
   *  See https://smacss.com/book/type-module
 */
 
 .view-sessions {
-  
+
 }
 
 .view-sessions--proposed {
@@ -22,6 +22,71 @@
 }
 
 .view-sessions--accepted {
-  
+  .item-list {
+    @include no-bullets();
+    //Clear rows for grid in Tablet
+    .views-row:nth-child(2n+1) {
+      @include breakpoint($bp-tablet-only){
+        clear: both;
+      }
+    }
+    //Clear rows for grid in Desktop
+    .views-row:nth-child(3n+1) {
+      @include breakpoint($bp-desktop){
+        clear: both;
+      }
+    }
+    h3 {
+      clear: both;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      clear: both;
+      li {
+        margin-bottom: rhythm(6);
+        @include breakpoint($bp-tablet) {
+          float: left;
+          width: 45%;
+          margin-right: 5%;
+        }
+        @include breakpoint($bp-desktop) {
+          float: left;
+          width: 29%;
+          margin-right: 3%;
+        }
+
+        a {
+          @include adjust-font-size-to( $h3-font-size );
+          font-family: $offset-font-family;
+        }
+        .views-field {
+          padding: 0 2%;
+        }
+      }
+    }
+  }
 }
 
+// TRACK COLORING
+
+.views-field-field-track {
+  @include adjust-font-size-to(.75 * $h6-font-size);
+  font-family: $offset-font-family;
+  font-weight: bold;
+  background: #444;
+  color: white;
+  text-transform: uppercase;
+}
+.track-Site-Building {
+  background: $sessions-site-building;
+}
+.track-Development {
+  background: $sessions-development;
+}
+.track-Case-Studies {
+  background: $sessions-case-studies;
+}
+.track-Theming-amp-Front-End {
+  background: $sessions-theming-amp-front-end;
+}

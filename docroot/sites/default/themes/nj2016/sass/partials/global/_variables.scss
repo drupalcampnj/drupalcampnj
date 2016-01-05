@@ -6,6 +6,7 @@ $bp-desktop: 55em;
 $bp-wide: 70em;
 
 $bp-mobile-only: 0 $bp-tablet;
+$bp-tablet-only: $bp-tablet $bp-desktop;
 
 
 /**
@@ -102,7 +103,7 @@ $yellow: #EDAC1F;
 
 
 // Color assignments
-// Similar to the font-stacks...don't call colors directly in partials. 
+// Similar to the font-stacks...don't call colors directly in partials.
 // Instead, create variables and assign base or derived colors from above.
 
 $footer-background-color: $green;
@@ -128,6 +129,11 @@ $njblocks-camp-hr: $red;
 $njblocks-icons-color: $text-offset;
 $njblocks-icons-coloroffset: rgba(245,245,245,0.7);
 
+$sessions-site-building: $green;
+$sessions-development: $red;
+$sessions-case-studies: $blue;
+$sessions-theming-amp-front-end: $yellow;
+
 //same as blue above
 $zebra: rgba(100,136,188,0.1);
 
@@ -135,7 +141,6 @@ $zebra: rgba(100,136,188,0.1);
 /**
 *  Sprites
 */
-    
+
 // Set this to true to force CSS output to exactly match normalize.css.
 $strict-normalize: false;
- 
