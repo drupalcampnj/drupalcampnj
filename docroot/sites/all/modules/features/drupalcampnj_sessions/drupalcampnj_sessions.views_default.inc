@@ -32,7 +32,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_track',
+      'field' => 'field_timeslot',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -42,6 +42,13 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
+  /* Field: Content: Track */
+  $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
+  $handler->display->display_options['fields']['field_track']['field'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['label'] = '';
+  $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_track']['element_wrapper_class'] = 'track-[field_track]';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -49,11 +56,27 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Timeslot */
+  $handler->display->display_options['fields']['field_timeslot']['id'] = 'field_timeslot';
+  $handler->display->display_options['fields']['field_timeslot']['table'] = 'field_data_field_timeslot';
+  $handler->display->display_options['fields']['field_timeslot']['field'] = 'field_timeslot';
+  $handler->display->display_options['fields']['field_timeslot']['label'] = '';
+  $handler->display->display_options['fields']['field_timeslot']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_timeslot']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_timeslot']['settings'] = array(
+    'format_type' => 'session_grid',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
   /* Field: Content: Author uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'node';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
   $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Field: Content: Audience */
@@ -64,13 +87,6 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
-  /* Field: Content: Track */
-  $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
-  $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
-  $handler->display->display_options['fields']['field_track']['field'] = 'field_track';
-  $handler->display->display_options['fields']['field_track']['label'] = '';
-  $handler->display->display_options['fields']['field_track']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -174,6 +190,19 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['title'] = 'Proposed Sessions';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'view-sessions--proposed';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_track',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Unfiltered text */
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
@@ -233,9 +262,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>A full list of accepted sessions, will be posted by the end of 2015. Session submissions are currently open and will close on Friday, December 4, 2015</p>
-
-<p><a href="/program/sessions/propose" class="btn-action">Propose a Session</a></p>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>THESE SESSIONS ARE ONLY TEST DATA. THESE SESSIONS HAVE NOT BEEN APPROVED.</p>';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
