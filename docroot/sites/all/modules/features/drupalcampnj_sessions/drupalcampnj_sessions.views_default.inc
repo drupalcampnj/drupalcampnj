@@ -64,7 +64,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_timeslot']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_timeslot']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_timeslot']['settings'] = array(
-    'format_type' => 'session_grid',
+    'format_type' => 'drupalcampnj_sessions_grid',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
