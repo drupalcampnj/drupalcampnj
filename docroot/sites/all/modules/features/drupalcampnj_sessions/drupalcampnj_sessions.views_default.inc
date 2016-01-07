@@ -32,7 +32,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_timeslot',
+      'field' => 'field_track',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -87,10 +87,11 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
-  /* Sort criterion: Content: Timeslot (field_timeslot) */
-  $handler->display->display_options['sorts']['field_timeslot_value']['id'] = 'field_timeslot_value';
-  $handler->display->display_options['sorts']['field_timeslot_value']['table'] = 'field_data_field_timeslot';
-  $handler->display->display_options['sorts']['field_timeslot_value']['field'] = 'field_timeslot_value';
+  /* Sort criterion: Content: Track (field_track) */
+  $handler->display->display_options['sorts']['field_track_value']['id'] = 'field_track_value';
+  $handler->display->display_options['sorts']['field_track_value']['table'] = 'field_data_field_track';
+  $handler->display->display_options['sorts']['field_track_value']['field'] = 'field_track_value';
+  $handler->display->display_options['sorts']['field_track_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -258,16 +259,10 @@ function drupalcampnj_sessions_views_default_views() {
   /* Display: Accepted Page */
   $handler = $view->new_display('page', 'Accepted Page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Accepted Sessions';
+  $handler->display->display_options['title'] = 'Sessions';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'view-sessions--accepted';
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Unfiltered text */
-  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
-  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>THESE SESSIONS ARE ONLY TEST DATA. THESE SESSIONS HAVE NOT BEEN APPROVED.</p>';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -315,7 +310,7 @@ function drupalcampnj_sessions_views_default_views() {
     11 => 0,
   );
   $handler->display->display_options['filters']['field_audience_value']['is_grouped'] = TRUE;
-  $handler->display->display_options['filters']['field_audience_value']['group_info']['label'] = 'Audience (field_audience)';
+  $handler->display->display_options['filters']['field_audience_value']['group_info']['label'] = 'Audience';
   $handler->display->display_options['filters']['field_audience_value']['group_info']['identifier'] = 'field_audience_value';
   $handler->display->display_options['filters']['field_audience_value']['group_info']['group_items'] = array(
     1 => array(
@@ -350,21 +345,6 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['filters']['field_track_value']['expose']['operator'] = 'field_track_value_op';
   $handler->display->display_options['filters']['field_track_value']['expose']['identifier'] = 'field_track_value';
   $handler->display->display_options['filters']['field_track_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    16 => 0,
-    11 => 0,
-  );
-  /* Filter criterion: Content: Version (field_version) */
-  $handler->display->display_options['filters']['field_version_value']['id'] = 'field_version_value';
-  $handler->display->display_options['filters']['field_version_value']['table'] = 'field_data_field_version';
-  $handler->display->display_options['filters']['field_version_value']['field'] = 'field_version_value';
-  $handler->display->display_options['filters']['field_version_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_version_value']['expose']['operator_id'] = 'field_version_value_op';
-  $handler->display->display_options['filters']['field_version_value']['expose']['label'] = 'Version';
-  $handler->display->display_options['filters']['field_version_value']['expose']['operator'] = 'field_version_value_op';
-  $handler->display->display_options['filters']['field_version_value']['expose']['identifier'] = 'field_version_value';
-  $handler->display->display_options['filters']['field_version_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     16 => 0,

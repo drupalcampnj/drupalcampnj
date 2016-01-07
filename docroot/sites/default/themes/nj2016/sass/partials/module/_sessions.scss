@@ -38,6 +38,7 @@
     }
     h3 {
       clear: both;
+      @include leader(8, $h3-font-size);
     }
     ul {
       margin: 0;
