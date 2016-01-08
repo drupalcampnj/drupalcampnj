@@ -10,6 +10,44 @@
 function drupalcampnj_sessions_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_additional_presenter'.
+  $field_bases['field_additional_presenter'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_additional_presenter',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'uid' => array(
+        0 => 'uid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'user_reference',
+    'settings' => array(
+      'referenceable_roles' => array(
+        2 => 0,
+        11 => 0,
+        16 => 16,
+        21 => 0,
+      ),
+      'referenceable_status' => array(
+        0 => 0,
+        1 => 1,
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'user_reference',
+  );
+
   // Exported field_base: 'field_audience'.
   $field_bases['field_audience'] = array(
     'active' => 1,
