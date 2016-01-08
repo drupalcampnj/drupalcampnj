@@ -259,7 +259,7 @@ function drupalcampnj_sessions_views_default_views() {
   /* Display: Accepted Page */
   $handler = $view->new_display('page', 'Accepted Page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Sessions';
+  $handler->display->display_options['title'] = 'Accepted Sessions';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'view-sessions--accepted';
   $handler->display->display_options['defaults']['header'] = FALSE;
