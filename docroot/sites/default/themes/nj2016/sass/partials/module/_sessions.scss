@@ -46,6 +46,9 @@
       clear: both;
       li {
         margin-bottom: rhythm(6);
+        padding-bottom: rhythm(1);
+        background-color: $zebra;
+        box-shadow: 1px 1px 6px #bbb;
         @include breakpoint($bp-tablet) {
           float: left;
           width: 45%;
