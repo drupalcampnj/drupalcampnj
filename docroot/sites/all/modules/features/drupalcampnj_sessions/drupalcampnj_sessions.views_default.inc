@@ -42,6 +42,10 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   /* Field: Content: Track */
   $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
   $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
@@ -71,14 +75,6 @@ function drupalcampnj_sessions_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Author uid */
-  $handler->display->display_options['fields']['uid']['id'] = 'uid';
-  $handler->display->display_options['fields']['uid']['table'] = 'node';
-  $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['label'] = '';
-  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Field: Content: Audience */
   $handler->display->display_options['fields']['field_audience']['id'] = 'field_audience';
   $handler->display->display_options['fields']['field_audience']['table'] = 'field_data_field_audience';
@@ -87,6 +83,14 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
   /* Sort criterion: Content: Track (field_track) */
   $handler->display->display_options['sorts']['field_track_value']['id'] = 'field_track_value';
   $handler->display->display_options['sorts']['field_track_value']['table'] = 'field_data_field_track';
