@@ -1,6 +1,6 @@
 /**
   *   Base Partials
-  * 
+  *
   *  See https://smacss.com/book/type-module
 */
 
@@ -58,14 +58,14 @@
   }
 }
 
-// Platinum 
-.view-display-id-block_1 .views-row {
+// Platinum, Corporate
+.view-display-id-block_1 .views-row, .view-display-id-block_4 .views-row {
   height: 175px;
   line-height: 175px;
 }
 
-// Gold, Silver, Corporate
-.view-display-id-block_2, .view-display-id-block_3, .view-display-id-block_4 {
+// Gold, Silver
+.view-display-id-block_2, .view-display-id-block_3 {
   @include breakpoint($bp-tablet) {
     .views-row {
       float: left;
