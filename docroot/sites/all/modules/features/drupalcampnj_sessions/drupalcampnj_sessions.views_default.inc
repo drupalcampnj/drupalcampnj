@@ -29,6 +29,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -369,6 +370,10 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['filters']['field_track_value']['field'] = 'field_track_value';
   $handler->display->display_options['filters']['field_track_value']['value'] = array(
     'all' => 'all',
+    'Site Building' => 'Site Building',
+    'Theming & Front End' => 'Theming & Front End',
+    'Development' => 'Development',
+    'Case Studies' => 'Case Studies',
   );
   $handler->display->display_options['filters']['field_track_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_track_value']['expose']['operator_id'] = 'field_track_value_op';
@@ -382,6 +387,7 @@ function drupalcampnj_sessions_views_default_views() {
     11 => 0,
     21 => 0,
   );
+  $handler->display->display_options['filters']['field_track_value']['expose']['reduce'] = TRUE;
   $handler->display->display_options['path'] = 'program/sessions';
   $handler->display->display_options['menu']['title'] = 'Accepted Sessions';
   $handler->display->display_options['menu']['weight'] = '0';
