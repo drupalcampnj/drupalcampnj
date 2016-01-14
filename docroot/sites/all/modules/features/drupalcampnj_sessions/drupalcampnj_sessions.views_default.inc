@@ -32,7 +32,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_track',
+      'field' => 'field_timeslot',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -68,7 +68,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['field_timeslot']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_timeslot']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_timeslot']['settings'] = array(
-    'format_type' => 'drupalcampnj_sessions_grid',
+    'format_type' => 'session_grid',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -103,18 +103,10 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['text'] = '[name][field_additional_presenter]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Sort criterion: Content: Track (field_track) */
-  $handler->display->display_options['sorts']['field_track_value']['id'] = 'field_track_value';
-  $handler->display->display_options['sorts']['field_track_value']['table'] = 'field_data_field_track';
-  $handler->display->display_options['sorts']['field_track_value']['field'] = 'field_track_value';
-  /* Sort criterion: Content: Audience (field_audience) */
-  $handler->display->display_options['sorts']['field_audience_value']['id'] = 'field_audience_value';
-  $handler->display->display_options['sorts']['field_audience_value']['table'] = 'field_data_field_audience';
-  $handler->display->display_options['sorts']['field_audience_value']['field'] = 'field_audience_value';
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Sort criterion: Content: Timeslot (field_timeslot) */
+  $handler->display->display_options['sorts']['field_timeslot_value']['id'] = 'field_timeslot_value';
+  $handler->display->display_options['sorts']['field_timeslot_value']['table'] = 'field_data_field_timeslot';
+  $handler->display->display_options['sorts']['field_timeslot_value']['field'] = 'field_timeslot_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -286,13 +278,6 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'view-sessions--accepted';
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p>All sessions have been confirmed. Please check back soon for the camp day schedule.</p>
-<p><a class="btn-action" href="/saturday-camp-tickets">Register</a></p>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
