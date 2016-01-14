@@ -28,7 +28,6 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -115,11 +114,6 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['sorts']['field_timeslot_value']['id'] = 'field_timeslot_value';
   $handler->display->display_options['sorts']['field_timeslot_value']['table'] = 'field_data_field_timeslot';
   $handler->display->display_options['sorts']['field_timeslot_value']['field'] = 'field_timeslot_value';
-  /* Sort criterion: Content: Location (field_location) */
-  $handler->display->display_options['sorts']['field_location_value']['id'] = 'field_location_value';
-  $handler->display->display_options['sorts']['field_location_value']['table'] = 'field_data_field_location';
-  $handler->display->display_options['sorts']['field_location_value']['field'] = 'field_location_value';
-  $handler->display->display_options['sorts']['field_location_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -367,9 +361,6 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['filters']['field_track_value']['id'] = 'field_track_value';
   $handler->display->display_options['filters']['field_track_value']['table'] = 'field_data_field_track';
   $handler->display->display_options['filters']['field_track_value']['field'] = 'field_track_value';
-  $handler->display->display_options['filters']['field_track_value']['value'] = array(
-    'all' => 'all',
-  );
   $handler->display->display_options['filters']['field_track_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_track_value']['expose']['operator_id'] = 'field_track_value_op';
   $handler->display->display_options['filters']['field_track_value']['expose']['label'] = 'Track';
@@ -380,7 +371,6 @@ function drupalcampnj_sessions_views_default_views() {
     1 => 0,
     16 => 0,
     11 => 0,
-    21 => 0,
   );
   $handler->display->display_options['path'] = 'program/sessions';
   $handler->display->display_options['menu']['title'] = 'Accepted Sessions';
