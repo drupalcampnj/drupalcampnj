@@ -37,6 +37,7 @@ function drupalcampnj_sessions_views_default_views() {
       'rendered_strip' => 0,
     ),
   );
+  $handler->display->display_options['style_options']['row_class'] = 'row-with-track-[field_track]';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -60,6 +61,12 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
+  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
+  $handler->display->display_options['fields']['field_location']['label'] = '';
+  $handler->display->display_options['fields']['field_location']['element_label_colon'] = FALSE;
   /* Field: Content: Timeslot */
   $handler->display->display_options['fields']['field_timeslot']['id'] = 'field_timeslot';
   $handler->display->display_options['fields']['field_timeslot']['table'] = 'field_data_field_timeslot';

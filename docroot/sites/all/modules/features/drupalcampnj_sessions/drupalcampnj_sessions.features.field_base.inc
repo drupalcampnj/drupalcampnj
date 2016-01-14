@@ -127,6 +127,7 @@ function drupalcampnj_sessions_field_default_field_bases() {
         '006 - Zivtech' => '006 - Zivtech',
         '008 - Message Agency' => '008 - Message Agency',
         '109 - Web Development Services' => '109 - Web Development Services',
+        'Hallway' => 'First Floor Hallway',
       ),
       'allowed_values_function' => '',
     ),

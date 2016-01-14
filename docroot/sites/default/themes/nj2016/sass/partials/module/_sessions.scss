@@ -65,11 +65,15 @@
           font-family: $offset-font-family;
         }
         .views-field {
-          padding: 0 2%;
+          padding: 0 10px;
         }
       }
     }
   }
+}
+
+.views-field-field-location {
+  font-style: italic;
 }
 
 // TRACK COLORING
@@ -93,4 +97,19 @@
 }
 .track-Theming-amp-Front-End {
   background: $sessions-theming-amp-front-end;
+}
+
+// HIDE EXTRA INFORMATION FOR "EVERYONE" SESSIONS
+// Make EVERYONE sessions full width.
+
+.row-with-track-Everyone {
+  @include breakpoint($bp-tablet) {
+    width: 95% !important;
+  }
+  @include breakpoint($bp-desktop) {
+    width: 93% !important;
+  }
+  .views-field-field-audience, .views-field-name{
+    @include hidden();
+  }
 }
