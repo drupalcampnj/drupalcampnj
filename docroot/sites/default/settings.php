@@ -568,4 +568,10 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/drupalcampnj/drupalcampnj-settings.inc';
+
+  if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod') {
+    $conf['acquia_purge_http'] = FALSE;
+    $conf['acquia_purge_https'] = TRUE;
+    $conf['acquia_purge_domains'] = array('www.drupalcampnj.org');
+  }
 }
