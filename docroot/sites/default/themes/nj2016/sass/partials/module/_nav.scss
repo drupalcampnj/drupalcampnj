@@ -1,6 +1,6 @@
 /**
   *   Base Partials
-  * 
+  *
   *  See https://smacss.com/book/type-module
 */
 
@@ -13,14 +13,14 @@ nav {
     font-weight: bold;
     font-size: 14px;
     @include link-colors($header-link-normal, $header-link-hover, $header-link-active, $header-link-visited, $header-link-focus);
-    
+
     &:hover {
       text-decoration: none;
       border-bottom: 3px solid $header-link-border;
     }
     &.active {
+      color: $header-link-active;
       border-bottom: 3px solid $header-link-border;
     }
   }
 }
-
