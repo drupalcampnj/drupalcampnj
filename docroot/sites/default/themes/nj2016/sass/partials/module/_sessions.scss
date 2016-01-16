@@ -45,6 +45,7 @@
       padding: 0;
       clear: both;
       li {
+        @include clearfix();
         margin-bottom: rhythm(6);
         padding-bottom: rhythm(1);
         background-color: $zebra;
