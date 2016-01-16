@@ -257,6 +257,43 @@ function drupalcampnj_sessions_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-session-field_room'.
+  $field_instances['node-session-field_room'] = array(
+    'bundle' => 'session',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_room',
+    'label' => 'Room',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'node-session-field_status'.
   $field_instances['node-session-field_status'] = array(
     'bundle' => 'session',
@@ -426,6 +463,7 @@ function drupalcampnj_sessions_field_default_field_instances() {
   t('Files');
   t('Image');
   t('Location');
+  t('Room');
   t('Status');
   t('Timeslot');
   t('Track');
