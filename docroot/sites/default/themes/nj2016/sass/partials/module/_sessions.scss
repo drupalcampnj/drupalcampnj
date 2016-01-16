@@ -59,10 +59,11 @@
           width: 29%;
           margin-right: 3%;
         }
-
-        a {
-          @include adjust-font-size-to( $h3-font-size );
-          font-family: $offset-font-family;
+        .views-field-title{
+          a {
+            @include adjust-font-size-to( $h3-font-size );
+            font-family: $offset-font-family;
+          }
         }
         .views-field {
           padding: 0 10px;
@@ -72,8 +73,18 @@
   }
 }
 
-.views-field-field-location {
+.views-field-field-room {
   font-style: italic;
+}
+
+.views-field-field-audience {
+  @include adjust-font-size-to(.75 * $h6-font-size);
+  font-family: $offset-font-family;
+  font-weight: bold;
+  background: $zebra-dark;
+  color: white;
+  text-transform: uppercase;
+  float: left;
 }
 
 // TRACK COLORING

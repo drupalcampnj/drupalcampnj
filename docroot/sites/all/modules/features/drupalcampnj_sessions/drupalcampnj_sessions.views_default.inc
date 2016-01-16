@@ -49,26 +49,6 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Field: Content: Track */
-  $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
-  $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
-  $handler->display->display_options['fields']['field_track']['field'] = 'field_track';
-  $handler->display->display_options['fields']['field_track']['label'] = '';
-  $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_track']['element_wrapper_class'] = 'track-[field_track]';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Location */
-  $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
-  $handler->display->display_options['fields']['field_location']['field'] = 'field_location';
-  $handler->display->display_options['fields']['field_location']['label'] = '';
-  $handler->display->display_options['fields']['field_location']['element_label_colon'] = FALSE;
   /* Field: Content: Timeslot */
   $handler->display->display_options['fields']['field_timeslot']['id'] = 'field_timeslot';
   $handler->display->display_options['fields']['field_timeslot']['table'] = 'field_data_field_timeslot';
@@ -84,14 +64,20 @@ function drupalcampnj_sessions_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Audience */
-  $handler->display->display_options['fields']['field_audience']['id'] = 'field_audience';
-  $handler->display->display_options['fields']['field_audience']['table'] = 'field_data_field_audience';
-  $handler->display->display_options['fields']['field_audience']['field'] = 'field_audience';
-  $handler->display->display_options['fields']['field_audience']['label'] = '';
-  $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
-  $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
+  /* Field: Content: Track */
+  $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
+  $handler->display->display_options['fields']['field_track']['field'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['label'] = '';
+  $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_track']['element_wrapper_class'] = 'track-[field_track]';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Additional Presenter */
   $handler->display->display_options['fields']['field_additional_presenter']['id'] = 'field_additional_presenter';
   $handler->display->display_options['fields']['field_additional_presenter']['table'] = 'field_data_field_additional_presenter';
@@ -112,6 +98,20 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['text'] = '[name][field_additional_presenter]';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Content: Room */
+  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
+  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
+  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
+  $handler->display->display_options['fields']['field_room']['label'] = '';
+  $handler->display->display_options['fields']['field_room']['element_label_colon'] = FALSE;
+  /* Field: Content: Audience */
+  $handler->display->display_options['fields']['field_audience']['id'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['table'] = 'field_data_field_audience';
+  $handler->display->display_options['fields']['field_audience']['field'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['label'] = '';
+  $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
   /* Sort criterion: Content: Timeslot (field_timeslot) */
   $handler->display->display_options['sorts']['field_timeslot_value']['id'] = 'field_timeslot_value';
   $handler->display->display_options['sorts']['field_timeslot_value']['table'] = 'field_data_field_timeslot';
