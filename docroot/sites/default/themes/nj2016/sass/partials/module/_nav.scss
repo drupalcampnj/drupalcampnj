@@ -24,3 +24,10 @@ nav {
     }
   }
 }
+
+// Make "Camp Schedule" Active on Session detail pages.
+
+.node-type-session nav li:nth-child(2) a {
+  color: $header-link-active;
+  border-bottom: 3px solid $header-link-border;
+}
