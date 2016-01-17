@@ -406,6 +406,119 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: JSON */
+  $handler = $view->new_display('page', 'JSON', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'JSON Feed';
+  $handler->display->display_options['display_description'] = 'JSON Feed of Accepted Sessions';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 1;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Timeslot */
+  $handler->display->display_options['fields']['field_timeslot']['id'] = 'field_timeslot';
+  $handler->display->display_options['fields']['field_timeslot']['table'] = 'field_data_field_timeslot';
+  $handler->display->display_options['fields']['field_timeslot']['field'] = 'field_timeslot';
+  $handler->display->display_options['fields']['field_timeslot']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_timeslot']['settings'] = array(
+    'format_type' => 'session_grid',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Track */
+  $handler->display->display_options['fields']['field_track']['id'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['table'] = 'field_data_field_track';
+  $handler->display->display_options['fields']['field_track']['field'] = 'field_track';
+  $handler->display->display_options['fields']['field_track']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_track']['element_wrapper_class'] = 'track-[field_track]';
+  /* Field: Content: Audience */
+  $handler->display->display_options['fields']['field_audience']['id'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['table'] = 'field_data_field_audience';
+  $handler->display->display_options['fields']['field_audience']['field'] = 'field_audience';
+  $handler->display->display_options['fields']['field_audience']['alter']['text'] = ': [field_audience]';
+  $handler->display->display_options['fields']['field_audience']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_audience']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_audience']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Additional Presenter */
+  $handler->display->display_options['fields']['field_additional_presenter']['id'] = 'field_additional_presenter';
+  $handler->display->display_options['fields']['field_additional_presenter']['table'] = 'field_data_field_additional_presenter';
+  $handler->display->display_options['fields']['field_additional_presenter']['field'] = 'field_additional_presenter';
+  $handler->display->display_options['fields']['field_additional_presenter']['label'] = '';
+  $handler->display->display_options['fields']['field_additional_presenter']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_additional_presenter']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_additional_presenter']['alter']['text'] = ' & [field_additional_presenter]';
+  $handler->display->display_options['fields']['field_additional_presenter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_additional_presenter']['type'] = 'user_reference_plain';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Presenter';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '[name][field_additional_presenter]';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Content: Room */
+  $handler->display->display_options['fields']['field_room']['id'] = 'field_room';
+  $handler->display->display_options['fields']['field_room']['table'] = 'field_data_field_room';
+  $handler->display->display_options['fields']['field_room']['field'] = 'field_room';
+  $handler->display->display_options['fields']['field_room']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_room']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Node UUID */
+  $handler->display->display_options['fields']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['fields']['uuid']['table'] = 'node';
+  $handler->display->display_options['fields']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['fields']['uuid']['label'] = 'UUID';
+  $handler->display->display_options['fields']['uuid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'session' => 'session',
+  );
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
+    'Accepted' => 'Accepted',
+  );
+  $handler->display->display_options['path'] = 'program/sessions/json';
   $export['sessions'] = $view;
 
   return $export;
