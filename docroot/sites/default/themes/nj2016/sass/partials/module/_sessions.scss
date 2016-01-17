@@ -78,19 +78,9 @@
   font-style: italic;
 }
 
-.views-field-field-audience {
-  @include adjust-font-size-to(.75 * $h6-font-size);
-  font-family: $offset-font-family;
-  font-weight: bold;
-  background: $zebra-dark;
-  color: white;
-  text-transform: uppercase;
-  float: left;
-}
-
 // TRACK COLORING
 
-.views-field-field-track {
+.views-field-field-track-and-audience {
   @include adjust-font-size-to(.75 * $h6-font-size);
   font-family: $offset-font-family;
   font-weight: bold;
