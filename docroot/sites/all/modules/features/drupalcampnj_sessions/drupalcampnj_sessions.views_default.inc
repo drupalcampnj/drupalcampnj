@@ -410,13 +410,14 @@ function drupalcampnj_sessions_views_default_views() {
   /* Display: JSON */
   $handler = $view->new_display('page', 'JSON', 'page_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'JSON Feed';
+  $handler->display->display_options['title'] = 'JSON Feed ';
   $handler->display->display_options['display_description'] = 'JSON Feed of Accepted Sessions';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_json';
   $handler->display->display_options['style_options']['plaintext_output'] = 1;
   $handler->display->display_options['style_options']['remove_newlines'] = 0;
-  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['jsonp_prefix'] = 'callback';
+  $handler->display->display_options['style_options']['content_type'] = 'application/javascript';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['style_options']['object_arrays'] = 0;
   $handler->display->display_options['style_options']['numeric_strings'] = 0;
