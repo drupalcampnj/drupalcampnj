@@ -386,6 +386,7 @@ function drupalcampnj_sessions_views_default_views() {
     'Theming & Front End' => 'Theming & Front End',
     'Development' => 'Development',
     'Case Studies' => 'Case Studies',
+    'BOF' => 'BOF',
   );
   $handler->display->display_options['filters']['field_track_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_track_value']['expose']['operator_id'] = 'field_track_value_op';
