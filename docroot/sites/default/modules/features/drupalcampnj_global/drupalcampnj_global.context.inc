@@ -144,11 +144,11 @@ function drupalcampnj_global_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'njblocks-training_tickets' => array(
+        'njblocks-collaboration_tickets' => array(
           'module' => 'njblocks',
-          'delta' => 'training_tickets',
+          'delta' => 'collaboration_tickets',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),
