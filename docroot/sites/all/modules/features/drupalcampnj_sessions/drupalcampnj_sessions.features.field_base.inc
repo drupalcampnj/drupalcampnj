@@ -248,6 +248,7 @@ function drupalcampnj_sessions_field_default_field_bases() {
         'Development' => 'Development',
         'Case Studies' => 'Case Studies',
         'Break' => 'Everyone',
+        'BOF' => 'Birds of a Feather',
       ),
       'allowed_values_function' => '',
     ),
