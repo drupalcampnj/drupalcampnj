@@ -1,6 +1,6 @@
 /**
   *   Base Partials
-  * 
+  *
   *  See https://smacss.com/book/type-module
 */
 
@@ -30,3 +30,8 @@
   @include link-colors($text-offset,$text-offset,$text-offset,$text-offset,$text-offset);
 }
 
+.btn-reverse {
+  @extend %btn;
+  @include sassy-button("flat", rhythm(4), 100%, #fff, #fff, #333);
+  //@include link-colors($text-offset,$text-offset,$text-offset,$text-offset,$text-offset);
+}

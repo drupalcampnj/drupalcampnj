@@ -96,6 +96,12 @@ function drupalcampnj_global_context_default_contexts() {
           'region' => 'sponsors',
           'weight' => '-13',
         ),
+        'njblocks-code_of_conduct' => array(
+          'module' => 'njblocks',
+          'delta' => 'code_of_conduct',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
         'njblocks-footer_contact_info' => array(
           'module' => 'njblocks',
           'delta' => 'footer_contact_info',

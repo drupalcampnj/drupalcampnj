@@ -4,7 +4,7 @@
 * Implements hook_block_info().
 */
 function njblocks_block_info() {
-  
+
   $blocks = array(
     'footer_contact_info' => array(
       'info' => t('Contact Information for Footer'),
@@ -20,6 +20,9 @@ function njblocks_block_info() {
     ),
     'twitter_timeline' => array(
       'info' => t('Twitter Timeline Widget'),
+    ),
+    'code_of_conduct' => array(
+      'info' => t('Code of Conduct'),
     ),
   );
 
@@ -52,6 +55,10 @@ function njblocks_block_view($delta = '') {
     case 'twitter_timeline':
       $block['content'] = theme('twitter_timeline');
       break;
+    case 'code_of_conduct':
+      $block['subject'] = t('Code of Conduct');
+      $block['content'] = theme('code_of_conduct');
+      break;
   }
 
   return $block;
@@ -82,6 +89,9 @@ function njblocks_theme() {
       'template' => 'templates/twitter_timeline',
       'arguments' => array(),
     ),
+    'code_of_conduct' => array(
+      'template' => 'templates/code_of_conduct',
+      'arguments' => array(),
+    ),
   );
 }
-
