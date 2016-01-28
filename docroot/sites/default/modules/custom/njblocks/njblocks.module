@@ -27,6 +27,9 @@ function njblocks_block_info() {
     'code_of_conduct' => array(
       'info' => t('Code of Conduct'),
     ),
+    'camp_schedule' => array(
+      'info' => t('Saturday Camp Schedule'),
+    ),
   );
 
   return $blocks;
@@ -66,6 +69,10 @@ function njblocks_block_view($delta = '') {
       $block['subject'] = t('Code of Conduct');
       $block['content'] = theme('code_of_conduct');
       break;
+    case 'camp_schedule':
+      $block['subject'] = t('Camp Schedule');
+      $block['content'] = theme('camp_schedule');
+      break;
   }
 
   return $block;
@@ -102,6 +109,10 @@ function njblocks_theme() {
     ),
     'code_of_conduct' => array(
       'template' => 'templates/code_of_conduct',
+      'arguments' => array(),
+    ),
+    'camp_schedule' => array(
+      'template' => 'templates/camp_schedule',
       'arguments' => array(),
     ),
   );

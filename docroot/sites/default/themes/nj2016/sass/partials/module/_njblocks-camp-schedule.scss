@@ -1,0 +1,19 @@
+/**
+  *   Base Partials
+  *
+  *  See https://smacss.com/book/type-module
+*/
+
+#block-njblocks-camp-schedule {
+  background-color: $njblocks-camp-schedule;
+  padding: rhythm(2);
+  text-align: center;
+  color: $text-offset;
+  margin-bottom: rhythm(4);
+
+  .description {
+    font-style: italic;
+    padding-top: rhythm(2);
+  }
+
+}

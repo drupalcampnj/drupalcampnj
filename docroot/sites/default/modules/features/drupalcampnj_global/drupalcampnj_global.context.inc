@@ -138,11 +138,11 @@ function drupalcampnj_global_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'njblocks-tickets_registration' => array(
+        'njblocks-camp_schedule' => array(
           'module' => 'njblocks',
-          'delta' => 'tickets_registration',
+          'delta' => 'camp_schedule',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'njblocks-collaboration_tickets' => array(
           'module' => 'njblocks',
