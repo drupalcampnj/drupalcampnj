@@ -308,9 +308,7 @@ function drupalcampnj_sessions_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Registration and coffee starts at 9am. Registration is in the lobby, behind the auditorium.
-
-Would you like to submit a BOF? Login and visit https://www.drupalcampnj.org/bof.';
+  $handler->display->display_options['header']['area']['content'] = 'Registration and coffee starts at 9am. Registration is in the lobby, behind the auditorium.';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
