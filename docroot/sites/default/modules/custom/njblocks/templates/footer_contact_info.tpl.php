@@ -15,7 +15,8 @@
 <h4>DrupalCamp NJ Archives</h4>
 
 <ul class="archives">
-	<li><a href="http://drupalcampnj2015.drupalcamp.org">2015</a></li>
+  <li><a href="http://drupalcampnj2016.drupalcamp.org">2016</a></li>
+  <li><a href="http://drupalcampnj2015.drupalcamp.org">2015</a></li>
 	<li><a href="http://drupalcampnj2014.drupalcamp.org">2014</a></li>
 	<li><a href="http://drupalcampnj2013.drupalcamp.org">2013</a></li>
 	<li><a href="http://drupalcampnj2012.drupalcamp.org/">2012</a></li>
