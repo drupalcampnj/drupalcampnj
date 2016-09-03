@@ -59,7 +59,7 @@ function njblocks_block_view($delta = '') {
       $block['content'] = theme('collaboration_tickets');
       break;
     case 'camp_highlights':
-      $block['subject'] = "5<sup>th</sup>".t('Annual') . "<br />" .t('DrupalCamp NJ');
+      $block['subject'] = "6<sup>th</sup>".t('Annual') . "<br />" .t('DrupalCamp NJ');
       $block['content'] = theme('camp_highlights');
       break;
     case 'twitter_timeline':
