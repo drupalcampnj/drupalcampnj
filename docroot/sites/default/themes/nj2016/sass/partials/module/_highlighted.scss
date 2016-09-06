@@ -1,14 +1,14 @@
 /**
   *   Base Partials
-  * 
+  *
   *  See https://smacss.com/book/type-module
 */
 
 .region-highlighted {
   text-align: center;
-  
+
   .front & {
-    @include background(image-url("backgrounds/header-crops.jpg"));
+    @include background(image-url("backgrounds/header-2017-1600x900.jpg"));
     background-size: cover;
     background-position: center bottom;
     margin: 0 0 rhythm(10) 0;
