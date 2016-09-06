@@ -1,6 +1,6 @@
 /**
   *   Base Partials
-  * 
+  *
   *  See https://smacss.com/book/type-module
 */
 
@@ -8,7 +8,7 @@
   padding: rhythm(2);
   text-align: center;
   color: $text-offset;
-  
+
   h2 {
     @include breakpoint($bp-mobile-only) {
       @include leader(10, $njblocks-camp-highlights-h2-mobile);
@@ -22,24 +22,26 @@
     text-shadow: 2px 2px #333;
     margin-bottom: rhythm(2);
   }
-  
+
   .content {
     @include breakpoint($bp-mobile-only){
       display: flex;
       flex-direction: column-reverse;
     }
   }
-  
+
   ul {
     @include no-bullet();
     font-family: $opensans;
     font-weight: 700;
     padding: 0;
-    
+    text-shadow: 2px 2px #333;
+
+
     @include breakpoint($bp-tablet) {
       margin: rhythm(8) 0 rhythm(5) 0;
     }
-    
+
     .training, .mentoring {
       @include adjust-font-size-to( $njblocks-camp-highlights-description );
       @include leader(1, $njblocks-camp-highlights-description);
@@ -50,6 +52,10 @@
       @include leader(2, $njblocks-camp-highlights-camp);
       @include trailer(3, $njblocks-camp-highlights-camp);
     }
+  }
+
+  .btn-actions {
+    box-shadow: 1px 2px 2px #333;
   }
 }
 
