@@ -109,6 +109,12 @@ DirectoryIndex index.php index.html index.htm
   # uncomment the following line:
   # RewriteBase /
 
+  # Redirect HTTP to HTTPS on prod
+    RewriteCond %{ENV:AH_SITE_ENVIRONMENT} =prod
+    RewriteCond %{HTTPS} =off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteRule ^ https://www.drupalcampnj.org%{REQUEST_URI} [L,R=301]
+
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
   RewriteCond %{REQUEST_FILENAME} !-f
