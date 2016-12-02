@@ -56,7 +56,7 @@ function magic_assets_prepare_regex($paths) {
       foreach (array('theme', 'module', 'profile', 'theme_engine') as $type) {
         // We can't use drupal_get_path() directly because that uses dirname()
         // internally which returns '.' if no filename was found.
-        if ($filename = drupal_get_filename($type, $namespace)) {
+        if ($filename = drupal_get_filename($type, $namespace, NULL, FALSE)) {
           $directory = preg_quote(dirname($filename), '/');
           // Now that we know about this namespace we can add it to the tokens
           // array for performance reasons.
